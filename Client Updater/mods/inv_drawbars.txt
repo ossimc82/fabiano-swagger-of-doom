@@ -1,0 +1,81 @@
+;HACKCONTENT3
+;------------------------------------------------------------------------
+; handle drawing of xp/fame bar
+;------------------------------------------------------------------------
+#set fullclass "CHANGE01"         ; "_-0Tj:PlayerToolTip/instance" ; CurrentClass
+#set playerlevel "CHANGE02"      ; "_-0Lx"           ; Gameobject.class , Below size_
+#set playermaxXp "CHANGE03"       ;"_-0oW"             ; Player class , trait BELOW exp_
+#set fame1 "CHANGE04"             ;"_-0O4"                   ; Player.class
+#set fame2 "CHANGE05"             ;"_-03l"                  ; below numstars
+
+      pushstring          "Lvl "
+      getlocal0
+      getproperty         QName(PackageNamespace(""), "player_")
+      getproperty         QName(PackageNamespace(""), $"playerlevel")
+      add
+      coerce_s
+      setlocal3
+	  
+	  LABEL1:
+
+      getlocal0
+      getproperty         QName(PackageNamespace(""), "player_")
+      getproperty         QName(PackageNamespace(""), $"playerlevel")
+      pushbyte            20
+      ifeq                DRAWFAME
+      
+      getlocal0
+      getproperty         QName(PrivateNamespace("*", $"fullclass"), "_xp")
+      pushtrue
+      setproperty         QName(PackageNamespace(""), "visible")
+      
+      getlocal0
+      getproperty         QName(PrivateNamespace("*", $"fullclass"), "_fame")
+      pushfalse
+      setproperty         QName(PackageNamespace(""), "visible")
+      
+      getlocal0
+      getproperty         QName(PrivateNamespace("*", $"fullclass"), "_xp")
+      getlocal0
+      getproperty         QName(PackageNamespace(""), "player_")
+      getproperty         QName(PackageNamespace(""), "exp_")
+      getlocal0
+      getproperty         QName(PackageNamespace(""), "player_")
+      getproperty         QName(PackageNamespace(""), $"playermaxXp")
+      pushbyte            0
+      callpropvoid        QName(PackageNamespace(""), "draw"), 3
+      jump CONTINUEDRAW
+      
+      
+	  
+	  DRAWFAME:
+       
+
+      getlocal0
+      getproperty         QName(PrivateNamespace("*", $"fullclass"), "_fame")
+      pushtrue
+      setproperty         QName(PackageNamespace(""), "visible")
+      
+      getlocal0
+      getproperty         QName(PrivateNamespace("*", $"fullclass"), "_xp")
+      pushfalse
+      setproperty         QName(PackageNamespace(""), "visible")
+      
+      getlocal0
+      getproperty         QName(PrivateNamespace("*", $"fullclass"), "_fame")
+      getlocal0
+      getproperty         QName(PackageNamespace(""), "player_")
+      getproperty         QName(PackageNamespace(""), $"fame1")
+      getlocal0
+      getproperty         QName(PackageNamespace(""), "player_")
+      getproperty         QName(PackageNamespace(""), $"fame2")
+      pushbyte            0
+      callpropvoid        QName(PackageNamespace(""), "draw"), 3
+      
+CONTINUEDRAW:  
+
+      getlocal0
+      getproperty         QName(PrivateNamespace("*", $"fullclass"), "_stats")
+      getlocal0
+      getproperty         QName(PackageNamespace("", "#2"), "player_")
+      callpropvoid        QName(PackageNamespace("", "#2"), "draw"), 1    

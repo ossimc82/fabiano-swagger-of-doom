@@ -1,0 +1,2 @@
+﻿#Big Bag O' Keys
+items:0x710, 0xc11, 0xc2f, 0xc62:3, 8, 8, 1, 1

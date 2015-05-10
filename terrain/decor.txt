@@ -1,0 +1,76 @@
+Tree A          green
+Tree B          yellow
+Tree Leafless
+Tree Dead
+Tree Jungle
+Bush
+Shrub
+Rock Grey
+Rock Brown
+Small Mushroom
+Tree Stump
+Black Tree Stump
+Large Mushroom
+White Flowers
+Pink Flowers
+Large Lilypads
+Small Lilypads
+Cross
+Fir Tree 1
+Fir Tree 2
+Fir Tree 3
+Small Fir Tree 1
+Small Fir Tree 2
+Dead Fir Tree 1
+Dead Fir Tree 2
+Dead Fir Tree 3
+Dead Fir Tree 4
+Saguaro Cactus 1
+Saguaro Cactus 2
+Saguaro Cactus 3
+Small Saguaro Cactus 1
+Small Saguaro Cactus 2
+Prickly Pear Cactus 1
+Prickly Pear Cactus 2
+Succulent Plant 1
+Succulent Plant 2
+Large Green Bush
+Green Bush 1
+Green Bush 2
+Green Bush 3
+Green Bush 4
+Green Bush 5
+Green Bush 6
+Green Bush 7
+Green Bush 8
+Large Light Green Bush
+Light Green Bush 1
+Light Green Bush 2
+Light Green Bush 3
+Light Green Bush 4
+Light Green Bush 5
+Light Green Bush 6
+Light Green Bush 7
+Light Green Bush 8
+Large Yellow Bush
+Yellow Bush 1
+Yellow Bush 2
+Yellow Bush 3
+Yellow Bush 4
+Yellow Bush 5
+Yellow Bush 6
+Yellow Bush 7
+Yellow Bush 8
+Large Dead Bush
+Dead Bush 1
+Dead Bush 2
+Dead Bush 3
+Dead Bush 4
+Dead Bush 5
+Dead Bush 6
+Dead Bush 7
+Dead Bush 8
+Road Marker
+Death Grass
+Death Flower
+Death Tree

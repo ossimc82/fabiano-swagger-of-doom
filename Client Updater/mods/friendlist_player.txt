@@ -1,0 +1,8 @@
+	  getlocal0
+	  getproperty         QName(PackageNamespace(""), "starred_")
+	  iffalse             SKIP
+	  
+	  pushint             4240365
+          returnvalue
+
+SKIP:

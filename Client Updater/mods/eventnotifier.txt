@@ -1,0 +1,290 @@
+
+;---------------------EVENT NOTIFIER by IziLife------------------------------------------------
+;----------------------------------------------------------------------------------------------
+;------------------Info------------------------------------------------------------------------
+;--Version: 20.0.1
+;--Location: _-1N\_-1k3.class.asasm
+;--Line: 183
+;----------------------------------------------------------------------------------------------
+    ;-------------------------------------------------------------
+    ;------------------Name to Update-----------------------------
+    ;-------------------------------------------------------------
+        #set audioPackage  "CHANGE01"   ; "_-13C"     ;search for "level_up"
+        #set audioClass    "CHANGE02"  ;"_-0PY"     ;search for "level_up"
+
+        #set text1 "CHANGE03"   ; "_-12q"         ;search for "spam" follow the order
+        #set text2 "CHANGE04"   ;"_-0J1"         ;   ""        
+        #set text3 "CHANGE05"   ; "_-TR"          ;   ""
+        #set text4 "CHANGE06"   ; "_-lZ"          ;   ""
+
+
+    ;-------------------------------------------------------------
+    ;------------------OPTION-------------------------------------
+    ;-------------------------------------------------------------
+        #set message    "Event: "
+        #set sound      "enter_realm"
+
+
+;-----------------------------------------------------------------------------------------------
+;----------------------CODE---------------------------------------------------------------------
+;-----------------------------------------------------------------------------------------------
+
+    ;-------------------------------------------------------------------------------------------
+    ;------------------Save Text----------------------------------------------------------------
+    ;-------------------------------------------------------------------------------------------
+        getlocal1
+        getproperty         QName(PackageNamespace(""), "text_")
+        callproperty        QName(Namespace("http://adobe.com/AS3/2006/builtin"), "valueOf"), 0
+        coerce_s
+        setlocal            5
+    ;--------------------------------------------------------------------------------------------
+    ;------------------Set saved text to lower case----------------------------------------------
+    ;--------------------------------------------------------------------------------------------
+        getlocal            5
+        callproperty        QName(Namespace("http://adobe.com/AS3/2006/builtin"), "toLowerCase"), 0
+        setlocal            6
+    ;-------------------------------------------------------------------------------------------
+    ;------------------Save Name----------------------------------------------------------------
+    ;-------------------------------------------------------------------------------------------
+        getlocal1
+        getproperty         QName(PackageNamespace(""), "name_")
+        callproperty        QName(Namespace("http://adobe.com/AS3/2006/builtin"), "valueOf"), 0
+        coerce_s
+        setlocal            7
+    ;-------------------------------------------------------------------------------------------
+    ;------------------Check Name---------------------------------------------------------------
+    ;-------------------------------------------------------------------------------------------
+        getlocal            7
+        pushstring          "#Oryx the Mad God"
+        ifne                CONTINUE
+    ;--------------------------------------------------------------------------------------------
+
+    ;--------------------------------------------------------------------------------------------
+    ;--------------------------Events to be notified for-----------------------------------------
+    ;--------------------------------------------------------------------------------------------
+
+EVENTS:
+
+    ;Sphinx-------------------
+        getlocal            6
+        pushstring          "grand_sphinx.new"  
+        callproperty        QName(Namespace("http://adobe.com/AS3/2006/builtin"), "search"), 1
+        pushint             0
+        ifge                NOTIF
+        ;--------------------------
+        getlocal            6
+        pushstring          "grand_sphinx.one"  
+        callproperty        QName(Namespace("http://adobe.com/AS3/2006/builtin"), "search"), 1
+        pushint             0
+        ifge                NOTIF
+        ;--------------------------
+        getlocal            6
+        pushstring          "grand_sphinx.death"  
+        callproperty        QName(Namespace("http://adobe.com/AS3/2006/builtin"), "search"), 1
+        pushint             0
+        ifge                NOTIF
+        ;--------------------------
+        getlocal            6
+        pushstring          "grand_sphinx.killed"  
+        callproperty        QName(Namespace("http://adobe.com/AS3/2006/builtin"), "search"), 1
+        pushint             0
+        ifge                NOTIF
+        ;--------------------------
+
+    ;Hermit-------------------
+        getlocal            6
+        pushstring          "hermit_god.new"  
+        callproperty        QName(Namespace("http://adobe.com/AS3/2006/builtin"), "search"), 1
+        pushint             0
+        ifge                NOTIF
+        ;--------------------------
+        getlocal            6
+        pushstring          "hermit_god.one"  
+        callproperty        QName(Namespace("http://adobe.com/AS3/2006/builtin"), "search"), 1
+        pushint             0
+        ifge                NOTIF
+        ;--------------------------
+        getlocal            6
+        pushstring          "hermit_god.death"  
+        callproperty        QName(Namespace("http://adobe.com/AS3/2006/builtin"), "search"), 1
+        pushint             0
+        ifge                NOTIF
+        ;--------------------------
+        getlocal            6
+        pushstring          "hermit_god.killed"  
+        callproperty        QName(Namespace("http://adobe.com/AS3/2006/builtin"), "search"), 1
+        pushint             0
+        ifge                NOTIF
+        ;--------------------------
+
+    ;Pentaract-------------------
+        getlocal            6
+        pushstring          "pentaract.new"  
+        callproperty        QName(Namespace("http://adobe.com/AS3/2006/builtin"), "search"), 1
+        pushint             0
+        ifge                NOTIF
+        ;--------------------------
+        getlocal            6
+        pushstring          "pentaract.one"  
+        callproperty        QName(Namespace("http://adobe.com/AS3/2006/builtin"), "search"), 1
+        pushint             0
+        ifge                NOTIF
+        ;--------------------------
+        getlocal            6
+        pushstring          "pentaract.death"  
+        callproperty        QName(Namespace("http://adobe.com/AS3/2006/builtin"), "search"), 1
+        pushint             0
+        ifge                NOTIF
+        ;--------------------------
+        getlocal            6
+        pushstring          "pentaract.killed"  
+        callproperty        QName(Namespace("http://adobe.com/AS3/2006/builtin"), "search"), 1
+        pushint             0
+        ifge                NOTIF
+        ;-------------------------- 
+
+    ;Skull Shrine-------------------
+        getlocal            6
+        pushstring          "skull_shrine.new"  
+        callproperty        QName(Namespace("http://adobe.com/AS3/2006/builtin"), "search"), 1
+        pushint             0
+        ifge                NOTIF
+        ;--------------------------
+        getlocal            6
+        pushstring          "skull_shrine.one"  
+        callproperty        QName(Namespace("http://adobe.com/AS3/2006/builtin"), "search"), 1
+        pushint             0
+        ifge                NOTIF
+        ;--------------------------
+        getlocal            6
+        pushstring          "skull_shrine.death"  
+        callproperty        QName(Namespace("http://adobe.com/AS3/2006/builtin"), "search"), 1
+        pushint             0
+        ifge                NOTIF
+        ;--------------------------
+        getlocal            6
+        pushstring          "skull_shrine.killed"  
+        callproperty        QName(Namespace("http://adobe.com/AS3/2006/builtin"), "search"), 1
+        pushint             0
+        ifge                NOTIF
+        ;--------------------------
+
+    ;Cube-------------------
+        getlocal            6
+        pushstring          "cube_god.new"  
+        callproperty        QName(Namespace("http://adobe.com/AS3/2006/builtin"), "search"), 1
+        pushint             0
+        ifge                NOTIF
+        ;--------------------------
+        getlocal            6
+        pushstring          "cube_god.one"  
+        callproperty        QName(Namespace("http://adobe.com/AS3/2006/builtin"), "search"), 1
+        pushint             0
+        ifge                NOTIF
+        ;--------------------------
+        getlocal            6
+        pushstring          "cube_god.death"  
+        callproperty        QName(Namespace("http://adobe.com/AS3/2006/builtin"), "search"), 1
+        pushint             0
+        ifge                NOTIF
+        ;--------------------------
+        getlocal            6
+        pushstring          "cube_god.killed"  
+        callproperty        QName(Namespace("http://adobe.com/AS3/2006/builtin"), "search"), 1
+        pushint             0
+        ifge                NOTIF
+        ;--------------------------
+
+    ;Ghost Ship-------------------
+        getlocal            6
+        pushstring          "ghost_ship.new"  
+        callproperty        QName(Namespace("http://adobe.com/AS3/2006/builtin"), "search"), 1
+        pushint             0
+        ifge                NOTIF
+        ;--------------------------
+        getlocal            6
+        pushstring          "ghost_ship.one"  
+        callproperty        QName(Namespace("http://adobe.com/AS3/2006/builtin"), "search"), 1
+        pushint             0
+        ifge                NOTIF
+        ;--------------------------
+        getlocal            6
+        pushstring          "ghost_ship.death"  
+        callproperty        QName(Namespace("http://adobe.com/AS3/2006/builtin"), "search"), 1
+        pushint             0
+        ifge                NOTIF
+        ;--------------------------
+        getlocal            6
+        pushstring          "ghost_ship.killed"  
+        callproperty        QName(Namespace("http://adobe.com/AS3/2006/builtin"), "search"), 1
+        pushint             0
+        ifge                NOTIF
+        ;--------------------------
+		
+	;Lord of the lost Land-------------------
+        getlocal            6
+        pushstring          "lord_of_the_lost_lands.new"  
+        callproperty        QName(Namespace("http://adobe.com/AS3/2006/builtin"), "search"), 1
+        pushint             0
+        ifge                NOTIF
+        ;--------------------------
+        getlocal            6
+        pushstring          "lord_of_the_lost_lands.one"  
+        callproperty        QName(Namespace("http://adobe.com/AS3/2006/builtin"), "search"), 1
+        pushint             0
+        ifge                NOTIF
+        ;--------------------------
+        getlocal            6
+        pushstring          "lord_of_the_lost_lands.death"  
+        callproperty        QName(Namespace("http://adobe.com/AS3/2006/builtin"), "search"), 1
+        pushint             0
+        ifge                NOTIF
+        ;--------------------------
+        getlocal            6
+        pushstring          "lord_of_the_lost_lands.killed"  
+        callproperty        QName(Namespace("http://adobe.com/AS3/2006/builtin"), "search"), 1
+        pushint             0
+        ifge                NOTIF
+        ;--------------------------
+
+    ;Closed Realm-------------------
+        getlocal            6
+        pushstring          "oryx_closed_realm"  
+        callproperty        QName(Namespace("http://adobe.com/AS3/2006/builtin"), "search"), 1
+        pushint             0
+        ifge                NOTIF
+        ;--------------------------   
+
+    ;-------------------------------------------------------------------------------------------
+
+    jump                CONTINUE
+
+NOTIF:
+
+    ;------------------------------------------------------------------
+    ;----Print Event---------------------------------------------------
+    ;------------------------------------------------------------------
+
+        getlocal0
+        getproperty         QName(PackageNamespace("", "#0"), $"text1")
+        getlex              QName(PackageNamespace($"text2"), $"text3")
+        getlex              QName(PackageNamespace("com.company.assembleegameclient.parameters"), "Parameters")
+        getproperty         QName(PackageNamespace("", "#0"), $"text4")
+        pushstring          $"message"
+        getlocal            6
+        add
+        callproperty        QName(PackageNamespace("", "#0"), "make"), 2
+        callpropvoid        QName(PackageNamespace("", "#0"), "dispatch"), 1
+
+    
+    ;------------------------------------------------------------------
+    ;----Play a Sound--------------------------------------------------
+    ;------------------------------------------------------------------
+        getlex              QName(PackageNamespace($"audioPackage"), $"audioClass")
+        pushstring          $"sound"
+        callpropvoid        QName(PackageNamespace("", ""), "play"), 1
+
+
+
+CONTINUE:
+;----------------------------------------------------------------------------------------------

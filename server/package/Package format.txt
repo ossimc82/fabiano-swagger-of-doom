@@ -1,0 +1,18 @@
+# Lines who start with a # are comment lines and will be ignored by the server
+# The server knows 3 different package-content types
+#
+# "items", "charSlot" and "vaultChest"
+#
+# Item example:
+#
+# Version 1:         items
+items:0x710, 0x710, 0x710, 0xc69, 0xc68
+#
+# Version 2:  items	       amount
+items:0x710, 0xc69, 0xc68:3, 1, 1
+#
+# VaultChest example: 2 is in that case the amount
+vaultChest:2
+#
+# CharSlot example: 2 is in that case the amount
+charSlot:2

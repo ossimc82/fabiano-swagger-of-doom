@@ -1,0 +1,915 @@
+.titleBar {
+    padding: 2px;
+    height: 22px;
+    background: url(../images/kabamPayment/title_grad.png) no-repeat center center #212121;
+    border-bottom: 1px solid #282727;
+}
+
+.titleBar .titleContainer {
+    color: #fff;
+    text-shadow: 1px 1px 1px #000;
+    font: normal 16px/22px 'Lucida Sans Unicode', Helvetica, Arial, sans-serif;
+    text-align: center;
+    height: 100%;
+}
+
+.titleBar .closeButton {
+    float: right;
+    width: 16px;
+    height: 16px;
+    background: url(../images/kabamPayment/ico_close.png) center 0px no-repeat;
+    margin: 2px;
+}
+
+body
+{
+    margin:0px;
+    height:100%;
+    background:#363636;
+}
+
+#tooltip {
+    background-color:#25211f;
+    padding:10px 16px;
+    width:250px;
+    border:2px solid #524943;
+    color:#ccc;
+    font-family:serif;
+    font-size:14px;
+    display:none;
+}
+
+.titleBar {
+    padding: 2px;
+    height: 22px;
+    background: url(../images/kabamPayment/title_grad.png) no-repeat center center #212121;
+    border-bottom: 1px solid #282727;
+}
+
+.titleBar .titleContainer {
+    color: #fff;
+    text-shadow: 1px 1px 1px #000;
+    font: normal 16px/22px 'Lucida Sans Unicode', Helvetica, Arial, sans-serif;
+    text-align: center;
+    height: 100%;
+}
+
+.titleBar .closeButton {
+    float: right;
+    width: 16px;
+    height: 16px;
+    background: url(../images/kabamPayment/ico_close.png) center 0px no-repeat;
+    margin: 2px;
+}
+.radioPaymentWall
+{
+    background: #363636;
+    width: 550px;
+    margin:auto;
+    font-family:Tahoma;
+    padding: 10px 0px;
+}
+
+
+.radioPaymentWall .packageContainer
+{
+    width:550px;
+    margin:auto;
+}
+
+.radioPaymentWall ul
+{
+    padding: 0px;
+    width:550px;
+    margin:auto;
+}
+
+.radioPaymentWall .packageContainer ul li
+{
+    display:block;
+    clear: left;
+    line-height:40px;
+    font: bold 16px Tahoma;
+    background: #454545;
+    width:535px;
+    height:43px;
+    margin:0px auto 5px auto;
+    color:#ffffff;
+    font-weight:bold;
+    overflow: hidden;
+}
+
+.radioPaymentWall .packageContainer ul li:hover
+{
+    background: #5b5b5b;
+}
+
+.radioPaymentWall .packageContainer ul li.selected
+{
+    background: #777777;
+}
+
+.radioPaymentWall .packageContainer ul.InComm li
+{
+    background: url("../images/kabamPayment/box__card_bg.png") no-repeat center center;
+    width:535px;
+    height:105px;
+    margin-bottom:2px;
+    margin-left:7px;
+    line-height: 105px;
+}
+
+.radioPaymentWall .packageContainer ul.InComm li .igc,
+.radioPaymentWall .packageContainer ul.InComm li .priceContainer
+{
+    line-height:105px;
+}
+
+.radioPaymentWall .packageContainer ul.InComm li.gc25 .priceTag
+{
+    background: url("../images/kabamPayment/gc25.jpg") center center no-repeat;
+}
+
+.radioPaymentWall .packageContainer ul.InComm li.gc50 .priceTag
+{
+    background: url("../images/kabamPayment/gc50.jpg") center center no-repeat;
+}
+
+.radioPaymentWall .packageContainer ul.InComm li.gc25 .priceTag .priceContainer,
+.radioPaymentWall .packageContainer ul.InComm li.gc50 .priceTag .priceContainer
+{
+    text-align:center;
+    color: #f9a32c;
+    margin-top:37px;
+}
+
+.radioPaymentWall ul li.tagged
+{
+    background: url("../images/kabamPayment/bg-bar-popular.png") no-repeat;
+}
+
+.radioPaymentWall .packageContainer ul li .radioButton
+{
+    width:30px;
+    height:100%;
+    background: url("../images/kabamPayment/radioButtons.png") no-repeat 0px center;
+    float:left;
+    margin-left:7px;
+}
+
+.radioPaymentWall ul li.selected .radioButton
+{
+    background: url("../images/kabamPayment/radioButtons.png") no-repeat -40px center;
+}
+
+.radioPaymentWall ul.InComm li .radioButton
+{
+    visibility:hidden;
+}
+
+.radioPaymentWall ul li .igcIcon
+{
+    width:28px;
+    height:100%;
+    background: url("../images/kabamPayment/goldSprite.png") no-repeat 0px center;
+    float:left;
+    margin-left:3px;
+}
+
+.radioPaymentWall ul li:hover .igcIcon
+{
+    background: url("../images/kabamPayment/goldSprite.png") no-repeat -38px center;
+}
+
+.radioPaymentWall ul li.selected .igcIcon
+{
+    background: url("../images/kabamPayment/goldSprite.png") no-repeat -76px center;
+}
+
+.radioPaymentWall ul li .igc
+{
+    width:180px;
+    height:100%;
+    float:left;
+    margin-left:3px;
+    font-size:14px;
+    font-family: Tahoma;
+    line-height: 43px;
+    font-weight: bold;
+    white-space:nowrap;
+}
+
+
+.radioPaymentWall ul li .bonusIGC
+{
+    width:190px;
+    height:100%;
+    float:left;
+    margin-left:3px;
+    text-transform: capitalize;
+    font-size:14px;
+    white-space:nowrap;
+}
+
+.radioPaymentWall ul li .bonusIGC
+{
+    width:185px;
+}
+
+.radioPaymentWall ul li .bonusItems
+{
+    display:none;
+}
+
+.radioPaymentWall ul li .plus
+{
+    font-family: Tahoma;
+}
+
+.radioPaymentWall ul li .bonusItems.noBonus,
+.radioPaymentWall ul li .bonusIGC.noBonus
+{
+    visibility:hidden;
+}
+
+
+.radioPaymentWall ul li .priceTag
+{
+    width:140px;
+    height:100%;
+    float:left;
+    margin-left:3px;
+}
+
+.radioPaymentWall ul li .priceTag .priceContainer
+{
+    font:bold 16px Tahoma;
+    line-height:40px;
+    white-space: nowrap;
+}
+
+.radioPaymentWall ul li .priceTag.tagged .priceContainer
+{
+    margin-top:5px;
+    line-height:normal;
+}
+
+.radioPaymentWall ul li .tagtext
+{
+    width:110px;
+    float:left;
+    margin-left:3px;
+    font: bold 12px Tahoma;
+    white-space: nowrap;
+    color: #6e8a4e;
+}
+
+.radioPaymentWall ul li .priceContainer.salePrice .price,
+.radioPaymentWall ul li .priceContainer.salePrice .originalPrice
+{
+    line-height:normal;
+}
+
+.radioPaymentWall ul li .priceContainer .originalPrice
+{
+    text-decoration:line-through;
+}
+
+.radioPaymentWall ul li .priceContainer .originalPrice span
+{
+    color: #37301e;
+}
+
+.radioPaymentWall ul li .endColumn
+{
+    width:1px;
+    height:100%;
+    margin-left:540px;
+}
+
+.radioPaymentWall .buttonContainer
+{
+    margin:8px 10px 20px 10px;
+}
+
+.radioPaymentWall .buttonContainer
+{
+    margin:0px 310px 0px 0px;
+}
+
+.radioPaymentWall .redeemCardBox
+{
+    background: none #25262a;
+    padding:10px 0px;
+    width:550px;
+}
+
+.radioPaymentWall .notice
+{
+    color: #ffffff;
+    margin:10px;
+}
+
+.radioPaymentWall .notice
+{
+    color: #bcc0c0;
+}
+
+.radioPaymentWall .notice .facebookCreditsInfo
+{
+    width:225px;
+    float:left;
+}
+.radioPaymentWall .notice .facebookCreditsInfo .facebookCreditsIcon
+{
+    background: url("../images/kabamPayment/img-fbcredit.png") no-repeat scroll right top transparent;
+    display: inline-block;
+    margin-right: 5px;
+    width: 24px;
+    height: 38px;
+    float: left;
+}
+
+.radioPaymentWall .notice .facebookCreditsInfo .learnMore
+{
+    color: #6fe4c7;
+}
+
+.radioPaymentWall .notice .itemRewardInfo
+{
+    margin-left: 245px;
+    text-align: left;
+}
+
+.radioPaymentWall .notice .itemRewardInfo
+{
+    margin:0px;
+    font: normal 11px Tahoma;
+}
+.radioPaymentWall .notice .itemRewardInfo strong
+{
+    font-weight:bold;
+    color:#ffffff;
+}
+
+.radioPaymentWall .step
+{
+    color: #bcc0c0;
+    font-size:14px;
+    padding:5px 0px 2px 0px;
+    font-size: 18px;
+}
+
+.radioPaymentWall .packageContainer .step
+{
+    margin-left:15px;
+}
+
+
+.radioPaymentWall .providerContainer
+{
+    width:520px;
+    height:70px;
+    margin:0px auto 5px;
+    padding:0px 15px;
+}
+
+
+.radioPaymentWall .providers .providerHeader
+{
+    width:520px;
+    margin:0px auto;
+    padding:0px 15px;
+}
+
+
+.radioPaymentWall .providers #providerContainer
+{
+    width:520px;
+    margin:0px auto 5px;
+    padding:0px 15px 5px;
+}
+
+.radioPaymentWall .providerContainer .providerRow
+{
+    height:35px;
+    line-height:35px;
+    color: #ffffff;
+    font-size: 14px;
+    font-family:Tahoma;
+    font-weight:bold;
+}
+
+.radioPaymentWall .providerContainer .providerRow .endColumn
+{
+    width: 1px;
+    height:100%;
+    margin-left: 689px;
+}
+.radioPaymentWall .providerContainer .radio_selector {
+    height: 100%;
+    padding-left: 20px;
+    background: url(../images/kabamPayment/radioButtonNormal.png) left center no-repeat;
+    float: left;
+    cursor:pointer;
+}
+
+.radioPaymentWall .providerContainer .picContainer
+{
+    height:100%;
+}
+
+.radioPaymentWall .providerContainer #radio_PayPal .picContainer {
+    width: 100px;
+    background: url('../images/kabamPayment/icon_paypal_doa.png') left center no-repeat;
+}
+
+.radioPaymentWall .providerContainer #radio_TrialPay .picContainer {
+    width: 185px;
+    background: url('../images/kabamPayment/TrialPay.png') left center no-repeat;
+}
+
+.radioPaymentWall .providerContainer #radio_PaySaveCard .picContainer {
+    width: 176px;
+    background: url('../images/kabamPayment/PaySafeCard.gif') left center no-repeat;
+}
+
+.providerContainer #radio_PayPal .picContainer span, .providerContainer #radio_TrialPay .picContainer span
+{
+    visibility: hidden;
+}
+
+.providerContainer #radio_Boku .picContainer
+{
+    width:100px;
+    background: url('../images/kabamPayment/icon_mobile.png') left center no-repeat
+}
+
+.providerContainer #radio_Boku .picContainer span
+{
+    margin-left: 25px;
+}
+
+.radioPaymentWall .providerContainer .radio_selector.selected {
+    background: url(../images/kabamPayment/radioButtonSelected.png) left center no-repeat;
+}
+
+.radioPaymentWall .providerList
+{
+    height: auto;
+    line-height:35px;
+    width: 100%;
+    overflow:hidden;
+}
+
+.radioPaymentWall .providerList li
+{
+    height: 38px;
+    display: block;
+    cursor: pointer;
+    white-space:nowrap;
+    margin-right: 10px;
+    float:left;
+}
+
+.radioPaymentWall .providerList li .radioButton
+{
+    width: 30px;
+    height:100%;
+    float:left;
+    background: url(../images/kabamPayment/radioButtons.png) 0px center no-repeat;
+}
+
+.radioPaymentWall .providerList li .radioButton::after
+{
+  margin-left: 36px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+}
+
+.radioPaymentWall .providerList li.Google .radioButton::after
+{
+    content: "Google Checkout";
+}
+
+.radioPaymentWall .providerList li.PayPal .radioButton::after
+{
+  content: "PayPal";
+}
+
+.radioPaymentWall .providerList li.PlaySpan .radioButton::after
+{
+  content: "Credit Cards, etc.";
+}
+
+.radioPaymentWall .providerList li .picContainer
+{
+    margin-left: 33px;
+    font-size:16px;
+    font-weight: bold;
+    color: #ffffff;
+}
+.radioPaymentWall .providerList li .picContainer span
+{
+    visibility:hidden;;
+}
+
+.radioPaymentWall .providerList li.Facebook .picContainer
+{
+    background: url("../images/kabamPayment/icon_fbCredit_doa.png") no-repeat left center;
+    padding-left:30px;
+}
+
+.radioPaymentWall .providerList li.TrialPay .picContainer
+{
+    background: url(../images/kabamPayment/TrialPay.png) left center no-repeat;
+    width:157px;
+
+}
+
+.radioPaymentWall .providerList li.PlaySpan .picContainer
+{
+    /*background: url(../images/kabamPayment/playspan.png) left center no-repeat; */
+    width: 155px;
+}
+
+.radioPaymentWall .providerList li.Vindicia .picContainer
+{
+    background: url(../images/kabamPayment/vindicia.png) left center no-repeat;
+    width:157px;
+
+}
+
+.radioPaymentWall .providerList li.PayPal .picContainer
+{
+    /*background: url(../images/kabamPayment/icon_paypal_doa.png) left center no-repeat; */
+    width: 65px;
+}
+
+.radioPaymentWall .providerList li.PaySafeCard .picContainer
+{
+    background: url(../images/kabamPayment/PaySafeCard.gif) left center no-repeat;
+    width:148px;
+}
+
+.radioPaymentWall .providerList li.Boku .picContainer
+{
+    background: url(../images/kabamPayment/icon_mobile.png) left center no-repeat;
+    padding-left:20px;
+}
+
+.radioPaymentWall .providerList li.Skrill .picContainer
+{
+    background: url(../images/kabamPayment/moneybookers.jpg) left center no-repeat;
+    width: 169px;
+}
+
+.radioPaymentWall .providerList li.Google .picContainer
+{
+  /*background: url(../images/kabamPayment/icon_paypal_doa.png) left center no-repeat; */
+  width: 150px;
+}
+
+
+.radioPaymentWall .providerList li.Boku .picContainer span,
+.radioPaymentWall .providerList li.Offer .picContainer span,
+.radioPaymentWall .providerList li.Facebook .picContainer span,
+.radioPaymentWall .providerList li.InComm .picContainer span
+{
+    visibility: visible;
+    white-space: nowrap;
+}
+
+
+.radioPaymentWall .providerList li.selected .radioButton
+{
+    height:100%;
+    float:left;
+    background: url(../images/kabamPayment/radioButtonSelected.png) left center no-repeat;
+}
+
+.radioPaymentWall ul.packages
+{
+    display:none;
+    padding:0px;
+}
+
+.radioPaymentWall ul.packages.selected
+{
+    display:block;
+}
+
+
+.radioPaymentWall .footerContainer
+{
+    width:530px;
+    height:97px;
+    padding: 10px;
+    margin:auto;
+}
+
+.radioPaymentWall .secureLogo
+{
+    margin-top:5px;
+    text-align: center;
+    font-size: 12px;
+    color: #504f4f;
+}
+
+.radioPaymentWall .secureLogo .securePayment
+
+{
+    padding:10px 0px 0px 28px;
+    background: url("../images/kabamPayment/icon_secure_doa.png") no-repeat left center;
+    font: normal 11px Tahoma;
+    color: #ffffff;
+    min-height:24px;
+    display:inline-block;
+    vertical-align:middle;
+}
+
+.radioPaymentWall .learnMore
+{
+    color: #047098;
+}
+
+.radioPaymentWall .secureLogo .kabamLogo
+{
+    width: 62px;
+    height:37px;
+    background: url("../images/kabamPayment/icon_kabam_doa.png") no-repeat;
+    display:inline-block;
+    vertical-align:middle;
+    margin-left:20px;
+}
+
+.radioPaymentWall .secureLogo span
+{
+    display:inline-block;
+}
+
+.radioPaymentWall .redeemCardBox
+{
+    /*background: url("../images/kabamPayment/box_doa_redeem.png") no-repeat;*/
+    width: 291px;
+    height: 91px;
+    float: right;
+    padding: 3px 8px;
+}
+
+.radioPaymentWall .redeemCard
+{
+    width:100%;
+    margin:0px;
+    padding:0px;
+    background:none;
+    border:none;
+}
+
+.radioPaymentWall .redeemCard .redeemForm input
+{
+    width:190px;
+    height:23px;
+    background: #d0cece;
+    border:1px solid #909090;
+    margin:0px;
+    float:left;
+}
+
+.radioPaymentWall .redeemCard .redeemDesc
+{
+    margin:0px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #bcc0c0;
+}
+
+.radioPaymentWall .redeemCard div
+{
+    display:block;
+}
+
+.radioPaymentWall .redeemForm .redeemLabel
+{
+    float:none;
+}
+
+.radioPaymentWall .redeemForm
+{
+    float:none;
+}
+
+.radioPaymentWall .redeemCard .redeemLabel
+{
+    font: bold 12px Tahoma;
+    color: #bcc0c0;
+}
+
+.radioPaymentWall .redeemCard .redeemLabel #redeemToolTip,
+.radioPaymentWall .redeemCardBox a.tos
+{
+    color: #BCC0C0;
+    font-size:14px;
+}
+
+.radioPaymentWall .redeemCardBox a.tos:hover
+{
+    text-decoration: underline;
+}
+
+.radioPaymentWall .redeemCard .redeemForm .redeemButton
+{
+    width:93px;
+    height:28px;
+    margin: 0px 0px 0px 200px;
+    text-align:center;
+    line-height:28px;
+    font-size:16px;
+    color: #ffffff;
+    display:block;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.radioPaymentWall .redeemCard .redeemForm .redeemButton:hover
+{
+    color:#ffdc85;
+}
+
+.radioPaymentWall .redeemCard .redeemForm .redeemButton:active
+{
+    color:#ffffff;
+}
+
+.radioPaymentWall .redeemCard .redeemForm .redeemButton.disabled
+{
+    color: #333333;
+}
+
+.radioPaymentWall .redeemCard .redeemError, .radioPaymentWall .redeemCard .redeemSuccess
+{
+    display:none;
+    font-size:12px;
+    text-align:left;
+    line-height:10px;
+}
+
+
+.radioPaymentWall .redeemCard .redeemLoading
+{
+    /*background: url("../images/kabamPayment/small_loading.gif") no-repeat scroll left top transparent;*/
+    width:16px;
+    height:16px;
+    float:left;
+    display:none;
+}
+
+
+
+
+.gradientButton
+{
+    color: white;
+    font-size:14px;
+    display: inline-block;
+    text-decoration:none;
+    width:auto;
+    white-space: nowrap;
+    text-decoration:none;
+    cursor:pointer;
+}
+
+.gradientButton.disabled
+{
+    display:none;
+}
+
+.gradientButton .left, .gradientButton .right, .gradientButton .center
+{
+    display:inline-block;
+    text-decoration:none;
+    vertical-align:middle;
+}
+
+
+a.gradientButton.buyButton
+{
+    height:28px;
+    font-size:14px;
+    color: #363636;
+    font-weight: bold;
+}
+
+a.gradientButton.buyButton .left
+{
+    background: url("../images/kabamPayment/buyButtons.png") no-repeat scroll left 0px transparent;
+    height:28px;
+    width:10px;
+}
+
+a.gradientButton.buyButton .right
+{
+    background: url("../images/kabamPayment/buyButtons.png") no-repeat scroll right 0px transparent;
+    height:28px;
+    width:10px;
+}
+
+a.gradientButton.buyButton .center
+{
+    background: url("../images/kabamPayment/buyButtons.png") no-repeat scroll center 0px transparent;
+    height:28px;
+    text-align:center;
+    line-height:28px;
+    min-width:140px;
+}
+
+a.gradientButton.buyButton:hover .left
+{
+    background: url("../images/kabamPayment/buyButtons.png") no-repeat scroll left -38px transparent;
+}
+
+a.gradientButton.buyButton:hover .right
+{
+    background: url("../images/kabamPayment/buyButtons.png") no-repeat scroll right -38px transparent;
+}
+
+a.gradientButton.buyButton:hover .center
+{
+    background: url("../images/kabamPayment/buyButtons.png") no-repeat scroll center -38px transparent;
+}
+
+a.gradientButton.buyButton:active .left
+{
+    background: url("../images/kabamPayment/buyButtons.png") no-repeat scroll left -38px transparent;
+}
+
+a.gradientButton.buyButton:active .right
+{
+    background: url("../images/kabamPayment/buyButtons.png") no-repeat scroll right -38px transparent;
+}
+
+a.gradientButton.buyButton:active .center
+{
+    background: url("../images/kabamPayment/buyButtons.png") no-repeat scroll center -38px transparent;
+}
+
+a.gradientButton.blue40
+{
+    height:40px;
+    font-size:14px;
+    color:white;
+}
+
+a.gradientButton.blue40 .left
+{
+    background: url("../images/kabamPayment/btn-gift.png") no-repeat scroll left 0px transparent;
+    height:40px;
+    width:10px;
+}
+
+a.gradientButton.blue40 .right
+{
+    background: url("../images/kabamPayment/btn-gift.png") no-repeat scroll right 0px transparent;
+    height:40px;
+    width:10px;
+}
+
+a.gradientButton.blue40 .center
+{
+    background: url("../images/kabamPayment/btn-gift.png") no-repeat scroll center 0px transparent;
+    height:40px;
+    text-align:center;
+    line-height:38px;
+    min-width:140px;
+}
+
+a.gradientButton.blue40:hover .left
+{
+    background: url("../images/kabamPayment/btn-gift.png") no-repeat scroll left -40px transparent;
+}
+
+a.gradientButton.blue40:hover .right
+{
+    background: url("../images/kabamPayment/btn-gift.png") no-repeat scroll right -40px transparent;
+}
+
+a.gradientButton.blue40:hover .center
+{
+    background: url("../images/kabamPayment/btn-gift.png") no-repeat scroll center -40px transparent;
+}
+
+a.gradientButton.blue40:active .left
+{
+    background: url("../images/kabamPayment/btn-gift.png") no-repeat scroll left -80px transparent;
+}
+
+a.gradientButton.blue40:active .right
+{
+    background: url("../images/kabamPayment/btn-gift.png") no-repeat scroll right -80px transparent;
+}
+
+a.gradientButton.blue40:active .center
+{
+    background: url("../images/kabamPayment/btn-gift.png") no-repeat scroll center -80px transparent;
+}

@@ -1,0 +1,850 @@
+;----------------------------------
+;AIMBOT ; Edited by maat7043 1/22/2014
+;----------------------------------
+; NAMES TO UPDATE
+;
+  #set fullfunctionname "com.company.assembleegameclient.objects:Player/aim_" ; the full function name
+	#set functionname "aim_"                                       ; the function name
+	#set mouseClass "CHANGE01" ; Found at the end of the onmousedown procedure : initproperty        QName(PrivateNamespace("*", "com.company.assembleegameclient.game:_-0M4#0"), "_-0E")
+	#set mouseClicked "CHANGE02"                                      ; Found at the end of the onmousedown procedure : initproperty        QName(PrivateNamespace("*", "com.company.assembleegameclient.game:_-0M4#0"), "_-0E")
+	#set playerNamespace "CHANGE03"                                    ; Namespace of the Player class
+	#set characterNamespace "CHANGE04"                                ; Namespace of the Character class
+	#set gameobjectNamespace "CHANGE05"                                ; Namespace of the GameObject class
+	#set basicobjectNamespace "CHANGE06"                               ; Namespace of the BasicObject class
+	#set projectileNamespace "CHANGE07"                                ; Namespace of the Projectile class
+	#set Aimbot_charMaxHealth "CHANGE08"                               ; Found in com/company/assembleegameclient/objects/GameObject.class.asasm [trait slot QName(PackageNamespace(""), "_-Name") type QName(PackageNamespace(""), "int") value Integer(200) end]
+	#set ObjLibDictionary "CHANGE09"                                   ; Found in ObjectLibrary class, this is the slot 7  : trait const QName(PackageNamespace(""), "_-") slotid 4 type QName(PackageNamespace("flash.utils"), "Dictionary") end
+	#set gameobjVector "CHANGE10"                                     ;If wrong replace for _-NC Found in GameObject class, this is the SECOND vector: trait slot QName(PackageNamespace(""), "") type TypeName(QName(PackageNamespace("__AS3__.vec"), "Vector")<QName(PackageNamespace(""), "int")>) value Null() end
+	#set ObjPropertiesDictionary "CHANGE11"                            ; Found in ObjectProperties class : trait slot QName(PackageNamespace(""), "") type QName(PackageNamespace("flash.utils"), "Dictionary") end
+	#set FunctionIsInvincible "CHANGE12"
+	#set FunctionsIsStasis "CHANGE13"
+	#set FunctionsIsInvulnerable "CHANGE14"
+
+;----------------------------------
+; CODE
+;----------------------------------
+trait method QName(PackageNamespace(""), $"functionname");
+   method
+    refid $"fullfunctionname"
+    param QName(PackageNamespace(""), "Number")
+    returns QName(PackageNamespace(""), "void")
+    body
+    maxstack 16
+     localcount 21
+     initscopedepth 16
+     maxscopedepth 18
+     code
+      getlocal0
+      pushscope
+	  
+;----------------------------------
+; Options <-- 1 = yes 0 = no
+;----------------------------------
+      ; Shoot constructs if no other enemies in range?
+      pushint             OPTCONSTRUCTS   ; <-- Change This
+      setlocal            17
+
+      ; Shoot Tesla Coils?
+      pushint             OPTCOILS   ; <-- Change This
+      setlocal            18
+
+      ; Incognito mode?
+      pushint             OPTINCO   ; <-- Change This
+      setlocal            19
+	  
+	  ; Autofire when no enemies are in range?
+	  pushint             OPTFIRE   ; <-- Change This
+	  setlocal            20
+;----------------------------------
+; Code Body: only serious coders past this point
+;---------------------------------- 
+      
+	  ; Get Camera Angle and add it to firing angle
+      getlocal1
+      getlex              QName(PackageNamespace("com.company.assembleegameclient.parameters"), "Parameters")
+      getproperty         QName(PackageNamespace(""), "data_")
+      getproperty         Multiname("cameraAngle", [PrivateNamespace("*", "com.company.assembleegameclient.objects:Player#0"), PackageNamespace(""), PrivateNamespace("*", "com.company.assembleegameclient.objects:Player#1"), PackageNamespace("com.company.assembleegameclient.objects"), PackageInternalNs("com.company.assembleegameclient.objects"), Namespace("http://adobe.com/AS3/2006/builtin"), ProtectedNamespace($"playerNamespace"), StaticProtectedNs($"playerNamespace"), StaticProtectedNs($"characterNamespace"), StaticProtectedNs($"gameobjectNamespace"), StaticProtectedNs($"basicobjectNamespace")])
+      add
+      setlocal            7
+      
+      ; Check to see if manual fire is on
+      getlex              QName(PackageNamespace(""), "map_")
+      getproperty         QName(PackageNamespace(""), "gs_")
+      getproperty         QName(PackageNamespace(""), "mui_")
+      getproperty         QName(PrivateNamespace("*", $"mouseClass"), $"mouseClicked")
+      iftrue              INCOGNITO_OFF
+      
+      ; Empty Current Object
+      pushnull
+      coerce              QName(PackageNamespace("com.company.assembleegameclient.objects"), "GameObject")
+      dup
+      setlocal            4
+  
+      ; Create a new register for Constructs
+      setlocal            16  
+	  
+      ; Set Current Distance to -1
+      pushbyte            255
+      setlocal            8
+      
+      ; Set considered distance to 0
+      pushbyte            0
+      setlocal            9
+      
+      ; Initialize Weapon range as null
+      pushnull
+      coerce_a
+      setlocal            11
+
+      ; Initialize considered target health
+      pushbyte            0
+      setlocal            12
+	  
+      ; Initialize current target health
+      pushbyte            0
+      setlocal            13
+	  
+      ; Used as the Enumerator index in the hasnext2 loop
+      pushbyte            0
+      setlocal            5
+      
+      ; Create an array of all the object currently loaded
+      getlex              QName(PackageNamespace(""), "map_")
+      getproperty         QName(PackageNamespace(""), "goDict_")
+      coerce_a
+      setlocal            6
+
+      jump                NEXTOBJ
+
+L34:
+      ; Move to the next object in the array
+      label
+      getlocal            6
+      getlocal            5
+      nextvalue
+      coerce              QName(PackageNamespace("com.company.assembleegameclient.objects"), "GameObject")
+      setlocal            4
+	  
+      ; Tesla Coil Check
+	  getlocal            18
+	  pushint             0
+	  ifeq                OPTION_TESLA
+	  
+      getlocal            4
+	  getproperty         QName(PackageNamespace(""), "props_")           
+      getproperty         QName(PackageNamespace(""), "id_")       
+      pushstring          "Tesla Coil"
+      ifeq                TESLA
+	  
+OPTION_TESLA:	  
+      ; Check if the object is a character i.e. not a wall
+	  getlocal            4
+      getlex              QName(PackageNamespace("com.company.assembleegameclient.objects"), "Character")
+      istypelate
+      iffalse             NEXTOBJ
+	  
+TESLA:	  
+      ; Check to see if the object is an enemy	  
+      getlocal            4
+      getproperty         QName(PackageNamespace(""), "props_")
+      getproperty         QName(PackageNamespace(""), "isEnemy_")
+      iffalse             NEXTOBJ
+	  
+	  
+      getlocal            4                                                       ;---------------Check added by CrazyJani 6/19/2013--------------
+      getproperty         QName(PackageNamespace(""), "props_")             ;     This allows you to choose what enemies autoaim shoots
+      getproperty         QName(PackageNamespace(""), "id_")                ;     while they are invulnerable. This works better than
+      setlocal            14                                                      ;     long ignore list in many ways
+
+      getlocal            14
+      pushstring          "Oryx Stone Guardian Right"
+      ifeq                SKIP_CHECK
+
+      getlocal            14
+      pushstring          "Oryx Stone Guardian Left"
+      ifeq                SKIP_CHECK
+
+      getlocal            14
+      pushstring          "Septavius the Ghost God"
+      ifeq                SKIP_CHECK
+
+      getlocal            14
+      pushstring          "Limon the Sprite God"
+      ifeq                SKIP_CHECK
+
+      getlocal            14
+      pushstring          "Oryx the Mad God 1"
+      ifeq                SKIP_CHECK
+
+      getlocal            14
+      pushstring          "Oryx the Mad God 2"
+      ifeq                SKIP_CHECK
+
+      getlocal            14
+      pushstring          "Crystal Prisoner"
+      ifeq                SKIP_CHECK
+
+      getlocal            14
+      pushstring          "Tomb Defender"
+      ifeq                SKIP_CHECK
+
+      getlocal            14
+      pushstring          "Tomb Support"
+      ifeq                SKIP_CHECK
+
+      getlocal            14
+      pushstring          "Tomb Attacker"
+      ifeq                SKIP_CHECK
+
+      getlocal            14
+      pushstring          "Tomb Defender Statue"
+      ifeq                SKIP_CHECK
+
+      getlocal            14
+      pushstring          "Tomb Support Statue"
+      ifeq                SKIP_CHECK
+
+      getlocal            14
+      pushstring          "Tomb Attacker Statue"
+      ifeq                SKIP_CHECK
+
+      getlocal            14
+      pushstring          "Lord Ruthven"
+      ifeq                SKIP_CHECK
+
+      getlocal            14
+      pushstring          "Archdemon Malphas"
+      ifeq                SKIP_CHECK
+
+      getlocal            14
+      pushstring          "Grand Sphinx"
+      ifeq                SKIP_CHECK
+
+      getlocal            14
+      pushstring          "Ghost Ship"
+      ifeq                SKIP_CHECK
+
+      getlocal            14
+      pushstring          "Davy Jones"
+      ifeq                SKIP_CHECK
+
+      getlocal            14
+      pushstring          "Stheno the Snake Queen"
+      ifeq                SKIP_CHECK
+
+      getlocal            14
+      pushstring          "Ent Ancient"
+      ifeq                SKIP_CHECK
+
+      getlocal            14
+      pushstring          "Actual Ent Ancient"
+      ifeq                SKIP_CHECK
+
+      getlocal            14
+      pushstring          "Kage Kami"
+      ifeq                SKIP_CHECK
+
+      getlocal            14
+      pushstring          "Ghost of Skuld"
+      ifeq                SKIP_CHECK
+
+      getlocal            14
+      pushstring          "Troll 3"
+      ifeq                SKIP_CHECK
+
+      getlocal            14
+      pushstring          "Arena Grave Caretaker"
+      ifeq                SKIP_CHECK
+
+      getlocal            14
+      pushstring          "Spoiled Creampuff"
+      ifeq                SKIP_CHECK
+
+      getlocal            14
+      pushstring          "Swoll Fairy"
+      ifeq                SKIP_CHECK
+
+      getlocal            14
+      pushstring          "Desire Troll"
+      ifeq                SKIP_CHECK
+
+      getlocal            14
+      pushstring          "Gigacorn"
+      ifeq                SKIP_CHECK
+
+      getlocal            14
+      pushstring          "MegaRototo"
+      ifeq                SKIP_CHECK
+
+      getlocal            14
+      pushstring          "Sphinx Artifact 1"
+      ifeq                SKIP_CHECK
+
+      getlocal            14
+      pushstring          "Sphinx Artifact 2"
+      ifeq                SKIP_CHECK
+
+      getlocal            14
+      pushstring          "Sphinx Artifact 3"
+      ifeq                SKIP_CHECK
+
+      getlocal            14
+      pushstring          "Nile Artifact 1"
+      ifeq                SKIP_CHECK
+
+      getlocal            14
+      pushstring          "Nile Artifact 2"
+      ifeq                SKIP_CHECK
+
+      getlocal            14
+      pushstring          "Nile Artifact 3"
+      ifeq                SKIP_CHECK
+
+      getlocal            14
+      pushstring          "Pyramid Artifact 1"
+      ifeq                SKIP_CHECK
+
+      getlocal            14
+      pushstring          "Pyramid Artifact 2"
+      ifeq                SKIP_CHECK
+
+      getlocal            14
+      pushstring          "Pyramid Artifact 3"
+      ifeq                SKIP_CHECK
+
+      getlocal            14
+      pushstring          "Jon Bilgewater the Pirate King"
+      ifeq                SKIP_CHECK
+      
+      getlocal            14
+      pushstring          "Djinn"
+      ifeq                SKIP_CHECK
+      
+      getlocal            14
+      pushstring          "Epic Larva"
+      ifeq                SKIP_CHECK
+           
+      getlocal            14
+      pushstring          "Epic Mama Megamoth"
+      ifeq                SKIP_CHECK
+
+      getlocal            14
+      pushstring          "Murderous Megamoth"
+      ifeq                SKIP_CHECK
+      
+      getlocal            14
+      pushstring          "shtrs Stone Mage"
+      ifeq                SKIP_CHECK
+      
+      getlocal            14
+      pushstring          "shtrs Stone Knight"
+      ifeq                SKIP_CHECK
+            
+      getlocal            14
+      pushstring          "shtrs Stone Paladin"
+      ifeq                SKIP_CHECK
+                  
+      getlocal            14
+      pushstring          "shtrs Titanum"
+      ifeq                SKIP_CHECK
+                        
+      getlocal            14
+      pushstring          "shtrs Bridge Titanum"
+      ifeq                SKIP_CHECK
+                        
+      getlocal            14
+      pushstring          "shtrs Paladin Obelisk"
+      ifeq                SKIP_CHECK
+                                    
+      getlocal            14
+      pushstring          "shtrs Defense System"
+      ifeq                SKIP_CHECK
+	  
+	  getlocal            14
+      pushstring          "Arena Ghost 2"
+      ifeq                SKIP_CHECK
+	  	  
+	  getlocal            14
+      pushstring          "vlntns Botany Bella"
+      ifeq                SKIP_CHECK
+	  	  	  
+	  getlocal            14
+      pushstring          "vlntns Loot Balloon Bella"
+      ifeq                SKIP_CHECK
+      
+      ; Check to see if enemy is damagable
+      getlocal            4
+      callproperty        QName(PackageNamespace(""), $"FunctionIsInvincible"), 0 ;Check if target is INVINCIBLE 
+      iftrue              NEXTOBJ
+
+      getlocal            4
+      callproperty        QName(PackageNamespace(""), $"FunctionsIsStasis"), 0  ;Check if target is in STASIS
+      iftrue              NEXTOBJ
+      
+      getlocal            4
+      callproperty        QName(PackageNamespace(""), $"FunctionsIsInvulnerable"), 0  ;Check if target is in INVULNERABLE
+      iftrue              NEXTOBJ
+ 
+SKIP_CHECK:
+      ; Get Distance to considered target
+      getlex              QName(PackageNamespace(""), "Math")
+      getlocal            4
+      getproperty         QName(PackageNamespace(""), "y_")
+      getlex              QName(PackageNamespace(""), "y_")
+      subtract
+      dup
+      multiply
+      getlocal            4
+      getproperty         QName(PackageNamespace(""), "x_")
+      getlex              QName(PackageNamespace(""), "x_")
+      subtract
+      dup
+      multiply
+      add
+      callproperty        QName(PackageNamespace(""), "sqrt"), 1
+      dup
+      setlocal            9
+
+      ; Get Weapon Range
+      getlex              QName(PackageNamespace("com.company.assembleegameclient.objects"), "ObjectLibrary")
+      getproperty         QName(PackageNamespace(""), $"ObjLibDictionary")
+      getlex              QName(PackageNamespace(""), $"gameobjVector")
+      pushbyte            0 
+      getproperty         MultinameL([PrivateNamespace("*", "com.company.assembleegameclient.objects:Projectile#0"), PrivateNamespace("*", "com.company.assembleegameclient.objects:Projectile#1"), PackageNamespace(""), PackageNamespace("com.company.assembleegameclient.objects"), PackageInternalNs("com.company.assembleegameclient.objects"), Namespace("http://adobe.com/AS3/2006/builtin"), ProtectedNamespace($"projectileNamespace"), StaticProtectedNs($"projectileNamespace"), StaticProtectedNs($"basicobjectNamespace")])
+      convert_i
+      getproperty         MultinameL([PrivateNamespace("*", "com.company.assembleegameclient.objects:Projectile#0"), PrivateNamespace("*", "com.company.assembleegameclient.objects:Projectile#1"), PackageNamespace(""), PackageNamespace("com.company.assembleegameclient.objects"), PackageInternalNs("com.company.assembleegameclient.objects"), Namespace("http://adobe.com/AS3/2006/builtin"), ProtectedNamespace($"projectileNamespace"), StaticProtectedNs($"projectileNamespace"), StaticProtectedNs($"basicobjectNamespace")])
+      getproperty         QName(PackageNamespace(""), $"ObjPropertiesDictionary")
+      pushbyte            0
+      getproperty         MultinameL([PrivateNamespace("*", "com.company.assembleegameclient.objects:Projectile#0"), PrivateNamespace("*", "com.company.assembleegameclient.objects:Projectile#1"), PackageNamespace(""), PackageNamespace("com.company.assembleegameclient.objects"), PackageInternalNs("com.company.assembleegameclient.objects"), Namespace("http://adobe.com/AS3/2006/builtin"), ProtectedNamespace($"projectileNamespace"), StaticProtectedNs($"projectileNamespace"), StaticProtectedNs($"basicobjectNamespace")]) 
+      dup
+      setlocal            11
+      
+      ; Check to see if current Object is within range
+      getproperty         QName(PackageNamespace(""), "speed_")
+      pushshort           10000
+      divide
+      getlocal            11
+      getproperty         QName(PackageNamespace(""), "lifetime_")
+      multiply   
+      pushbyte            1 ; Add 1 to range
+      add      
+      ifgt                NEXTOBJ
+      
+      ; Define Object ID
+      getlocal            4
+      getproperty         QName(PackageNamespace(""), "props_")      
+      getproperty         QName(PackageNamespace(""), "id_")
+      setlocal            15
+      
+      ; Check to see if Constructs are in range
+	  getlocal            17
+      pushint             0
+      ifeq                SKIP
+
+      getlocal            15
+      pushstring          "Steel Bot"
+      ifeq                CONSTRUCT
+
+      getlocal            15
+      pushstring          "Rock Bot"
+      ifeq                CONSTRUCT
+
+      getlocal            15
+      pushstring          "Paper Bot"
+      ifeq                CONSTRUCT
+      
+      jump                SKIP
+      
+CONSTRUCT:
+      ; Steel Bot Priority
+      ; Check to see if loc16 is empty
+      getlocal            16
+      pushnull
+      ifeq                EMPTY
+
+      ; Check to see if loc4 is a steel bot
+      getlocal            4
+      getproperty         QName(PackageNamespace(""), "props_")      
+      getproperty         QName(PackageNamespace(""), "id_")
+      pushstring          "Steel Bot"
+      ifeq                EMPTY
+
+      ; Check to see if loc16 is already a steel bot
+      getlocal            16
+      getproperty         QName(PackageNamespace(""), "props_")      
+      getproperty         QName(PackageNamespace(""), "id_")
+      pushstring          "Steel Bot"
+      ifeq                NEXTOBJ
+
+      ; Check to see if loc4 is a rock bot
+      getlocal            4
+      getproperty         QName(PackageNamespace(""), "props_")      
+      getproperty         QName(PackageNamespace(""), "id_")
+      pushstring          "Rock Bot"
+      ifeq                EMPTY
+
+      ; Check to see if loc16 is already a rock bot
+      getlocal            16
+      getproperty         QName(PackageNamespace(""), "props_")      
+      getproperty         QName(PackageNamespace(""), "id_")
+      pushstring          "Rock Bot"
+      ifeq                NEXTOBJ
+
+      ;Store Paper Bot
+
+      
+EMPTY: 
+      ; replace loc16     
+      getlocal            4
+      setlocal            16
+      jump                NEXTOBJ
+
+SKIP:        
+      ; List of enemies to ignore    
+      getlocal            15
+      pushstring          "Steel Bot"
+      ifeq                NEXTOBJ
+
+      getlocal            15
+      pushstring          "Rock Bot"
+      ifeq                NEXTOBJ
+
+      getlocal            15
+      pushstring          "Paper Bot"
+      ifeq                NEXTOBJ
+
+      getlocal            15
+      pushstring          "Oryx Suit of Armor"
+      ifeq                NEXTOBJ
+
+      getlocal            15
+      pushstring          "Sprite Child"
+      ifeq                NEXTOBJ
+
+      getlocal            15
+      pushstring          "Shield Orc Shield"
+      ifeq                NEXTOBJ
+
+      getlocal            15
+      pushstring          "Shield Orc Key"
+      ifeq                NEXTOBJ
+
+      getlocal            15
+      pushstring          "Shield Orc Flooder"
+      ifeq                NEXTOBJ
+
+      getlocal            15
+      pushstring          "Blue Flaming Skull"
+      ifeq                NEXTOBJ
+
+      getlocal            15
+      pushstring          "Red Flaming Skull"
+      ifeq                NEXTOBJ
+
+      getlocal            15
+      pushstring          "Pentaract Eye"
+      ifeq                NEXTOBJ
+
+      getlocal            15
+      pushstring          "Beach Spectre"
+      ifeq                NEXTOBJ
+
+      getlocal            15
+      pushstring          "Cube Overseer"
+      ifeq                NEXTOBJ
+
+      getlocal            15
+      pushstring          "Mysterious Crystal"
+      ifeq                NEXTOBJ
+
+      getlocal            15
+      pushstring          "Crystal Prisoner Steed"
+      ifeq                NEXTOBJ
+
+      getlocal            15
+      pushstring          "Cube Defender"
+      ifeq                NEXTOBJ
+
+      getlocal            15
+      pushstring          "Cube Blaster"
+      ifeq                NEXTOBJ
+
+      getlocal            15
+      pushstring          "Crystal Prisoner Clone"
+      ifeq                NEXTOBJ
+
+      getlocal            15
+      pushstring          "Stheno Swarm"
+      ifeq                NEXTOBJ
+
+      getlocal            15
+      pushstring          "Stheno Pet"
+      ifeq                NEXTOBJ
+      
+      getlocal            15
+      pushstring          "Assassin of Oryx"
+      ifeq                NEXTOBJ
+      
+      getlocal            15
+      pushstring          "Minion of Oryx"
+      ifeq                NEXTOBJ
+
+      getlocal            15
+      pushstring          "Active Sarcophagus"
+      ifeq                NEXTOBJ
+
+      getlocal            15
+      pushstring          "Beam Priestess"
+      ifeq                NEXTOBJ
+
+      getlocal            15
+      pushstring          "Beam Priest"
+      ifeq                NEXTOBJ
+
+      getlocal            15
+      pushstring          "Ghost Lanturn On"
+      ifeq                NEXTOBJ      
+      
+      getlocal            15
+      pushstring          "Whirlpool"
+      ifeq                NEXTOBJ
+      
+      getlocal            15
+      pushstring          "Deadwater Docks Macaw"
+      ifeq                NEXTOBJ
+
+      getlocal            15
+      pushstring          "Deadwater Docks Parrot"
+      ifeq                NEXTOBJ
+            
+      getlocal            15
+      pushstring          "Malphas Protector"
+      ifeq                NEXTOBJ
+
+      getlocal            15
+      pushstring          "Malphas Missile"
+      ifeq                NEXTOBJ
+	  
+      getlocal            15
+      pushstring          "vlntns Yellow"
+      ifeq                NEXTOBJ
+	  
+      getlocal            15
+      pushstring          "vlntns Red"
+      ifeq                NEXTOBJ
+	  
+      getlocal            15
+      pushstring          "vlntns White"
+      ifeq                NEXTOBJ
+	  
+      getlocal            15
+      pushstring          "vlntns Bella Buds"
+      ifeq                NEXTOBJ
+	  	  
+      ; Get Current enemy Health
+      getlocal            4
+      getproperty         QName(PackageNamespace(""), $"Aimbot_charMaxHealth")
+      setlocal            13
+	  
+	  ; HP Priority Override
+	  getlocal            15
+	  pushstring          "Greater Nature Sprite"
+	  ifeq                HP
+	  
+	  getlocal            15
+	  pushstring          "Actual Greater Nature Sprite"
+	  ifeq                HP
+	  	  
+	  getlocal            15
+	  pushstring          "Protection Crystal"
+	  ifeq                HP
+	  
+	  jump                HP_SKIP
+	  
+HP:	  
+	  pushshort           10000
+	  setlocal            13
+
+HP_SKIP:	  
+      ; Check to see if they are equal
+	  getlocal            13
+      getlocal            12
+      ifeq                L103
+
+      ; Check to see if new health is higher
+      getlocal            13
+      getlocal            12
+      iflt                NEXTOBJ
+
+      jump                L107
+
+L103:
+      ; Check to see which Enemy is closer in the event of equal health
+      getlocal            9
+      getlocal            8
+      iflt                L107
+
+      jump                NEXTOBJ
+
+L107:
+      ; Update Considered health
+      getlocal            13
+      setlocal            12
+
+      ; Update considered distance
+      getlocal            9
+      setlocal            8
+
+      ; Update angle to considered target
+      getlex              QName(PackageNamespace(""), "Math")
+      getlocal            4
+      getproperty         QName(PackageNamespace(""), "y_")
+      getlex              QName(PackageNamespace(""), "y_")
+      subtract
+      getlocal            4    
+      getproperty         QName(PackageNamespace(""), "x_")
+      getlex              QName(PackageNamespace(""), "x_")
+      subtract
+      callproperty        QName(PackageNamespace(""), "atan2"), 2
+      setlocal            7
+
+      jump                NEXTOBJ
+
+NEXTOBJ:
+      ; Loop
+      hasnext2            6, 5
+      iftrue              L34
+
+      ; Empty the Stack
+      kill                6
+      kill                5
+      
+      ; Check to see if enemy health is still 0
+      getlocal            12
+      pushbyte            0
+      ifeq                CHECK
+     
+      jump                SHOOT
+
+CHECK:      
+      ; Check to see if only constructs remain
+	  getlocal            17
+      pushint             0
+      ifeq                CONSTRUCT_OFF
+	  
+	  jump                CONSTRUCT_ON
+	  
+	  ; Check to see if autofire is on
+CONSTRUCT_OFF:
+      getlocal            20
+	  pushint             0
+	  ifeq                AUTOFIRE_OFF
+
+      jump                INCOGNITO_OFF
+	  
+AUTOFIRE_OFF:
+      jump                END	  
+
+CONSTRUCT_ON:
+      getlocal            20
+	  pushint             0
+	  ifeq                AUTOFIRE_OFF2
+	  
+	  getlocal            16
+      pushnull
+      ifeq                INCOGNITO_OFF
+	  
+	  jump                CONSTRUCT2
+	  
+AUTOFIRE_OFF2:	  
+      getlocal            16
+      pushnull
+      ifeq                END
+
+CONSTRUCT2:	        
+      ; Firing Angle to constructs
+      getlex              QName(PackageNamespace(""), "Math")
+      getlocal            16
+      getproperty         QName(PackageNamespace(""), "y_")
+      getlex              QName(PackageNamespace(""), "y_")
+      subtract
+      getlocal            16
+      getproperty         QName(PackageNamespace(""), "x_")
+      getlex              QName(PackageNamespace(""), "x_")
+      subtract
+      callproperty        QName(PackageNamespace(""), "atan2"), 2
+      setlocal            7
+	  
+	  getlocal            16
+	  setlocal            4
+
+SHOOT:
+      ; Incognito modifier
+      getlocal            19
+      pushint             0
+      ifeq                INCOGNITO_OFF
+
+      ; Random add/subtract
+      getlex              QName(PackageNamespace("", "#0"), "Math")
+      callproperty        QName(PackageNamespace("", "#0"), "random"), 0
+      pushdouble          .5
+	  swap
+      ifge                ADD
+
+      jump                SUBTRACT
+
+ADD:
+      ; add random dec * multiplier to angle
+	  ; Use Y= B-Ax Where X is range (in Radians)
+      pushdouble          .106033 ; B
+      getlocal            11
+      getproperty         QName(PackageNamespace(""), "speed_")
+      pushshort           10000
+      divide
+      getlocal            11
+      getproperty         QName(PackageNamespace(""), "lifetime_")
+      multiply
+      pushdouble          .005362 ; A
+      multiply
+      subtract
+      getlex              QName(PackageNamespace("", "#0"), "Math")
+      callproperty        QName(PackageNamespace("", "#0"), "random"), 0
+      multiply
+      getlocal            7
+      add
+      setlocal            7
+
+      jump                INCOGNITO_OFF
+
+SUBTRACT:
+      ; subtract random int * multiplier to angle
+      pushdouble          .106033
+      getlocal            11
+      getproperty         QName(PackageNamespace(""), "speed_")
+      pushshort           10000
+      divide
+      getlocal            11
+      getproperty         QName(PackageNamespace(""), "lifetime_")
+      multiply
+      pushdouble          .005362
+      multiply
+      subtract
+      getlex              QName(PackageNamespace("", "#0"), "Math")
+      callproperty        QName(PackageNamespace("", "#0"), "random"), 0
+      multiply
+      getlocal            7
+      swap
+      subtract   
+      setlocal             7	  
+
+INCOGNITO_OFF:
+      getlocal0
+      getlocal            7
+      callpropvoid        QName(PrivateNamespace("*", "com.company.assembleegameclient.objects:Player#0"), "shoot"), 1
+
+END:
+      returnvoid
+     end ; code
+    end ; body
+   end ; method
+  end ; trait

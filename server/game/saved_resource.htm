@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<!-- saved from url=(0687)http://payv2.kabam.com/api/paymentwall/?gameid=24&lang=en&paymentServer=http%3A%2F%2Fpayv2.kabam.com&serverid=1&css=http%3A%2F%2Fwww.realmofthemadgod.com%2Fcss%2Fskin_rotmg.css%3F__rotmg_cb%3D1403286969&platform=rotmg&userid=64162145&signedRequest=tReyMtGQEO_GY3ehbW5inNgjt8X7gZYWvBrokHUBzrA.eyJuYWlkIjogIjY0MTYyMTQ1In0&productid=2401&iframeDialogId=1403448754116&iframeDialogId=1403448754117&gameid=24&lang=en&paymentServer=http%3A%2F%2Fpayv2.kabam.com&serverid=1&css=http%3A%2F%2Fwww.realmofthemadgod.com%2Fcss%2Fskin_rotmg.css%3F__rotmg_cb%3D1403286969&platform=rotmg&userid=64162145&signedRequest=tReyMtGQEO_GY3ehbW5inNgjt8X7gZYWvBrokHUBzrA.eyJuYWlkIjogIjY0MTYyMTQ1In0&productid=2401 -->
+<html style="height: 100%;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Kabam Payment Wall</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="UTF-8">
+
+<!-- default template CSS -->
+<link type="text/css" rel="stylesheet" href="KBPAY.css">
+
+
+		<link type="text/css" rel="stylesheet" href="skin_rotmg.css">
+<script src="jquery-1.7.1.min.js"></script><style type="text/css"></style>
+<script src="trimpath-template-1.0.38.js"></script>
+<script src="KBPAY_api(1).js"></script>
+<script src="legacyRadioController.js"></script>
+
+<script type="text/javascript">
+		var hasError = false;
+		var errorMessage = "";
+		
+		var iframeDialogId = "1403448754117";
+
+		var payoutList = {"payoutSets":[{"providerId":51,"providerName":"Google","payouts":[{"id":28217,"payoutid":28217,"cost":5,"numOfIGC":500,"coststring":"$5.00","centsPerIGC":1,"currency":"USD","show":true,"flag":0,"longName":"","thirdPartyId":"","description":"","igcBonus":"","catalogItems":[],"numOfBonusItems":0,"costOfBonusItems":0,"token":"eyJ0eXAiOiJqd3QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIwOTQ1OTEyMTM3OTYzMjM3MjkzNCIsImF1ZCI6Ikdvb2dsZSIsInR5cCI6Imdvb2dsZVwvcGF5bWVudHNcL2luYXBwXC9pdGVtXC92MSIsImV4cCI6MTQwMzQ1MjM1NCwiaWF0IjoxNDAzNDQ4NzU0LCJyZXF1ZXN0Ijp7Im5hbWUiOiI1MDAgR29sZCIsImRlc2NyaXB0aW9uIjoiNTAwIEdvbGQiLCJwcmljZSI6NSwiY3VycmVuY3lDb2RlIjoiVVNEIiwic2VsbGVyRGF0YSI6InVzZXJpZD0mZ2FtZWlkPTI0JnBheW91dGlkPTI4MjE3JnRya2lkPSZzZXJ2ZXJpZD0xJmNsdXN0ZXJpZD0mZnJpZW5kPSJ9fQ.Gll2xPmav_qrZbA9-CyOqvSL3sTHdRA0C3B4rlSYces"},{"id":28218,"payoutid":28218,"cost":10,"numOfIGC":1200,"coststring":"$10.00","centsPerIGC":0.83333333333333,"currency":"USD","show":true,"flag":0,"longName":"","thirdPartyId":"","description":"","igcBonus":"","catalogItems":[],"numOfBonusItems":0,"costOfBonusItems":0,"taginfo":"Most Popular","token":"eyJ0eXAiOiJqd3QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIwOTQ1OTEyMTM3OTYzMjM3MjkzNCIsImF1ZCI6Ikdvb2dsZSIsInR5cCI6Imdvb2dsZVwvcGF5bWVudHNcL2luYXBwXC9pdGVtXC92MSIsImV4cCI6MTQwMzQ1MjM1NCwiaWF0IjoxNDAzNDQ4NzU0LCJyZXF1ZXN0Ijp7Im5hbWUiOiIxMjAwIEdvbGQiLCJkZXNjcmlwdGlvbiI6IjEyMDAgR29sZCIsInByaWNlIjoxMCwiY3VycmVuY3lDb2RlIjoiVVNEIiwic2VsbGVyRGF0YSI6InVzZXJpZD0mZ2FtZWlkPTI0JnBheW91dGlkPTI4MjE4JnRya2lkPSZzZXJ2ZXJpZD0xJmNsdXN0ZXJpZD0mZnJpZW5kPSJ9fQ.aZSOkqjKNJn8vYZDhK7lJxal2neoap3I9kJ-mA4J-94"},{"id":28219,"payoutid":28219,"cost":20,"numOfIGC":2600,"coststring":"$20.00","centsPerIGC":0.76923076923077,"currency":"USD","show":true,"flag":0,"longName":"","thirdPartyId":"","description":"","igcBonus":"","catalogItems":[],"numOfBonusItems":0,"costOfBonusItems":0,"token":"eyJ0eXAiOiJqd3QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIwOTQ1OTEyMTM3OTYzMjM3MjkzNCIsImF1ZCI6Ikdvb2dsZSIsInR5cCI6Imdvb2dsZVwvcGF5bWVudHNcL2luYXBwXC9pdGVtXC92MSIsImV4cCI6MTQwMzQ1MjM1NCwiaWF0IjoxNDAzNDQ4NzU0LCJyZXF1ZXN0Ijp7Im5hbWUiOiIyNjAwIEdvbGQiLCJkZXNjcmlwdGlvbiI6IjI2MDAgR29sZCIsInByaWNlIjoyMCwiY3VycmVuY3lDb2RlIjoiVVNEIiwic2VsbGVyRGF0YSI6InVzZXJpZD0mZ2FtZWlkPTI0JnBheW91dGlkPTI4MjE5JnRya2lkPSZzZXJ2ZXJpZD0xJmNsdXN0ZXJpZD0mZnJpZW5kPSJ9fQ.NunPegSQZa2PSUVsucFni7DQ7BF3y0ODztIrr7Ywkb0"},{"id":28220,"payoutid":28220,"cost":50,"numOfIGC":7000,"coststring":"$50.00","centsPerIGC":0.71428571428571,"currency":"USD","show":true,"flag":0,"longName":"","thirdPartyId":"","description":"","igcBonus":"","catalogItems":[],"numOfBonusItems":0,"costOfBonusItems":0,"token":"eyJ0eXAiOiJqd3QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIwOTQ1OTEyMTM3OTYzMjM3MjkzNCIsImF1ZCI6Ikdvb2dsZSIsInR5cCI6Imdvb2dsZVwvcGF5bWVudHNcL2luYXBwXC9pdGVtXC92MSIsImV4cCI6MTQwMzQ1MjM1NCwiaWF0IjoxNDAzNDQ4NzU0LCJyZXF1ZXN0Ijp7Im5hbWUiOiI3MDAwIEdvbGQiLCJkZXNjcmlwdGlvbiI6IjcwMDAgR29sZCIsInByaWNlIjo1MCwiY3VycmVuY3lDb2RlIjoiVVNEIiwic2VsbGVyRGF0YSI6InVzZXJpZD0mZ2FtZWlkPTI0JnBheW91dGlkPTI4MjIwJnRya2lkPSZzZXJ2ZXJpZD0xJmNsdXN0ZXJpZD0mZnJpZW5kPSJ9fQ.svB7F7PhhLr-zV20uRd2tJ5EZuvQbOw1EIBAauM8krQ"},{"id":28221,"payoutid":28221,"cost":100,"numOfIGC":16000,"coststring":"$100.00","centsPerIGC":0.625,"currency":"USD","show":true,"flag":0,"longName":"","thirdPartyId":"","description":"","igcBonus":"","catalogItems":[],"numOfBonusItems":0,"costOfBonusItems":0,"taginfo":"Best Value!","token":"eyJ0eXAiOiJqd3QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIwOTQ1OTEyMTM3OTYzMjM3MjkzNCIsImF1ZCI6Ikdvb2dsZSIsInR5cCI6Imdvb2dsZVwvcGF5bWVudHNcL2luYXBwXC9pdGVtXC92MSIsImV4cCI6MTQwMzQ1MjM1NCwiaWF0IjoxNDAzNDQ4NzU0LCJyZXF1ZXN0Ijp7Im5hbWUiOiIxNjAwMCBHb2xkIiwiZGVzY3JpcHRpb24iOiIxNjAwMCBHb2xkIiwicHJpY2UiOjEwMCwiY3VycmVuY3lDb2RlIjoiVVNEIiwic2VsbGVyRGF0YSI6InVzZXJpZD0mZ2FtZWlkPTI0JnBheW91dGlkPTI4MjIxJnRya2lkPSZzZXJ2ZXJpZD0xJmNsdXN0ZXJpZD0mZnJpZW5kPSJ9fQ.P6vEJlOqK0g5EfrVkQmAVQJHZsRNrQs7Pq09_UNlUVY"}]},{"providerId":6,"providerName":"PayPal","payouts":[{"id":28222,"payoutid":28222,"cost":5,"numOfIGC":500,"coststring":"$5.00","centsPerIGC":1,"currency":"USD","show":true,"flag":0,"longName":"","thirdPartyId":"","description":"","igcBonus":"","catalogItems":[],"numOfBonusItems":0,"costOfBonusItems":0},{"id":28223,"payoutid":28223,"cost":10,"numOfIGC":1200,"coststring":"$10.00","centsPerIGC":0.83333333333333,"currency":"USD","show":true,"flag":0,"longName":"","thirdPartyId":"","description":"","igcBonus":"","catalogItems":[],"numOfBonusItems":0,"costOfBonusItems":0,"taginfo":"Most Popular"},{"id":28224,"payoutid":28224,"cost":20,"numOfIGC":2600,"coststring":"$20.00","centsPerIGC":0.76923076923077,"currency":"USD","show":true,"flag":0,"longName":"","thirdPartyId":"","description":"","igcBonus":"","catalogItems":[],"numOfBonusItems":0,"costOfBonusItems":0},{"id":28225,"payoutid":28225,"cost":50,"numOfIGC":7000,"coststring":"$50.00","centsPerIGC":0.71428571428571,"currency":"USD","show":true,"flag":0,"longName":"","thirdPartyId":"","description":"","igcBonus":"","catalogItems":[],"numOfBonusItems":0,"costOfBonusItems":0},{"id":28226,"payoutid":28226,"cost":100,"numOfIGC":16000,"coststring":"$100.00","centsPerIGC":0.625,"currency":"USD","show":true,"flag":0,"longName":"","thirdPartyId":"","description":"","igcBonus":"","catalogItems":[],"numOfBonusItems":0,"costOfBonusItems":0,"taginfo":"Best Value!"}]},{"providerId":38,"providerName":"PlaySpan","payouts":[{"id":28251,"payoutid":28251,"cost":5,"numOfIGC":500,"coststring":"$5.00","centsPerIGC":1,"currency":"USD","show":true,"flag":0,"longName":"","thirdPartyId":"","description":"","igcBonus":"","catalogItems":[],"numOfBonusItems":0,"costOfBonusItems":0},{"id":28252,"payoutid":28252,"cost":10,"numOfIGC":1200,"coststring":"$10.00","centsPerIGC":0.83333333333333,"currency":"USD","show":true,"flag":0,"longName":"","thirdPartyId":"","description":"","igcBonus":"","catalogItems":[],"numOfBonusItems":0,"costOfBonusItems":0,"taginfo":"Most Popular"},{"id":28253,"payoutid":28253,"cost":20,"numOfIGC":2600,"coststring":"$20.00","centsPerIGC":0.76923076923077,"currency":"USD","show":true,"flag":0,"longName":"","thirdPartyId":"","description":"","igcBonus":"","catalogItems":[],"numOfBonusItems":0,"costOfBonusItems":0},{"id":28254,"payoutid":28254,"cost":50,"numOfIGC":7000,"coststring":"$50.00","centsPerIGC":0.71428571428571,"currency":"USD","show":true,"flag":0,"longName":"","thirdPartyId":"","description":"","igcBonus":"","catalogItems":[],"numOfBonusItems":0,"costOfBonusItems":0},{"id":28255,"payoutid":28255,"cost":100,"numOfIGC":16000,"coststring":"$100.00","centsPerIGC":0.625,"currency":"USD","show":true,"flag":0,"longName":"","thirdPartyId":"","description":"","igcBonus":"","catalogItems":[],"numOfBonusItems":0,"costOfBonusItems":0,"taginfo":"Best Value!"}]}],"upSells":[],"game":{"currencyName":"Gold","currencyIconUrl":null,"playername":"","sectorname":"","settings":{"redemption":true,"bonus_igc_display":"amount"}},"config":{"theme":"legacyRadio"}};
+
+		var options = {"gameid":"24","lang":"en","paymentServer":"http:\/\/payv2.kabam.com","serverid":"1","css":"http:\/\/www.realmofthemadgod.com\/css\/skin_rotmg.css?__rotmg_cb=1403286969","platform":"rotmg","userid":"64162145","signedRequest":"tReyMtGQEO_GY3ehbW5inNgjt8X7gZYWvBrokHUBzrA.eyJuYWlkIjogIjY0MTYyMTQ1In0","productid":"2401","iframeDialogId":"1403448754117","externalTrkid":"302833904:1:64162145:0:::","trkid":302833904,"locale":"DE"};
+
+		var templateURL = "/asset/skins_20140605185046/api/js/legacyRadio.xml";
+	</script>
+</head>
+<body onload="PageController.onWindowLoad(options, payoutList, templateURL)">
+			<div class="paymentsDialog">
+			<div class="titleBar">
+				<a id="closeButton" class="closeButton iframeDialogCloseButton"></a>
+				<div class="titleContainer"></div>
+			</div>
+			<div id="payments" style="height: 100%;">    
+
+        <div class="radioPaymentWall rotmg" unselectable="on">
+        
+            <div class="providers">
+                <div class="providerHeader">
+                    <div class="step">1.- Select Payment Method</div>
+                </div>
+                <div id="providerContainer">
+                    <!--  providers will be here -->
+                <ul class="providerList"><li name="51_0" class="Google selected">
+            <div class="radioButton"></div><div class="picContainer"><span>Google</span></div>
+        </li><li name="6_1" class="PayPal">
+            <div class="radioButton"></div><div class="picContainer"><span>PayPal</span></div>
+        </li><li name="38_2" class="PlaySpan">
+            <div class="radioButton"></div><div class="picContainer"><span>PlaySpan</span></div>
+        </li></ul></div>
+                <div class="providerFooter">
+                </div>
+            </div>
+            
+            <div class="packageContainer">
+                <div class="packageHeader">
+                    <div class="step" id="step2"><span id="packageSelectionIndex">2.- </span>Select Your Package</div>
+                </div>
+                <div id="packageContainer">
+                    <!-- packages will be in here -->
+                <ul class="packages Google selected"><li class="selected" name="28217">
+            <div class="radioButton"></div>
+            <div class="igcIcon"></div>
+            <div class="igc">500 Gold</div>
+            <div class="priceTag">
+                <div class="priceContainer">
+                    <span class="price">$5.00</span>
+                    <span class="originalPrice">
+                    </span>
+                </div>
+            </div>
+            <div class="bonusIGC noBonus">
+                    No Bonus
+            </div>
+            <a class="bonusItems noBonus">
+                    No Bonus Items
+            </a>
+            <div class="endColumn"></div>
+        </li><li class="" name="28218">
+            <div class="radioButton"></div>
+            <div class="igcIcon"></div>
+            <div class="igc">1200 Gold</div>
+            <div class="priceTag tagged">
+                <div class="priceContainer">
+                    <span class="price">$10.00</span>
+                    <span class="originalPrice">
+                    </span>
+                </div>
+                    <div class="tagtext">Most Popular</div>
+            </div>
+            <div class="bonusIGC noBonus">
+                    No Bonus
+            </div>
+            <a class="bonusItems noBonus">
+                    No Bonus Items
+            </a>
+            <div class="endColumn"></div>
+        </li><li class="" name="28219">
+            <div class="radioButton"></div>
+            <div class="igcIcon"></div>
+            <div class="igc">2600 Gold</div>
+            <div class="priceTag">
+                <div class="priceContainer">
+                    <span class="price">$20.00</span>
+                    <span class="originalPrice">
+                    </span>
+                </div>
+            </div>
+            <div class="bonusIGC noBonus">
+                    No Bonus
+            </div>
+            <a class="bonusItems noBonus">
+                    No Bonus Items
+            </a>
+            <div class="endColumn"></div>
+        </li><li class="" name="28220">
+            <div class="radioButton"></div>
+            <div class="igcIcon"></div>
+            <div class="igc">7000 Gold</div>
+            <div class="priceTag">
+                <div class="priceContainer">
+                    <span class="price">$50.00</span>
+                    <span class="originalPrice">
+                    </span>
+                </div>
+            </div>
+            <div class="bonusIGC noBonus">
+                    No Bonus
+            </div>
+            <a class="bonusItems noBonus">
+                    No Bonus Items
+            </a>
+            <div class="endColumn"></div>
+        </li><li class="" name="28221">
+            <div class="radioButton"></div>
+            <div class="igcIcon"></div>
+            <div class="igc">16000 Gold</div>
+            <div class="priceTag tagged">
+                <div class="priceContainer">
+                    <span class="price">$100.00</span>
+                    <span class="originalPrice">
+                    </span>
+                </div>
+                    <div class="tagtext">Best Value!</div>
+            </div>
+            <div class="bonusIGC noBonus">
+                    No Bonus
+            </div>
+            <a class="bonusItems noBonus">
+                    No Bonus Items
+            </a>
+            <div class="endColumn"></div>
+        </li></ul><ul class="packages PayPal"><li class="selected" name="28222">
+            <div class="radioButton"></div>
+            <div class="igcIcon"></div>
+            <div class="igc">500 Gold</div>
+            <div class="priceTag">
+                <div class="priceContainer">
+                    <span class="price">$5.00</span>
+                    <span class="originalPrice">
+                    </span>
+                </div>
+            </div>
+            <div class="bonusIGC noBonus">
+                    No Bonus
+            </div>
+            <a class="bonusItems noBonus">
+                    No Bonus Items
+            </a>
+            <div class="endColumn"></div>
+        </li><li class="" name="28223">
+            <div class="radioButton"></div>
+            <div class="igcIcon"></div>
+            <div class="igc">1200 Gold</div>
+            <div class="priceTag tagged">
+                <div class="priceContainer">
+                    <span class="price">$10.00</span>
+                    <span class="originalPrice">
+                    </span>
+                </div>
+                    <div class="tagtext">Most Popular</div>
+            </div>
+            <div class="bonusIGC noBonus">
+                    No Bonus
+            </div>
+            <a class="bonusItems noBonus">
+                    No Bonus Items
+            </a>
+            <div class="endColumn"></div>
+        </li><li class="" name="28224">
+            <div class="radioButton"></div>
+            <div class="igcIcon"></div>
+            <div class="igc">2600 Gold</div>
+            <div class="priceTag">
+                <div class="priceContainer">
+                    <span class="price">$20.00</span>
+                    <span class="originalPrice">
+                    </span>
+                </div>
+            </div>
+            <div class="bonusIGC noBonus">
+                    No Bonus
+            </div>
+            <a class="bonusItems noBonus">
+                    No Bonus Items
+            </a>
+            <div class="endColumn"></div>
+        </li><li class="" name="28225">
+            <div class="radioButton"></div>
+            <div class="igcIcon"></div>
+            <div class="igc">7000 Gold</div>
+            <div class="priceTag">
+                <div class="priceContainer">
+                    <span class="price">$50.00</span>
+                    <span class="originalPrice">
+                    </span>
+                </div>
+            </div>
+            <div class="bonusIGC noBonus">
+                    No Bonus
+            </div>
+            <a class="bonusItems noBonus">
+                    No Bonus Items
+            </a>
+            <div class="endColumn"></div>
+        </li><li class="" name="28226">
+            <div class="radioButton"></div>
+            <div class="igcIcon"></div>
+            <div class="igc">16000 Gold</div>
+            <div class="priceTag tagged">
+                <div class="priceContainer">
+                    <span class="price">$100.00</span>
+                    <span class="originalPrice">
+                    </span>
+                </div>
+                    <div class="tagtext">Best Value!</div>
+            </div>
+            <div class="bonusIGC noBonus">
+                    No Bonus
+            </div>
+            <a class="bonusItems noBonus">
+                    No Bonus Items
+            </a>
+            <div class="endColumn"></div>
+        </li></ul><ul class="packages PlaySpan"><li class="selected" name="28251">
+            <div class="radioButton"></div>
+            <div class="igcIcon"></div>
+            <div class="igc">500 Gold</div>
+            <div class="priceTag">
+                <div class="priceContainer">
+                    <span class="price">$5.00</span>
+                    <span class="originalPrice">
+                    </span>
+                </div>
+            </div>
+            <div class="bonusIGC noBonus">
+                    No Bonus
+            </div>
+            <a class="bonusItems noBonus">
+                    No Bonus Items
+            </a>
+            <div class="endColumn"></div>
+        </li><li class="" name="28252">
+            <div class="radioButton"></div>
+            <div class="igcIcon"></div>
+            <div class="igc">1200 Gold</div>
+            <div class="priceTag tagged">
+                <div class="priceContainer">
+                    <span class="price">$10.00</span>
+                    <span class="originalPrice">
+                    </span>
+                </div>
+                    <div class="tagtext">Most Popular</div>
+            </div>
+            <div class="bonusIGC noBonus">
+                    No Bonus
+            </div>
+            <a class="bonusItems noBonus">
+                    No Bonus Items
+            </a>
+            <div class="endColumn"></div>
+        </li><li class="" name="28253">
+            <div class="radioButton"></div>
+            <div class="igcIcon"></div>
+            <div class="igc">2600 Gold</div>
+            <div class="priceTag">
+                <div class="priceContainer">
+                    <span class="price">$20.00</span>
+                    <span class="originalPrice">
+                    </span>
+                </div>
+            </div>
+            <div class="bonusIGC noBonus">
+                    No Bonus
+            </div>
+            <a class="bonusItems noBonus">
+                    No Bonus Items
+            </a>
+            <div class="endColumn"></div>
+        </li><li class="" name="28254">
+            <div class="radioButton"></div>
+            <div class="igcIcon"></div>
+            <div class="igc">7000 Gold</div>
+            <div class="priceTag">
+                <div class="priceContainer">
+                    <span class="price">$50.00</span>
+                    <span class="originalPrice">
+                    </span>
+                </div>
+            </div>
+            <div class="bonusIGC noBonus">
+                    No Bonus
+            </div>
+            <a class="bonusItems noBonus">
+                    No Bonus Items
+            </a>
+            <div class="endColumn"></div>
+        </li><li class="" name="28255">
+            <div class="radioButton"></div>
+            <div class="igcIcon"></div>
+            <div class="igc">16000 Gold</div>
+            <div class="priceTag tagged">
+                <div class="priceContainer">
+                    <span class="price">$100.00</span>
+                    <span class="originalPrice">
+                    </span>
+                </div>
+                    <div class="tagtext">Best Value!</div>
+            </div>
+            <div class="bonusIGC noBonus">
+                    No Bonus
+            </div>
+            <a class="bonusItems noBonus">
+                    No Bonus Items
+            </a>
+            <div class="endColumn"></div>
+        </li></ul></div>
+                <div class="packageFooter"></div>
+            </div>    
+        
+            <div class="footerContainer">
+                    <div class="redeemCardBox">
+                        <div class="redeemCard">
+                            <div class="redeemDesc">Redeem a Kabam Card or Promo Code:</div>
+                            <div><a class="tos" href="https://www.kabam.com/corporate/game-card-terms/" target="_blank">Game Card Terms of Service</a></div>
+                            <div class="redeemLabel">Enter Pin/Promo Code</div>
+                            <div class="redeemForm">
+                                <input id="pin" type="text">
+                                <div id="redeemButton" class="redeemButton">
+                                    Apply
+                                </div>
+                            </div>
+                            <div id="redeemLoading" class="redeemLoading"></div>
+                            <div class="redeemResponse">
+                                <div id="redeemError" class="redeemError red">Pin code not recognized</div>
+                                <div id="redeemSuccess" class="redeemSuccess green">Successfully Redeemed! Please reload the game.</div>
+                            </div>
+                        </div>
+                    </div>
+                <div class="buttonContainer">
+                    <a class="gradientButton buyButton" id="buyButton">
+                        <span class="left"></span><span class="center">Buy Now</span><span class="right"></span>
+                    </a>
+                    
+                </div>
+            
+            </div>
+        
+            <div class="secureLogo">
+                <span class="securePayment">
+                    Secure Payment<br>
+                    <!-- <a class="learnMore">Learn More</a> -->
+                </span>
+                <span class="kabamLogo"></span>
+            </div>
+        
+            <div id="tooltip" style="position:absolute;"><div class="top"></div><div class="content"></div><div class="bottom"></div></div>
+        </div></div>
+		</div>
+	
+
+
+
+</body></html>

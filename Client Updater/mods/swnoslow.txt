@@ -1,0 +1,10 @@
+	getlocal0
+	getproperty     QName(PackageNamespace(""), "map_")
+	getproperty     QName(PackageNamespace(""), "name_")
+	pushstring      "Sprite World"
+	ifne            SKIP_swNs
+
+	pushfalse
+	returnvalue
+
+	SKIP_swNs:

@@ -1,0 +1,4 @@
+getlocal0
+getlocal1
+callpropvoid QName(PackageNamespace(""), "aim_"), 1
+returnvoid

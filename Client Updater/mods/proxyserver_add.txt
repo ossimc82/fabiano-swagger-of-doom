@@ -1,0 +1,4 @@
+getlocal2
+getlocal0
+callproperty        QName(PackageNamespace(""), "LocalhostServer"), 0
+callpropvoid        QName(Namespace("http://adobe.com/AS3/2006/builtin"), "push"), 1

@@ -1,0 +1,17 @@
+
+	  ;----------------
+		; NOCLIP 
+		;----------------      
+      
+#set mouseClass "CHANGE1"                ; Found at the end of the onmousedown procedure : initproperty        QName(PrivateNamespace("*", "com.company.assembleegameclient.game:_-#0"), "_-")                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+#set mouseClicked "CHANGE2"                                                     ; Found at the end of the onmousedown procedure : initproperty        QName(PrivateNamespace("*", "com.company.assembleegameclient.game:_-#0"), "_-")   
+     
+      getlex              QName(PackageNamespace("", "#0"), "map_")
+      getproperty         QName(PackageNamespace(""), "gs_")
+      getproperty         QName(PackageNamespace(""), "mui_")
+      getproperty         QName(PrivateNamespace("*", $"mouseClass"), $"mouseClicked")
+      iffalse             NORMAL          
+      pushtrue
+      returnvalue
+NORMAL:
+;-----------------------------------------------            

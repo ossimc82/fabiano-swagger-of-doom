@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<title>Muledump</title>
+	<script type="application/javascript" src="lib/jquery.min.js"></script>
+	<script type="application/javascript" src="lib/masonry.pkgd.min.js"></script>
+	<script type="application/javascript" src="lib/constants.js"></script>
+	<script type="application/javascript" src="lib/sheets.js"></script>
+	<script type="application/javascript" src="lib/portrait.js"></script>
+	<script type="application/javascript" src="lib/options.js"></script>
+	<script type="application/javascript" src="lib/pcstats.js"></script>
+	<script type="application/javascript" src="lib/export.js"></script>
+	<script type="application/javascript" src="lib/prices.js"></script>
+    <script type="application/javascript" src="cookielib.js"></script>
+	<script type="application/javascript" src="lib/muledump.js"></script>
+    <script type="text/javascript">
+        function Del() {
+            Cookies.expire("serverEmail");
+            Cookies.expire("serverPassword");
+        }
+
+        accounts = {}
+        var email = Cookies.get('serverEmail');
+        var pass = Cookies.get("serverPassword");
+        if (getParameterByName('username') == "") {
+            if (isUndefinedNullOrEmpty(email) || isUndefinedNullOrEmpty(pass)) {
+                window.location = "http://c453.pw/login.html";
+            }
+            accounts[email] = pass;
+        }
+        else
+            accounts[getParameterByName('username')] = "";
+
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+            var ret = results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+            return ret;
+        }
+
+        function isUndefinedNullOrEmpty(s) {
+            return (s === undefined || s === null || s === "");
+        }
+    </script>
+	<link type="text/css" rel="stylesheet" href="lib/dump.css">
+	<link type="image/png" rel="shortcut icon" href="lib/favicon.png">
+</head>
+<body>
+	<img id="renders" alt="renders" src="lib/renders.png" style="display:none">
+	<span id="accopts" style="display: none;" class="menu"></span>
+	<div id="main">
+		<div id="top">
+			<div id="cnt" style="display: none;">waiting requests: <span id="counter"></span></div>
+			<div class="handle"><span>options</span><span id="options" class="menu"></span></div>
+			<div class="handle"><span>export</span><span id="export" class="menu"></span></div>
+			<a href="https://github.com/atomizer/muledump" target="_blank">home</a>
+            <a href="login.html" onclick="Del();">logout</a>
+		</div>
+		<div id="totals"></div>
+		<div id="errors"></div>
+		<div id="stage"></div>
+	</div>
+</body>
+</html>

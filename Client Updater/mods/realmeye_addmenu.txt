@@ -1,0 +1,29 @@
+#set menufolder "CHANGE02";"_-0vp";
+#set menuclass "CHANGE03" ;"_-0c";
+#set assetproperty "CHANGE04" ;"_-12Y";
+#set unk1    "CHANGE05";"_-zU"  ;
+#set unk2 "CHANGE06";"_-1Yx"  ;
+
+
+			findpropstrict      QName(PackageNamespace($"menufolder"), $"menuclass")
+      getlex              QName(PackageNamespace("com.company.util"), "AssetLibrary")
+      pushstring          "lofiInterfaceBig"
+      pushbyte            10
+      callproperty        QName(PackageNamespace("", "#2"), $"assetproperty"), 2
+      pushint             16777215
+      pushstring          "Muledump"
+      pushtrue
+      constructprop       QName(PackageNamespace($"menufolder"), $"menuclass"), 4
+      coerce              QName(PackageNamespace($"menufolder"), $"menuclass")
+      setlocal3
+
+      getlocal3
+      getlex              QName(PackageNamespace("flash.events"), "MouseEvent")
+      getproperty         QName(PackageNamespace("", "#2"), "CLICK")
+      getlocal0
+      getproperty         QName(PackageNamespace("", "#2"), "realmeye")
+      callpropvoid        QName(PackageNamespace("", "#2"), "addEventListener"), 2
+
+      findpropstrict      QName(ProtectedNamespace($"unk1"), $"unk2")
+      getlocal3
+      callpropvoid        QName(ProtectedNamespace($"unk1"), $"unk2"), 1

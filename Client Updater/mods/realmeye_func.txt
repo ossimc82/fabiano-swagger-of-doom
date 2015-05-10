@@ -1,0 +1,36 @@
+#set funcname "CHANGE01"  ;"_-0vp:PlayerMenu/instance/realmeye"
+
+ trait method QName(PackageNamespace("", "#2"), "realmeye")
+   method
+    refid $"funcname"
+    param QName(PackageNamespace("flash.events"), "Event")
+    returns QName(PackageNamespace("", "#2"), "void")
+    body
+     maxstack 3
+     localcount 3
+     initscopedepth 10
+     maxscopedepth 11
+     code
+      getlocal0
+      pushscope
+
+      findpropstrict      QName(PackageNamespace("flash.net"), "URLRequest")
+      pushstring          "http://c453.pw/muledump.html?username="
+      getlocal0
+      getproperty         QName(PackageNamespace("", "#2"), "player_")
+      getproperty         QName(PackageNamespace("", "#2"), "name_")
+      add
+      constructprop       QName(PackageNamespace("flash.net"), "URLRequest"), 1
+      coerce              QName(PackageNamespace("flash.net"), "URLRequest")
+      setlocal2
+
+      findpropstrict      QName(PackageNamespace("flash.net"), "navigateToURL")
+      getlocal2
+      pushstring          "_blank"
+      callpropvoid        QName(PackageNamespace("flash.net"), "navigateToURL"), 2
+
+      returnvoid
+     end ; code
+    end ; body
+   end ; method
+  end ; trait

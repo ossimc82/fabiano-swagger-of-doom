@@ -1,0 +1,12 @@
+;HACKCONTENT2
+#set fullclass "CHANGE01"          ;"_-0Tj:PlayerToolTip/instance" ; CurrentClass
+#set displayclass "StatusBar"     ; Class where you fixed Numerical Hp/MP display
+#set invfolder "CHANGE06"         ;"_-0GS"
+#set invclass "CHANGE07"           ;"_-0ZD"
+#set statsfolder "CHANGE09"
+#set statsclass "CHANGE10"
+
+trait slot QName(PrivateNamespace("*", $"fullclass"), "_xp") type QName(PackageNamespace("com.company.assembleegameclient.ui"), $"displayclass") end  
+trait slot QName(PrivateNamespace("*", $"fullclass"), "_fame") type QName(PackageNamespace("com.company.assembleegameclient.ui"), $"displayclass") end  
+trait slot QName(PrivateNamespace("*", $"fullclass"), "_inventory") type QName(PackageNamespace($"invfolder"), $"invclass") end
+trait slot QName(PrivateNamespace("*", $"fullclass"), "_stats") type QName(PackageNamespace($"statsfolder"), $"statsclass") end

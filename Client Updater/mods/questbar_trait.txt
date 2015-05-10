@@ -1,0 +1,7 @@
+;-----------------------------------------------------
+;Quest HP BAR by jnoob
+;---------------------------------------------------
+
+;Add this in GameSprite
+
+trait slot QName(PackageNamespace("", "#0"), "QUESTBAR") type QName(PackageNamespace("com.company.assembleegameclient.ui"), "StatusBar") end

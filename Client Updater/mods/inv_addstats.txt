@@ -1,0 +1,40 @@
+;HACKCONTENT5
+#set fullclass "CHANGE01" ; "_-0Tj:PlayerToolTip/instance" ; CurrentClass
+#set statsfolder "CHANGE09"
+#set statsclass "CHANGE10"
+
+     getlocal0
+     findpropstrict      QName(PackageNamespace($"statsfolder"), $"statsclass")
+     constructprop       QName(PackageNamespace($"statsfolder"), $"statsclass"), 0
+     initproperty        QName(PrivateNamespace("*", $"fullclass"), "_stats")
+
+     getlocal0
+     getproperty         QName(PrivateNamespace("*", $"fullclass"), "_stats")
+     pushdouble          0.89
+     setproperty         QName(PackageNamespace(""),  "scaleX")
+
+     getlocal0
+     getproperty         QName(PrivateNamespace("*", $"fullclass"), "_stats")
+     pushshort           6
+     setproperty         QName(PackageNamespace(""),  "x")
+
+     getlocal0
+     getproperty         QName(PrivateNamespace("*", $"fullclass"), "_stats")
+     getlocal2
+     setproperty         QName(PackageNamespace(""),  "y")
+
+     getlocal0
+     getproperty         QName(PrivateNamespace("*", $"fullclass"), "_stats")
+     pushfalse
+     setproperty         QName(PackageNamespace(""),  "myPlayer")
+
+     findpropstrict      QName(PackageNamespace(""),  "addChild")
+     getlocal0
+     getproperty         QName(PrivateNamespace("*", $"fullclass"), "_stats")
+     callpropvoid        QName(PackageNamespace(""),  "addChild"), 1
+
+     getlocal2
+     pushbyte            52
+     add
+     convert_i
+     setlocal2

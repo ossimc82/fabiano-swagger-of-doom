@@ -1,0 +1,43 @@
+﻿V	
+    ======================== MAJOR BUGS =====================
+	Enemy shots pierce destructible walls, damaging players, but no red damage text shows!
+
+	======================== Minor Bugs =====================
+	1 pirate dropped 2 bags of loot?
+	That odd def bug?? Stuff dies to 2 stuns??
+	levis are goofy/laggy
+	Paladin seal doesn't effect others
+
+	======================== Behavior Issues ================
+	Too much loot!! ( drops are a little too generous)
+	sphinx has 1 extra round of attacks? (Should shoot 8 waves of yellow, actually shoots 12?) wServer\logic\db\BehaviorDb.Sphinx.cs
+	drake eggs don't spawn/drop
+	no Hermit God? :(
+
+	======================== Fixed Bugs =====================
+	"Your life is an aaffront to Oryx. You will die." - red demon
+	to 
+	"Your life is an offering to Oryx. You will die." - red demon
+	cyclops/red demon chests need a hp/mp pot chanced buff
+	red demon has a 50% of dropping either health or mp pot.
+	no pause, see status effect 20
+V	quest markers
+	no dungeons--keys vanish
+	some sounds glitch
+V	no /who support - easy to add
+	no /tell?
+	XP is not shared to players around the killing player. You have to get the killing blow for the XP.
+	no guilds
+	Paladin seal doesn't effect others
+	
+	realmmanager.cs line 39 should have false as a parameter (old style rotmg)
+	Constructs dont heal - this is a feature
+	night elves respawn fully with owner. Gets a little crazy.
+V	fulmination scepter doesn't slow 
+	
+	
+
+	
+	
+
+

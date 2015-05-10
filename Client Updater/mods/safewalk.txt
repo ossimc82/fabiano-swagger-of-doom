@@ -1,0 +1,64 @@
+;      
+;      ;-------------------------
+;      ; NOWALK ON LAVA
+;      ;-------------------------            
+;
+;
+; #set mouseClass "CHANGE1" 
+; #set mouseClicked "CHANGE2" 
+;    
+;      getlex              QName(PackageNamespace("", "#0"), "map_")
+;      getproperty         QName(PackageNamespace(""), "gs_")
+;      getproperty         QName(PackageNamespace(""), "mui_")
+;      getproperty         QName(PrivateNamespace("*", $"mouseClass"), $"mouseClicked")
+;      iftrue              SKIPNOWALK
+;
+;      getlocal3
+;      getproperty        QName(PackageNamespace(""), "props_")        
+;      getproperty        QName(PackageNamespace(""), "id_")      
+;      pushstring          "Lava"  
+;      callproperty          QName(Namespace("http://adobe.com/AS3/2006/builtin"), "search"), 1
+;      pushint             -1
+;      ifeq                SKIPNOWALK    
+;     
+;      getlocal3    
+;      getproperty        QName(PackageNamespace(""), "obj_")
+;      pushnull
+;      ifne                SKIPNOWALK        
+;      
+;      pushfalse         
+;      returnvalue     
+;      
+;      ; trace obj, only for debug
+;      ;findpropstrict      QName(PackageNamespace(""), "trace")
+;      ;getlocal3
+;      ;getproperty        QName(PackageNamespace(""), "obj_")
+;      ;callpropvoid        QName(PackageNamespace(""), "trace"), 1                
+;      
+;      SKIPNOWALK:
+
+ #set mouseClass "CHANGE1" 
+ #set mouseClicked "CHANGE2" 
+                                                                         
+      getlex              QName(PackageNamespace("", "#0"), "map_")
+      getproperty         QName(PackageNamespace(""), "gs_")
+      getproperty         QName(PackageNamespace(""), "mui_")
+      getproperty         QName(PrivateNamespace("*", $"mouseClass"), $"mouseClicked")   
+			iftrue              SKIPNOWALK                                       
+                                                                         
+      getlocal3
+      getproperty        QName(PackageNamespace(""), "props_")     
+      getproperty        QName(PackageNamespace(""), "maxDamage_")
+      pushbyte            0                                              
+      ifeq             SKIPNOWALK                                                  
+                                    
+      getlocal3                                                          
+      getproperty        QName(PackageNamespace(""), "obj_")      
+      pushnull                                                           
+      ifne                SKIPNOWALK   
+                                                                        
+      pushfalse                                                          
+      returnvalue      
+      
+      
+SKIPNOWALK:                                                 

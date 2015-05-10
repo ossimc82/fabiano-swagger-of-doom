@@ -1,0 +1,7 @@
+;_-names
+#set recon_event1 "CHANGE1"     ;"_-17a" ; main folder name. Next one is NAME_.class.asasm
+#set recon_event2 "CHANGE2"             ;"_-1Cr" ; recon_event1.recon_event2 leads to the RECONNECT_EVENT class. Grep "RECONNECT_EVENT" to find.
+
+ trait slot QName(PackageNamespace(""), "recon") slotid 4 type QName(PackageNamespace($"recon_event1"), $"recon_event2") value Null() end
+ trait slot QName(PackageNamespace(""), "drecon") slotid 5 type QName(PackageNamespace($"recon_event1"), $"recon_event2") value Null() end
+ trait slot QName(PackageNamespace(""), "vaultrecon") slotid 6 type QName(PackageNamespace($"recon_event1"), $"recon_event2") value Null() end

@@ -1,0 +1,13 @@
+
+
+	  getlocal            16
+	  getproperty         QName(PackageNamespace(""), "starred_")
+	  iffalse             SKIP
+	  
+	  pushint             4240365
+    convert_u
+    setlocal            15
+	  JUMPLINE   ;DONT MODIFY THIS LINE
+	  
+	  
+SKIP:

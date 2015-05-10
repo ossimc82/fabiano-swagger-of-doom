@@ -1,0 +1,16 @@
+#set sbfolder "CHANGE08" ; "_-uZ"     
+#set sbclass "CHANGE09" ; "_-hx"  
+#set txtproperty  "CHANGE10" ; "_-1OT"
+ 
+     
+     getlocal            4
+     iffalse             CONTINUE
+
+     getlocal0
+     getproperty         QName(ProtectedNamespace($"txtproperty"), "text_")
+     findpropstrict      QName(PackageNamespace($"sbfolder"), $"sbclass")
+     getlocal3
+     constructprop       QName(PackageNamespace($"sbfolder"), $"sbclass"), 1
+     callpropvoid        QName(PackageNamespace("", "#2"), "setStringBuilder"), 1
+
+CONTINUE:

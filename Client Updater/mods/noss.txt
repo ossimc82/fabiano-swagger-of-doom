@@ -1,0 +1,189 @@
+;-------------------------
+;NO SS DEBUFFS
+; Nilly ftw
+;---------------------------
+#set effects "CHANGE1" 
+#set noQuiet "OPTQUIET"
+#set KeepQuietInCastle "OPTCASTLE"
+#set noWeak "OPTWEAK"
+#set noSlow "OPTSLOW"
+#set noSick "OPTSICK"
+#set noDazed "OPTDAZED"
+#set noStunned "OPTSTUNNED"
+#set noParalize "OPTPARALIZED"
+#set noBleeding "OPTBLEEDING"
+#set noArmorBreak "OPTARMORBREAK"
+
+	  pushbyte	  	  0
+	  setlocal	  	  4
+
+	  getlocal0
+	  getproperty	     QName(PackageNamespace(""), $"effects")
+	  getproperty	     QName(PackageNamespace(""), "effects_")
+	  coerce_a
+	  setlocal	  	  5
+
+	  jump	  	      L296_ssDebuffs
+
+L278_ssDebuffs:
+	  label
+	  getlocal	  	  5
+	  getlocal	  	  4
+	  nextvalue
+	  convert_i
+	  setlocal	  	  3
+
+;---------------------------------------------
+
+;---------------------------------------------
+	  
+    
+    ;SHOULD WE DISABLE QUIET ?
+		pushbyte 0
+		pushbyte $noQuiet
+		ifeq TESTWEAK
+
+		; WE SHOULD DISABLE IT. ARE WE IN CASTLE?
+		getlex              QName(PackageNamespace(""), "map_")
+		getproperty         QName(PackageNamespace(""), "name_")
+		pushstring			"Oryx's Castle"
+		ifne				DISABLEQUIET  ; Not in castle, disable quiet
+		
+		; WE ARE IN CASTLE, IS THE CASTLE OPTION CHECKED?
+		pushbyte 1
+		pushbyte $KeepQuietInCastle
+		ifeq 	TESTWEAK ; Keep the quiet debuff in Oryx Castle
+	  
+DISABLEQUIET:
+
+	  getlocal			  3
+    pushbyte	  	  2 ; Quiet
+    equals
+    dup
+    iftrue	  	    L293_ssDebuffs
+	  pop
+
+;---------------------------------------------
+TESTWEAK:
+  
+    ;SHOULD WE DISABLE WEAK ?
+		pushbyte 0
+		pushbyte $noQuiet
+		ifeq TESTSLOW
+
+	  getlocal			  3
+	  pushbyte			  3 ; Weak
+	  equals
+	  dup
+	  iftrue			  L293_ssDebuffs
+	  pop
+;---------------------------------------------
+TESTSLOW:
+
+    ;SHOULD WE DISABLE SLOW ?
+		pushbyte 0
+		pushbyte $noSlow
+		ifeq TESTSICK
+
+	  getlocal	  	  3
+	  pushbyte	  	  4 ; Slowed
+	  equals
+	  dup
+	  iftrue			  L293_ssDebuffs
+	  pop
+;---------------------------------------------
+TESTSICK:
+
+    ;SHOULD WE DISABLE SICK ?
+		pushbyte 0
+		pushbyte $noSick
+		ifeq TESTDAZED
+
+	  getlocal	  	  3
+	  pushbyte	  	  5 ; Sick
+	  equals
+	  dup
+	  iftrue			  L293_ssDebuffs
+	  pop
+;---------------------------------------------
+TESTDAZED:
+
+		pushbyte 0
+		pushbyte $noDazed
+		ifeq TESTSTUNNED
+		
+	  getlocal			  3
+	  pushbyte			  6 ; Dazed
+	  equals
+	  dup
+	  iftrue			  L293_ssDebuffs
+	  pop
+;---------------------------------------------
+TESTSTUNNED:
+
+		pushbyte 0
+		pushbyte $noStunned
+		ifeq TESTPARALYSED
+
+	  getlocal	  	  3
+	  pushbyte	  	  7 ; Stunned
+	  equals
+	  dup
+	  iftrue			  L293_ssDebuffs
+	  pop
+;---------------------------------------------
+TESTPARALYSED:
+
+		pushbyte 0
+		pushbyte $noParalize
+		ifeq TESTBLEEDING
+		
+	  getlocal	  	  3
+	  pushbyte	  	  14 ; Paralyzed
+	  equals
+	  dup
+	  iftrue			  L293_ssDebuffs
+	  pop
+;---------------------------------------------
+TESTBLEEDING:
+
+		pushbyte 0
+		pushbyte $noBleeding
+		ifeq TESTARMORBREAK
+
+	  getlocal	  	  3
+	  pushbyte	  	  16 ; Bleeding
+	  equals
+	  dup
+	  iftrue			  L293_ssDebuffs
+	  pop
+;---------------------------------------------
+TESTARMORBREAK:
+
+		pushbyte 0
+		pushbyte $noArmorBreak
+		ifeq END
+
+	  getlocal	  	  3
+	  pushbyte	  	  27 ; Armor Broken
+	  equals
+		jump            L293_ssDebuffs
+;---------------------------------------------
+END:
+	  pushfalse
+
+
+L293_ssDebuffs:
+	  iffalse	  	   L296_ssDebuffs
+
+	  pushfalse
+	  returnvalue
+
+L296_ssDebuffs:
+	  hasnext2	  	  5, 4
+	  iftrue	  	    L278_ssDebuffs
+
+	  kill	  	      5
+	  kill	  	      4
+
+;-------------------------------------------------------

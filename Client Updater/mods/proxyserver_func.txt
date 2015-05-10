@@ -1,0 +1,44 @@
+; _-names
+#set fullfunctionname "CHANGE1"	; refid for the trait
+#set serverNS "CHANGE2"								; namespace for the Server class
+#set portProperty "CHANGE3"							; property name for port in Parameters
+ 
+; code
+  trait method QName(PackageNamespace(""), "LocalhostServer")
+   method
+    refid $"fullfunctionname"
+    returns QName(PackageNamespace($"serverNS"), "Server")
+    body
+     maxstack 6
+     localcount 2
+     initscopedepth 4
+     maxscopedepth 5
+     code
+      getlocal0
+      pushscope
+
+      findpropstrict      QName(PackageNamespace($"serverNS"), "Server")
+      constructprop       QName(PackageNamespace($"serverNS"), "Server"), 0
+      pushstring		  "Proxy Server"
+      callproperty        QName(PackageNamespace("", "#0"), "setName"), 1
+      pushstring		  "127.0.0.1"
+      callproperty        QName(PackageNamespace("", "#0"), "setAddress"), 1
+      getlex              QName(PackageNamespace("com.company.assembleegameclient.parameters"), "Parameters")
+      getproperty         QName(PackageNamespace("", "#0"), $"portProperty")
+      callproperty        QName(PackageNamespace("", "#0"), "setPort"), 1
+      findpropstrict      QName(PackageNamespace("", "#0"), "Number")
+      pushint			  50000
+      callproperty        QName(PackageNamespace("", "#0"), "Number"), 1
+      findpropstrict      QName(PackageNamespace("", "#0"), "Number")
+      pushint			  50000
+      callproperty        QName(PackageNamespace("", "#0"), "Number"), 1
+      callproperty        QName(PackageNamespace("", "#0"), "setLatLong"), 2
+      pushint			  0
+      callproperty        QName(PackageNamespace("", "#0"), "setUsage"), 1
+      pushfalse
+      callproperty        QName(PackageNamespace("", "#0"), "setIsAdminOnly"), 1
+      returnvalue
+     end ; code
+    end ; body
+   end ; method
+  end ; trait

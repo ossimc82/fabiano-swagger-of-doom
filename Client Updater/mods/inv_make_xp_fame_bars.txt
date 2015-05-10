@@ -1,0 +1,66 @@
+;HACKCONTENT1
+;----------------------------------------------------------------------------------------------------------
+;CREATE XP BAR
+;---------------------------------------------------------------------------------------------------------
+#set displayclass "StatusBar"     ; Class where you fixed Numerical Hp/MP display
+#set fullclass "CHANGE01" ; "_-0Tj:PlayerToolTip/instance" ; CurrentClass
+
+	 getlocal0
+     findpropstrict      QName(PackageNamespace("com.company.assembleegameclient.ui"), $"displayclass")
+     pushshort           176
+     pushbyte            16
+     pushint             5931045
+     pushint             5526612
+     pushstring          "StatData.XP"
+     constructprop       QName(PackageNamespace("com.company.assembleegameclient.ui"), $"displayclass"), 5
+     initproperty        QName(PrivateNamespace("*", $"fullclass"), "_xp")
+		 getlocal0
+		 getproperty		 		 QName(PrivateNamespace("*", $"fullclass"), "_xp")
+		 pushbyte			       6
+		 setproperty		     QName(PackageNamespace(""), "x")
+		 getlocal0
+		 getproperty		     QName(PrivateNamespace("*", $"fullclass"), "_xp")
+		 getlocal2
+		 setproperty		      QName(PackageNamespace(""), "y")
+		 findpropstrict      QName(PackageNamespace(""), "addChild")
+     getlocal0
+     getproperty         QName(PrivateNamespace("*", $"fullclass"), "_xp")
+     callpropvoid        QName(PackageNamespace(""), "addChild"), 1
+		 getlocal0
+		 getproperty		     QName(PrivateNamespace("*", $"fullclass"), "_xp")
+		 pushtrue
+		 setproperty		     QName(PackageNamespace(""), "visible")
+;---------------------------------------------------------------------------------------------------------
+;CREATE FAME BAR 
+;---------------------------------------------------------------------------------------------------------
+     getlocal0
+     findpropstrict      QName(PackageNamespace("com.company.assembleegameclient.ui"), $"displayclass")
+     pushshort           176
+     pushbyte            16
+     pushint             14835456
+     pushint             5526612
+     pushstring          "Currency.fame"
+     constructprop       QName(PackageNamespace("com.company.assembleegameclient.ui"), $"displayclass"), 5
+     initproperty        QName(PrivateNamespace("*", $"fullclass"), "_fame")
+		 getlocal0
+		 getproperty		    QName(PrivateNamespace("*", $"fullclass"), "_fame")
+		 pushbyte			      6
+		 setproperty		    QName(PackageNamespace(""), "x")
+		 getlocal0
+		 getproperty		     QName(PrivateNamespace("*", $"fullclass"), "_fame")
+     getlocal2 
+     setproperty		     QName(PackageNamespace(""), "y")
+     findpropstrict      QName(PackageNamespace(""), "addChild")
+     getlocal0
+     getproperty         QName(PrivateNamespace("*", $"fullclass"), "_fame")
+     callpropvoid        QName(PackageNamespace(""), "addChild"), 1
+		 getlocal0
+		 getproperty		     QName(PrivateNamespace("*", $"fullclass"), "_fame")
+		 pushfalse
+		 setproperty		    QName(PackageNamespace(""), "visible")
+		 
+		 getlocal2
+		 pushbyte			 24
+		 add
+		 convert_i
+		 setlocal2

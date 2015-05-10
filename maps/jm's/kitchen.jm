@@ -1,0 +1,245 @@
+{
+   "data":"eNrtWYl2hCAMJG2l1zZaVkvt8f+/WURFcHUF4vPYat4+r3VMRibhYExvwO7Yvfo9NHtgoRuwxLFlEUAZNwiPBoHrOzFvD/fERXiKRIDB9yeLRcGdZ56dM74gk3Py8ELmIdkAD6+rtIc5EMAo8aStO4fgHNEixG68QeDRCHQfjiiOKOb0odLRm7ZKV8hSlulrKXtX1h5n6k6tOtH8wEvliVcGEJEIfMKHs2X+PuRe7y6avXB8yCcwioFreKVufEw8e+7xwAOjGEPIRxB8fIBBD4pJpNj20CF13wKdf+Sk9jBvmwzRhas3rlSY6qNMazNVUYK+ZtfHU0RldDNJfC7hBoETsxklnx1RHFH81yhA54Q2Y1T77twvP0BgjtomgrBGO7XJ3ljQrRf74UGuyqQcGFXHMSl31qLmZFKOzE9MMYlePuDNf4tLdSeLqxu9tIm7YlKuwuQ2EOCiD21XUfCccbqNHg8e/bYjill86PqgtrJEwBgViDPI10byYjEfYLRWQQCX8esJ/dkhewYEAxCyQYQ0ACE1dcZGyAhRyIgVPxqTMDqu+NxRq0ZrpbOa/+3WQCFI3V3lhGB193NM/Ew6Y6VGKAkItQ9IRoBVEeg84Aai2E57oEVRr6zUhkYtMbXXNjoCLuqDME99WQhiUR/KQYRyJR6+d8wDzsjDD5GHX20UXdARKNpsK2apDPr54Q8UaDNl",
+   "height":145,
+   "dict":[
+      {
+
+      },
+      {
+         "objs":[
+            {
+               "id":"Grey Wall",
+               "name":"size:100"
+            }
+         ]
+      },
+      {
+         "objs":[
+            {
+               "id":"Grey Wall",
+               "name":"size:100"
+            }
+         ],
+         "ground":"Stone Slab Floor"
+      },
+      {
+         "objs":[
+            {
+               "id":"Grey Wall Candle",
+               "name":"size:100"
+            }
+         ],
+         "ground":"Stone Slab Floor"
+      },
+      {
+         "objs":[
+            {
+               "id":"Grey Wall Arch",
+               "name":"size:100"
+            }
+         ],
+         "ground":"Stone Slab Floor"
+      },
+      {
+         "ground":"Stone Slab Floor"
+      },
+      {
+         "objs":[
+            {
+               "id":"Grey Wall Candle",
+               "name":"size:100"
+            }
+         ]
+      },
+      {
+         "objs":[
+            {
+               "id":"Sign",
+               "name":"name:kitchen_original.Start_on_the_beachBANG|Forests_are_dangerous|for;size:20"
+            }
+         ],
+         "ground":"Stone Slab Floor"
+      },
+      {
+         "objs":[
+            {
+               "id":"Nexus Explanation Portal",
+               "name":"name:server.nexus_explanation;size:100"
+            }
+         ],
+         "ground":"Stone Slab Floor"
+      },
+      {
+         "objs":[
+            {
+               "id":"Sign",
+               "name":"name:kitchen.This_portal_leads|to_OryxAPOSs_RealmBANG;size:20"
+            }
+         ],
+         "ground":"Stone Slab Floor"
+      },
+      {
+         "objs":[
+            {
+               "id":"Sign",
+               "name":"name:kitchen.Your_progress_is|saved_automatically;size:20"
+            }
+         ],
+         "ground":"Stone Slab Floor"
+      },
+      {
+         "objs":[
+            {
+               "id":"Sign",
+               "name":"name:kitchen_original.You_have_escaped|OryxAPOSs_kitchensBANG;size:20"
+            }
+         ],
+         "ground":"Stone Slab Floor"
+      },
+      {
+         "ground":"Grey Quad Shadows"
+      },
+      {
+         "objs":[
+            {
+               "id":"Destructible Grey Wall",
+               "name":"size:100"
+            }
+         ],
+         "ground":"Grey Quad Shadows"
+      },
+      {
+         "objs":[
+            {
+               "id":"Grey Wall Crack",
+               "name":"size:100"
+            }
+         ]
+      },
+      {
+         "objs":[
+            {
+               "id":"Grey Wall Shelf Lf",
+               "name":"size:100"
+            }
+         ]
+      },
+      {
+         "objs":[
+            {
+               "id":"Grey Wall Shelf RT",
+               "name":"size:100"
+            }
+         ]
+      },
+      {
+         "objs":[
+            {
+               "id":"Grey Wall Shelf M",
+               "name":"size:100"
+            }
+         ]
+      },
+      {
+         "objs":[
+            {
+               "id":"Grey Bars Wall",
+               "name":"size:100"
+            }
+         ]
+      },
+      {
+         "objs":[
+            {
+               "id":"Table",
+               "name":"size:100"
+            }
+         ]
+      },
+      {
+         "objs":[
+            {
+               "id":"Pool of Blood",
+               "name":"size:100"
+            }
+         ],
+         "ground":"Stone Slab Floor"
+      },
+      {
+         "objs":[
+            {
+               "id":"Butcher"
+            }
+         ],
+         "ground":"Stone Slab Floor"
+      },
+      {
+         "objs":[
+            {
+               "id":"Bonegrind the Butcher"
+            }
+         ],
+         "ground":"Stone Slab Floor"
+      },
+      {
+         "objs":[
+            {
+               "id":"Kitchen Guard"
+            }
+         ],
+         "ground":"Stone Slab Floor"
+      },
+      {
+         "objs":[
+            {
+               "id":"Grey Torch Wall",
+               "name":"size:100"
+            }
+         ]
+      },
+      {
+         "objs":[
+            {
+               "id":"Grey Wall Arch",
+               "name":"size:100"
+            }
+         ]
+      },
+      {
+         "objs":[
+            {
+               "id":"Sign",
+               "name":"name:kitchen_original.You_must_find|a_way_to_escapeBANG;size:20"
+            }
+         ],
+         "ground":"Grey Quad Shadows"
+      },
+      {
+         "objs":[
+            {
+               "id":"Sign",
+               "name":"name:kitchen_original.He_wants_to_use|you_as_food_for|his_vile_minions;size:20"
+            }
+         ],
+         "ground":"Grey Quad Shadows"
+      },
+      {
+         "objs":[
+            {
+               "id":"Sign",
+               "name":"name:kitchen_original.Oh_noBANG_YouAPOSve_been|captured_by_OryxBANG;size:20"
+            }
+         ],
+         "ground":"Grey Quad Shadows"
+      },
+      {
+         "regions":[
+            {
+               "id":"Spawn"
+            }
+         ],
+         "ground":"Grey Quad Shadows"
+      }
+   ],
+   "width":33
+}

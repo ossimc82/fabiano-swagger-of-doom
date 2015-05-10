@@ -1,0 +1,14 @@
+; Insert this in com/company/assembleegameclient/game/(the class that holds the hotkeys info) onMouseDown function just after getlocal0, pushscope.
+
+;--------------------------------------------------------------------------------------------------
+;Names to update on updates
+;--------------------------------------------------------------------------------------------------
+#set hotkeyClass        "com.company.assembleegameclient.game:_-AI" ;class found in com/company/assembleegameclient/map/
+#set mouseDown          "_-05P"  ;found in hotkeyClass
+
+;--------------------------------------------------------------------------------------------------
+;Code
+;--------------------------------------------------------------------------------------------------
+getlocal0
+pushtrue
+initproperty QName(PrivateNamespace("*", $"hotkeyClass"), $"mouseDown")

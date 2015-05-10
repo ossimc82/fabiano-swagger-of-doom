@@ -1,0 +1,4 @@
+;1
+pop
+getlex QName(PackageNamespace("flash.display"), "StageScaleMode")
+getproperty QName(PackageNamespace(""), "NO_SCALE")

@@ -1,0 +1,13 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="wServer/logic/db/BehaviorDb.Oryx.cs">
+    <Files>
+      <File FileName="wServer/networking/NetworkHandler.cs" Line="130" Column="45" />
+      <File FileName="wServer/logic/db/BehaviorDb.Oryx.cs" Line="91" Column="14" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

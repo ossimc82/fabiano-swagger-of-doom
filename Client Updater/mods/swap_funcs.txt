@@ -1,0 +1,182 @@
+;_-names
+#set func1 "CHANGE1"      ;"_-18h/_-1sU/swapEquip" ;The first half of this is found by AstroGrep "Connected!" - that is the class file this is asking for.
+#set func2 "CHANGE2"      ;"_-18h/_-1sU/swapItems" ;_-Bs:_-11r
+#set privNs "CHANGE3"      ;"[PrivateNamespace(\"*\", \"_-18h:_-1sU#0\"), PackageNamespace(\"\"), PackageNamespace(\"_-18h\"), PackageNamespace(\"_-0JQ\"), PackageNamespace(\"_-B\"), PackageNamespace(\"com.company.assembleegameclient.objects\"), PrivateNamespace(\"*\", \"_-18h:_-1sU#1\"), PackageInternalNs(\"_-18h\"), Namespace(\"http://adobe.com/AS3/2006/builtin\"), PackageNamespace(\"_-0m\"), PackageNamespace(\"_-VX\"), ProtectedNamespace(\"_-xY\"), StaticProtectedNs(\"_-xY\"), StaticProtectedNs(\"_-gW\")]"
+
+		; Same as the other instance of this thing, copy/paste it into a new file
+		; Remove the one instance of , "#0"
+		; Then replace all " with \" - 30 instances
+
+#set slotTypes "CHANGE4"  ;"_-1kb" 	; GameObject class file
+						; Find "SlotTypes"
+						; This is the first initproperty
+#set invItems "CHANGE5"      ; "_-0CM" 	; This is the second, under the "Vector" after "length"
+
+#set invSwap "invSwap" 	; Found in the func1/2 class file
+;     maxstack 6
+;     localcount 12
+;     initscopedepth 4
+;     maxscopedepth 5
+
+;found in com/company/assembleegameclient/net/_-name , where _-name is the net class. Is the first of the two functions that have the arguments 
+; "_arg1:Player, _arg2:GameObject, _arg3:int, _arg4:int, _arg5:GameObject, _arg6:int, _arg7:int".
+
+;code
+  trait method QName(PackageNamespace(""), "swapEquip")
+   method
+    refid $"func1"
+    param QName(PackageNamespace("com.company.assembleegameclient.objects"), "GameObject")
+    param QName(PackageNamespace(""), "int")
+    param QName(PackageNamespace(""), "XML")
+    returns QName(PackageNamespace(""), "Boolean")
+    body
+     maxstack 4
+     localcount 10
+     initscopedepth 4
+     maxscopedepth 5
+     code
+      getlocal0
+      pushscope
+
+      pushbyte            0
+      setlocal            4
+
+      pushnull
+      coerce              TypeName(QName(PackageNamespace("__AS3__.vec"), "Vector")<QName(PackageNamespace(""), "int")>)
+      setlocal            5
+
+      pushbyte            0
+      setlocal            6
+
+      pushbyte            0
+      setlocal            7
+
+      getlocal3
+      coerce_a
+      convert_b
+      dup
+      iffalse             L22
+
+      pop
+      getlocal1
+      callproperty        QName(PackageNamespace(""), "isPaused"), 0
+      not
+      coerce_a
+      convert_b
+L22:
+      dup
+      iffalse             L29
+
+      pop
+      getlocal3
+      pushstring          "SlotType"
+      callproperty        Multiname("hasOwnProperty", $privNs), 1
+      convert_b
+L29:
+      iffalse             L72
+
+      findpropstrict      QName(PackageNamespace(""), "int")
+      getlocal3
+      getproperty         Multiname("SlotType", $privNs)
+      callproperty        QName(PackageNamespace(""), "int"), 1
+      convert_i
+      setlocal            4
+
+      getlocal1
+      getproperty         QName(PackageNamespace(""), $"slotTypes")
+      pushbyte            0
+      pushbyte            4
+      callproperty        QName(Namespace("http://adobe.com/AS3/2006/builtin"), "slice"), 2
+      coerce              TypeName(QName(PackageNamespace("__AS3__.vec"), "Vector")<QName(PackageNamespace(""), "int")>)
+      setlocal            5
+
+      pushbyte            0
+      setlocal            6
+
+      pushbyte            0
+      setlocal            8
+
+      getlocal            5
+      coerce_a
+      setlocal            9
+
+      jump                L68
+
+L51:
+      label
+      getlocal            9
+      getlocal            8
+      nextvalue
+      convert_i
+      dup
+      setlocal            7
+
+      getlocal            4
+      ifne                L67
+
+      getlocal0
+      getlocal1
+      getlocal            6
+      getlocal2
+      callpropvoid        QName(PackageNamespace(""), "swapItems"), 3
+
+      pushtrue
+      returnvalue
+
+L67:
+      inclocal_i          6
+L68:
+      hasnext2            9, 8
+      iftrue              L51
+
+      kill                9
+      kill                8
+L72:
+      pushfalse
+      returnvalue
+     end ; code
+    end ; body
+   end ; method
+  end ; trait
+  trait method QName(PackageNamespace(""), "swapItems")
+   method
+    refid $"func2"
+    param QName(PackageNamespace("com.company.assembleegameclient.objects"), "GameObject")
+    param QName(PackageNamespace(""), "int")
+    param QName(PackageNamespace(""), "int")
+    returns QName(PackageNamespace(""), "void")
+    body
+     maxstack 9
+     localcount 5
+     initscopedepth 4
+     maxscopedepth 5
+     code
+      getlocal0
+      pushscope
+
+      getlocal1
+      getproperty         QName(PackageNamespace(""), $"invItems")
+      coerce              TypeName(QName(PackageNamespace("__AS3__.vec"), "Vector")<QName(PackageNamespace(""), "int")>)
+      setlocal            4
+
+      getlocal0
+      getlocal1
+      getlex              QName(PackageNamespace("com.company.assembleegameclient.objects"), "Player")
+      astypelate
+      getlocal1
+      getlocal2
+      getlocal            4
+      getlocal2
+      getproperty         MultinameL($privNs)
+      getlocal1
+      getlocal3
+      getlocal            4
+      getlocal3
+      getproperty         MultinameL($privNs)
+      callpropvoid        QName(PackageNamespace(""), $"invSwap"), 7
+
+      returnvoid
+     end ; code
+    end ; body
+   end ; method
+  end ; trait

@@ -1,0 +1,15 @@
+; _-names
+#set props "Change1" ; Value inited using the props.speed
+#set speed "Change2"
+
+; Sprite World Speed Hack
+   getlex QName(PackageNamespace(""), "map_")
+   getproperty QName(PackageNamespace(""), "name_")
+   pushstring "Sprite World"
+   ifne NORMAL
+
+   getlocal0
+   pushdouble 1.6        ; speed factor : change to a value above 1
+   setproperty        QName(ProtectedNamespace($"props"), $"speed")
+
+   NORMAL:

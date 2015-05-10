@@ -1,0 +1,39 @@
+﻿<Char id="1">
+  <ObjectType>782</ObjectType>
+  <Level>20</Level>
+  <Exp>6548365</Exp>
+  <CurrentFame>3470</CurrentFame>
+  <Equipment>2824,2852,2821,2978,3270,-1,-1,-1,-1,-1,-1,-1,2702,-1,-1,-1,-1,-1,-1,3075</Equipment>
+  <MaxHitPoints>670</MaxHitPoints>
+  <HitPoints>770</HitPoints>
+  <MaxMagicPoints>385</MaxMagicPoints>
+  <MagicPoints>440</MagicPoints>
+  <Attack>75</Attack>
+  <Defense>25</Defense>
+  <Speed>50</Speed>
+  <Dexterity>75</Dexterity>
+  <HpRegen>40</HpRegen>
+  <MpRegen>60</MpRegen>
+  <PCStats>AAAoy1sBABAqtgIAAD8zAwFBVYMEAAAJJgUAAAJ8BgAB30gHAADwGggAACncCQAAGQkKAAAHEgsAAAAaDAAABW8NAAAAAw4AAAA0DwAAABEQAAAAMBEAAAANEgAAAIYTAAAGBxQAABOuFQAAAAkWAAAAOhcAAAAaGAAAAA0=</PCStats>
+  <HealthStackCount>6</HealthStackCount>
+  <MagicStackCount>6</MagicStackCount>
+  <Dead>False</Dead>
+  <Pet name="{pets.Chick_Skin}" type="32538" instanceId="8" rarity="1" maxAbilityPower="50" skin="32789">
+    <Abilities>
+      <Ability type="407" power="30" points="2080" />
+      <Ability type="408" power="1" points="0" />
+      <Ability type="409" power="1" points="0" />
+    </Abilities>
+  </Pet>
+  <casToken>None</casToken>
+  <Account>
+    <Name>ASchnitzl</Name>
+  </Account>
+  <Tex1>33531136</Tex1>
+  <Tex2>33489151</Tex2>
+  <XpBoosted>0</XpBoosted>
+  <XpTimer>0</XpTimer>
+  <LDTimer>0</LDTimer>
+  <LTTimer>0</LTTimer>
+  <HasBackpack>1</HasBackpack>
+</Char>

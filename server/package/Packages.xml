@@ -1,0 +1,31 @@
+﻿<PackageResponse>
+  <Packages>
+    <Package id = "392">
+      <Name>Big Bag O' Keys</Name>
+      <Price>5600</Price>
+      <Quantity>-1</Quantity>
+      <MaxPurchase>-1</MaxPurchase>
+      <Weight>0</Weight>
+      <BgURL>http://rotmg.kabamcdn.com/Big-Bag-of-Keys-Modal.png</BgURL>
+      <EndDate>07/22/2014 23:59:00 GMT-0800</EndDate>
+    </Package>
+    <Package id = "393">
+      <Name>Store More Pack</Name>
+      <Price>1800</Price>
+      <Quantity>-1</Quantity>
+      <MaxPurchase>-1</MaxPurchase>
+      <Weight>0</Weight>
+      <BgURL>http://i.imgur.com/yMyjdWA.png</BgURL>
+      <EndDate>07/22/2014 23:59:00 GMT-0800</EndDate>
+    </Package>
+    <Package id = "391">
+      <Name>Super Ambrosia Pack</Name>
+      <Price>7000</Price>
+      <Quantity>-1</Quantity>
+      <MaxPurchase>-1</MaxPurchase>
+      <Weight>0</Weight>
+      <BgURL>http://i.imgur.com/3NFqdr1.png</BgURL>
+      <EndDate>07/22/2014 23:59:00 GMT-0800</EndDate>
+    </Package>
+  </Packages>
+</PackageResponse>

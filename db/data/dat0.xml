@@ -1,0 +1,3714 @@
+<GroundTypes>
+
+
+
+   <Ground type="0x00" id="Black Water">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x09</Index>
+      </Texture>
+      <Animate dx=".5" dy=".5">Wave</Animate>
+      <NoWalk/>
+      <Speed>1</Speed>
+   </Ground>
+   <Ground type="0x17" id="Black Water Light">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x0a</Index>
+      </Texture>
+      <Animate dx="0.5" dy="0.5">Wave</Animate>
+      <Sink/>
+      <BlendPriority>2</BlendPriority>
+      <Speed>0.7</Speed>
+   </Ground>
+   <Ground type="0x18" id="Castle Stone Floor Tile">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x0b</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x19" id="Castle Stone Floor Tile Dark">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x0c</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x1a" id="Wood Panel Floor">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x0d</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x7463" id="Wood Panel Floor Speedy">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x0d</Index>
+      </Texture>
+      <Speed>1.4</Speed>
+   </Ground>
+   <Ground type="0x1b" id="Wood Plank Floor">
+      <RandomTexture>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x12</Index>
+         </Texture>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x13</Index>
+         </Texture>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x14</Index>
+         </Texture>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x15</Index>
+         </Texture>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x16</Index>
+         </Texture>
+      </RandomTexture>
+   </Ground>
+   <Ground type="0x2e" id="OceanFloor">
+      <RandomTexture>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x17</Index>
+         </Texture>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x17</Index>
+         </Texture>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x18</Index>
+         </Texture>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x19</Index>
+         </Texture>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x1a</Index>
+         </Texture>
+      </RandomTexture>
+      <Edge>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x69</Index>
+         </Texture>
+      </Edge>
+      <Corner>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x6a</Index>
+         </Texture>
+      </Corner>
+      <InnerCorner>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x6b</Index>
+         </Texture>
+      </InnerCorner>
+      <Top>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x6c</Index>
+         </Texture>
+      </Top>
+      <TopAnimate dx=".2" dy=".2">Wave</TopAnimate>
+      <Speed>.85</Speed>
+      <RandomOffset/>
+   </Ground>
+   <Ground type="0x2f" id="SpiderDirt">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0x1c</Index>
+      </Texture>
+      <Edge>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x23</Index>
+         </Texture>
+      </Edge>
+      <Corner>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x25</Index>
+         </Texture>
+      </Corner>
+      <RandomOffset/>
+   </Ground>
+   <Ground type="0x30" id="Spider Dirt Hole">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x02</Index>
+      </Texture>
+      <Edge>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x23</Index>
+         </Texture>
+      </Edge>
+      <Corner>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x25</Index>
+         </Texture>
+      </Corner>
+   </Ground>
+   <Ground type="0x31" id="Metal Plates">
+      <RandomTexture>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x7e</Index>
+         </Texture>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x7f</Index>
+         </Texture>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x81</Index>
+         </Texture>
+      </RandomTexture>
+   </Ground>
+   <Ground type="0x32" id="Metal Plate Stripes">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x7f</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x33" id="Purple Stone Dark">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x82</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xc5" id="Jungle Temple Floor">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x83</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xc6" id="Jungle Temple Floor 2">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x84</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xc7" id="Stone Slab Floor">
+      <RandomTexture>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x85</Index>
+         </Texture>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x86</Index>
+         </Texture>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x87</Index>
+         </Texture>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x88</Index>
+         </Texture>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x89</Index>
+         </Texture>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x8a</Index>
+         </Texture>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x8b</Index>
+         </Texture>
+      </RandomTexture>
+      <Edge>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x23</Index>
+         </Texture>
+      </Edge>
+      <Corner>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x25</Index>
+         </Texture>
+      </Corner>
+   </Ground>
+   <Ground type="0xc8" id="Grey Quad Shadows">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0x06</Index>
+      </Texture>
+      <Edge>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x23</Index>
+         </Texture>
+      </Edge>
+      <Corner>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x25</Index>
+         </Texture>
+      </Corner>
+   </Ground>
+   <Ground type="0xc9" id="Dark Water Flowing">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0xbc</Index>
+      </Texture>
+      <Sink/>
+      <NoWalk/>
+      <Animate dx="0.065" dy="0.065">Flow</Animate>
+   </Ground>
+   <Ground type="0xca" id="Tutorial Floor">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0x15</Index>
+      </Texture>
+      <Edge>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x23</Index>
+         </Texture>
+      </Edge>
+      <Corner>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x25</Index>
+         </Texture>
+      </Corner>
+   </Ground>
+   <Ground type="0xcb" id="Bridge">
+      <Texture>
+         <File>lofiEnvironment3</File>
+         <Index>0x8b</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xcc" id="Tutorial Wood Floor">
+      <RandomTexture>
+         <Texture>
+            <File>lofiEnvironment3</File>
+            <Index>0x8c</Index>
+         </Texture>
+         <Texture>
+            <File>lofiEnvironment3</File>
+            <Index>0x8d</Index>
+         </Texture>
+         <Texture>
+            <File>lofiEnvironment3</File>
+            <Index>0x8e</Index>
+         </Texture>
+      </RandomTexture>
+   </Ground>
+   <Ground type="0xcd" id="Gothic Floor Slabs">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x2b</Index>
+      </Texture>
+      <Edge>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x23</Index>
+         </Texture>
+      </Edge>
+      <Corner>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x25</Index>
+         </Texture>
+      </Corner>
+   </Ground>
+   <Ground type="0xce" id="Gothic Floor Slabs 2">
+      <RandomTexture>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x2c</Index>
+         </Texture>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x2d</Index>
+         </Texture>
+      </RandomTexture>
+      <Edge>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x23</Index>
+         </Texture>
+      </Edge>
+      <Corner>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x25</Index>
+         </Texture>
+      </Corner>
+   </Ground>
+   <Ground type="0xcf" id="Gothic Floor Slabs 3">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x2e</Index>
+      </Texture>
+      <Edge>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x23</Index>
+         </Texture>
+      </Edge>
+      <Corner>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x25</Index>
+         </Texture>
+      </Corner>
+   </Ground>
+   <Ground type="0x6c" id="Gothic Big Tile">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x2f</Index>
+      </Texture>
+      <Edge>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x23</Index>
+         </Texture>
+      </Edge>
+      <Corner>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x25</Index>
+         </Texture>
+      </Corner>
+   </Ground>
+   <Ground type="0x49" id="Gothic Rug">
+      <SameTypeEdgeMode/>
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x48</Index>
+      </Texture>
+      <Edge>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x49</Index>
+         </Texture>
+      </Edge>
+      <InnerCorner>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x4a</Index>
+         </Texture>
+      </InnerCorner>
+      <Corner>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x4b</Index>
+         </Texture>
+      </Corner>
+   </Ground>
+   <Ground type="0xef" id="Guild Rug Green">
+      <SameTypeEdgeMode/>
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x27</Index>
+      </Texture>
+      <Edge>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x28</Index>
+         </Texture>
+      </Edge>
+      <InnerCorner>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x29</Index>
+         </Texture>
+      </InnerCorner>
+   </Ground>
+   <Ground type="0xee" id="Wood Plank Floor Dark">
+      <RandomTexture>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x38</Index>
+         </Texture>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x39</Index>
+         </Texture>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x3a</Index>
+         </Texture>
+      </RandomTexture>
+   </Ground>
+   <Ground type="0x01" id="Dark Cobblestone">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x3b</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x02" id="Light Cobblestone">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x3c</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x7462" id="Light Cobblestone Speedy">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x3c</Index>
+      </Texture>
+      <Speed>1.4</Speed>
+   </Ground>
+   <Ground type="0x23" id="Bright Grass">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x0b</Index>
+      </Texture>
+      <Edge>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x0c</Index>
+         </Texture>
+      </Edge>
+      <Corner>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x0d</Index>
+         </Texture>
+      </Corner>
+      <InnerCorner>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x0e</Index>
+         </Texture>
+      </InnerCorner>
+      <BlendPriority>11</BlendPriority>
+      <RandomOffset/>
+   </Ground>
+   <Ground type="0x22" id="Bright Grass 2">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x0f</Index>
+      </Texture>
+      <Edge>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x1f</Index>
+         </Texture>
+      </Edge>
+      <Corner>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x27</Index>
+         </Texture>
+      </Corner>
+      <BlendPriority>4</BlendPriority>
+      <RandomOffset/>
+   </Ground>
+   <Ground type="0x13" id="Grey Pathway Shadow">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x95</Index>
+      </Texture>
+      <Edge>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x4f</Index>
+         </Texture>
+      </Edge>
+      <Speed>1.4</Speed>
+      <CompositePriority>1</CompositePriority>
+   </Ground>
+   <Ground type="0x03" id="Stone Floor Offset">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x3d</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x04" id="Grey Open">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0x04</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x05" id="Grey Closed">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0x05</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x06" id="Grey Quad">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0x06</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x0c" id="Brown Lines">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0x0c</Index>
+      </Texture>
+      <BlendPriority>14</BlendPriority>
+   </Ground>
+   <Ground type="0x07" id="Oryx Castle Rug">
+      <SameTypeEdgeMode/>
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x3e</Index>
+      </Texture>
+      <Edge>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x3f</Index>
+         </Texture>
+      </Edge>
+      <InnerCorner>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x46</Index>
+         </Texture>
+      </InnerCorner>
+      <Corner>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x47</Index>
+         </Texture>
+      </Corner>
+   </Ground>
+   <Ground type="0x14" id="Brown Open">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0x14</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x15" id="Brown Closed">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0x15</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x16" id="Brown Quad">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0x16</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x1c" id="Dirt">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0x1c</Index>
+      </Texture>
+      <RandomOffset/>
+   </Ground>
+   <Ground type="0x1d" id="Brown Column">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0x1d</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x1e" id="Brown Closed Broken 1">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x21</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x1f" id="Brown Closed Broken 2">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x22</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x24" id="Blue Open">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0x24</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x25" id="Blue Closed">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0x25</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x26" id="Blue Quad">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0x26</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x2c" id="Blue Quad2">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0x2c</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x2d" id="Blue Column">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0x2d</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x34" id="Red Open">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0x34</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x35" id="Red Closed">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0x35</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x36" id="Red Quad">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0x36</Index>
+      </Texture>
+      <BlendPriority>11</BlendPriority>
+   </Ground>
+   <Ground type="0x3c" id="Red Small Checks">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0x3c</Index>
+      </Texture>
+      <BlendPriority>9</BlendPriority>
+   </Ground>
+   <Ground type="0x40" id="Purple Lines">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0x40</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x41" id="Blue BigSmall Squares">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0x41</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x42" id="Green Lines">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0x42</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x43" id="Green BigSmall Squares">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0x43</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x46" id="Light Grass">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0x46</Index>
+      </Texture>
+      <BlendPriority>4</BlendPriority>
+      <RandomOffset/>
+   </Ground>
+   <Ground type="0x47" id="Yellow Grass">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0x47</Index>
+      </Texture>
+      <BlendPriority>5</BlendPriority>
+      <RandomOffset/>
+   </Ground>
+   <Ground type="0x48" id="Grass">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0x48</Index>
+      </Texture>
+      <BlendPriority>6</BlendPriority>
+      <RandomOffset/>
+   </Ground>
+   <Ground type="0x50" id="Grey Quad2">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0x50</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x51" id="Grey Squares">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0x51</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x52" id="Brown Quad2">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0x52</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x53" id="Brown Squares">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0x53</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x54" id="Purple Quad2">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0x54</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x55" id="Purple Squares">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0x55</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x56" id="Dark Grass">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0x56</Index>
+      </Texture>
+      <BlendPriority>7</BlendPriority>
+      <RandomOffset/>
+   </Ground>
+   <Ground type="0x57" id="Blue Grass">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0x57</Index>
+      </Texture>
+      <BlendPriority>8</BlendPriority>
+      <RandomOffset/>
+   </Ground>
+   <Ground type="0x58" id="Square">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0x58</Index>
+      </Texture>
+      <RandomOffset/>
+   </Ground>
+   <Ground type="0x60" id="Rock">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0x60</Index>
+      </Texture>
+      <BlendPriority>10</BlendPriority>
+      <RandomOffset/>
+   </Ground>
+   <Ground type="0x61" id="Grey Circle">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0x61</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x62" id="Undergrowth">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0x62</Index>
+      </Texture>
+      <BlendPriority>8</BlendPriority>
+      <RandomOffset/>
+   </Ground>
+   <Ground type="0x63" id="Green Circle">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0x63</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x64" id="Scorch">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0x64</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x65" id="Grey Circle">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0x65</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x66" id="Checker Board">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0x66</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x67" id="Grey Checker Board">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0x67</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x68" id="Brown Checker Board">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0x68</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x69" id="Red Checker Board">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x11</Index>
+      </Texture>
+      <BlendPriority>11</BlendPriority>
+   </Ground>
+   <Ground type="0x6a" id="Snowy Rock">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x60</Index>
+      </Texture>
+      <BlendPriority>12</BlendPriority>
+      <RandomOffset/>
+   </Ground>
+   <Ground type="0x6b" id="Ice">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x61</Index>
+      </Texture>
+      <BlendPriority>13</BlendPriority>
+   </Ground>
+   <Ground type="0x70" id="Lava">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0x70</Index>
+      </Texture>
+      <MinDamage>30</MinDamage>
+      <MaxDamage>60</MaxDamage>
+      <Animate dx=".33" dy=".33">Flow</Animate>
+      <Sink/>
+      <Speed>.666</Speed>
+   </Ground>
+   <Ground type="0x72" id="Water">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0x72</Index>
+      </Texture>
+      <Animate dx="1" dy="1">Wave</Animate>
+      <BlendPriority>1</BlendPriority>
+      <Sink/>
+      <Speed>.666</Speed>
+   </Ground>
+   <Ground type="0x73" id="Shallow Water">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0x72</Index>
+      </Texture>
+      <BlendPriority>14</BlendPriority>
+      <Sink/>
+      <Speed>.666</Speed>
+   </Ground>
+   <Ground type="0x74" id="White Floor 1">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x90</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x75" id="White Floor 2">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x91</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x76" id="White Floor 3">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x92</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x77" id="White Floor 4">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x93</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x78" id="White Floor 5">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x94</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x79" id="Grey Pathway">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x95</Index>
+      </Texture>
+      <Speed>1.4</Speed>
+      <CompositePriority>1</CompositePriority>
+   </Ground>
+   <Ground type="0x7a" id="Pool">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0x72</Index>
+      </Texture>
+      <Sink/>
+      <Speed>.666</Speed>
+      <CompositePriority>2</CompositePriority>
+   </Ground>
+   <Ground type="0x7b" id="Deep Pool">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0x72</Index>
+      </Texture>
+      <NoWalk/>
+      <CompositePriority>2</CompositePriority>
+   </Ground>
+   <Ground type="0xa6" id="GhostGround ExLight">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x29</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x7c" id="GhostGround Light">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x2a</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x7d" id="GhostGround Mid">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x2b</Index>
+      </Texture>
+      <Edge>
+         <Texture>
+            <File>lofiEnvironment3</File>
+            <Index>0xd7</Index>
+         </Texture>
+      </Edge>
+   </Ground>
+   <Ground type="0x7e" id="GhostGround Dark">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x2c</Index>
+      </Texture>
+      <Edge>
+         <Texture>
+            <File>lofiEnvironment3</File>
+            <Index>0xd7</Index>
+         </Texture>
+      </Edge>
+      <InnerCorner>
+         <Texture>
+            <File>lofiEnvironment3</File>
+            <Index>0xd8</Index>
+         </Texture>
+      </InnerCorner>
+   </Ground>
+   <Ground type="0x7f" id="Ghostship Rug">
+      <SameTypeEdgeMode/>
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x2d</Index>
+      </Texture>
+      <Edge>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x2e</Index>
+         </Texture>
+      </Edge>
+      <InnerCorner>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x2f</Index>
+         </Texture>
+      </InnerCorner>
+      <Corner>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x37</Index>
+         </Texture>
+      </Corner>
+   </Ground>
+   <Ground type="0xa0" id="White Alpha Square">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x30</Index>
+      </Texture>
+      <XOffset>.0625</XOffset>
+      <YOffset>.0625</YOffset>
+   </Ground>
+   <Ground type="0xa1" id="Purple Alpha Square">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x31</Index>
+      </Texture>
+      <Animate dx="2.5">Flow</Animate>
+      <Push/>
+      <XOffset>.0625</XOffset>
+      <YOffset>.0625</YOffset>
+   </Ground>
+   <Ground type="0xa2" id="Red Alpha Square">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x32</Index>
+      </Texture>
+      <Animate dx="-2.5">Flow</Animate>
+      <Push/>
+      <XOffset>.0625</XOffset>
+      <YOffset>.0625</YOffset>
+   </Ground>
+   <Ground type="0xa3" id="Blue Alpha Square">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x33</Index>
+      </Texture>
+      <Animate dy="2.5">Flow</Animate>
+      <Push/>
+      <XOffset>.0625</XOffset>
+      <YOffset>.0625</YOffset>
+   </Ground>
+   <Ground type="0xa4" id="Green Alpha Square">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x34</Index>
+      </Texture>
+      <Animate dy="-2.5">Flow</Animate>
+      <Push/>
+      <XOffset>.0625</XOffset>
+      <YOffset>.0625</YOffset>
+   </Ground>
+   <Ground type="0xa5" id="Yellow Alpha Square">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x35</Index>
+      </Texture>
+      <XOffset>.0625</XOffset>
+      <YOffset>.0625</YOffset>
+   </Ground>
+   <Ground type="0xad" id="Blue Floor">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0xad</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xbc" id="Dark Water">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0xbc</Index>
+      </Texture>
+      <Sink/>
+      <NoWalk/>
+   </Ground>
+   <Ground type="0xbd" id="Light Sand">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0xbd</Index>
+      </Texture>
+      <BlendPriority>2</BlendPriority>
+   </Ground>
+   <Ground type="0xbe" id="Dark Sand">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0xbe</Index>
+      </Texture>
+      <BlendPriority>3</BlendPriority>
+   </Ground>
+   <Ground type="0xbf" id="Quicksand">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x08</Index>
+      </Texture>
+      <BlendPriority>3</BlendPriority>
+      <Sinking/>
+      <Speed>0.6</Speed>
+      <Animate dx=".1" dy=".1">Flow</Animate>
+   </Ground>
+   <Ground type="0xc0" id="Wood Square">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0xc0</Index>
+      </Texture>
+      <Color>0x734722</Color>
+      <NoWalk/>
+   </Ground>
+   <Ground type="0xc3" id="Broken Wood Square">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0xc3</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xc4" id="Stone Square">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0xc4</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xd0" id="Road">
+      <RandomTexture>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x70</Index>
+         </Texture>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x71</Index>
+         </Texture>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x72</Index>
+         </Texture>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x73</Index>
+         </Texture>
+      </RandomTexture>
+      <BlendPriority>16</BlendPriority>
+      <Speed>1.2</Speed>
+   </Ground>
+   <Ground type="0xd4" id="Grey Bloody">
+      <RandomTexture>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0xd0</Index>
+         </Texture>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0xd1</Index>
+         </Texture>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0xd2</Index>
+         </Texture>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0xd3</Index>
+         </Texture>
+      </RandomTexture>
+   </Ground>
+   <Ground type="0xd5" id="Purple Stone">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0xf0</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xd6" id="Cracked Purple Stone">
+      <RandomTexture>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0xf1</Index>
+         </Texture>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0xf2</Index>
+         </Texture>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0xf3</Index>
+         </Texture>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0xf4</Index>
+         </Texture>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0xf5</Index>
+         </Texture>
+      </RandomTexture>
+   </Ground>
+   <Ground type="0xe0" id="Sandstone Tile">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x03</Index>
+      </Texture>
+      <BlendPriority>1</BlendPriority>
+   </Ground>
+   <Ground type="0xe1" id="Cracked Sandstone Tile">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x06</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xe2" id="Sand Covered Tile">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x06</Index>
+      </Texture>
+      <BlendPriority>3</BlendPriority>
+   </Ground>
+   <Ground type="0xe3" id="Missing Tile">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x04</Index>
+      </Texture>
+      <Speed>0.9</Speed>
+   </Ground>
+   <Ground type="0xe4" id="Gold Tile">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x05</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xe5" id="Dream Tile">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x53</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xf0" id="Dirt Hole">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x02</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xfd" id="Composite">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0xff</Index>
+      </Texture>
+      <CompositePriority>-1</CompositePriority>
+   </Ground>
+   <Ground type="0xfe" id="Space">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0xff</Index>
+      </Texture>
+      <NoWalk/>
+      <CompositePriority>-1</CompositePriority>
+   </Ground>
+   <Ground type="0xff" id="Empty">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0xff</Index>
+      </Texture>
+      <NoWalk/>
+      <CompositePriority>-1</CompositePriority>
+   </Ground>
+   <Ground type="0xf1" id="Grey Dirt">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x2a</Index>
+      </Texture>
+      <BlendPriority>1</BlendPriority>
+      <RandomOffset/>
+   </Ground>
+   <Ground type="0xf2" id="Scorch Blend">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0x64</Index>
+      </Texture>
+      <BlendPriority>1</BlendPriority>
+      <RandomOffset/>
+   </Ground>
+   <Ground type="0xf3" id="Oryx Room">
+      <RandomTexture>
+         <Texture>
+            <File>lofiEnvironment</File>
+            <Index>0x25</Index>
+         </Texture>
+         <Texture>
+            <File>lofiEnvironment</File>
+            <Index>0x26</Index>
+         </Texture>
+      </RandomTexture>
+   </Ground>
+   <Ground type="0xf4" id="Lava Blend">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0x70</Index>
+      </Texture>
+      <MinDamage>30</MinDamage>
+      <MaxDamage>60</MaxDamage>
+      <Animate dx=".33" dy=".33">Flow</Animate>
+      <Sink/>
+      <Speed>.666</Speed>
+      <BlendPriority>1</BlendPriority>
+   </Ground>
+   <Ground type="0xf5" id="Gold Sand">
+      <Texture>
+         <File>lofiEnvironment3</File>
+         <Index>0xcc</Index>
+      </Texture>
+      <BlendPriority>30</BlendPriority>
+   </Ground>
+   <Ground type="0xf6" id="Gold Sand Dark">
+      <Texture>
+         <File>lofiEnvironment3</File>
+         <Index>0xcd</Index>
+      </Texture>
+      <BlendPriority>100</BlendPriority>
+   </Ground>
+   <Ground type="0xf7" id="Sand Tile">
+      <RandomTexture>
+         <Texture>
+            <File>lofiEnvironment3</File>
+            <Index>0xce</Index>
+         </Texture>
+         <Texture>
+            <File>lofiEnvironment3</File>
+            <Index>0xcf</Index>
+         </Texture>
+         <Texture>
+            <File>lofiEnvironment3</File>
+            <Index>0xd0</Index>
+         </Texture>
+         <Texture>
+            <File>lofiEnvironment3</File>
+            <Index>0xd1</Index>
+         </Texture>
+      </RandomTexture>
+   </Ground>
+   <Ground type="0xe6" id="Purple Rug">
+      <SameTypeEdgeMode/>
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x38</Index>
+      </Texture>
+      <Edge>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x39</Index>
+         </Texture>
+      </Edge>
+      <Corner>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x3a</Index>
+         </Texture>
+      </Corner>
+      <InnerCorner>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x3b</Index>
+         </Texture>
+      </InnerCorner>
+   </Ground>
+   <Ground type="0xe7" id="Castle Cobble">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x3f</Index>
+      </Texture>
+      <Edge>
+         <Texture>
+            <File>lofiEnvironment3</File>
+            <Index>0xd7</Index>
+         </Texture>
+      </Edge>
+      <InnerCorner>
+         <Texture>
+            <File>lofiEnvironment3</File>
+            <Index>0xd8</Index>
+         </Texture>
+      </InnerCorner>
+      <BlendPriority>1</BlendPriority>
+   </Ground>
+   <Ground type="0xe8" id="Black">
+      <Texture>
+         <File>lofiEnvironment3</File>
+         <Index>0xdc</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xfa" id="GhostWater">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x171</Index>
+      </Texture>
+      <Sink/>
+      <Speed>0.85</Speed>
+      <Animate dx="0.25">Flow</Animate>
+   </Ground>
+   <Ground type="0xfb" id="WhirlPool Rt">
+      <Texture>
+         <File>lofiEnvironment3</File>
+         <Index>0xe0</Index>
+      </Texture>
+      <Sink/>
+      <Animate dx="-3">Flow</Animate>
+      <Push/>
+      <XOffset>.0625</XOffset>
+      <YOffset>.0625</YOffset>
+   </Ground>
+   <Ground type="0xfc" id="WhirlPool Lf">
+      <Texture>
+         <File>lofiEnvironment3</File>
+         <Index>0xe1</Index>
+      </Texture>
+      <Sink/>
+      <Animate dx="3">Flow</Animate>
+      <Push/>
+      <XOffset>.0625</XOffset>
+      <YOffset>.0625</YOffset>
+   </Ground>
+   <Ground type="0xeb" id="WhirlPool Up">
+      <Texture>
+         <File>lofiEnvironment3</File>
+         <Index>0xe2</Index>
+      </Texture>
+      <Sink/>
+      <Animate dy="3">Flow</Animate>
+      <Push/>
+      <XOffset>.0625</XOffset>
+      <YOffset>.0625</YOffset>
+   </Ground>
+   <Ground type="0xec" id="WhirlPool Dn">
+      <Texture>
+         <File>lofiEnvironment3</File>
+         <Index>0xe3</Index>
+      </Texture>
+      <Sink/>
+      <Animate dy="-3">Flow</Animate>
+      <Push/>
+      <XOffset>.0625</XOffset>
+      <YOffset>.0625</YOffset>
+   </Ground>
+   <Ground type="0xed" id="Ghost Water Beach">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x10e</Index>
+      </Texture>
+      <BlendPriority>100</BlendPriority>
+   </Ground>
+   <Ground type="0xd1" id="Lab Broken Floor">
+      <RandomTexture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x113</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x114</Index>
+         </Texture>
+      </RandomTexture>
+      <Edge>
+         <Texture>
+            <File>lofiEnvironment3</File>
+            <Index>0xe6</Index>
+         </Texture>
+      </Edge>
+      <Corner>
+         <Texture>
+            <File>lofiEnvironment3</File>
+            <Index>0xe7</Index>
+         </Texture>
+      </Corner>
+   </Ground>
+   <Ground type="0xd2" id="Lab Grate Floor">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x115</Index>
+      </Texture>
+      <Edge>
+         <Texture>
+            <File>lofiEnvironment3</File>
+            <Index>0xe6</Index>
+         </Texture>
+      </Edge>
+      <Corner>
+         <Texture>
+            <File>lofiEnvironment3</File>
+            <Index>0xe7</Index>
+         </Texture>
+      </Corner>
+   </Ground>
+   <Ground type="0x85" id="Lab Floor Power">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x116</Index>
+      </Texture>
+      <Edge>
+         <Texture>
+            <File>lofiEnvironment3</File>
+            <Index>0xe6</Index>
+         </Texture>
+      </Edge>
+      <Corner>
+         <Texture>
+            <File>lofiEnvironment3</File>
+            <Index>0xe7</Index>
+         </Texture>
+      </Corner>
+   </Ground>
+   <Ground type="0xd3" id="Lab Floor">
+      <RandomTexture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x117</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x118</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x119</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x11a</Index>
+         </Texture>
+      </RandomTexture>
+      <Edge>
+         <Texture>
+            <File>lofiEnvironment3</File>
+            <Index>0xe6</Index>
+         </Texture>
+      </Edge>
+      <Corner>
+         <Texture>
+            <File>lofiEnvironment3</File>
+            <Index>0xe7</Index>
+         </Texture>
+      </Corner>
+   </Ground>
+   <Ground type="0xb7" id="Lab Floor NO WALK">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x117</Index>
+      </Texture>
+      <NoWalk/>
+   </Ground>
+   <Ground type="0xea" id="Iron Ground">
+      <RandomTexture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x17b</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x17c</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x17d</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x17e</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x17f</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x180</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x181</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x182</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x183</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x184</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x184</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x185</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x186</Index>
+         </Texture>
+      </RandomTexture>
+      <Edge>
+         <RandomTexture>
+            <Texture>
+               <File>lofiObj3</File>
+               <Index>0x17b</Index>
+            </Texture>
+            <Texture>
+               <File>lofiObj3</File>
+               <Index>0x17c</Index>
+            </Texture>
+            <Texture>
+               <File>lofiObj3</File>
+               <Index>0x185</Index>
+            </Texture>
+            <Texture>
+               <File>lofiObj3</File>
+               <Index>0x186</Index>
+            </Texture>
+         </RandomTexture>
+      </Edge>
+      <SameTypeEdgeMode/>
+   </Ground>
+   <Ground type="0xe9" id="Light Moss">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x187</Index>
+      </Texture>
+      <BlendPriority>2</BlendPriority>
+      <RandomOffset/>
+   </Ground>
+   <Ground type="0xf8" id="Light Moss 2">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x188</Index>
+      </Texture>
+      <BlendPriority>2</BlendPriority>
+      <RandomOffset/>
+   </Ground>
+   <Ground type="0xf9" id="Dirt Cover">
+      <RandomTexture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x189</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x18a</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x18b</Index>
+         </Texture>
+      </RandomTexture>
+      <RandomOffset/>
+   </Ground>
+   <Ground type="0xb1" id="Tropical Water Deep">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x18c</Index>
+      </Texture>
+      <Sink/>
+      <NoWalk/>
+      <Animate dx="0.3" dy="0.3">Wave</Animate>
+      <BlendPriority>4</BlendPriority>
+   </Ground>
+   <Ground type="0xb2" id="Tropical Water Mid">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x18d</Index>
+      </Texture>
+      <Sink/>
+      <Animate dx="0.3" dy="0.3">Wave</Animate>
+      <BlendPriority>3</BlendPriority>
+      <Speed>.555</Speed>
+   </Ground>
+   <Ground type="0xb3" id="Tropical Water Surf">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x18e</Index>
+      </Texture>
+      <Sink/>
+      <Animate dx="0.3" dy="0.3">Wave</Animate>
+      <BlendPriority>2</BlendPriority>
+      <Speed>.85</Speed>
+   </Ground>
+   <Ground type="0xb4" id="Beach Towel 1">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x18f</Index>
+      </Texture>
+      <BlendPriority>30</BlendPriority>
+   </Ground>
+   <Ground type="0xb5" id="Beach Towel 2">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x190</Index>
+      </Texture>
+      <BlendPriority>30</BlendPriority>
+   </Ground>
+   <Ground type="0xb6" id="Bridge Light">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x191</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xb8" id="Ice Slide">
+      <RandomTexture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x1b5</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x1b6</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x1b7</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x1b8</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x1b9</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x1ba</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x1ba</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x1ba</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x1ba</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x1bb</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x1bc</Index>
+         </Texture>
+      </RandomTexture>
+      <SlideAmount>0.95</SlideAmount>
+      <BlendPriority>20</BlendPriority>
+      <Speed>1</Speed>
+   </Ground>
+   <Ground type="0xb9" id="Snow">
+      <RandomTexture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x1c0</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x1c0</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x1c0</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x1c1</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x1c2</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x1c3</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x1c4</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x1c5</Index>
+         </Texture>
+      </RandomTexture>
+      <Speed>.95</Speed>
+   </Ground>
+   <Ground type="0x80" id="Snow Dark">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x1c6</Index>
+      </Texture>
+      <Speed>.95</Speed>
+      <BlendPriority>21</BlendPriority>
+   </Ground>
+   <Ground type="0x81" id="Snow White">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x1c0</Index>
+      </Texture>
+      <Speed>.95</Speed>
+      <BlendPriority>15</BlendPriority>
+   </Ground>
+   <Ground type="0x82" id="Lab Bad Vat No Slow">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x133</Index>
+      </Texture>
+      <Sink/>
+   </Ground>
+   <Ground type="0x83" id="Lab Good Vat No Slow">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x14e</Index>
+      </Texture>
+      <Sink/>
+   </Ground>
+   <Ground type="0xa8" id="Liquid Evil">
+      <Texture>
+         <File>lofiEnvironment</File>
+         <Index>0x71</Index>
+      </Texture>
+      <MinDamage>25</MinDamage>
+      <MaxDamage>40</MaxDamage>
+      <Animate dx=".33" dy=".33">Flow</Animate>
+      <Sink/>
+      <Speed>.666</Speed>
+   </Ground>
+   <Ground type="0xa9" id="Lab Bad Vat Rug">
+      <SameTypeEdgeMode/>
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x133</Index>
+      </Texture>
+      <Edge>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x11e</Index>
+         </Texture>
+      </Edge>
+      <InnerCorner>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x121</Index>
+         </Texture>
+      </InnerCorner>
+      <Sink/>
+      <Speed>.666</Speed>
+   </Ground>
+   <Ground type="0xa7" id="Lab Good Vat Rug">
+      <SameTypeEdgeMode/>
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x14e</Index>
+      </Texture>
+      <Edge>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x139</Index>
+         </Texture>
+      </Edge>
+      <InnerCorner>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x13c</Index>
+         </Texture>
+      </InnerCorner>
+      <Sink/>
+      <Speed>.666</Speed>
+   </Ground>
+   <Ground type="0xaa" id="Lab Floor Power Nowalk">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x116</Index>
+      </Texture>
+      <NoWalk/>
+   </Ground>
+   <Ground type="0xab" id="Track W End">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x236</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xac" id="Track N End">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x237</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x88" id="Track E End">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x238</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xae" id="Track S End">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x239</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xaf" id="Track NW Corner">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x23a</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xba" id="Track NE Corner">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x23b</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xbb" id="Track SE Corner">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x23c</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x89" id="Track SW Corner">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x23d</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x84" id="Track H Path">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x23e</Index>
+      </Texture>
+      <BlendPriority>1</BlendPriority>
+   </Ground>
+   <Ground type="0x90" id="Track V Path">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x23f</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x91" id="Trap Flame Hole">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x240</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x92" id="Tunnel Hole M">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x241</Index>
+      </Texture>
+      <NoWalk/>
+   </Ground>
+   <Ground type="0x93" id="Tunnel Ground M">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x242</Index>
+      </Texture>
+      <NoWalk/>
+   </Ground>
+   <Ground type="0x94" id="Track End">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x243</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x95" id="Retro Water">
+      <SameTypeEdgeMode/>
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x293</Index>
+      </Texture>
+      <Sink/>
+      <Speed>.666</Speed>
+      <BlendPriority>7</BlendPriority>
+      <Edge>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x294</Index>
+         </Texture>
+      </Edge>
+      <Corner>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x295</Index>
+         </Texture>
+      </Corner>
+   </Ground>
+   <Ground type="0x96" id="Retro Dirt">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x296</Index>
+      </Texture>
+      <BlendPriority>7</BlendPriority>
+   </Ground>
+   <Ground type="0x97" id="Candy Grass">
+      <Texture>
+         <File>lofiEnvironment3</File>
+         <Index>0xe9</Index>
+      </Texture>
+      <BlendPriority>2</BlendPriority>
+      <RandomOffset/>
+   </Ground>
+   <Ground type="0x98" id="Candy Water">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x298</Index>
+      </Texture>
+      <BlendPriority>5</BlendPriority>
+      <Sink/>
+      <Speed>.666</Speed>
+      <Animate dx="0.085" dy="0.085">Flow</Animate>
+   </Ground>
+   <Ground type="0x99" id="Candy Cobble">
+      <RandomTexture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x299</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x29a</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x29b</Index>
+         </Texture>
+      </RandomTexture>
+      <BlendPriority>1</BlendPriority>
+   </Ground>
+   <Ground type="0x9a" id="Candy Beach">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x29c</Index>
+      </Texture>
+      <BlendPriority>6</BlendPriority>
+   </Ground>
+   <Ground type="0x9b" id="Candy Grass Dark">
+      <Texture>
+         <File>lofiEnvironment3</File>
+         <Index>0xea</Index>
+      </Texture>
+      <BlendPriority>3</BlendPriority>
+      <RandomOffset/>
+      <NoWalk/>
+   </Ground>
+   <Ground type="0x9c" id="Candy Rock Ground">
+      <Texture>
+         <File>lofiEnvironment3</File>
+         <Index>0xeb</Index>
+      </Texture>
+      <BlendPriority>1</BlendPriority>
+      <RandomOffset/>
+   </Ground>
+   <Ground type="0x9e" id="Candy Grahm Cracker">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x29e</Index>
+      </Texture>
+      <BlendPriority>1</BlendPriority>
+   </Ground>
+   <Ground type="0x9f" id="Candy Grass Dark 2">
+      <Texture>
+         <File>lofiEnvironment3</File>
+         <Index>0xea</Index>
+      </Texture>
+      <BlendPriority>3</BlendPriority>
+      <RandomOffset/>
+      <NoWalk/>
+   </Ground>
+   <Ground type="0x6d" id="Cemetery Grass">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x29f</Index>
+      </Texture>
+      <BlendPriority>3</BlendPriority>
+      <RandomOffset/>
+   </Ground>
+   <Ground type="0x6e" id="Cemetery Stone Path">
+      <RandomTexture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x2a3</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x2a4</Index>
+         </Texture>
+      </RandomTexture>
+      <BlendPriority>3</BlendPriority>
+      <Speed>1.15</Speed>
+      <RandomOffset/>
+   </Ground>
+   <Ground type="0x6f" id="Cemetery Grass No Walk">
+      <RandomTexture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x29f</Index>
+         </Texture>
+      </RandomTexture>
+      <BlendPriority>3</BlendPriority>
+      <RandomOffset/>
+      <NoWalk/>
+   </Ground>
+   <Ground type="0x3a" id="White Floor 1 Fast Walk">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x90</Index>
+      </Texture>
+      <Speed>1.4</Speed>
+   </Ground>
+   <Ground type="0x3b" id="Cemetery Grass Yellow">
+      <RandomTexture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x2a1</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x2a2</Index>
+         </Texture>
+      </RandomTexture>
+      <BlendPriority>3</BlendPriority>
+   </Ground>
+   <Ground type="0x3d" id="Cemetery Stone Path No Walk">
+      <RandomTexture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x2a3</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x2a4</Index>
+         </Texture>
+      </RandomTexture>
+      <BlendPriority>3</BlendPriority>
+      <RandomOffset/>
+      <NoWalk/>
+   </Ground>
+   <Ground type="0x3e" id="Zombie Grass">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x2e1</Index>
+      </Texture>
+      <BlendPriority>3</BlendPriority>
+      <RandomOffset/>
+   </Ground>
+   <Ground type="0x3f" id="Zombie Dirt">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x2e0</Index>
+      </Texture>
+      <BlendPriority>6</BlendPriority>
+      <RandomOffset/>
+   </Ground>
+   <Ground type="0x4a" id="Fall Grass Shadow">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x32b</Index>
+      </Texture>
+      <BlendPriority>4</BlendPriority>
+      <RandomOffset/>
+      <Edge>
+         <Texture>
+            <File>lofiEnvironment3</File>
+            <Index>0xf2</Index>
+         </Texture>
+      </Edge>
+      <Corner>
+         <Texture>
+            <File>lofiEnvironment3</File>
+            <Index>0xf3</Index>
+         </Texture>
+      </Corner>
+   </Ground>
+   <Ground type="0x4b" id="Cemetery Grass Flowers">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x2a0</Index>
+      </Texture>
+      <BlendPriority>3</BlendPriority>
+   </Ground>
+   <Ground type="0x4c" id="Cemetery Grass Blue Walkable">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x2ee</Index>
+      </Texture>
+      <BlendPriority>2</BlendPriority>
+      <RandomOffset/>
+   </Ground>
+   <Ground type="0x4d" id="Cemetery Grass Blue">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x2ee</Index>
+      </Texture>
+      <BlendPriority>2</BlendPriority>
+      <RandomOffset/>
+      <NoWalk/>
+   </Ground>
+   <Ground type="0x4e" id="Cemetery Dirt Pile">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x2ed</Index>
+      </Texture>
+      <BlendPriority>4</BlendPriority>
+      <RandomOffset/>
+   </Ground>
+   <Ground type="0x4f" id="Fall Grass">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x32b</Index>
+      </Texture>
+      <BlendPriority>5</BlendPriority>
+      <RandomOffset/>
+   </Ground>
+   <Ground type="0x8a" id="Winter Frozen Rock">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x336</Index>
+      </Texture>
+      <BlendPriority>5</BlendPriority>
+      <RandomOffset/>
+   </Ground>
+   <Ground type="0x8b" id="Ice no Blend">
+      <RandomTexture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x1b5</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x1b6</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x1b7</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x1b8</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x1b9</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x1ba</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x1ba</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x1ba</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x1ba</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x1bb</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x1bc</Index>
+         </Texture>
+      </RandomTexture>
+   </Ground>
+   <Ground type="0x8c" id="Ice no Walk">
+      <RandomTexture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x1b5</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x1b6</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x1b7</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x1b8</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x1b9</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x1ba</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x1ba</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x1ba</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x1ba</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x1bb</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x1bc</Index>
+         </Texture>
+      </RandomTexture>
+      <NoWalk/>
+   </Ground>
+   <Ground type="0x8d" id="Japanese Tatami HL">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x353</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x8e" id="Japanese Tatami HR">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x354</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x8f" id="Japanese Tatami VT">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x355</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x71" id="Japanese Tatami VB">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x356</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x0d" id="Japanese Tatami Square">
+      <RandomTexture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x355</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x354</Index>
+         </Texture>
+      </RandomTexture>
+   </Ground>
+   <Ground type="0x0e" id="Japanese Stone Path">
+      <RandomTexture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x357</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x358</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x359</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x35a</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x35b</Index>
+         </Texture>
+      </RandomTexture>
+   </Ground>
+   <Ground type="0x0f" id="Japanese Moss">
+      <SameTypeEdgeMode/>
+      <RandomOffset/>
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x35c</Index>
+      </Texture>
+      <Edge>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x35d</Index>
+         </Texture>
+      </Edge>
+      <InnerCorner>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x35e</Index>
+         </Texture>
+      </InnerCorner>
+      <Corner>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x35e</Index>
+         </Texture>
+      </Corner>
+   </Ground>
+   <Ground type="0x20" id="Forrest Floor">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x11e</Index>
+      </Texture>
+      <RandomOffset/>
+   </Ground>
+   <Ground type="0x27" id="Forrest Floor Edge Rt">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x110</Index>
+      </Texture>
+      <Top>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x104</Index>
+         </Texture>
+      </Top>
+   </Ground>
+   <Ground type="0x28" id="Forrest Floor Edge Lf">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x111</Index>
+      </Texture>
+      <Top>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x105</Index>
+         </Texture>
+      </Top>
+   </Ground>
+   <Ground type="0x29" id="Forrest Floor Edge Bot">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x112</Index>
+      </Texture>
+      <Top>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x106</Index>
+         </Texture>
+      </Top>
+   </Ground>
+   <Ground type="0x2a" id="Forrest Floor Edge Top">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x113</Index>
+      </Texture>
+      <Top>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x107</Index>
+         </Texture>
+      </Top>
+   </Ground>
+   <Ground type="0x37" id="Forrest Floor Corner TR">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x117</Index>
+      </Texture>
+      <Top>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x109</Index>
+         </Texture>
+      </Top>
+   </Ground>
+   <Ground type="0x2b" id="Forrest Floor Corner TL">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x116</Index>
+      </Texture>
+      <Top>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x108</Index>
+         </Texture>
+      </Top>
+   </Ground>
+   <Ground type="0x38" id="Forrest Floor Corner BR">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x115</Index>
+      </Texture>
+      <Top>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x10b</Index>
+         </Texture>
+      </Top>
+   </Ground>
+   <Ground type="0x39" id="Forrest Floor Corner BL">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x114</Index>
+      </Texture>
+      <Top>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x10a</Index>
+         </Texture>
+      </Top>
+   </Ground>
+   <Ground type="0x44" id="Forrest Floor Inner TR">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x118</Index>
+      </Texture>
+      <Top>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x10c</Index>
+         </Texture>
+      </Top>
+   </Ground>
+   <Ground type="0x45" id="Forrest Floor Inner TL">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x119</Index>
+      </Texture>
+      <Top>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x10d</Index>
+         </Texture>
+      </Top>
+   </Ground>
+   <Ground type="0x59" id="Forrest Floor Inner BR">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x11a</Index>
+      </Texture>
+      <Top>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x10e</Index>
+         </Texture>
+      </Top>
+   </Ground>
+   <Ground type="0x5a" id="Forrest Floor Inner BL">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x11b</Index>
+      </Texture>
+      <Top>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x10f</Index>
+         </Texture>
+      </Top>
+   </Ground>
+   <Ground type="0x5b" id="Forrest Floor BlackTop">
+      <Texture>
+         <File>lofiEnvironment3</File>
+         <Index>0xdc</Index>
+      </Texture>
+      <Top>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x11c</Index>
+         </Texture>
+      </Top>
+   </Ground>
+   <Ground type="0x5e" id="Forrest Floor FullBlack">
+      <Texture>
+         <File>lofiEnvironment3</File>
+         <Index>0xdc</Index>
+      </Texture>
+      <Top>
+         <Texture>
+            <File>lofiEnvironment3</File>
+            <Index>0xdc</Index>
+         </Texture>
+      </Top>
+   </Ground>
+   <Ground type="0x5f" id="Forest Dirt">
+      <SameTypeEdgeMode/>
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x13c</Index>
+      </Texture>
+      <Edge>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x13d</Index>
+         </Texture>
+      </Edge>
+      <InnerCorner>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x13e</Index>
+         </Texture>
+      </InnerCorner>
+      <Corner>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x13f</Index>
+         </Texture>
+      </Corner>
+   </Ground>
+   <Ground type="0x86" id="Japanese Moss No Edge">
+      <RandomOffset/>
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x39b</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x87" id="GhostWater Slows">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x171</Index>
+      </Texture>
+      <Sink/>
+      <Speed>0.75</Speed>
+      <Animate dx="0.3">Flow</Animate>
+   </Ground>
+   <Ground type="0x9d" id="Pet Yard Dirt">
+      <SameTypeEdgeMode/>
+      <RandomTexture>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x12c</Index>
+         </Texture>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x14a</Index>
+         </Texture>
+      </RandomTexture>
+      <Edge>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x12d</Index>
+         </Texture>
+      </Edge>
+      <InnerCorner>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x12e</Index>
+         </Texture>
+      </InnerCorner>
+      <Corner>
+         <Texture>
+            <File>lofiEnvironment2</File>
+            <Index>0x12f</Index>
+         </Texture>
+      </Corner>
+   </Ground>
+   <Ground type="0x0a" id="Pet Yard Grass">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x14f</Index>
+      </Texture>
+      <RandomOffset/>
+   </Ground>
+   <Ground type="0x5c" id="Dark Shadow Earth">
+      <RandomTexture>
+         <Texture>
+            <File>lofiEnvironment3</File>
+            <Index>0x100</Index>
+         </Texture>
+         <Texture>
+            <File>lofiEnvironment3</File>
+            <Index>0x100</Index>
+         </Texture>
+         <Texture>
+            <File>lofiEnvironment3</File>
+            <Index>0x100</Index>
+         </Texture>
+         <Texture>
+            <File>lofiEnvironment3</File>
+            <Index>0x100</Index>
+         </Texture>
+         <Texture>
+            <File>lofiEnvironment3</File>
+            <Index>0x101</Index>
+         </Texture>
+         <Texture>
+            <File>lofiEnvironment3</File>
+            <Index>0x102</Index>
+         </Texture>
+         <Texture>
+            <File>lofiEnvironment3</File>
+            <Index>0x103</Index>
+         </Texture>
+         <Texture>
+            <File>lofiEnvironment3</File>
+            <Index>0x104</Index>
+         </Texture>
+         <Texture>
+            <File>lofiEnvironment3</File>
+            <Index>0x105</Index>
+         </Texture>
+      </RandomTexture>
+      <BlendPriority>1</BlendPriority>
+   </Ground>
+   <Ground type="0xdb" id="Earth Light">
+      <RandomTexture>
+         <Texture>
+            <File>lofiEnvironment3</File>
+            <Index>0x106</Index>
+         </Texture>
+         <Texture>
+            <File>lofiEnvironment3</File>
+            <Index>0x106</Index>
+         </Texture>
+         <Texture>
+            <File>lofiEnvironment3</File>
+            <Index>0x106</Index>
+         </Texture>
+         <Texture>
+            <File>lofiEnvironment3</File>
+            <Index>0x107</Index>
+         </Texture>
+         <Texture>
+            <File>lofiEnvironment3</File>
+            <Index>0x108</Index>
+         </Texture>
+         <Texture>
+            <File>lofiEnvironment3</File>
+            <Index>0x109</Index>
+         </Texture>
+      </RandomTexture>
+      <BlendPriority>0</BlendPriority>
+   </Ground>
+   <Ground type="0xc2" id="Earthy Grass">
+      <RandomTexture>
+         <Texture>
+            <File>lofiEnvironment3</File>
+            <Index>0x10a</Index>
+         </Texture>
+         <Texture>
+            <File>lofiEnvironment3</File>
+            <Index>0x10a</Index>
+         </Texture>
+         <Texture>
+            <File>lofiEnvironment3</File>
+            <Index>0x10a</Index>
+         </Texture>
+         <Texture>
+            <File>lofiEnvironment3</File>
+            <Index>0x13d</Index>
+         </Texture>
+         <Texture>
+            <File>lofiEnvironment3</File>
+            <Index>0x13e</Index>
+         </Texture>
+      </RandomTexture>
+      <BlendPriority>2</BlendPriority>
+   </Ground>
+   <Ground type="0x5d" id="Earth Tile Dark">
+      <RandomTexture>
+         <Texture>
+            <File>lofiEnvironment3</File>
+            <Index>0x123</Index>
+         </Texture>
+         <Texture>
+            <File>lofiEnvironment3</File>
+            <Index>0x124</Index>
+         </Texture>
+         <Texture>
+            <File>lofiEnvironment3</File>
+            <Index>0x125</Index>
+         </Texture>
+         <Texture>
+            <File>lofiEnvironment3</File>
+            <Index>0x126</Index>
+         </Texture>
+      </RandomTexture>
+      <BlendPriority>1</BlendPriority>
+   </Ground>
+   <Ground type="0xb0" id="Earth Tile">
+      <Texture>
+         <File>lofiEnvironment3</File>
+         <Index>0x122</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xc1" id="Earth Tile 2">
+      <Texture>
+         <File>lofiEnvironment3</File>
+         <Index>0x127</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xdd" id="Roman Rug">
+      <SameTypeEdgeMode/>
+      <Texture>
+         <File>lofiEnvironment3</File>
+         <Index>0x130</Index>
+      </Texture>
+      <Edge>
+         <Texture>
+            <File>lofiEnvironment3</File>
+            <Index>0x131</Index>
+         </Texture>
+      </Edge>
+      <InnerCorner>
+         <Texture>
+            <File>lofiEnvironment3</File>
+            <Index>0x132</Index>
+         </Texture>
+      </InnerCorner>
+      <Corner>
+         <Texture>
+            <File>lofiEnvironment3</File>
+            <Index>0x133</Index>
+         </Texture>
+      </Corner>
+   </Ground>
+   <Ground type="0xde" id="Golden Earth Sand">
+      <Texture>
+         <File>lofiEnvironment3</File>
+         <Index>0x141</Index>
+      </Texture>
+      <Speed>0.9</Speed>
+      <BlendPriority>4</BlendPriority>
+   </Ground>
+   <Ground type="0xdf" id="Red Earth Water">
+      <Texture>
+         <File>lofiEnvironment3</File>
+         <Index>0x140</Index>
+      </Texture>
+      <Sink/>
+      <Speed>0.75</Speed>
+      <Animate dx=".4" dy=".4">Wave</Animate>
+      <BlendPriority>-10</BlendPriority>
+   </Ground>
+   <Ground type="0xdc" id="Arena Dirt">
+      <Texture>
+         <File>lofiEnvironment3</File>
+         <Index>0x150</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xd7" id="Arena Moss">
+      <Texture>
+         <File>lofiEnvironment3</File>
+         <Index>0x165</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xd8" id="WhirlPool Start Lf">
+      <Texture>
+         <File>lofiEnvironment3</File>
+         <Index>0xdf</Index>
+      </Texture>
+      <Sink/>
+      <Animate dx="1.5">Flow</Animate>
+      <Push/>
+      <XOffset>.0625</XOffset>
+      <YOffset>.0625</YOffset>
+   </Ground>
+   <Ground type="0xd9" id="WhirlPool Start Up">
+      <Texture>
+         <File>lofiEnvironment3</File>
+         <Index>0xde</Index>
+      </Texture>
+      <Sink/>
+      <Animate dy="1.5">Flow</Animate>
+      <Push/>
+      <XOffset>.0625</XOffset>
+      <YOffset>.0625</YOffset>
+   </Ground>
+   <Ground type="0xda" id="WhirlPool Start Dn">
+      <Texture>
+         <File>lofiEnvironment3</File>
+         <Index>0xde</Index>
+      </Texture>
+      <Sink/>
+      <Animate dy="-1.5">Flow</Animate>
+      <Push/>
+      <XOffset>.0625</XOffset>
+      <YOffset>.0625</YOffset>
+   </Ground>
+   <Ground type="0x0100" id="Arena Edge T">
+      <Texture>
+         <File>lofiEnvironment3</File>
+         <Index>0x159</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x0101" id="Arena Edge TR">
+      <Texture>
+         <File>lofiEnvironment3</File>
+         <Index>0x15a</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x0102" id="Arena Edge R">
+      <Texture>
+         <File>lofiEnvironment3</File>
+         <Index>0x15b</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x0103" id="Arena Edge BR">
+      <Texture>
+         <File>lofiEnvironment3</File>
+         <Index>0x15c</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x0104" id="Arena Edge B">
+      <Texture>
+         <File>lofiEnvironment3</File>
+         <Index>0x15d</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x0105" id="Arena Edge BL">
+      <Texture>
+         <File>lofiEnvironment3</File>
+         <Index>0x15e</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x0106" id="Arena Edge L">
+      <Texture>
+         <File>lofiEnvironment3</File>
+         <Index>0x15f</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x0107" id="Arena Edge TL">
+      <Texture>
+         <File>lofiEnvironment3</File>
+         <Index>0x160</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x0108" id="Arena Moss TL">
+      <Texture>
+         <File>lofiEnvironment3</File>
+         <Index>0x161</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x0109" id="Arena Moss T">
+      <Texture>
+         <File>lofiEnvironment3</File>
+         <Index>0x162</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x010a" id="Arena Moss TR">
+      <Texture>
+         <File>lofiEnvironment3</File>
+         <Index>0x163</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x010b" id="Arena Moss L">
+      <Texture>
+         <File>lofiEnvironment3</File>
+         <Index>0x164</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x010c" id="Arena Moss R">
+      <Texture>
+         <File>lofiEnvironment3</File>
+         <Index>0x166</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x010d" id="Arena Moss BL">
+      <Texture>
+         <File>lofiEnvironment3</File>
+         <Index>0x167</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x010e" id="Arena Moss B">
+      <Texture>
+         <File>lofiEnvironment3</File>
+         <Index>0x168</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x010f" id="Arena Moss BR">
+      <Texture>
+         <File>lofiEnvironment3</File>
+         <Index>0x169</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x0110" id="Arena Shadow Ground">
+      <Texture>
+         <File>lofiEnvironment3</File>
+         <Index>0x16b</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x0111" id="Arena Shadow Ground T">
+      <Texture>
+         <File>lofiEnvironment3</File>
+         <Index>0x16c</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x0112" id="Arena Shadow Ground L">
+      <Texture>
+         <File>lofiEnvironment3</File>
+         <Index>0x16d</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x0113" id="Arena Shadow Ground D">
+      <Texture>
+         <File>lofiEnvironment3</File>
+         <Index>0x16e</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x0114" id="Arena Shadow Ground R">
+      <Texture>
+         <File>lofiEnvironment3</File>
+         <Index>0x16f</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x0115" id="Arena Edge Grass">
+      <Texture>
+         <File>lofiEnvironment3</File>
+         <Index>0x172</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x0116" id="Arena Shadow Ground TR">
+      <Texture>
+         <File>lofiEnvironment3</File>
+         <Index>0x17c</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x0117" id="Arena Shadow Ground BL">
+      <Texture>
+         <File>lofiEnvironment3</File>
+         <Index>0x17d</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x0118" id="Arena Shadow Ground BR">
+      <Texture>
+         <File>lofiEnvironment3</File>
+         <Index>0x17e</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x0119" id="Arena Shadow Ground TL">
+      <Texture>
+         <File>lofiEnvironment3</File>
+         <Index>0x17f</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x011a" id="Arena Edge Grass Outer BL">
+      <Texture>
+         <File>lofiEnvironment3</File>
+         <Index>0x173</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x011b" id="Arena Edge Grass Outer BR">
+      <Texture>
+         <File>lofiEnvironment3</File>
+         <Index>0x174</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x011c" id="Arena Edge Grass Outer TR">
+      <Texture>
+         <File>lofiEnvironment3</File>
+         <Index>0x175</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x011d" id="Arena Edge Grass Outer TL">
+      <Texture>
+         <File>lofiEnvironment3</File>
+         <Index>0x176</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x011e" id="Red Earth Water Deep">
+      <Texture>
+         <File>lofiEnvironment3</File>
+         <Index>0x144</Index>
+      </Texture>
+      <Sink/>
+      <Speed>0.75</Speed>
+      <Animate dx=".4" dy=".4">Wave</Animate>
+      <BlendPriority>-12</BlendPriority>
+      <NoWalk/>
+   </Ground>
+   <Ground type="0x011f" id="Evil Water">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x09</Index>
+      </Texture>
+      <MinDamage>50</MinDamage>
+      <MaxDamage>60</MaxDamage>
+      <Animate dx=".33" dy=".33">Flow</Animate>
+      <Sink/>
+      <Speed>.666</Speed>
+   </Ground>
+   <Ground type="0x012a" id="Group Floor Immovable Object">
+      <Texture>
+         <File>lofiEnvironment3</File>
+         <Index>0x144</Index>
+      </Texture>
+      <NoWalk/>
+   </Ground>
+   <Ground type="0x012b" id="Puke Water">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x3fa</Index>
+      </Texture>
+      <MinDamage>50</MinDamage>
+      <MaxDamage>60</MaxDamage>
+      <BlendPriority>-3</BlendPriority>
+      <Speed>1.2</Speed>
+   </Ground>
+   <Ground type="0x012c" id="New Grass">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x3fb</Index>
+      </Texture>
+      <BlendPriority>-2</BlendPriority>
+   </Ground>
+   <Ground type="0x012d" id="shtrs broken stair 1">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x42e</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x012e" id="shtrs broken stair 2">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x42f</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x012f" id="shtrs broken stair 3">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x430</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x013a" id="shtrs broken stair 4">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x431</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x013b" id="shtrs broken stair 5">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x432</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x013c" id="shtrs broken stair 6">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x433</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x013d" id="shtrs broken stair 7">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x434</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x013e" id="shtrs broken stair 8">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x435</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x013f" id="shtrs broken stair 9">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x436</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x014a" id="shtrs Shattered Floor">
+      <RandomTexture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x467</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x468</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x469</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x46a</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x46b</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x46c</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x46d</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x46e</Index>
+         </Texture>
+      </RandomTexture>
+      <BlendPriority>1</BlendPriority>
+   </Ground>
+   <Ground type="0x014b" id="shtrs Disaster Floor">
+      <RandomTexture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x46f</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x470</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x471</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x472</Index>
+         </Texture>
+      </RandomTexture>
+      <BlendPriority>1</BlendPriority>
+   </Ground>
+   <Ground type="0x014c" id="shtrs Maze Floor 1">
+      <Texture>
+         <File>lofiEnvironment3</File>
+         <Index>0xdc</Index>
+      </Texture>
+      <Top>
+         <Texture>
+            <File>lofiEnvironment3</File>
+            <Index>0xdc</Index>
+         </Texture>
+      </Top>
+      <NoWalk/>
+   </Ground>
+   <Ground type="0x014d" id="shtrs Maze Floor 2">
+      <Texture>
+         <File>lofiEnvironment3</File>
+         <Index>0xdc</Index>
+      </Texture>
+      <Top>
+         <Texture>
+            <File>lofiEnvironment3</File>
+            <Index>0xdc</Index>
+         </Texture>
+      </Top>
+   </Ground>
+   <Ground type="0x014e" id="shtrs Pure Evil">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x447</Index>
+      </Texture>
+      <Animate dx=".35">Flow</Animate>
+      <RandomOffset/>
+      <NoWalk/>
+      <BlendPriority>1</BlendPriority>
+   </Ground>
+   <Ground type="0x014f" id="shtrs Bridge">
+      <RandomTexture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x473</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x474</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x475</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x476</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x477</Index>
+         </Texture>
+      </RandomTexture>
+      <BlendPriority>1</BlendPriority>
+   </Ground>
+   <Ground type="0x015a" id="Hot Lava">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x483</Index>
+      </Texture>
+      <MinDamage>70</MinDamage>
+      <MaxDamage>80</MaxDamage>
+      <Animate dx=".33" dy=".33">Flow</Animate>
+      <Sink/>
+      <Speed>.777</Speed>
+   </Ground>
+   <Ground type="0x015b" id="Pure Evil">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x447</Index>
+      </Texture>
+      <MinDamage>70</MinDamage>
+      <MaxDamage>80</MaxDamage>
+      <Animate dx=".35">Flow</Animate>
+      <Sink/>
+      <RandomOffset/>
+      <Speed>.333</Speed>
+      <BlendPriority>1</BlendPriority>
+   </Ground>
+   <Ground type="0x08" id="Dragon Tile Purple">
+      <RandomTexture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x35f</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x360</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x35f</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x360</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x361</Index>
+         </Texture>
+      </RandomTexture>
+   </Ground>
+   <Ground type="0x09" id="Dragon Tile Red">
+      <RandomTexture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x362</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x362</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x363</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x363</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x364</Index>
+         </Texture>
+      </RandomTexture>
+   </Ground>
+   <Ground type="0x0b" id="Dragon Tile Green">
+      <RandomTexture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x36a</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x36a</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x36b</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x36b</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x36c</Index>
+         </Texture>
+      </RandomTexture>
+   </Ground>
+   <Ground type="0x10" id="Dragon Tile Blue">
+      <RandomTexture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x36d</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x36d</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x36e</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x36e</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x36f</Index>
+         </Texture>
+      </RandomTexture>
+   </Ground>
+   <Ground type="0x11" id="Dragon Tile Cream">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x370</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x12" id="Dragon Tile Cream 2">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x371</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x751d" id="Flowing Sand1">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x08</Index>
+      </Texture>
+      <Animate dx="2.0">Flow</Animate>
+      <Push/>
+      <XOffset>.0625</XOffset>
+      <YOffset>.0625</YOffset>
+   </Ground>
+   <Ground type="0x751e" id="Flowing Sand2">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x08</Index>
+      </Texture>
+      <Animate dx="-2.0">Flow</Animate>
+      <Push/>
+      <XOffset>.0625</XOffset>
+      <YOffset>.0625</YOffset>
+   </Ground>
+   <Ground type="0x751f" id="Flowing Sand3">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x08</Index>
+      </Texture>
+      <Animate dy="2.0">Flow</Animate>
+      <Push/>
+      <XOffset>.0625</XOffset>
+      <YOffset>.0625</YOffset>
+   </Ground>
+   <Ground type="0x7520" id="Flowing Sand4">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x08</Index>
+      </Texture>
+      <Animate dy="-2.0">Flow</Animate>
+      <Push/>
+      <XOffset>.0625</XOffset>
+      <YOffset>.0625</YOffset>
+   </Ground>
+   <Ground type="0x7525" id="Not Flowing Sand">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x08</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x7526" id="lod Green Sand LR">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x371</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x7527" id="lod Green Sand RL">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x371</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x7528" id="lod Red Sand LR">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x371</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x7529" id="lod Red Sand RL">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x371</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x752a" id="lod Blue Sand LR">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x371</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x752b" id="lod Blue Sand RL">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x371</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x752c" id="lod Purple Sand LR">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x371</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x752d" id="lod Purple Sand RL">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x371</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x21" id="Red Quad Lava">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x28</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x22a1" id="Blue Quad Ice">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x452</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x22a0" id="Ice Bomb Slippery">
+      <RandomTexture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x1b5</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x1b6</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x1b7</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x1b8</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x1b9</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x1ba</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x1ba</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x1ba</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x1ba</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x1bb</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x1bc</Index>
+         </Texture>
+      </RandomTexture>
+      <BlendPriority>20</BlendPriority>
+      <Speed>.888</Speed>
+   </Ground>
+   <Ground type="0x222e" id="Nexus Shop Tile tg">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x484</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x258e" id="Nexus Shop Tile Holiday">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x493</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x2594" id="lod Golden Sand">
+      <Texture>
+         <File>lofiEnvironment3</File>
+         <Index>0xcc</Index>
+      </Texture>
+      <BlendPriority>30</BlendPriority>
+      <NoWalk/>
+   </Ground>
+   <Ground type="0x2595" id="lod Red Tile">
+      <RandomTexture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x362</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x362</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x363</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x363</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x364</Index>
+         </Texture>
+      </RandomTexture>
+      <MinDamage>70</MinDamage>
+      <MaxDamage>80</MaxDamage>
+   </Ground>
+   <Ground type="0x2596" id="lod Purple Tile">
+      <RandomTexture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x35f</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x360</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x35f</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x360</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x361</Index>
+         </Texture>
+      </RandomTexture>
+      <MinDamage>70</MinDamage>
+      <MaxDamage>80</MaxDamage>
+   </Ground>
+   <Ground type="0x2597" id="lod Blue Tile">
+      <RandomTexture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x36d</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x36d</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x36e</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x36e</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x36f</Index>
+         </Texture>
+      </RandomTexture>
+      <MinDamage>70</MinDamage>
+      <MaxDamage>80</MaxDamage>
+   </Ground>
+   <Ground type="0x2598" id="lod Green Tile">
+      <RandomTexture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x36a</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x36a</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x36b</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x36b</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x36c</Index>
+         </Texture>
+      </RandomTexture>
+      <MinDamage>70</MinDamage>
+      <MaxDamage>80</MaxDamage>
+   </Ground>
+   <Ground type="0x2599" id="lod Cream Tile">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x371</Index>
+      </Texture>
+      <MinDamage>70</MinDamage>
+      <MaxDamage>80</MaxDamage>
+   </Ground>
+
+</GroundTypes>

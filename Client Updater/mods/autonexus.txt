@@ -1,0 +1,34 @@
+; _-names
+#set charHp "CHANGE1"
+#set charMaxHp "CHANGE2"
+#set funcEscape "escape"
+
+; code
+	pop
+	getlocal0
+	getlex              QName(PackageNamespace(""), "map_")
+	getproperty         QName(PackageNamespace(""), "player_")
+	ifne				END
+	
+	getlex              QName(PackageNamespace(""), "map_")
+	getproperty         QName(PackageNamespace(""), "name_")
+	pushstring			"Nexus"
+	ifeq				END
+	
+	getlex              QName(PackageNamespace(""), "map_")
+	getproperty         QName(PackageNamespace(""), "name_")
+	pushstring			"Arena"
+	ifeq				END
+	
+	getlex				QName(PackageNamespace(""), $"charHp")
+	getlex				QName(PackageNamespace(""), $"charMaxHp")
+	convert_d
+	divide
+	pushdouble 			CHANGE3
+	ifgt				END
+	getlex              QName(PackageNamespace(""), "map_")
+	getproperty         QName(PackageNamespace(""), "gs_")
+	getproperty         QName(PackageNamespace(""), "gsc_")
+	callpropvoid        QName(PackageNamespace(""), $"funcEscape"), 0
+END:
+	pushtrue

@@ -1,0 +1,76 @@
+;_-names
+#set hotkeyClass "CHANGE4"   ;"_-aJ" ;found in com/company/assembleegameclient/game/_-name . Search "clearInput". Added into class with trat slot "outstandingBuy_"
+
+;code
+	  getlocal1
+      getproperty         QName(PackageNamespace(""), "name_")
+      pushstring          "Realm"
+      ifeq                SKIP
+	  
+      getlocal1
+      getproperty         QName(PackageNamespace(""), "name_")
+      pushstring          "Pet Yard"
+      ifeq                SKIP
+	  
+      getlocal1
+      getproperty         QName(PackageNamespace(""), "name_")
+      pushstring          "Cloth Bazaar Portal"
+      ifeq                SKIP
+	  
+	  getlocal1
+      getproperty         QName(PackageNamespace(""), "name_")
+      pushstring          "Nexus"
+      ifeq                SKIP
+	  
+	  getlocal1
+      getproperty         QName(PackageNamespace(""), "name_")
+	  callproperty        QName(Namespace("http://adobe.com/AS3/2006/builtin"), "toLowerCase"), 0
+	  coerce_s
+      pushstring          "vault"
+	  callproperty	      QName(Namespace("http://adobe.com/AS3/2006/builtin"), "search"), 1
+	  pushint             0
+      ifge                VAULT
+
+      getlocal1
+      getproperty         QName(PackageNamespace(""), "name_")
+      pushstring          "Guild Hall"
+      ifeq                SKIP
+	  
+      getlocal1
+      getproperty         QName(PackageNamespace(""), "name_")
+      pushstring          "Pirate Cave Portal"
+      ifeq                SKIP
+	  
+      getlocal1
+      getproperty         QName(PackageNamespace(""), "name_")
+	  coerce_s
+      pushstring          "NexusPortal."
+	  callproperty	      QName(Namespace("http://adobe.com/AS3/2006/builtin"), "search"), 1
+	  pushint             0
+      ifge                REALM
+
+
+	  jump				  DUNGEON
+	  
+REALM:
+      getlex              QName(PackageNamespace("com.company.assembleegameclient.game"), $"hotkeyClass")
+      getlocal            8 ;<-- may need updated
+      setproperty         QName(PackageNamespace(""), "recon")
+	  
+	  jump				  SKIP
+	  
+DUNGEON:
+      getlex              QName(PackageNamespace("com.company.assembleegameclient.game"), $"hotkeyClass")
+      getlocal            8 ;<-- may need updated
+      setproperty         QName(PackageNamespace(""), "drecon")
+	  
+	  jump				  SKIP
+	  
+VAULT:
+      getlex              QName(PackageNamespace("com.company.assembleegameclient.game"), $"hotkeyClass")
+      getlocal            8 ;<-- may need updated
+      setproperty         QName(PackageNamespace(""), "vaultrecon")
+	  
+	  jump				  SKIP
+
+SKIP:

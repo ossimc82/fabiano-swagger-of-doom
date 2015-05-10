@@ -1,0 +1,87 @@
+.KBPAY_waitDialogContainer {
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	z-index: 99999;
+	background: url(../img/loading.gif) no-repeat center center;
+	background-color: rgba(255, 255, 255, 0.5);
+	text-align: center;
+	left: 0px;
+	top: 0px;
+}
+
+.KBPAY_dialogContainer {
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	z-index: 99999;
+	background: url(../img/curtain.png);
+	text-align: center;
+	left: 0px;
+	top: 0px;
+}
+
+.KBPAY_dialog {
+	background: #fff;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	border: 1px solid #4f4e4e;
+	color: #fff;
+	font: normal 11px/15px 'Lucida Sans Unicode', Helvetica, Arial, sans-serif;
+	display: inline-block;
+	text-align: left;
+}
+
+.KBPAY_dialog .KBPAY_titleBar {
+	padding: 2px;
+	height: 22px;
+	background: url(../img/title_grad.png) no-repeat center center #212121;
+	border-bottom: 1px solid #282727;
+}
+
+.KBPAY_dialog .KBPAY_titleBar .KBPAY_titleContainer {
+	color: #fff;
+	text-shadow: 1px 1px 1px #000;
+	font: normal 16px/22px 'Lucida Sans Unicode', Helvetica, Arial, sans-serif;
+	text-align: center;
+	height: 100%;
+}
+
+.KBPAY_dialog .KBPAY_bodyContainer {
+	background: url(../img/dialogBottomBorder.png) repeat-x center bottom white;
+	color: #000;
+	padding: 0px;
+	overflow:visible;
+}
+
+.KBPAY_dialog .KBPAY_closeButton {
+	float: right;
+	width: 16px;
+	height: 16px;
+	background: url(../img/ico_close.png) center 0px no-repeat;
+	margin: 2px;
+}
+
+.KBPAY_dialog .KBPAY_closeButton:hover {
+	background: url(../img/ico_close.png) center -16px no-repeat;
+}
+
+.KBPAY_IframeDialog{
+	margin:auto;
+	z-index:99999;
+	display:block;
+	position:absolute;
+}
+
+.KBPAY_IframeDialogCurtain {
+	position:absolute;
+	margin:auto;
+	display:block;
+	top:0px;
+	left:0px;
+	width:100%;
+	z-index:99998;
+	opacity: 0.8;
+	filter:alpha(opacity=80);
+}
