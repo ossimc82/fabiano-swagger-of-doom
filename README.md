@@ -6,6 +6,8 @@ You are free to use this source as long as u credit this guys:
 - Trapped
 - Donran
 - creepylava
+- Krazyshank
+- Barm
 - Kieron for making 1 behavior
 - everyone else that have contributed to this project on mpgh or any other site
 
