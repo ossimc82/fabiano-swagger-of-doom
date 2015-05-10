@@ -33,6 +33,7 @@ namespace wServer.realm
                 CleanText = text.ToSafeText()
             }, p => !p.Ignored.Contains(src.AccountId));
             log.InfoFormat("[{0}({1})] <{2}> {3}", src.Owner.Name, src.Owner.Id, src.Name, text);
+            src.Owner.ChatReceived(text);
         }
 
         public void SayGuild(Player src, string text)

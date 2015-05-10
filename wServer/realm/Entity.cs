@@ -8,6 +8,7 @@ using log4net;
 using wServer.logic;
 using wServer.realm.entities;
 using wServer.realm.entities.player;
+using wServer.logic.transitions;
 
 #endregion
 
@@ -148,6 +149,14 @@ namespace wServer.realm
             if (CurrentState == null) return;
             while (CurrentState.States.Count > 0)
                 CurrentState = CurrentState = CurrentState.States[0];
+        }
+
+        public void OnChatTextReceived(string text)
+        {
+            State state = CurrentState;
+            if (state != null)
+                foreach (var t in state.Transitions.OfType<ChatTransition>())
+                    t.OnChatReceived(text);
         }
 
         private void TickState(RealmTime time)

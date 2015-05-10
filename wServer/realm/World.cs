@@ -466,6 +466,14 @@ namespace wServer.realm
             FromWorldMap(new MemoryStream(Json2Wmap.Convert(Manager, json)));
         }
 
+        public void ChatReceived(string text)
+        {
+            foreach (var en in Enemies)
+                en.Value.OnChatTextReceived(text);
+            foreach (var en in StaticObjects)
+                en.Value.OnChatTextReceived(text);
+        }
+
         public virtual void Dispose()
         {
             Map.Dispose();

@@ -156,6 +156,7 @@
     <Compile Include="logic\db\BehaviorDb.OryxCastle.cs" />
     <Compile Include="logic\db\BehaviorDb.Pentaract.cs" />
     <Compile Include="logic\db\BehaviorDb.Sphinx.cs" />
+    <Compile Include="logic\transitions\ChatTransition.cs" />
     <Compile Include="logic\transitions\EntitiesNotExistsTransition.cs" />
     <Compile Include="logic\behaviors\RealmPortalDrop.cs" />
     <Compile Include="logic\behaviors\InvisiToss.cs" />

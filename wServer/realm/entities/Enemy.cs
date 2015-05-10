@@ -147,8 +147,8 @@ namespace wServer.realm.entities
                 if (projectile.Descriptor.ArmorPiercing)
                     def = 0;
                 int dmg = (int) StatsManager.GetDefenseDamage(this, projectile.Damage, def);
-                //if (!HasConditionEffect(ConditionEffects.Invulnerable))
-                //    HP -= dmg;
+                if (!HasConditionEffect(ConditionEffects.Invulnerable))
+                    HP -= dmg;
                 foreach (ConditionEffect effect in projectile.Descriptor.Effects)
                 {
                     if (effect.Effect == ConditionEffectIndex.Stunned && ObjectDesc.StunImmune ||
@@ -172,7 +172,7 @@ namespace wServer.realm.entities
                 {
                     Death(time);
                 }
-                //UpdateCount++;
+                UpdateCount++;
                 return true;
             }
             return false;
