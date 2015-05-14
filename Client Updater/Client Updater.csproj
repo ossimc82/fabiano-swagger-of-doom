@@ -80,103 +80,109 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="rabcdasm_files\01.bat" />
-    <None Include="rabcdasm_files\02.bat" />
-    <None Include="rabcdasm_files\03 xml export.bat" />
-    <None Include="rabcdasm_files\abcexport.d">
+    <None Include="rabcdasm\01.bat">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="rabcdasm_files\abcfile.d">
+    <None Include="rabcdasm\02.bat">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="rabcdasm_files\abcreplace.d">
+    <None Include="rabcdasm\03 xml export.bat">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="rabcdasm_files\asasm.hrc">
+    <None Include="rabcdasm\abcexport.d">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="rabcdasm_files\asprogram.d">
+    <None Include="rabcdasm\abcfile.d">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="rabcdasm_files\assembler.d">
+    <None Include="rabcdasm\abcreplace.d">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="rabcdasm_files\autodata.d">
+    <None Include="rabcdasm\asasm.hrc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="rabcdasm_files\build_rabcdasm.d">
+    <None Include="rabcdasm\asprogram.d">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="rabcdasm_files\CHANGELOG.md">
+    <None Include="rabcdasm\assembler.d">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="rabcdasm_files\common.d">
+    <None Include="rabcdasm\autodata.d">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="rabcdasm_files\COPYING">
+    <None Include="rabcdasm\build_rabcdasm.d">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="rabcdasm_files\deimos\lzma.d" />
-    <None Include="rabcdasm_files\deimos\lzma_\base.d" />
-    <None Include="rabcdasm_files\deimos\lzma_\bcj.d" />
-    <None Include="rabcdasm_files\deimos\lzma_\block.d" />
-    <None Include="rabcdasm_files\deimos\lzma_\check.d" />
-    <None Include="rabcdasm_files\deimos\lzma_\container.d" />
-    <None Include="rabcdasm_files\deimos\lzma_\delta.d" />
-    <None Include="rabcdasm_files\deimos\lzma_\filter.d" />
-    <None Include="rabcdasm_files\deimos\lzma_\hardware.d" />
-    <None Include="rabcdasm_files\deimos\lzma_\index.d" />
-    <None Include="rabcdasm_files\deimos\lzma_\index_hash.d" />
-    <None Include="rabcdasm_files\deimos\lzma_\lzma.d" />
-    <None Include="rabcdasm_files\deimos\lzma_\stream_flags.d" />
-    <None Include="rabcdasm_files\deimos\lzma_\version_.d" />
-    <None Include="rabcdasm_files\deimos\lzma_\vli.d" />
-    <None Include="rabcdasm_files\disassembler.d">
+    <None Include="rabcdasm\CHANGELOG.md">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="rabcdasm_files\liblzma.lib">
+    <None Include="rabcdasm\common.d">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="rabcdasm_files\lzma.d">
+    <None Include="rabcdasm\COPYING">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="rabcdasm_files\main.o">
+    <None Include="rabcdasm\deimos\lzma.d" />
+    <None Include="rabcdasm\deimos\lzma_\base.d" />
+    <None Include="rabcdasm\deimos\lzma_\bcj.d" />
+    <None Include="rabcdasm\deimos\lzma_\block.d" />
+    <None Include="rabcdasm\deimos\lzma_\check.d" />
+    <None Include="rabcdasm\deimos\lzma_\container.d" />
+    <None Include="rabcdasm\deimos\lzma_\delta.d" />
+    <None Include="rabcdasm\deimos\lzma_\filter.d" />
+    <None Include="rabcdasm\deimos\lzma_\hardware.d" />
+    <None Include="rabcdasm\deimos\lzma_\index.d" />
+    <None Include="rabcdasm\deimos\lzma_\index_hash.d" />
+    <None Include="rabcdasm\deimos\lzma_\lzma.d" />
+    <None Include="rabcdasm\deimos\lzma_\stream_flags.d" />
+    <None Include="rabcdasm\deimos\lzma_\version_.d" />
+    <None Include="rabcdasm\deimos\lzma_\vli.d" />
+    <None Include="rabcdasm\disassembler.d">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="rabcdasm_files\Makefile.win">
+    <None Include="rabcdasm\liblzma.lib">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="rabcdasm_files\murmurhash2a.d">
+    <None Include="rabcdasm\lzma.d">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="rabcdasm_files\rabcasm.d">
+    <None Include="rabcdasm\main.o">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="rabcdasm_files\rabcdasm.d">
+    <None Include="rabcdasm\Makefile.win">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="rabcdasm_files\README.md">
+    <None Include="rabcdasm\murmurhash2a.d">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="rabcdasm_files\swf7zcompress.d">
+    <None Include="rabcdasm\rabcasm.d">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="rabcdasm_files\swfbinexport.d">
+    <None Include="rabcdasm\rabcdasm.d">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="rabcdasm_files\swfbinreplace.d">
+    <None Include="rabcdasm\README.md">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="rabcdasm_files\swfdecompress.d">
+    <None Include="rabcdasm\swf7zcompress.d">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="rabcdasm_files\swffile.d">
+    <None Include="rabcdasm\swfbinexport.d">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="rabcdasm_files\swflzmacompress.d">
+    <None Include="rabcdasm\swfbinreplace.d">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="rabcdasm_files\zlibx.d">
+    <None Include="rabcdasm\swfdecompress.d">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="rabcdasm\swffile.d">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="rabcdasm\swflzmacompress.d">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="rabcdasm\zlibx.d">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
@@ -358,37 +364,37 @@
     <Content Include="Orape.jar">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rabcdasm_files\abcexport.exe">
+    <Content Include="rabcdasm\abcexport.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rabcdasm_files\abcreplace.exe">
+    <Content Include="rabcdasm\abcreplace.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rabcdasm_files\liblzma.dll">
+    <Content Include="rabcdasm\liblzma.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rabcdasm_files\rabcasm.exe">
+    <Content Include="rabcdasm\rabcasm.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rabcdasm_files\rabcdasm.exe">
+    <Content Include="rabcdasm\rabcdasm.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rabcdasm_files\rabcdasm_easy.exe">
+    <Content Include="rabcdasm\rabcdasm_easy.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rabcdasm_files\swf7zcompress.exe">
+    <Content Include="rabcdasm\swf7zcompress.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rabcdasm_files\swfbinexport.exe">
+    <Content Include="rabcdasm\swfbinexport.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rabcdasm_files\swfbinreplace.exe">
+    <Content Include="rabcdasm\swfbinreplace.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rabcdasm_files\swfdecompress.exe">
+    <Content Include="rabcdasm\swfdecompress.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rabcdasm_files\swflzmacompress.exe">
+    <Content Include="rabcdasm\swflzmacompress.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

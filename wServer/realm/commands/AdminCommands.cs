@@ -27,7 +27,6 @@ namespace wServer.realm.commands
             Entity en = Entity.Resolve(player.Manager, "Zombie Wizard");
             en.Move(player.X, player.Y);
             player.Owner.EnterWorld(en);
-            player.ObjectType = en.ObjectType;
             player.UpdateCount++;
             //player.Client.SendPacket(new DeathPacket
             //{
@@ -53,7 +52,7 @@ namespace wServer.realm.commands
             try
             {
                 if (!String.IsNullOrWhiteSpace(args[0]))
-                    player.Manager.FindPlayer(args[0]).Client.GiftCodeReceived("LevelUp");
+                    player.Manager.FindPlayer(args[0])?.Client.GiftCodeReceived("LevelUp");
                 else
                     player.Client.GiftCodeReceived("LevelUp");
             }

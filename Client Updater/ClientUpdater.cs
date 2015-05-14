@@ -215,22 +215,22 @@ namespace wServer
 
         private void Decompile()
         {
-            orginalFilename = "client-orginal(" + DateTime.Now.ToString().Replace(':', '-') + ").swf";
+            orginalFilename = "client-orginal(" + DateTime.Now.Ticks + ").swf";
             File.Copy(Environment.CurrentDirectory + @"\client.swf", Environment.CurrentDirectory + "\\" + orginalFilename);
             //swfdecompress client.swf
             //abcexport client.swf
             //rabcdasm client-1.abc
             UpdateLabel("Decompiling");
-            Process p = Process.Start(new ProcessStartInfo(Environment.CurrentDirectory + @"\rabcdasm_files\swfdecompress.exe", "client.swf"));
+            Process p = Process.Start(new ProcessStartInfo(Environment.CurrentDirectory + @"\rabcdasm\swfdecompress.exe", "client.swf"));
             p.WaitForExit();
 
-            p = Process.Start(new ProcessStartInfo(Environment.CurrentDirectory + @"\rabcdasm_files\abcexport.exe", "client.swf"));
+            p = Process.Start(new ProcessStartInfo(Environment.CurrentDirectory + @"\rabcdasm\abcexport.exe", "client.swf"));
             p.WaitForExit();
 
-            p = Process.Start(new ProcessStartInfo(Environment.CurrentDirectory + @"\rabcdasm_files\rabcdasm.exe", "client-1.abc"));
+            p = Process.Start(new ProcessStartInfo(Environment.CurrentDirectory + @"\rabcdasm\rabcdasm.exe", "client-1.abc"));
             p.WaitForExit();
 
-            p = Process.Start(new ProcessStartInfo(Environment.CurrentDirectory + @"\rabcdasm_files\swfbinexport.exe", "client.swf"));
+            p = Process.Start(new ProcessStartInfo(Environment.CurrentDirectory + @"\rabcdasm\swfbinexport.exe", "client.swf"));
             p.WaitForExit();
 
             this.files = Directory.GetFiles(Environment.CurrentDirectory + @"\client-1", "*.class.asasm", SearchOption.AllDirectories);
@@ -242,10 +242,10 @@ namespace wServer
             //abcreplace client.swf 1 client-1\client-1.main.abc
             UpdateLabel("Recompiling");
 
-            Process p = Process.Start(new ProcessStartInfo(Environment.CurrentDirectory + @"\rabcdasm_files\rabcasm.exe", "client-1\\client-1.main.asasm"));
+            Process p = Process.Start(new ProcessStartInfo(Environment.CurrentDirectory + @"\rabcdasm\rabcasm.exe", "client-1\\client-1.main.asasm"));
             p.WaitForExit();
 
-            p = Process.Start(new ProcessStartInfo(Environment.CurrentDirectory + @"\rabcdasm_files\abcreplace.exe", "client.swf 1 client-1\\client-1.main.abc"));
+            p = Process.Start(new ProcessStartInfo(Environment.CurrentDirectory + @"\rabcdasm\abcreplace.exe", "client.swf 1 client-1\\client-1.main.abc"));
             p.WaitForExit();
 
             p = Process.Start(Environment.CurrentDirectory + "\\Orape.exe");
@@ -256,10 +256,10 @@ namespace wServer
             File.Copy(Environment.CurrentDirectory + "\\" + orginalFilename, Environment.CurrentDirectory + "\\client.swf", true);
             File.Delete(Environment.CurrentDirectory + "\\" + orginalFilename);
 
-            p = Process.Start(new ProcessStartInfo(Environment.CurrentDirectory + @"\rabcdasm_files\swflzmacompress.exe", "client.swf"));
+            p = Process.Start(new ProcessStartInfo(Environment.CurrentDirectory + @"\rabcdasm\swflzmacompress.exe", "client.swf"));
             p.WaitForExit();
 
-            p = Process.Start(new ProcessStartInfo(Environment.CurrentDirectory + @"\rabcdasm_files\swflzmacompress.exe", "client-mod.swf"));
+            p = Process.Start(new ProcessStartInfo(Environment.CurrentDirectory + @"\rabcdasm\swflzmacompress.exe", "client-mod.swf"));
             p.WaitForExit();
 
             File.Copy(Environment.CurrentDirectory + "\\client-mod.swf", Environment.CurrentDirectory + "\\client-release.swf", true);
@@ -401,8 +401,10 @@ namespace wServer
         {
             if (File.Exists(Environment.CurrentDirectory + @"\dat0.xml")) File.Delete(Environment.CurrentDirectory + @"\dat0.xml");
             if (File.Exists(Environment.CurrentDirectory + @"\dat1.xml")) File.Delete(Environment.CurrentDirectory + @"\dat1.xml");
+            if (File.Exists(Environment.CurrentDirectory + @"\EquipmentSets.xml")) File.Delete(Environment.CurrentDirectory + @"\EquipmentSets.xml");
             string[] bins = Directory.GetFiles(Environment.CurrentDirectory, "*.bin");
             string groundxml = "<GroundTypes>";
+            string equipentsetsxml = "<EquipmentSets>";
             string objectxml = "<Objects>";
 
             foreach (var bin in bins)
@@ -422,6 +424,9 @@ namespace wServer
                             case 1:
                                 groundxml += xml;
                                 break;
+                            case 2:
+                                equipentsetsxml += xml;
+                                break;
                         }
 
                         using (StreamWriter fullxml = new StreamWriter("dat1.xml"))
@@ -429,6 +434,9 @@ namespace wServer
 
                         using (StreamWriter fullxml = new StreamWriter("dat0.xml"))
                             fullxml.WriteLine(groundxml + "</GroundTypes>");
+
+                        using (StreamWriter fullxml = new StreamWriter("EquipmentSets.xml"))
+                            fullxml.WriteLine(equipentsetsxml + "</EquipmentSets>");
                     }
                 }
                 catch (Exception ex)
@@ -459,6 +467,15 @@ namespace wServer
                     input = input.Replace("</GroundTypes>", "");
                     input = input.Replace("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>", "");
                     *type = 1;
+
+                    return input;
+                }
+                else if (input.Contains("<EquipmentSets>"))
+                {
+                    input = input.Replace("<EquipmentSets>", "");
+                    input = input.Replace("</EquipmentSets>", ""); //<?xml version="1.0" encoding="ISO-8859-1"?>
+                    input = input.Replace("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>", "");
+                    *type = 2;
 
                     return input;
                 }
