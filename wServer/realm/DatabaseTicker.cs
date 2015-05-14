@@ -23,9 +23,9 @@ namespace wServer.realm
 
         public Task DoActionAsync(Action<Database> callback)
         {
-            var db = databases.GetAvailableDatabase();
             return Task.Factory.StartNew(() =>
             {
+                var db = databases.GetAvailableDatabase();
                 try
                 {
                     callback(db);
@@ -34,7 +34,10 @@ namespace wServer.realm
                 {
                     log.Error(ex);
                 }
-                databases.FreeDatabase(db);
+                finally
+                {
+                    databases.FreeDatabase(db);
+                }
             });
         }
 

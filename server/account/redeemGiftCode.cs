@@ -1,4 +1,5 @@
 ﻿using db;
+using db.JsonObjects;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -23,9 +24,9 @@ namespace server.account
             {
                 Account acc = db.Verify(Query["guid"], Query["password"], Program.GameData);
 
-                if (CheckAccount(acc, db))
+                if (CheckAccount(acc, db, false))
                 {
-                    string contents = null;
+                    string contents = String.Empty;
                     var cmd = db.CreateQuery();
                     cmd.CommandText = "SELECT * FROM giftCodes WHERE code=@code";
                     cmd.Parameters.AddWithValue("@code", Query["code"]);
@@ -39,12 +40,10 @@ namespace server.account
                         }
 
                         while(rdr.Read())
-                        {
                             contents = rdr.GetString("content");
-                        }
                     }
 
-                    if (ParseContents(Query, new StringReader(contents)))
+                    if (ParseContents(acc, contents))
                     {
                         Context.Response.Redirect("../GiftCodeSuccess.html");
                         cmd = db.CreateQuery();
@@ -58,91 +57,51 @@ namespace server.account
             }
         }
 
-        private bool ParseContents(NameValueCollection query, StringReader rdr)
+        private bool ParseContents(Account acc, string json)
         {
             try
             {
-                using (Database db = new Database())
+                using (var db = new Database())
                 {
-                    List<string> tokens = new List<string>();
+                    var code = GiftCode.FromJson(json);
+                    if (code == null) return false;
+                    var cmd = db.CreateQuery();
 
-                    while (true)
+                    if (code.Gifts.Count > 0)
                     {
-                        string s = rdr.ReadLine();
-                        if (s.IsNullOrWhiteSpace()) break;
-                        if (s.StartsWith("#")) continue;
-                        tokens.Add(s.Trim());
+                        List<int> gifts = acc.Gifts;
+                        foreach (var i in code.Gifts)
+                            gifts.Add(i);
+
+                        cmd = db.CreateQuery();
+                        cmd.CommandText =
+                            "UPDATE accounts SET gifts=@gifts WHERE uuid=@uuid AND password=SHA1(@password);";
+                        cmd.Parameters.AddWithValue("@gifts", Utils.GetCommaSepString<int>(gifts.ToArray()));
+                        cmd.Parameters.AddWithValue("@uuid", Query["guid"]);
+                        cmd.Parameters.AddWithValue("@password", Query["password"]);
+                        cmd.ExecuteNonQuery();
                     }
 
-                    string[] headers = new string[tokens.Count];
-
-                    for (int i = 0; i < tokens.Count; i++)
+                    if (code.CharSlots > 0)
                     {
-                        if (tokens.Count > 0)
-                            headers[i] = tokens[i].Split(':')[0];
+                        cmd = db.CreateQuery();
+                        cmd.CommandText =
+                            "UPDATE accounts SET maxCharSlot=maxCharSlot + @amount WHERE uuid=@uuid AND password=SHA1(@password);";
+                        cmd.Parameters.AddWithValue("@amount", code.CharSlots);
+                        cmd.Parameters.AddWithValue("@uuid", Query["guid"]);
+                        cmd.Parameters.AddWithValue("@password", Query["password"]);
+                        cmd.ExecuteNonQuery();
                     }
-                    Account acc = db.Verify(query["guid"], query["password"], Program.GameData);
 
-                    if (acc != null)
-                    {
-                        var cmd = db.CreateQuery();
+                    if (code.VaultChests > 0)
+                        for (int j = 0; j < code.VaultChests; j++)
+                            db.CreateChest(acc);
 
-                        for (int i = 0; i < headers.Length; i++)
-                        {
-                            if (headers[i].StartsWith("items"))
-                            {
-                                Dictionary<string, int> itemDic = new Dictionary<string, int>();
-                                List<int> gifts = acc.Gifts;
+                    if (code.Gold > 0)
+                        db.UpdateCredit(acc, code.Gold);
 
-                                if (tokens[i].Split(':').Length == 3)
-                                    for (int j = 0; j < tokens[i].Split(':')[1].Split(',').Length; j++)
-                                        itemDic.Add(tokens[i].Split(':')[1].Split(',')[j],
-                                            int.Parse(tokens[i].Split(':')[2].Split(',')[j]));
-                                else if (tokens[i].Split(':').Length == 2)
-                                    gifts.AddRange(Utils.FromCommaSepString32(tokens[i].Split(':')[1]));
-                                else
-                                    throw new Exception("Invalid giftCode data.");
-
-                                foreach (KeyValuePair<string, int> item in itemDic)
-                                    for (int j = 0; j < item.Value; j++)
-                                        gifts.Add(Utils.FromString(item.Key));
-
-                                cmd = db.CreateQuery();
-                                cmd.CommandText =
-                                    "UPDATE accounts SET gifts=@gifts WHERE uuid=@uuid AND password=SHA1(@password);";
-                                cmd.Parameters.AddWithValue("@gifts", Utils.GetCommaSepString<int>(gifts.ToArray()));
-                                cmd.Parameters.AddWithValue("@uuid", query["guid"]);
-                                cmd.Parameters.AddWithValue("@password", query["password"]);
-                                cmd.ExecuteNonQuery();
-                            }
-
-                            if (headers[i].StartsWith("charSlot"))
-                            {
-                                int amount = int.Parse(tokens[i].Split(':')[1]);
-
-                                cmd = db.CreateQuery();
-                                cmd.CommandText =
-                                    "UPDATE accounts SET maxCharSlot=maxCharSlot + @amount WHERE uuid=@uuid AND password=SHA1(@password);";
-                                cmd.Parameters.AddWithValue("@amount", amount);
-                                cmd.Parameters.AddWithValue("@uuid", query["guid"]);
-                                cmd.Parameters.AddWithValue("@password", query["password"]);
-                                cmd.ExecuteNonQuery();
-                            }
-
-                            if (headers[i].StartsWith("vaultChest"))
-                            {
-                                int length = int.Parse(tokens[i].Split(':')[1]);
-                                for (int j = 0; j < length; j++)
-                                    db.CreateChest(acc);
-                            }
-
-                            if (headers[i].StartsWith("gold"))
-                                db.UpdateCredit(acc, int.Parse(tokens[i].Split(':')[1]));
-
-                            if (headers[i].StartsWith("fame"))
-                                db.UpdateFame(acc, int.Parse(tokens[i].Split(':')[1]));
-                        }
-                    }
+                    if (code.Fame > 0)
+                        db.UpdateFame(acc, code.Fame);
                 }
             }
             catch (Exception)

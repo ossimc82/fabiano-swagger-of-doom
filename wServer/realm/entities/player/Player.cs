@@ -570,22 +570,11 @@ namespace wServer.realm.entities.player
 
             if (owner.Id == World.NEXUS_ID || owner.Name == "Vault")
             {
-                if (Client.Account.Gifts.Count > 0)
+                Client.SendPacket(new Global_NotificationPacket
                 {
-                    Client.SendPacket(new Global_NotificationPacket
-                    {
-                        Type = 0,
-                        Text = "giftChestOccupied"
-                    });
-                }
-                else
-                {
-                    Client.SendPacket(new Global_NotificationPacket
-                    {
-                        Type = 0,
-                        Text = "giftChestEmpty"
-                    });
-                }
+                    Type = 0,
+                    Text = Client.Account.Gifts.Count > 0 ? "giftChestOccupied" : "giftChestEmpty"
+                });
             }
 
             SendAccountList(Locked, Client.LOCKED_LIST_ID);
@@ -724,11 +713,8 @@ namespace wServer.realm.entities.player
                 }
 
                 SetTPDisabledPeriod();
-                if (Pet != null)
-                    Pet.Move(X, Y);
                 Move(obj.X, obj.Y);
-                if (Pet != null)
-                    Pet.Move(obj.X, obj.X);
+                Pet?.Move(obj.X, obj.X);
                 FameCounter.Teleport();
                 SetNewbiePeriod();
                 UpdateCount++;
@@ -799,8 +785,7 @@ namespace wServer.realm.entities.player
 
             if (Boost == null) CalcBoost();
 
-            if (TradeHandler != null)
-                TradeHandler.Tick(time);
+            TradeHandler?.Tick(time);
             HandleRegen(time);
             HandleQuest(time);
             HandleEffects(time);
@@ -832,7 +817,7 @@ namespace wServer.realm.entities.player
                     SendUpdate(time);
                     if (!Owner.IsPassable((int)X, (int)Y) && Client.Account.Rank < 2)
                     {
-                        log.FatalFormat("Player {0} No-Cliped at position: {1}, {2}", Name, X, Y);
+                        log.Fatal($"Player {Name} No-Cliped at position: {X}, {Y}");
                         Client.Disconnect();
                     }
                 }
@@ -965,15 +950,9 @@ namespace wServer.realm.entities.player
                     }
                     break;
             }
-            //objType = 0x0502;
-            //time = null;
-            //Container obj = new Container(Manager, objType, null, false);
             StaticObject obj = new StaticObject(Manager, objType, time, true, time != null, false);
             obj.Move(X, Y);
             obj.Name = Name;
-            //var inv = Inventory;
-            //Array.Resize<Item>(ref inv, 8);
-            //obj.Inventory = inv;
             Owner.EnterWorld(obj);
         }
 

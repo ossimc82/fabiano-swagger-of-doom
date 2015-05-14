@@ -24,15 +24,19 @@ namespace wServer.realm.commands
 
         protected override bool Process(Player player, RealmTime time, string[] args)
         {
-            Entity en = player.GetNearestEntity(100, null);
-
-            player.Client.SendPacket(new ShowEffectPacket
-            {
-                EffectType = EffectType.BeachBall,
-                PosA = new Position(player.X, player.Y),
-                PosB = new Position(en.X, en.Y),
-                TargetId = en.Id
-            });
+            Entity en = Entity.Resolve(player.Manager, "Zombie Wizard");
+            en.Move(player.X, player.Y);
+            player.Owner.EnterWorld(en);
+            player.ObjectType = en.ObjectType;
+            player.UpdateCount++;
+            //player.Client.SendPacket(new DeathPacket
+            //{
+            //    AccountId = player.AccountId,
+            //    CharId = player.Client.Character.CharacterId,
+            //    Killer = "mountains.beholder",
+            //    obf0 = 10000,
+            //    obf1 = 10000
+            //});
             return true;
         }
     }

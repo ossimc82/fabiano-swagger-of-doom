@@ -1,4 +1,5 @@
 ﻿using db;
+using db.JsonObjects;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -17,21 +18,17 @@ namespace server.account
 		{
 			using (Database db = new Database())
 			{
-				string contents = String.Empty;
+				string jsonCode = String.Empty;
 				string status = "Invalid code.";
 				var cmd = db.CreateQuery();
 				cmd.CommandText = "SELECT * FROM giftCodes WHERE code=@code";
 				cmd.Parameters.AddWithValue("@code", Query["code"]);
 
 				using (var rdr = cmd.ExecuteReader())
-				{
 					while (rdr.Read())
-					{
-						contents = rdr.GetString("content");
-					}
-				}
+						jsonCode = rdr.GetString("content");
 
-				var list = ParseContents(new StringReader(contents));
+                var list = ParseContents(jsonCode);
 				if(list.Count > 0)
 				{
 					status = String.Empty;
@@ -43,13 +40,13 @@ namespace server.account
 				if (status.IsNullOrWhiteSpace() || status == "Invalid code.")
 				{
 					res = Encoding.UTF8.GetBytes(
- @"<html>
+ $@"<html>
 	<head>
 		<title>Check Giftcode</title>
 	</head>
 	<body style='background: #333333'>
 		<h1 style='color: #EEEEEE; text-align: center'>
-			" + status + @"
+			{status}
 		</h1>
 	</body>
 </html>");
@@ -57,7 +54,7 @@ namespace server.account
 				else
 				{
 					res = Encoding.UTF8.GetBytes(
- @"<html>
+ $@"<html>
 	<head>
 		<title>Check Giftcode</title>
 	</head>
@@ -66,7 +63,7 @@ namespace server.account
 			Your Giftcode contains the following Items:
 		</h1>
 		<h3 style='color: #EEEEEE; text-align: center'>
-			" + status + @"
+			{status}
 		</h3>
 	</body>
 </html>");
@@ -76,71 +73,29 @@ namespace server.account
 			}
 		}
 
-        //TODO: json
-		private List<string> ParseContents(StringReader rdr)
+		private List<string> ParseContents(string json)
 		{
+            var code = GiftCode.FromJson(json);
 			List<string> ret = new List<string>();
-			using (Database db = new Database())
-			{
-				List<string> tokens = new List<string>();
+            if (code == null) return ret;
+            var added = new List<int>();
 
-				while (true)
-				{
-					string s = rdr.ReadLine();
-					if (s.IsNullOrWhiteSpace()) break;
-					if (s.StartsWith("#")) continue;
-					tokens.Add(s.Trim());
-				}
+            if(code.Fame != 0)
+                ret.Add($"Fame: {code.Fame}");
+            if(code.Gold != 0)
+                ret.Add($"Gold: {code.Gold}");
+            if (code.VaultChests != 0)
+                ret.Add($"Vault Chest{(code.VaultChests > 1 ? "s" : String.Empty)}: {code.VaultChests}");
+            if (code.CharSlots != 0)
+                ret.Add($"Char Slot{(code.CharSlots > 1 ? "s" : String.Empty)}: {code.CharSlots}");
 
-				string[] headers = new string[tokens.Count];
-
-				for (int i = 0; i < tokens.Count; i++)
-				{
-					if (tokens.Count > 0)
-						headers[i] = tokens[i].Split(':')[0];
-				}
-				var cmd = db.CreateQuery();
-
-				for (int i = 0; i < headers.Length; i++)
-				{
-					if (headers[i].StartsWith("items"))
-					{
-						Dictionary<string, int> itemDic = new Dictionary<string, int>();
-						List<int> gifts = new List<int>();
-
-						if (tokens[i].Split(':').Length == 3)
-							for (int j = 0; j < tokens[i].Split(':')[1].Split(',').Length; j++)
-								itemDic.Add(tokens[i].Split(':')[1].Split(',')[j],
-									int.Parse(tokens[i].Split(':')[2].Split(',')[j]));
-						else if (tokens[i].Split(':').Length == 2)
-							gifts.AddRange(Utils.FromCommaSepString32(tokens[i].Split(':')[1]));
-						else
-							throw new Exception("Invalid giftCode data.");
-
-						foreach (KeyValuePair<string, int> item in itemDic)
-							for (int j = 0; j < item.Value; j++)
-								gifts.Add(Utils.FromString(item.Key));
-
-						foreach (var y in gifts)
-							 ret.Add(Program.GameData.Items[(ushort)y].ObjectId);
-					}
-
-					if (headers[i].StartsWith("charSlot"))
-					{
-						ret.Add("Char Slot: +" + tokens[i].Split(':')[1]);
-					}
-
-					if (headers[i].StartsWith("vaultChest"))
-						ret.Add("Vault Chest: +" + tokens[i].Split(':')[1]);
-
-					if (headers[i].StartsWith("gold"))
-						ret.Add("Gold: +" + tokens[i].Split(':')[1]);
-
-					if (headers[i].StartsWith("fame"))
-						ret.Add("Fame: +" + tokens[i].Split(':')[1]);
-				}
-			}
-			return ret;
+            foreach(var item in code.Gifts)
+                if (!added.Contains(item))
+                {
+                    ret.Add($"{code.Gifts.Count(_ => _ == item)} {Program.GameData.Items[(ushort)item].ObjectId}");
+                    added.Add(item);
+                }
+            return ret;
 		}
 	}
 }

@@ -11,6 +11,7 @@ using wServer.realm;
 using wServer.realm.entities.player;
 using System.Net.Mail;
 using System.Threading.Tasks;
+using db.JsonObjects;
 
 #endregion
 
@@ -24,7 +25,7 @@ namespace wServer.networking
         Disconnected
     }
 
-    public class Client// : IDisposable
+    public class Client : IDisposable
     {
         public const string SERVER_VERSION = "27.3.1";
         private bool disposed;
@@ -70,7 +71,7 @@ namespace wServer.networking
 
         public void BeginProcess()
         {
-            log.InfoFormat("Received client @ {0}.", Socket.RemoteEndPoint);
+            log.InfoFormat($"Received client @ {Socket.RemoteEndPoint}.");
             handler = new NetworkHandler(this, Socket);
             handler.BeginHandling();
         }
@@ -101,17 +102,17 @@ namespace wServer.networking
             try
             {
                 log.Logger.Log(typeof (Client), Level.Verbose,
-                    String.Format("Handling packet '{0}'...", pkt.ID), null);
+                   $"Handling packet '{pkt.ID}'...", null);
                 if (pkt.ID == (PacketID) 255) return;
                 IPacketHandler handler;
                 if (!PacketHandlers.Handlers.TryGetValue(pkt.ID, out handler))
-                    log.WarnFormat("Unhandled packet '{0}'.", pkt.ID);
+                    log.Warn($"Unhandled packet '{pkt.ID}'.");
                 else
                     handler.Handle(this, (ClientPacket) pkt);
             }
             catch (Exception e)
             {
-                log.Error(String.Format("Error when handling packet '{0}'...", pkt), e);
+                log.Error($"Error when handling packet '{pkt}'...", e);
                 Disconnect();
             }
         }
@@ -184,57 +185,26 @@ namespace wServer.networking
             }, PendingPriority.Destruction);
         }
 
-        private List<KeyValuePair<string, string>> stuff = new List<KeyValuePair<string, string>>
-        {
-            new KeyValuePair<string, string>("items:", "0xccc:5"),
-            new KeyValuePair<string, string>("items:", "0xccc:2"),
-            new KeyValuePair<string, string>("items:", "0xc08:1"),
-            new KeyValuePair<string, string>("items:", "0xb41:2"),
-            new KeyValuePair<string, string>("items:", "0x227a:1"),
-            new KeyValuePair<string, string>("items:", "0x226c:1"),
-            new KeyValuePair<string, string>("items:", "0xa1f,0xa34,0xa35,0xa4c,0xae9,0xaea,0xa21:10,10,10,10,10,10,10"),
-            new KeyValuePair<string, string>("items:", "0x710:10"),
-            new KeyValuePair<string, string>("items:", "0xc98:1"),
-            new KeyValuePair<string, string>("items:", "0xc98:2"),
-            new KeyValuePair<string, string>("gold:", "1000"),
-            new KeyValuePair<string, string>("gold:", "2000"),
-            new KeyValuePair<string, string>("fame:", "1000"),
-            new KeyValuePair<string, string>("fame:", "2000"),
-            new KeyValuePair<string, string>("charSlot:", "1"),
-            new KeyValuePair<string, string>("charSlot:", "2"),
-            new KeyValuePair<string, string>("vaultChest:", "1"),
-            new KeyValuePair<string, string>("vaultChest:", "2"),
-        };
-
         public void GiftCodeReceived(string type)
         {
             int x = 1;
+            //Use later
             switch (type)
             {
                 case "Pong":
-                    x = Random.Next(x, stuff.Count);
                     break;
                 case "LevelUp":
-                    x = Random.Next(3, stuff.Count);
                     break;
             }
 
-            string contents = String.Empty;
-
-            for (int i = 0; i < x; i++)
-            {
-                int y = Random.Next(0, stuff.Count);
-                contents += stuff[y].Key + stuff[y].Value + Environment.NewLine;
-            }
-
-            AddGiftCode(contents);
+            AddGiftCode(GiftCode.GenerateRandom(Manager.GameData));
         }
 
-        private void AddGiftCode(string contents)
+        private void AddGiftCode(GiftCode code)
         {
             Manager.Database.DoActionAsync(db =>
             {
-                string code = db.GenerateGiftcode(contents);
+                string key = db.GenerateGiftcode(code.ToJson());
 
                 //var message = new MailMessage();
                 //message.To.Add(Account.Email);
@@ -245,7 +215,7 @@ namespace wServer.networking
 
                 //Program.SendEmail(message);
 
-                Player.SendInfo("You have received a new GiftCode: " + code + "\nRedeem it at: http://www.c453.pw/GiftCode.html");
+                Player.SendInfo($"You have received a new GiftCode: {key}\nRedeem it at: {Program.Settings.GetValue("serverDomain")}/GiftCode.html");
             });
         }
 
@@ -253,7 +223,7 @@ namespace wServer.networking
         {
             if (!disposed)
             {
-                handler.Dispose();
+                handler?.Dispose();
                 handler = null;
                 ReceiveKey = null;
                 SendKey = null;
@@ -261,7 +231,7 @@ namespace wServer.networking
                 Socket = null;
                 Character = null;
                 Account = null;
-                Player.Dispose();
+                Player?.Dispose();
                 Player = null;
                 Random = null;
                 ConnectedBuild = null;
