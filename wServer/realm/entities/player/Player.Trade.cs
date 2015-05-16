@@ -1,6 +1,5 @@
 ﻿#region
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using wServer.networking.cliPackets;
@@ -16,7 +15,7 @@ namespace wServer.realm.entities.player
 
         public void RequestTrade(RealmTime time, RequestTradePacket pkt)
         {
-            Player target = Owner.GetPlayerByName(pkt.Name);
+            var target = Owner.GetPlayerByName(pkt.Name);
 
             if (target == null)
             {
@@ -39,12 +38,12 @@ namespace wServer.realm.entities.player
                 SendInfo("{\"key\":\"server.they_already_trading\",\"tokens\":{\"player\":\"" + target.Name + "\"}}");
                 return;
             }
-            if (TradeManager.CurrentRequests.Count(_ => _.Value.AccountId == this.AccountId && _.Key.AccountId == target.AccountId) > 0)
+            if (TradeManager.CurrentRequests.Count(_ => _.Value.AccountId == AccountId && _.Key.AccountId == target.AccountId) > 0)
             {
-                TradeItem[] myItems = new TradeItem[12];
-                TradeItem[] yourItems = new TradeItem[12];
+                var myItems = new TradeItem[12];
+                var yourItems = new TradeItem[12];
 
-                for (int i = 0; i < myItems.Length; i++)
+                for (var i = 0; i < myItems.Length; i++)
                 {
                     myItems[i] = new TradeItem
                     {
@@ -55,7 +54,7 @@ namespace wServer.realm.entities.player
                     };
                 }
 
-                for (int i = 0; i < yourItems.Length; i++)
+                for (var i = 0; i < yourItems.Length; i++)
                 {
                     yourItems[i] = new TradeItem
                     {
@@ -77,10 +76,10 @@ namespace wServer.realm.entities.player
                 {
                     MyItems = yourItems,
                     YourItems = myItems,
-                    YourName = this.Name
+                    YourName = Name
                 });
 
-                TradeManager t = new TradeManager(this, target);
+                var t = new TradeManager(this, target);
                 target.TradeHandler = t;
                 TradeHandler = t;
             }
@@ -90,38 +89,33 @@ namespace wServer.realm.entities.player
                 if (target.Ignored.Contains(Client.Account.AccountId)) return;
                 target.Client.SendPacket(new TradeRequestedPacket
                 {
-                    Name = this.Name
+                    Name = Name
                 });
-                KeyValuePair<Player, Player> format = new KeyValuePair<Player, Player>(this, target);
+                var format = new KeyValuePair<Player, Player>(this, target);
                 TradeManager.CurrentRequests.Add(format);
 
                 Owner.Timers.Add(new WorldTimer(60 * 1000, (w, t) =>
                 {
-                    if (TradeManager.CurrentRequests.Contains(format))
-                    {
-                        TradeManager.CurrentRequests.Remove(format);
-                        SendInfo("{\"key\":\"server.trade_timeout\"}");
-                    }
+                    if (!TradeManager.CurrentRequests.Contains(format)) return;
+                    TradeManager.CurrentRequests.Remove(format);
+                    SendInfo("{\"key\":\"server.trade_timeout\"}");
                 }));
             }
         }
 
         public void ChangeTrade(RealmTime time, ChangeTradePacket pkt)
         {
-            if (TradeHandler != null)
-                TradeHandler.TradeChanged(this, pkt.Offers);
+            TradeHandler?.TradeChanged(this, pkt.Offers);
         }
 
         public void AcceptTrade(RealmTime time, AcceptTradePacket pkt)
         {
-            if (TradeHandler != null)
-                TradeHandler.AcceptTrade(this, pkt);
+            TradeHandler?.AcceptTrade(this, pkt);
         }
 
         public void CancelTrade(RealmTime time, CancelTradePacket pkt)
         {
-            if (TradeHandler != null)
-                TradeHandler.CancelTrade(this);
+            TradeHandler?.CancelTrade(this);
         }
 
         public void TradeCanceled()

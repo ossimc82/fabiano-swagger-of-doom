@@ -1,9 +1,7 @@
 ﻿#region
 
-using db;
 using System;
 using wServer.networking.cliPackets;
-using wServer.networking.svrPackets;
 
 #endregion
 
@@ -12,17 +10,10 @@ namespace wServer.realm.entities.player
     public partial class Player
     {
         private const int PING_PERIOD = 1000;
-        private const int DC_THRESOLD = 15000;
 
         private int updateLastSeen;
 
-        private int curClientTime;
-        private int oldClientTime;
-        private int first5;
-
-        public WorldTimer PongDCTimer { get; private set; }
-
-        private bool KeepAlive(RealmTime time)
+        private static bool KeepAlive(RealmTime time)
         {
             return true;
         }
@@ -35,15 +26,6 @@ namespace wServer.realm.entities.player
                     Client.GiftCodeReceived("Pong");
 
                 updateLastSeen++;
-
-                if (PongDCTimer != null && Owner.Timers.Contains(PongDCTimer))
-                    Owner.Timers.Remove(PongDCTimer);
-
-                //Owner.Timers.Add(PongDCTimer = new WorldTimer(DC_THRESOLD, (w, t) =>
-                //{
-                //    SendError("Lost connection to server.");
-                //    Client.Disconnect();
-                //}));
 
                 if (updateLastSeen >= 60)
                 {

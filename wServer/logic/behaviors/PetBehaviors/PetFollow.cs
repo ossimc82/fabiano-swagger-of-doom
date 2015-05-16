@@ -10,19 +10,18 @@ namespace wServer.logic.behaviors.PetBehaviors
     {
         protected override void TickCore(Entity host, RealmTime time, ref object state)
         {
-            if (!(host is Pet)) return;
-            if ((host as Pet).PlayerOwner == null) return;
-            Pet pet = host as Pet;
+            if ((host as Pet)?.PlayerOwner == null) return;
+            var pet = (Pet)host;
             FollowState s;
             if (state == null) s = new FollowState();
             else s = (FollowState)state;
 
             Status = CycleStatus.NotStarted;
 
-            Player player = host.GetEntity(pet.PlayerOwner.Id) as Player;
+            var player = host.GetEntity(pet.PlayerOwner.Id) as Player;
             if (player == null)
             {
-                WmapTile tile = host.Owner.Map[(int)host.X, (int)host.Y].Clone();
+                var tile = host.Owner.Map[(int)host.X, (int)host.Y].Clone();
                 if (tile.Region != TileRegion.PetRegion)
                 {
                     if (!(host.Owner is PetYard))
@@ -30,18 +29,14 @@ namespace wServer.logic.behaviors.PetBehaviors
                         host.Owner.LeaveWorld(host);
                         return;
                     }
-                    else
+                    if (tile.Region != TileRegion.Spawn)
                     {
-                        if (tile.Region != TileRegion.Spawn)
-                        {
-                            host.Owner.LeaveWorld(host);
-                            return;
-                        }
+                        host.Owner.LeaveWorld(host);
+                        return;
                     }
                 }
             }
 
-            Vector2 vect;
             switch (s.State)
             {
                 case F.DontKnowWhere:
@@ -60,7 +55,7 @@ namespace wServer.logic.behaviors.PetBehaviors
                     if (s.RemainingTime > 0)
                         s.RemainingTime -= time.thisTickTimes;
 
-                    vect = new Vector2(player.X - host.X, player.Y - host.Y);
+                    var vect = new Vector2(player.X - host.X, player.Y - host.Y);
                     if (vect.Length > 20)
                     {
                         host.Move(player.X, player.Y);
@@ -68,23 +63,21 @@ namespace wServer.logic.behaviors.PetBehaviors
                     }
                     else if (vect.Length > 1)
                     {
-                        float dist = host.GetSpeed(0.5f) * (time.thisTickTimes / 1000f);
+                        var dist = host.GetSpeed(0.5f) * (time.thisTickTimes / 1000f);
                         if (vect.Length > 2)
                             dist = host.GetSpeed(0.5f + ((float)player.Stats[4] / 100)) * (time.thisTickTimes / 1000f);
                         else if(vect.Length > 3.5)
-                            dist = host.GetSpeed(0.5f + ((float)player.Stats[4] + (float)player.Boost[4] / 100)) * (time.thisTickTimes / 1000f);
+                            dist = host.GetSpeed(0.5f + (player.Stats[4] + (float)player.Boost[4] / 100)) * (time.thisTickTimes / 1000f);
                         else if (vect.Length > 5)
-                            dist = host.GetSpeed(1.0f + ((float)player.Stats[4] + (float)player.Boost[4] / 100)) * (time.thisTickTimes / 1000f);
+                            dist = host.GetSpeed(1.0f + (player.Stats[4] + (float)player.Boost[4] / 100)) * (time.thisTickTimes / 1000f);
                         else if (vect.Length > 6)
-                            dist = host.GetSpeed(1.35f + ((float)player.Stats[4] + (float)player.Boost[4] / 100)) * (time.thisTickTimes / 1000f);
+                            dist = host.GetSpeed(1.35f + (player.Stats[4] + (float)player.Boost[4] / 100)) * (time.thisTickTimes / 1000f);
                         else if (vect.Length > 7)
-                            dist = host.GetSpeed(1.5f + ((float)player.Stats[4] + (float)player.Boost[4] / 100)) * (time.thisTickTimes / 1000f);
+                            dist = host.GetSpeed(1.5f + (player.Stats[4] + (float)player.Boost[4] / 100)) * (time.thisTickTimes / 1000f);
                         else if (vect.Length > 10)
-                            dist = host.GetSpeed(2f + ((float)player.Stats[4] + (float)player.Boost[4] / 100)) * (time.thisTickTimes / 1000f);
+                            dist = host.GetSpeed(2f + (player.Stats[4] + (float)player.Boost[4] / 100)) * (time.thisTickTimes / 1000f);
 
                         Status = CycleStatus.InProgress;
-                        //vect.X -= Random.Next(-2, 2) / 2f;
-                        //vect.Y -= Random.Next(-2, 2) / 2f;
                         vect.Normalize();
                         host.ValidateAndMove(host.X + vect.X * dist, host.Y + vect.Y * dist);
                         host.UpdateCount++;

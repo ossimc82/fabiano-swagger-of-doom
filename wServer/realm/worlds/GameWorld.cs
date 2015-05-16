@@ -34,7 +34,7 @@ namespace wServer.realm.worlds
         protected override void Init()
         {
             log.InfoFormat("Initializing Game World {0}({1}) from map {2}...", Id, Name, mapId);
-            LoadMap("wServer.realm.worlds.maps.world" + mapId + ".wmap", MapType.WMAP);
+            LoadMap("wServer.realm.worlds.maps.world" + mapId + ".wmap", MapType.Wmap);
             SetPieces.ApplySetPieces(this);
             if (oryxPresent)
                 Overseer = new Oryx(this);

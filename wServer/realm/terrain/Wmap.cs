@@ -6,6 +6,7 @@ using System.IO;
 using db.data;
 using Ionic.Zlib;
 using wServer.realm.entities;
+using wServer.realm.entities.merchant;
 
 #endregion
 

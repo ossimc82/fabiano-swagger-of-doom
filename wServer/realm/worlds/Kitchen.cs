@@ -11,7 +11,7 @@
 
         protected override void Init()
         {
-            LoadMap("wServer.realm.worlds.maps.kitchen.wmap", MapType.WMAP);
+            LoadMap("wServer.realm.worlds.maps.kitchen.wmap", MapType.Wmap);
         }
     }
 }

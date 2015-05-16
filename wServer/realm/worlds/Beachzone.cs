@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace wServer.realm.worlds
+﻿namespace wServer.realm.worlds
 {
     public class Beachzone : World
     {
@@ -20,7 +14,7 @@ namespace wServer.realm.worlds
 
         protected override void Init()
         {
-            LoadMap("wServer.realm.worlds.maps.beachzone.wmap", MapType.WMAP);
+            LoadMap("wServer.realm.worlds.maps.beachzone.wmap", MapType.Wmap);
         }
     }
 }

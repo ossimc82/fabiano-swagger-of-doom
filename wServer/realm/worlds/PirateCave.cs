@@ -19,7 +19,7 @@ namespace wServer.realm.worlds
 
         protected override void Init()
         {
-            LoadMap("wServer.realm.worlds.maps.pcave.wmap", MapType.WMAP);
+            LoadMap("wServer.realm.worlds.maps.pcave.wmap", MapType.Wmap);
         }
     }
 }

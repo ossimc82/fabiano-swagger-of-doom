@@ -46,7 +46,7 @@ namespace wServer.realm.worlds
         {
             if (!(IsLimbo = isLimbo))
             {
-                LoadMap("wServer.realm.worlds.maps.vault.wmap", MapType.WMAP);
+                LoadMap("wServer.realm.worlds.maps.vault.wmap", MapType.Wmap);
                 if (psr != null)
                     Init(psr);
                 else
@@ -286,7 +286,7 @@ namespace wServer.realm.worlds
                     }
                     catch (Exception ex)
                     {
-                        log.Error(ex);
+                        Log.Error(ex);
                     }
                 }
             }

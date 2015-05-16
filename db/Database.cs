@@ -8,6 +8,7 @@ using db.data;
 using Ionic.Zlib;
 using MySql.Data.MySqlClient;
 using System.IO;
+using System.Text;
 
 #endregion
 
@@ -216,11 +217,13 @@ AND characters.charId=death.chrId;";
             {
                 while (rdr.Read())
                 {
+                    int[] goals = Utils.FromCommaSepString32(rdr.GetString("goals"));
+                    if (goals.Length < DailyQuestConstants.QuestsPerDay) break;
                     quest = new QuestItem
                     {
                         Description = DailyQuestConstants.GetDescriptionByTier(rdr.GetInt32("tier")),
                         Image = DailyQuestConstants.GetImageByTier(rdr.GetInt32("tier")),
-                        Goal = Utils.FromCommaSepString32(rdr.GetString("goals"))[rdr.GetInt32("tier") < 0 ? 0 : rdr.GetInt32("tier") - 1].ToString(),
+                        Goal = goals[rdr.GetInt32("tier") < 0 ? 0 : rdr.GetInt32("tier") - 1].ToString(),
                         Tier = rdr.GetInt32("tier"),
                         Time = rdr.GetDateTime("time")
                     };
@@ -289,15 +292,11 @@ AND characters.charId=death.chrId;";
             else
                 cmd.Parameters.AddWithValue("@rank", 0);
 
-            int v = cmd.ExecuteNonQuery();
-            bool ret = v > 0;
+            var success = cmd.ExecuteNonQuery() > 0;
+            var accId = cmd.LastInsertedId;
 
-            if (ret)
+            if (success)
             {
-                cmd = CreateQuery();
-                cmd.CommandText = "SELECT last_insert_id();";
-                int accId = Convert.ToInt32(cmd.ExecuteScalar());
-
                 cmd = CreateQuery();
                 cmd.CommandText =
                     "INSERT INTO stats(accId, fame, totalFame, credits, totalCredits) VALUES(@accId, 1000, 1000, 20000, 20000);";
@@ -316,7 +315,7 @@ AND characters.charId=death.chrId;";
         {
             if (accId == "0") return null;
             Random rand = new Random();
-            List<int> items = new List<int>(3);
+            List<int> items = new List<int>(DailyQuestConstants.QuestsPerDay);
 
             List<Item> candidates = data.Items.Where(_ =>
                 _.Value.SlotType == 1 || _.Value.SlotType == 2 ||
@@ -344,7 +343,7 @@ AND characters.charId=death.chrId;";
                 while (items.Contains(item)) item = candidates[(r = rand.Next(candidates.Count))].ObjectType;
                 items.Add(item);
             }
-            while(items.Count < 3);
+            while(items.Count < DailyQuestConstants.QuestsPerDay);
 
             var cmd = CreateQuery();
             cmd.CommandText = "INSERT INTO dailyQuests(accId, goals, tier, time) VALUES(@accId, @goals, @tier, @time) ON DUPLICATE KEY UPDATE accId=@accId, goals=@goals, tier=@tier, time=@time;";
@@ -358,7 +357,7 @@ AND characters.charId=death.chrId;";
 
         public static string GenerateRandomAuthKey(int size)
         {
-            System.Text.StringBuilder builder = new System.Text.StringBuilder();
+            StringBuilder builder = new StringBuilder();
             Random random = new Random();
             char ch;
             for (int i = 0; i < size; i++)
@@ -427,7 +426,7 @@ AND characters.charId=death.chrId;";
                         Fame = rdr.GetInt32("guildFame")
                     },
                     NameChosen = rdr.GetBoolean("namechosen"),
-                    NextCharSlotPrice = 600,
+                    NextCharSlotPrice = rdr.GetInt32("maxCharSlot") == 1 ? 600 : rdr.GetInt32("maxCharSlot") == 2 ? 800 : 1000,
                     VerifiedEmail = rdr.GetBoolean("verified"),
                     Locked = rdr.GetString("locked").Split(',').ToList(),
                     Ignored = rdr.GetString("ignored").Split(',').ToList(),
@@ -1240,7 +1239,7 @@ VALUES(@accId, @chrId, @name, @objType, @tex1, @tex2, @skin, @items, @fame, @exp
             cmd.Parameters.AddWithValue("@accId", acc.AccountId);
             cmd.Parameters.AddWithValue("@petId", item.InstanceId);
             if ((int)(long)cmd.ExecuteScalar() == 0)
-             {
+            {
                 //Not finished yet.
                 cmd = CreateQuery();
                 cmd.CommandText =
@@ -1488,7 +1487,7 @@ bestFame = GREATEST(bestFame, @bestFame);";
             return true;
         }
 
-        public void AddGifts(Account acc, List<int> gifts)
+        public void AddGifts(Account acc, IEnumerable<int> gifts)
         {
             var tmpGifts = Utils.FromCommaSepString32(acc._Gifts).ToList();
             tmpGifts.AddRange(gifts);

@@ -6,7 +6,7 @@
             byte id, ProjectileDesc desc, short objType,
             int time, Position position, float angle)
         {
-            projectileId = id;
+            ProjectileId = id;
             return CreateProjectile(desc, objType,
                 (int) StatsManager.GetAttackDamage(desc.MinDamage, desc.MaxDamage),
                 time, position, angle);

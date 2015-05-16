@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace wServer.realm.entities.player
+﻿namespace wServer.realm.entities.player
 {
     public partial class Player
     {
@@ -18,13 +12,13 @@ namespace wServer.realm.entities.player
         {
             if (ninjaShoot && ninjaFreeTimer)
             {
-                if (MP > 0)
+                if (Mp > 0)
                 {
                     ninjaFreeTimer = false;
                     Owner.Timers.Add(new WorldTimer(100, (w, t) =>
                     {
-                        MP -= 1;
-                        if (MP <= 0)
+                        Mp -= 1;
+                        if (Mp <= 0)
                             ApplyConditionEffect(new ConditionEffect { Effect = ConditionEffectIndex.Speedy, DurationMS = 0 });
                         ninjaFreeTimer = true;
                         UpdateCount++;

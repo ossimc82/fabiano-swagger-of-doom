@@ -14,12 +14,7 @@
 
         protected override void Init()
         {
-            LoadMap("wServer.realm.worlds.maps.bazzar.wmap", MapType.WMAP);
+            LoadMap("wServer.realm.worlds.maps.bazzar.wmap", MapType.Wmap);
         }
-
-        //public override void Tick(RealmTime time)
-        //{
-        //    base.Tick(time); //normal world tick
-        //}
     }
 }

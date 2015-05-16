@@ -19,7 +19,7 @@ namespace wServer.realm.worlds
 
         protected override void Init()
         {
-            LoadMap("wServer.realm.worlds.maps.UDL1.wmap", MapType.WMAP);
+            LoadMap("wServer.realm.worlds.maps.UDL1.wmap", MapType.Wmap);
         }
 
         public override World GetInstance(Client psr)

@@ -5,18 +5,13 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Threading;
-using db;
 using log4net;
 using wServer.networking;
 using wServer.realm.entities;
 using wServer.realm.entities.player;
 using wServer.realm.worlds;
 using wServer.realm.terrain;
-
-//using wServer.realm.worlds;
-//using wServer.realm.terrain;
 
 #endregion
 
@@ -38,7 +33,7 @@ namespace wServer.realm
         public const int PETYARD_ID = -12;
         public const int DAILY_QUEST_ID = -13;
         public const int GUILD_ID = -14;
-        protected static readonly ILog log = LogManager.GetLogger(typeof(World));
+        protected static readonly ILog Log = LogManager.GetLogger(typeof(World));
         public string ExtraVar = "Default";
         private int entityInc;
         private RealmManager manager;
@@ -53,14 +48,14 @@ namespace wServer.realm
             Projectiles = new ConcurrentDictionary<Tuple<int, byte>, Projectile>();
             StaticObjects = new ConcurrentDictionary<int, StaticObject>();
             Timers = new List<WorldTimer>();
-            ClientXML = ExtraXML = Empty<string>.Array;
+            ClientXml = ExtraXml = Empty<string>.Array;
             AllowTeleport = true;
             ShowDisplays = true;
             MaxPlayers = -1;
 
             //Mark world for removal after 2 minutes if the 
             //world is a dungeon and if no players in there;
-            this.Timers.Add(new WorldTimer(120 * 1000, (w, t) => canBeClosed = true));
+            Timers.Add(new WorldTimer(120 * 1000, (w, t) => canBeClosed = true));
         }
 
         public bool IsLimbo { get; protected set; }
@@ -83,10 +78,10 @@ namespace wServer.realm
 
         public ConcurrentDictionary<int, Player> Players { get; private set; }
         public ConcurrentDictionary<int, Enemy> Enemies { get; private set; }
-        public ConcurrentDictionary<int, Pet> Pets { get; private set; }
+        public ConcurrentDictionary<int, Pet> Pets { get; }
         public ConcurrentDictionary<Tuple<int, byte>, Projectile> Projectiles { get; private set; }
         public ConcurrentDictionary<int, StaticObject> StaticObjects { get; private set; }
-        public List<WorldTimer> Timers { get; private set; }
+        public List<WorldTimer> Timers { get; }
         public int Background { get; protected set; }
 
         public CollisionMap<Entity> EnemiesCollision { get; private set; }
@@ -95,8 +90,8 @@ namespace wServer.realm
 
         public bool AllowTeleport { get; protected set; }
         public bool ShowDisplays { get; protected set; }
-        public string[] ClientXML { get; protected set; }
-        public string[] ExtraXML { get; protected set; }
+        public string[] ClientXml { get; protected set; }
+        public string[] ExtraXml { get; protected set; }
 
         public bool Dungeon { get; protected set; }
         public bool Cave { get; protected set; }
@@ -105,7 +100,7 @@ namespace wServer.realm
         public int MaxPlayers { get; protected set; }
 
         public Wmap Map { get; private set; }
-        public ConcurrentDictionary<int, Enemy> Quests { get; private set; }
+        public ConcurrentDictionary<int, Enemy> Quests { get; }
 
         public virtual World GetInstance(Client psr)
         {
@@ -114,7 +109,7 @@ namespace wServer.realm
 
         public bool IsPassable(int x, int y)
         {
-            WmapTile tile = Map[x, y];
+            var tile = Map[x, y];
             ObjectDesc desc;
             if (Manager.GameData.Tiles[tile.TileId].NoWalk)
                 return false;
@@ -156,19 +151,19 @@ namespace wServer.realm
 
         private void FromWorldMap(Stream dat)
         {
-            Wmap map = new Wmap(Manager.GameData);
+            var map = new Wmap(Manager.GameData);
             Map = map;
             entityInc = 0;
             entityInc += Map.Load(dat, 0);
 
             int w = Map.Width, h = Map.Height;
             Obstacles = new byte[w, h];
-            for (int y = 0; y < h; y++)
-                for (int x = 0; x < w; x++)
+            for (var y = 0; y < h; y++)
+                for (var x = 0; x < w; x++)
                 {
                     try
                     {
-                        WmapTile tile = Map[x, y];
+                        var tile = Map[x, y];
                         ObjectDesc desc;
                         if (Manager.GameData.Tiles[tile.TileId].NoWalk)
                             Obstacles[x, y] = 3;
@@ -184,7 +179,7 @@ namespace wServer.realm
                     }
                     catch (Exception ex)
                     {
-                        log.Error(ex);
+                        Log.Error(ex);
                     }
                 }
             EnemiesCollision = new CollisionMap<Entity>(0, w, h);
@@ -194,7 +189,7 @@ namespace wServer.realm
             StaticObjects.Clear();
             Enemies.Clear();
             Players.Clear();
-            foreach (Entity i in Map.InstantiateEntities(Manager))
+            foreach (var i in Map.InstantiateEntities(Manager))
             {
                 if (i.ObjectDesc != null &&
                     (i.ObjectDesc.OccupySquare || i.ObjectDesc.EnemyOccupySquare))
@@ -228,58 +223,73 @@ namespace wServer.realm
 
         public virtual int EnterWorld(Entity entity)
         {
-            if (entity is Player)
+            var player = entity as Player;
+            if (player != null)
             {
                 try
                 {
-                    entity.Id = GetNextEntityId();
+                    player.Id = GetNextEntityId();
                     entity.Init(this);
-                    Players.TryAdd(entity.Id, entity as Player);
-                    PlayersCollision.Insert(entity);
+                    Players.TryAdd(player.Id, player);
+                    PlayersCollision.Insert(player);
                 }
                 catch (Exception e)
                 {
-                    log.Error(e);
+                    Log.Error(e);
                 }
             }
-            else if (entity is Enemy)
+            else
             {
-                entity.Id = GetNextEntityId();
-                entity.Init(this);
-                Enemies.TryAdd(entity.Id, entity as Enemy);
-                EnemiesCollision.Insert(entity);
-                if (entity.ObjectDesc.Quest)
-                    Quests.TryAdd(entity.Id, entity as Enemy);
-            }
-            else if (entity is Projectile)
-            {
-                entity.Init(this);
-                Projectile prj = entity as Projectile;
-                Projectiles[new Tuple<int, byte>(prj.ProjectileOwner.Self.Id, prj.ProjectileId)] = prj;
-            }
-            else if (entity is StaticObject)
-            {
-                entity.Id = GetNextEntityId();
-                entity.Init(this);
-                StaticObjects.TryAdd(entity.Id, entity as StaticObject);
-                if (entity is Decoy)
-                    PlayersCollision.Insert(entity);
-                else
-                    EnemiesCollision.Insert(entity);
-            }
-            else if (entity is Pet)
-            {
-                if (entity.isPet)
+                var enemy = entity as Enemy;
+                if (enemy != null)
                 {
-                    entity.Id = GetNextEntityId();
+                    enemy.Id = GetNextEntityId();
                     entity.Init(this);
-                    if (!Pets.TryAdd(entity.Id, entity as Pet))
-                        log.Error("Failed to add pet!");
-
-                    PlayersCollision.Insert(entity);
+                    Enemies.TryAdd(enemy.Id, enemy);
+                    EnemiesCollision.Insert(enemy);
+                    if (enemy.ObjectDesc.Quest)
+                        Quests.TryAdd(enemy.Id, enemy);
                 }
                 else
-                    log.WarnFormat("This is not a real pet! {0}", entity.Name);
+                {
+                    var projectile = entity as Projectile;
+                    if (projectile != null)
+                    {
+                        projectile.Init(this);
+                        var prj = projectile;
+                        Projectiles[new Tuple<int, byte>(prj.ProjectileOwner.Self.Id, prj.ProjectileId)] = prj;
+                    }
+                    else
+                    {
+                        var staticObject = entity as StaticObject;
+                        if (staticObject != null)
+                        {
+                            staticObject.Id = GetNextEntityId();
+                            staticObject.Init(this);
+                            StaticObjects.TryAdd(staticObject.Id, staticObject);
+                            if (entity is Decoy)
+                                PlayersCollision.Insert(staticObject);
+                            else
+                                EnemiesCollision.Insert(staticObject);
+                        }
+                        else
+                        {
+                            var pet = entity as Pet;
+                            if (pet == null) return entity.Id;
+                            if (pet.IsPet)
+                            {
+                                pet.Id = GetNextEntityId();
+                                pet.Init(this);
+                                if (!Pets.TryAdd(pet.Id, pet))
+                                    Log.Error("Failed to add pet!");
+
+                                PlayersCollision.Insert(pet);
+                            }
+                            else
+                                Log.WarnFormat("This is not a real pet! {0}", pet.Name);
+                        }
+                    }
+                }
             }
             return entity.Id;
         }
@@ -290,7 +300,7 @@ namespace wServer.realm
             {
                 Player dummy;
                 if (!Players.TryRemove(entity.Id, out dummy))
-                    log.WarnFormat("Could not remove {0} from world {1}", (entity as Player).Name, this.Name);
+                    Log.WarnFormat("Could not remove {0} from world {1}", entity.Name, Name);
                 PlayersCollision.Remove(entity);
             }
             else if (entity is Enemy)
@@ -301,27 +311,31 @@ namespace wServer.realm
                 if (entity.ObjectDesc.Quest)
                     Quests.TryRemove(entity.Id, out dummy);
             }
-            else if (entity is Projectile)
+            else
             {
-                Projectile p = entity as Projectile;
-                Projectiles.TryRemove(new Tuple<int, byte>(p.ProjectileOwner.Self.Id, p.ProjectileId), out p);
-            }
-            else if (entity is StaticObject)
-            {
-                StaticObject dummy;
-                StaticObjects.TryRemove(entity.Id, out dummy);
-                if (entity is Decoy)
-                    PlayersCollision.Remove(entity);
-                else
-                    EnemiesCollision.Remove(entity);
-            }
-            else if (entity is Pet)
-            {
-                if (entity.isPet)
+                var projectile = entity as Projectile;
+                if (projectile != null)
                 {
-                    Pet dummy2;
-                    Pets.TryRemove(entity.Id, out dummy2);
-                    PlayersCollision.Remove(entity);
+                    var p = projectile;
+                    Projectiles.TryRemove(new Tuple<int, byte>(p.ProjectileOwner.Self.Id, p.ProjectileId), out p);
+                }
+                else if (entity is StaticObject)
+                {
+                    StaticObject dummy;
+                    StaticObjects.TryRemove(entity.Id, out dummy);
+                    if (entity is Decoy)
+                        PlayersCollision.Remove(entity);
+                    else
+                        EnemiesCollision.Remove(entity);
+                }
+                else if (entity is Pet)
+                {
+                    if (entity.IsPet)
+                    {
+                        Pet dummy2;
+                        Pets.TryRemove(entity.Id, out dummy2);
+                        PlayersCollision.Remove(entity);
+                    }
                 }
             }
             entity.Owner = null;
@@ -341,50 +355,36 @@ namespace wServer.realm
 
         public Player GetPlayerByName(string name)
         {
-            foreach (KeyValuePair<int, Player> i in Players)
-            {
-                if (i.Value.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase))
-                    return i.Value;
-            }
-            return null;
+            return (from i in Players where i.Value.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase) select i.Value).FirstOrDefault();
         }
 
         public Player GetUniqueNamedPlayerRough(string name)
         {
-            foreach (KeyValuePair<int, Player> i in Players)
-            {
-                if (i.Value.CompareName(name))
-                    return i.Value;
-            }
-            return null;
+            return (from i in Players where i.Value.CompareName(name) select i.Value).FirstOrDefault();
         }
 
         public void BroadcastPacket(Packet pkt, Player exclude)
         {
-            foreach (KeyValuePair<int, Player> i in Players)
-                if (i.Value != exclude)
-                    i.Value.Client.SendPacket(pkt);
+            foreach (var i in Players.Where(i => i.Value != exclude))
+                i.Value.Client.SendPacket(pkt);
         }
 
         public void BroadcastPacketSync(Packet pkt, Predicate<Player> exclude)
         {
-            foreach (KeyValuePair<int, Player> i in Players)
-                if (exclude(i.Value))
-                    i.Value.Client.SendPacket(pkt);
+            foreach (var i in Players.Where(i => exclude(i.Value)))
+                i.Value.Client.SendPacket(pkt);
         }
 
         public void BroadcastPackets(IEnumerable<Packet> pkts, Player exclude)
         {
-            foreach (KeyValuePair<int, Player> i in Players)
-                if (i.Value != exclude)
-                    i.Value.Client.SendPackets(pkts);
+            foreach (var i in Players.Where(i => i.Value != exclude))
+                i.Value.Client.SendPackets(pkts);
         }
 
         public void BroadcastPacketsSync(IEnumerable<Packet> pkts, Predicate<Player> exclude)
         {
-            foreach (KeyValuePair<int, Player> i in Players)
-                if (exclude(i.Value))
-                    i.Value.Client.SendPackets(pkts);
+            foreach (var i in Players.Where(i => exclude(i.Value)))
+                i.Value.Client.SendPackets(pkts);
         }
 
         public virtual void Tick(RealmTime time)
@@ -393,75 +393,82 @@ namespace wServer.realm
             {
                 if (IsLimbo) return;
 
-                for (int i = 0; i < Timers.Count; i++)
+                for (var i = 0; i < Timers.Count; i++)
                 {
                     try
                     {
-                        if (Timers[i] != null)
-                            if (Timers[i].Tick(this, time))
-                            {
-                                Timers.RemoveAt(i);
-                                i--;
-                            }
+                        if (Timers[i] == null) continue;
+                        if (!Timers[i].Tick(this, time)) continue;
+                        Timers.RemoveAt(i);
+                        i--;
                     }
-                    catch { }
+                    catch
+                    {
+                        // ignored
+                    }
                 }
 
-                foreach (KeyValuePair<int, Player> i in Players)
+                foreach (var i in Players)
                     i.Value.Tick(time);
 
-                foreach (KeyValuePair<int, Pet> i in Pets)
+                foreach (var i in Pets)
                     i.Value.Tick(time);
 
                 if (EnemiesCollision != null)
                 {
-                    foreach (Entity i in EnemiesCollision.GetActiveChunks(PlayersCollision))
+                    foreach (var i in EnemiesCollision.GetActiveChunks(PlayersCollision))
                         i.Tick(time);
-                    foreach (KeyValuePair<int, StaticObject> i in StaticObjects.Where(x => x.Value is Decoy))
+                    foreach (var i in StaticObjects.Where(x => x.Value is Decoy))
                         i.Value.Tick(time);
                 }
                 else
                 {
-                    foreach (KeyValuePair<int, Enemy> i in Enemies)
+                    foreach (var i in Enemies)
                         i.Value.Tick(time);
-                    foreach (KeyValuePair<int, StaticObject> i in StaticObjects)
+                    foreach (var i in StaticObjects)
                         i.Value.Tick(time);
                 }
-                foreach (KeyValuePair<Tuple<int, byte>, Projectile> i in Projectiles)
+                foreach (var i in Projectiles)
                     i.Value.Tick(time);
 
-                if (Players.Count == 0 && canBeClosed && IsDungeon())
-                {
-                    if (this is Vault) Manager.RemoveVault((this as Vault).AccountId);
-                    Manager.RemoveWorld(this);
-                }
+                if (Players.Count != 0 || !canBeClosed || !IsDungeon()) return;
+                var vault = this as Vault;
+                if (vault != null) Manager.RemoveVault(vault.AccountId);
+                Manager.RemoveWorld(this);
             }
             catch (Exception e)
             {
-                log.Error("World: " + Name + "\n" + e);
+                Log.Error("World: " + Name + "\n" + e);
             }
         }
 
-        public bool IsFull { get { return MaxPlayers == -1 ? false : Players.Keys.Count >= MaxPlayers; } }
+        public bool IsFull => MaxPlayers != -1 && Players.Keys.Count >= MaxPlayers;
 
         public bool IsDungeon()
         {
-            if (this is Nexus || this is GameWorld || this is ClothBazaar || this is Test || this is GuildHall|| this is Tutorial || this is DailyQuestRoom || this.IsLimbo)
-                return false;
-            return true;
+            return !(this is Nexus) && !(this is GameWorld) && !(this is ClothBazaar) && !(this is Test) && !(this is GuildHall) && !(this is Tutorial) && !(this is DailyQuestRoom) && !IsLimbo;
         }
 
         protected void LoadMap(string embeddedResource, MapType type)
         {
-            if (type == MapType.WMAP)
-                FromWorldMap(typeof(RealmManager).Assembly.GetManifestResourceStream(embeddedResource));
-            else if (type == MapType.JSON)
-                FromWorldMap(new MemoryStream(Json2Wmap.Convert(Manager, new StreamReader(typeof(RealmManager).Assembly.GetManifestResourceStream(embeddedResource)).ReadToEnd())));
-            else
-                throw new ArgumentException("Invalid MapType");
+            if(embeddedResource == null) return;
+            var stream = typeof(RealmManager).Assembly.GetManifestResourceStream(embeddedResource);
+            if (stream == null) throw new ArgumentException("Resource not found", nameof(embeddedResource));
+
+            switch (type)
+            {
+                case MapType.Wmap:
+                    FromWorldMap(stream);
+                    break;
+                case MapType.Json:
+                    FromWorldMap(new MemoryStream(Json2Wmap.Convert(Manager, new StreamReader(stream).ReadToEnd())));
+                    break;
+                default:
+                    throw new ArgumentException("Invalid MapType");
+            }
         }
 
-        protected void LoadMap(RealmManager manager, string json)
+        protected void LoadMap(string json)
         {
             FromWorldMap(new MemoryStream(Json2Wmap.Convert(Manager, json)));
         }
@@ -491,7 +498,7 @@ namespace wServer.realm
 
     public enum MapType
     {
-        WMAP,
-        JSON
+        Wmap,
+        Json
     }
 }

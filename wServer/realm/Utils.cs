@@ -219,7 +219,7 @@ namespace wServer.realm
             return true;
         }
 
-        public static void AOE(this Entity entity, float radius, ushort? objType, Action<Entity> callback)
+        public static void Aoe(this Entity entity, float radius, ushort? objType, Action<Entity> callback)
             //Null for player
         {
             if (objType == null)
@@ -240,7 +240,7 @@ namespace wServer.realm
                 }
         }
 
-        public static void AOE(this Entity entity, float radius, bool players, Action<Entity> callback)
+        public static void Aoe(this Entity entity, float radius, bool players, Action<Entity> callback)
             //Null for player
         {
             if (players)
@@ -261,7 +261,7 @@ namespace wServer.realm
                 }
         }
 
-        public static void AOE(this World world, Position pos, float radius, bool players, Action<Entity> callback)
+        public static void Aoe(this World world, Position pos, float radius, bool players, Action<Entity> callback)
             //Null for player
         {
             if (players)

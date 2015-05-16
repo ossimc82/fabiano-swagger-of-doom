@@ -3,8 +3,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Xml.Linq;
-using db;
 using log4net;
 using wServer.logic;
 using wServer.networking;
@@ -21,7 +19,7 @@ namespace wServer.realm.entities.player
         bool IsVisibleToEnemy();
     }
 
-    public static class IComparableExtension
+    public static class ComparableExtension
     {
         public static bool InRange<T>(this T value, T from, T to) where T : IComparable<T>
         {
@@ -35,14 +33,13 @@ namespace wServer.realm.entities.player
 
         private bool dying;
 
-        private Item[] _inventory;
+        private Item[] inventory;
 
         private float hpRegenCounter;
         private float mpRegenCounter;
         private bool resurrecting;
 
         private byte[,] tiles;
-        public bool vanished = false;
         private int pingSerial;
         private SetTypeSkin setTypeSkin;
 
@@ -58,8 +55,8 @@ namespace wServer.realm.entities.player
                 AccountId = psr.Account.AccountId;
                 FameCounter = new FameCounter(this);
                 Tokens = psr.Account.FortuneTokens;
-                HPPotionPrice = 5;
-                MPPotionPrice = 5;
+                HpPotionPrice = 5;
+                MpPotionPrice = 5;
 
                 Level = psr.Character.Level == 0 ? 1 : psr.Character.Level;
                 Experience = psr.Character.Exp;
@@ -73,21 +70,18 @@ namespace wServer.realm.entities.player
                 Fame = psr.Character.CurrentFame;
                 XpBoosted = psr.Character.XpBoosted;
                 XpBoostTimeLeft = psr.Character.XpTimer;
-                xpFreeTimer = XpBoostTimeLeft == -1.0 ? false : true;
+                xpFreeTimer = XpBoostTimeLeft != -1.0;
                 LootDropBoostTimeLeft = psr.Character.LDTimer;
                 lootDropBoostFreeTimer = LootDropBoost;
                 LootTierBoostTimeLeft = psr.Character.LTTimer;
                 lootTierBoostFreeTimer = LootTierBoost;
-                ClassStats state =
+                var state =
                     psr.Account.Stats.ClassStates.SingleOrDefault(_ => Utils.FromString(_.ObjectType) == ObjectType);
-                FameGoal = GetFameGoal(state != null ? state.BestFame : 0);
+                FameGoal = GetFameGoal(state?.BestFame ?? 0);
                 Glowing = IsUserInLegends();
                 Guild = GuildManager.Add(this, psr.Account.Guild);
-                if (psr.Character.HitPoints <= 0)
-                    HP = psr.Character.MaxHitPoints;
-                else
-                    HP = psr.Character.HitPoints;
-                MP = psr.Character.MagicPoints;
+                HP = psr.Character.HitPoints <= 0 ? psr.Character.MaxHitPoints : psr.Character.HitPoints;
+                Mp = psr.Character.MagicPoints;
                 ConditionEffects = 0;
                 OxygenBar = 100;
                 HasBackpack = psr.Character.HasBackpack;
@@ -114,14 +108,14 @@ namespace wServer.realm.entities.player
 
                 if (HasBackpack == 1)
                 {
-                    Item[] inv =
+                    var inv =
                         psr.Character.Equipment.Select(
                             _ =>
                                 _ == -1
                                     ? null
                                     : (Manager.GameData.Items.ContainsKey((ushort)_) ? Manager.GameData.Items[(ushort)_] : null))
                             .ToArray();
-                    Item[] backpack =
+                    var backpack =
                         psr.Character.Backpack.Select(
                             _ =>
                                 _ == -1
@@ -130,11 +124,15 @@ namespace wServer.realm.entities.player
                             .ToArray();
 
                     Inventory = inv.Concat(backpack).ToArray();
-                    int[] slotTypes =
-                        Utils.FromCommaSepString32(
-                            Manager.GameData.ObjectTypeToElement[ObjectType].Element("SlotTypes").Value);
-                    Array.Resize(ref slotTypes, 20);
-                    SlotTypes = slotTypes;
+                    var xElement = Manager.GameData.ObjectTypeToElement[ObjectType].Element("SlotTypes");
+                    if (xElement != null)
+                    {
+                        var slotTypes =
+                            Utils.FromCommaSepString32(
+                                xElement.Value);
+                        Array.Resize(ref slotTypes, 20);
+                        SlotTypes = slotTypes;
+                    }
                 }
                 else
                 {
@@ -145,9 +143,11 @@ namespace wServer.realm.entities.player
                                     ? null
                                     : (Manager.GameData.Items.ContainsKey((ushort)_) ? Manager.GameData.Items[(ushort)_] : null))
                             .ToArray();
-                    SlotTypes =
-                        Utils.FromCommaSepString32(
-                            Manager.GameData.ObjectTypeToElement[ObjectType].Element("SlotTypes").Value);
+                    var xElement = Manager.GameData.ObjectTypeToElement[ObjectType].Element("SlotTypes");
+                    if (xElement != null)
+                        SlotTypes =
+                            Utils.FromCommaSepString32(
+                                xElement.Value);
                 }
                 Stats = new[]
                 {
@@ -163,13 +163,13 @@ namespace wServer.realm.entities.player
 
                 Pet = null;
 
-                for (int i = 0; i < SlotTypes.Length; i++)
+                for (var i = 0; i < SlotTypes.Length; i++)
                     if (SlotTypes[i] == 0) SlotTypes[i] = 10;
 
-                if (Client.Account.Rank < 2)
-                    for (int i = 0; i < 4; i++)
-                        if (Inventory[i]?.SlotType != SlotTypes[i])
-                            Inventory[i] = null;
+                if (Client.Account.Rank >= 3) return;
+                for (var i = 0; i < 4; i++)
+                    if (Inventory[i]?.SlotType != SlotTypes[i])
+                        Inventory[i] = null;
             }
             catch (Exception e)
             {
@@ -180,11 +180,11 @@ namespace wServer.realm.entities.player
         ~Player()
         {
             WorldInstance = null;
-            questEntity = null;
+            Quest = null;
         }
 
         //Stats
-        public string AccountId { get; private set; }
+        public string AccountId { get; }
 
         public int[] Boost { get; private set; }
 
@@ -239,19 +239,19 @@ namespace wServer.realm.entities.player
 
         public int MagicPotions { get; set; }
 
-        public ushort HPPotionPrice { get; set; }
-        public ushort MPPotionPrice { get; set; }
+        public ushort HpPotionPrice { get; set; }
+        public ushort MpPotionPrice { get; set; }
 
-        public bool HPFirstPurchaseTime { get; set; }
-        public bool MPFirstPurchaseTime { get; set; }
+        public bool HpFirstPurchaseTime { get; set; }
+        public bool MpFirstPurchaseTime { get; set; }
 
         public new RealmManager Manager { get; }
 
-        public int MaxHP { get; set; }
+        public int MaxHp { get; set; }
 
-        public int MaxMP { get; set; }
+        public int MaxMp { get; set; }
 
-        public int MP { get; set; }
+        public int Mp { get; set; }
 
         public bool NameChosen { get; set; }
 
@@ -263,7 +263,7 @@ namespace wServer.realm.entities.player
 
         public int Stars { get; set; }
 
-        public int[] Stats { get; private set; }
+        public int[] Stats { get; }
 
         public StatsManager StatsManager { get; }
 
@@ -273,13 +273,13 @@ namespace wServer.realm.entities.player
 
         public Item[] Inventory
         {
-            get { return _inventory; }
-            set { _inventory = value; }
+            get { return inventory; }
+            set { inventory = value; }
         }
 
         public GuildManager Guild { get; set; }
 
-        public int[] SlotTypes { get; private set; }
+        public int[] SlotTypes { get; set; }
 
         public void Damage(int dmg, Entity chr)
         {
@@ -342,56 +342,59 @@ namespace wServer.realm.entities.player
                 stats[StatsType.Glowing] = 1;
 
             stats[StatsType.HP] = HP;
-            stats[StatsType.MP] = MP;
+            stats[StatsType.MP] = Mp;
 
-            stats[StatsType.Inventory0] = (Inventory[0] != null ? Inventory[0].ObjectType : -1);
-            stats[StatsType.Inventory1] = (Inventory[1] != null ? Inventory[1].ObjectType : -1);
-            stats[StatsType.Inventory2] = (Inventory[2] != null ? Inventory[2].ObjectType : -1);
-            stats[StatsType.Inventory3] = (Inventory[3] != null ? Inventory[3].ObjectType : -1);
-            stats[StatsType.Inventory4] = (Inventory[4] != null ? Inventory[4].ObjectType : -1);
-            stats[StatsType.Inventory5] = (Inventory[5] != null ? Inventory[5].ObjectType : -1);
-            stats[StatsType.Inventory6] = (Inventory[6] != null ? Inventory[6].ObjectType : -1);
-            stats[StatsType.Inventory7] = (Inventory[7] != null ? Inventory[7].ObjectType : -1);
-            stats[StatsType.Inventory8] = (Inventory[8] != null ? Inventory[8].ObjectType : -1);
-            stats[StatsType.Inventory9] = (Inventory[9] != null ? Inventory[9].ObjectType : -1);
-            stats[StatsType.Inventory10] = (Inventory[10] != null ? Inventory[10].ObjectType : -1);
-            stats[StatsType.Inventory11] = (Inventory[11] != null ? Inventory[11].ObjectType : -1);
+            stats[StatsType.Inventory0] = (int)(Inventory[0]?.ObjectType ?? -1);
+            stats[StatsType.Inventory1] = (int)(Inventory[1]?.ObjectType ?? -1);
+            stats[StatsType.Inventory2] = (int)(Inventory[2]?.ObjectType ?? -1);
+            stats[StatsType.Inventory3] = (int)(Inventory[3]?.ObjectType ?? -1);
+            stats[StatsType.Inventory4] = (int)(Inventory[4]?.ObjectType ?? -1);
+            stats[StatsType.Inventory5] = (int)(Inventory[5]?.ObjectType ?? -1);
+            stats[StatsType.Inventory6] = (int)(Inventory[6]?.ObjectType ?? -1);
+            stats[StatsType.Inventory7] = (int)(Inventory[7]?.ObjectType ?? -1);
+            stats[StatsType.Inventory8] = (int)(Inventory[8]?.ObjectType ?? -1);
+            stats[StatsType.Inventory9] = (int)(Inventory[9]?.ObjectType ?? -1);
+            stats[StatsType.Inventory10] = (int)(Inventory[10]?.ObjectType ?? -1);
+            stats[StatsType.Inventory11] = (int)(Inventory[11]?.ObjectType ?? -1);
 
             if (Boost == null) CalcBoost();
 
-            stats[StatsType.MaximumHP] = Stats[0] + Boost[0];
-            stats[StatsType.MaximumMP] = Stats[1] + Boost[1];
-            stats[StatsType.Attack] = Stats[2] + Boost[2];
-            stats[StatsType.Defense] = Stats[3] + Boost[3];
-            stats[StatsType.Speed] = Stats[4] + Boost[4];
-            stats[StatsType.Vitality] = Stats[5] + Boost[5];
-            stats[StatsType.Wisdom] = Stats[6] + Boost[6];
-            stats[StatsType.Dexterity] = Stats[7] + Boost[7];
+            if (Boost != null)
+            {
+                stats[StatsType.MaximumHP] = Stats[0] + Boost[0];
+                stats[StatsType.MaximumMP] = Stats[1] + Boost[1];
+                stats[StatsType.Attack] = Stats[2] + Boost[2];
+                stats[StatsType.Defense] = Stats[3] + Boost[3];
+                stats[StatsType.Speed] = Stats[4] + Boost[4];
+                stats[StatsType.Vitality] = Stats[5] + Boost[5];
+                stats[StatsType.Wisdom] = Stats[6] + Boost[6];
+                stats[StatsType.Dexterity] = Stats[7] + Boost[7];
 
-            stats[StatsType.HPBoost] = Boost[0];
-            stats[StatsType.MPBoost] = Boost[1];
-            stats[StatsType.AttackBonus] = Boost[2];
-            stats[StatsType.DefenseBonus] = Boost[3];
-            stats[StatsType.SpeedBonus] = Boost[4];
-            stats[StatsType.VitalityBonus] = Boost[5];
-            stats[StatsType.WisdomBonus] = Boost[6];
-            stats[StatsType.DexterityBonus] = Boost[7];
+                stats[StatsType.HPBoost] = Boost[0];
+                stats[StatsType.MPBoost] = Boost[1];
+                stats[StatsType.AttackBonus] = Boost[2];
+                stats[StatsType.DefenseBonus] = Boost[3];
+                stats[StatsType.SpeedBonus] = Boost[4];
+                stats[StatsType.VitalityBonus] = Boost[5];
+                stats[StatsType.WisdomBonus] = Boost[6];
+                stats[StatsType.DexterityBonus] = Boost[7];
+            }
 
-            stats[StatsType.Size] = setTypeSkin == null ? Size : setTypeSkin.Size;
+            stats[StatsType.Size] = setTypeSkin?.Size ?? Size;
             stats[StatsType.Has_Backpack] = HasBackpack;
             if (HasBackpack == 1)
             {
-                stats[StatsType.Backpack0] = (Inventory[12] != null ? Inventory[12].ObjectType : -1);
-                stats[StatsType.Backpack1] = (Inventory[13] != null ? Inventory[13].ObjectType : -1);
-                stats[StatsType.Backpack2] = (Inventory[14] != null ? Inventory[14].ObjectType : -1);
-                stats[StatsType.Backpack3] = (Inventory[15] != null ? Inventory[15].ObjectType : -1);
-                stats[StatsType.Backpack4] = (Inventory[16] != null ? Inventory[16].ObjectType : -1);
-                stats[StatsType.Backpack5] = (Inventory[17] != null ? Inventory[17].ObjectType : -1);
-                stats[StatsType.Backpack6] = (Inventory[18] != null ? Inventory[18].ObjectType : -1);
-                stats[StatsType.Backpack7] = (Inventory[19] != null ? Inventory[19].ObjectType : -1);
+                stats[StatsType.Backpack0] = (int)(Inventory[12]?.ObjectType ?? -1);
+                stats[StatsType.Backpack1] = (int)(Inventory[13]?.ObjectType ?? -1);
+                stats[StatsType.Backpack2] = (int)(Inventory[14]?.ObjectType ?? -1);
+                stats[StatsType.Backpack3] = (int)(Inventory[15]?.ObjectType ?? -1);
+                stats[StatsType.Backpack4] = (int)(Inventory[16]?.ObjectType ?? -1);
+                stats[StatsType.Backpack5] = (int)(Inventory[17]?.ObjectType ?? -1);
+                stats[StatsType.Backpack6] = (int)(Inventory[18]?.ObjectType ?? -1);
+                stats[StatsType.Backpack7] = (int)(Inventory[19]?.ObjectType ?? -1);
             }
 
-            stats[StatsType.Skin] = setTypeSkin == null ? PlayerSkin : setTypeSkin.SkinType;
+            stats[StatsType.Skin] = setTypeSkin?.SkinType ?? PlayerSkin;
             stats[StatsType.HealStackCount] = HealthPotions;
             stats[StatsType.MagicStackCount] = MagicPotions;
 
@@ -409,123 +412,117 @@ namespace wServer.realm.entities.player
             CheckSetTypeSkin();
             if (Boost == null) Boost = new int[12];
             else
-                for (int i = 0; i < Boost.Length; i++) Boost[i] = 0;
-            for (int i = 0; i < 4; i++)
+                for (var i = 0; i < Boost.Length; i++) Boost[i] = 0;
+            for (var i = 0; i < 4; i++)
             {
                 if (Inventory.Length < i || Inventory.Length == 0) return;
                 if (Inventory[i] == null) continue;
-                foreach (KeyValuePair<int, int> b in Inventory[i].StatsBoost)
+                foreach (var pair in Inventory[i].StatsBoost)
                 {
-                    if (b.Key == StatsType.MaximumHP) Boost[0] += b.Value;
-                    if (b.Key == StatsType.MaximumMP) Boost[1] += b.Value;
-                    if (b.Key == StatsType.Attack) Boost[2] += b.Value;
-                    if (b.Key == StatsType.Defense) Boost[3] += b.Value;
-                    if (b.Key == StatsType.Speed) Boost[4] += b.Value;
-                    if (b.Key == StatsType.Vitality) Boost[5] += b.Value;
-                    if (b.Key == StatsType.Wisdom) Boost[6] += b.Value;
-                    if (b.Key == StatsType.Dexterity) Boost[7] += b.Value;
+                    if (pair.Key == StatsType.MaximumHP) Boost[0] += pair.Value;
+                    if (pair.Key == StatsType.MaximumMP) Boost[1] += pair.Value;
+                    if (pair.Key == StatsType.Attack) Boost[2] += pair.Value;
+                    if (pair.Key == StatsType.Defense) Boost[3] += pair.Value;
+                    if (pair.Key == StatsType.Speed) Boost[4] += pair.Value;
+                    if (pair.Key == StatsType.Vitality) Boost[5] += pair.Value;
+                    if (pair.Key == StatsType.Wisdom) Boost[6] += pair.Value;
+                    if (pair.Key == StatsType.Dexterity) Boost[7] += pair.Value;
                 }
             }
 
-            if (setTypeBoosts != null)
-                for (int i = 0; i < 8; i++)
-                    Boost[i] += setTypeBoosts[i];
+            if (setTypeBoosts == null) return;
+            for (var i = 0; i < 8; i++)
+                Boost[i] += setTypeBoosts[i];
         }
 
         public bool CompareName(string name)
         {
-            string rn = name.ToLower();
-            if (rn.Split(' ')[0].StartsWith("[") || Name.Split(' ').Length == 1)
-                if (Name.ToLower().StartsWith(rn)) return true;
-                else return false;
-            if (Name.Split(' ')[1].ToLower().StartsWith(rn)) return true;
-            return false;
+            var rn = name.ToLower();
+            return rn.Split(' ')[0].StartsWith("[") || Name.Split(' ').Length == 1
+                ? Name.ToLower().StartsWith(rn)
+                : Name.Split(' ')[1].ToLower().StartsWith(rn);
         }
-
-        //public GlobalPlayerData PlayerData { get; private set; }
 
         public void Death(string killer, ObjectDesc desc = null)
         {
-            if (!dying)
+            if (dying) return;
+            dying = true;
+            switch (Owner.Name)
             {
-                dying = true;
-                switch (Owner.Name)
+                case "Arena":
                 {
-                    case "Arena":
-                        {
-                            Client.SendPacket(new ArenaDeathPacket
-                            {
-                                RestartPrice = 100
-                            });
-                            HP = Client.Character.MaxHitPoints;
-                            ApplyConditionEffect(new ConditionEffect
-                            {
-                                Effect = ConditionEffectIndex.Invulnerable,
-                                DurationMS = -1
-                            });
-                            return;
-                        }
-                }
-
-                if (Client.Stage == ProtocalStage.Disconnected || resurrecting)
-                    return;
-                if (CheckResurrection())
-                    return;
-
-                if (Client.Character.Dead)
-                {
-                    Client.Disconnect();
-                    return;
-                }
-                GenerateGravestone();
-                if (desc != null)
-                    killer = desc.DisplayId;
-                switch (killer)
-                {
-                    case "":
-                    case "Unknown":
-                        break;
-
-                    default:
-                        Owner.BroadcastPacket(new TextPacket
-                        {
-                            BubbleTime = 0,
-                            Stars = -1,
-                            Name = "",
-                            Text = "{\"key\":\"server.death\",\"tokens\":{\"player\":\"" + Name + "\",\"level\":\"" + Level + "\",\"enemy\":\"" + killer + "\"}}"
-                        }, null);
-                        break;
-                }
-
-                try
-                {
-                    Manager.Database.DoActionAsync(db =>
+                    Client.SendPacket(new ArenaDeathPacket
                     {
-                        Client.Character.Dead = true;
-                        SaveToCharacter();
-                        db.SaveCharacter(Client.Account, Client.Character);
-                        db.Death(Manager.GameData, Client.Account, Client.Character, killer);
+                        RestartPrice = 100
                     });
-                    if (Owner.Id != -6)
+                    HP = Client.Character.MaxHitPoints;
+                    ApplyConditionEffect(new ConditionEffect
                     {
-                        Client.SendPacket(new DeathPacket
-                        {
-                            AccountId = AccountId.ToString(),
-                            CharId = Client.Character.CharacterId,
-                            Killer = killer,
-                            obf0 = -1,
-                            obf1 = -1,
-                        });
-                        Owner.Timers.Add(new WorldTimer(1000, (w, t) => Client.Disconnect()));
-                        Owner.LeaveWorld(this);
-                    }
-                    else
-                        Client.Disconnect();
+                        Effect = ConditionEffectIndex.Invulnerable,
+                        DurationMS = -1
+                    });
+                    return;
                 }
-                catch (Exception e)
+            }
+
+            if (Client.Stage == ProtocalStage.Disconnected || resurrecting)
+                return;
+            if (CheckResurrection())
+                return;
+
+            if (Client.Character.Dead)
+            {
+                Client.Disconnect();
+                return;
+            }
+            GenerateGravestone();
+            if (desc != null)
+                killer = desc.DisplayId;
+            switch (killer)
+            {
+                case "":
+                case "Unknown":
+                    break;
+
+                default:
+                    Owner.BroadcastPacket(new TextPacket
+                    {
+                        BubbleTime = 0,
+                        Stars = -1,
+                        Name = "",
+                        Text = "{\"key\":\"server.death\",\"tokens\":{\"player\":\"" + Name + "\",\"level\":\"" + Level + "\",\"enemy\":\"" + killer + "\"}}"
+                    }, null);
+                    break;
+            }
+
+            try
+            {
+                Manager.Database.DoActionAsync(db =>
                 {
-                    log.Error(e);
+                    Client.Character.Dead = true;
+                    SaveToCharacter();
+                    db.SaveCharacter(Client.Account, Client.Character);
+                    db.Death(Manager.GameData, Client.Account, Client.Character, killer);
+                });
+                if (Owner.Id != -6)
+                {
+                    Client.SendPacket(new DeathPacket
+                    {
+                        AccountId = AccountId,
+                        CharId = Client.Character.CharacterId,
+                        Killer = killer,
+                        obf0 = -1,
+                        obf1 = -1,
+                    });
+                    Owner.Timers.Add(new WorldTimer(1000, (w, t) => Client.Disconnect()));
+                    Owner.LeaveWorld(this);
                 }
+                else
+                    Client.Disconnect();
+            }
+            catch (Exception e)
+            {
+                log.Error(e);
             }
         }
 
@@ -553,7 +550,7 @@ namespace wServer.realm.entities.player
         public override void Init(World owner)
         {
             WorldInstance = owner;
-            Random rand = new Random();
+            var rand = new Random();
             int x, y;
             do
             {
@@ -577,30 +574,30 @@ namespace wServer.realm.entities.player
                 });
             }
 
-            SendAccountList(Locked, Client.LOCKED_LIST_ID);
-            SendAccountList(Ignored, Client.IGNORED_LIST_ID);
+            SendAccountList(Locked, AccountListPacket.LOCKED_LIST_ID);
+            SendAccountList(Ignored, AccountListPacket.IGNORED_LIST_ID);
 
-            WorldTimer accTimer = null;
-            owner.Timers.Add(accTimer = new WorldTimer(5000, (w, t) =>
+            WorldTimer[] accTimer = {null};
+            owner.Timers.Add(accTimer[0] = new WorldTimer(5000, (w, t) =>
             {
                 Manager.Database.DoActionAsync(db =>
                 {
-                    if (Client == null || Client.Account == null) return;
+                    if (Client?.Account == null) return;
                     Client.Account = db.GetAccount(AccountId, Manager.GameData);
                     Credits = Client.Account.Credits;
                     CurrentFame = Client.Account.Stats.Fame;
                     Tokens = Client.Account.FortuneTokens;
-                    accTimer.Reset();
-                    Manager.Logic.AddPendingAction(_ => w.Timers.Add(accTimer), PendingPriority.Creation);
+                    accTimer[0].Reset();
+                    Manager.Logic.AddPendingAction(_ => w.Timers.Add(accTimer[0]), PendingPriority.Creation);
                 });
             }));
 
-            WorldTimer pingTimer = null;
-            owner.Timers.Add(pingTimer = new WorldTimer(PING_PERIOD, (w, t) =>
+            WorldTimer[] pingTimer = {null};
+            owner.Timers.Add(pingTimer[0] = new WorldTimer(PING_PERIOD, (w, t) =>
             {
                 Client.SendPacket(new PingPacket { Serial = pingSerial++ });
-                pingTimer.Reset();
-                Manager.Logic.AddPendingAction(_ => w.Timers.Add(pingTimer), PendingPriority.Creation);
+                pingTimer[0].Reset();
+                Manager.Logic.AddPendingAction(_ => w.Timers.Add(pingTimer[0]), PendingPriority.Creation);
             }));
             Manager.Database.DoActionAsync(db =>
             {
@@ -634,7 +631,7 @@ namespace wServer.realm.entities.player
 
         public void SaveToCharacter()
         {
-            Char chr = Client.Character;
+            var chr = Client.Character;
             chr.Exp = Experience;
             chr.Level = Level;
             chr.Tex1 = Texture1;
@@ -642,17 +639,20 @@ namespace wServer.realm.entities.player
             chr.Pet = Pet?.Info;
             chr.CurrentFame = Fame;
             chr.HitPoints = HP;
-            chr.MagicPoints = MP;
-            if (Inventory.Length == 12)
-                chr.Equipment = Inventory.Select(_ => _ == null ? (short)-1 : _.ObjectType).ToArray();
-            else if (Inventory.Length == 20)
+            chr.MagicPoints = Mp;
+            switch (Inventory.Length)
             {
-                short[] equip = Inventory.Select(_ => _ == null ? (short)-1 : _.ObjectType).ToArray();
-                Array.Resize(ref equip, 12);
-                chr.Equipment = equip;
-                equip = Inventory.Select(_ => _ == null ? (short)-1 : _.ObjectType).Reverse().ToArray();
-                Array.Resize(ref equip, 8);
-                chr.Backpack = equip;
+                case 12:
+                    chr.Equipment = Inventory.Select(_ => _?.ObjectType ?? (short)-1).ToArray();
+                    break;
+                case 20:
+                    var equip = Inventory.Select(_ => _?.ObjectType ?? (short)-1).ToArray();
+                    Array.Resize(ref equip, 12);
+                    chr.Equipment = equip;
+                    equip = Inventory.Select(_ => _?.ObjectType ?? (short)-1).Reverse().ToArray();
+                    Array.Resize(ref equip, 8);
+                    chr.Backpack = equip;
+                    break;
             }
             chr.MaxHitPoints = Stats[0];
             chr.MaxMagicPoints = Stats[1];
@@ -674,7 +674,7 @@ namespace wServer.realm.entities.player
 
         public void Teleport(RealmTime time, TeleportPacket packet)
         {
-            Entity obj = Client.Player.Owner.GetEntity(packet.ObjectId);
+            var obj = Client.Player.Owner.GetEntity(packet.ObjectId);
             try
             {
                 if (obj == null) return;
@@ -693,7 +693,8 @@ namespace wServer.realm.entities.player
                     SendError("server.no_teleport_to_paused");
                     return;
                 }
-                if (!(obj as Player).NameChosen)
+                var player = obj as Player;
+                if (player != null && !player.NameChosen)
                 {
                     SendError("server.teleport_needs_name");
                     return;
@@ -705,10 +706,7 @@ namespace wServer.realm.entities.player
                 }
                 if (!Owner.AllowTeleport)
                 {
-                    SendError(GetLanguageString("server.no_teleport_in_realm", new KeyValuePair<string, object>[1]
-                    {
-                        new KeyValuePair<string, object>("realm", Owner.Name)
-                    }));
+                    SendError(GetLanguageString("server.no_teleport_in_realm", new KeyValuePair<string, object>("realm", Owner.Name)));
                     return;
                 }
 
@@ -777,8 +775,8 @@ namespace wServer.realm.entities.player
 
             if (Stats != null && Boost != null)
             {
-                MaxHP = Stats[0] + Boost[0];
-                MaxMP = Stats[1] + Boost[1];
+                MaxHp = Stats[0] + Boost[0];
+                MaxMp = Stats[1] + Boost[1];
             }
 
             if (!KeepAlive(time)) return;
@@ -798,7 +796,7 @@ namespace wServer.realm.entities.player
             //    if (!Enumerable.Range(UpdatesSend, 5000).Contains(UpdatesReceived))
             //        Client.Disconnect();
 
-            if (MP < 0) MP = 0;
+            if (Mp < 0) Mp = 0;
 
             /* try
                 * {
@@ -846,20 +844,20 @@ namespace wServer.realm.entities.player
 
         private bool CheckResurrection()
         {
-            for (int i = 0; i < 4; i++)
+            for (var i = 0; i < 4; i++)
             {
-                Item item = Inventory[i];
+                var item = Inventory[i];
                 if (item == null || !item.Resurrects) continue;
 
                 HP = Stats[0] + Stats[0];
-                MP = Stats[1] + Stats[1];
+                Mp = Stats[1] + Stats[1];
                 Inventory[i] = null;
                 Owner.BroadcastPacket(new TextPacket
                 {
                     BubbleTime = 0,
                     Stars = -1,
                     Name = "",
-                    Text = string.Format("{0}'s {1} breaks and he disappears", Name, item.ObjectId)
+                    Text = $"{Name}'s {item.ObjectId} breaks and he disappears"
                 }, null);
                 Client.Reconnect(new ReconnectPacket
                 {
@@ -878,15 +876,7 @@ namespace wServer.realm.entities.player
 
         private void GenerateGravestone()
         {
-            int maxed = 0;
-            foreach (XElement i in Manager.GameData.ObjectTypeToElement[ObjectType].Elements("LevelIncrease"))
-            {
-                int limit =
-                    int.Parse(Manager.GameData.ObjectTypeToElement[ObjectType].Element(i.Value).Attribute("max").Value);
-                int idx = StatsManager.StatsNameToIndex(i.Value);
-                if (Stats[idx] >= limit)
-                    maxed++;
-            }
+            var maxed = (from i in Manager.GameData.ObjectTypeToElement[ObjectType].Elements("LevelIncrease") let xElement = Manager.GameData.ObjectTypeToElement[ObjectType].Element(i.Value) where xElement != null let limit = int.Parse(xElement.Attribute("max").Value) let idx = StatsManager.StatsNameToIndex(i.Value) where Stats[idx] >= limit select limit).Count();
 
             ushort objType;
             int? time;
@@ -950,7 +940,7 @@ namespace wServer.realm.entities.player
                     }
                     break;
             }
-            StaticObject obj = new StaticObject(Manager, objType, time, true, time != null, false);
+            var obj = new StaticObject(Manager, objType, time, true, time != null, false);
             obj.Move(X, Y);
             obj.Name = Name;
             Owner.EnterWorld(obj);
@@ -963,7 +953,7 @@ namespace wServer.realm.entities.player
             else
             {
                 hpRegenCounter += StatsManager.GetHPRegen() * time.thisTickTimes / 1000f;
-                int regen = (int)hpRegenCounter;
+                var regen = (int)hpRegenCounter;
                 if (regen > 0)
                 {
                     HP = Math.Min(Stats[0] + Boost[0], HP + regen);
@@ -972,18 +962,16 @@ namespace wServer.realm.entities.player
                 }
             }
 
-            if (MP == Stats[1] + Boost[1] || !CanMpRegen())
+            if (Mp == Stats[1] + Boost[1] || !CanMpRegen())
                 mpRegenCounter = 0;
             else
             {
                 mpRegenCounter += StatsManager.GetMPRegen() * time.thisTickTimes / 1000f;
-                int regen = (int)mpRegenCounter;
-                if (regen > 0)
-                {
-                    MP = Math.Min(Stats[1] + Boost[1], MP + regen);
-                    mpRegenCounter -= regen;
-                    UpdateCount++;
-                }
+                var regen = (int)mpRegenCounter;
+                if (regen <= 0) return;
+                Mp = Math.Min(Stats[1] + Boost[1], Mp + regen);
+                mpRegenCounter -= regen;
+                UpdateCount++;
             }
         }
 

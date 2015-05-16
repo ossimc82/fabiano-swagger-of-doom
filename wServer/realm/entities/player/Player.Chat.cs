@@ -1,8 +1,6 @@
 ﻿#region
 
 using System.Collections.Generic;
-using System.Text;
-using wServer.networking.cliPackets;
 using wServer.networking.svrPackets;
 
 #endregion
@@ -13,11 +11,11 @@ namespace wServer.realm.entities.player
     {
         public string GetLanguageString(string key, params KeyValuePair<string, object>[] tokens)
         {
-            string ret = "{\"key\":\"" + key + "\"";
-            if (ret != null)
+            var ret = "{\"key\":\"" + key + "\"";
+            if (tokens != null)
             {
                 ret += ",\"tokens\":{";
-                for (int i = 0; i < tokens.Length; i++)
+                for (var i = 0; i < tokens.Length; i++)
                 {
                     ret += "\"" + tokens[i].Key + "\":\"" + tokens[i].Value + "\"";
                     if (i + 1 != tokens.Length)
@@ -31,11 +29,11 @@ namespace wServer.realm.entities.player
 
         public void SendInfoWithTokens(string key, params KeyValuePair<string, object>[] tokens)
         {
-            string toSend = "{\"key\":\"" + key + "\"";
+            var toSend = "{\"key\":\"" + key + "\"";
             if(tokens != null)
             {
                 toSend += ",\"tokens\":{";
-                for(int i = 0; i < tokens.Length; i++)
+                for(var i = 0; i < tokens.Length; i++)
                 {
                     toSend += "\"" + tokens[i].Key + "\":\"" + tokens[i].Value + "\"";
                     if (i + 1 != tokens.Length)

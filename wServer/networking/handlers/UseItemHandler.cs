@@ -47,84 +47,84 @@ namespace wServer.networking.handlers
                         client.Player.HealthPotions--;
                     else
                     {
-                        if (client.Account.Credits > client.Player.HPPotionPrice)
+                        if (client.Account.Credits > client.Player.HpPotionPrice)
                         {
-                            switch (client.Player.HPPotionPrice)
+                            switch (client.Player.HpPotionPrice)
                             {
                                 case 5:
-                                    if (client.Player.HPFirstPurchaseTime)
+                                    if (client.Player.HpFirstPurchaseTime)
                                     {
-                                        client.Player.HPPotionPrice = 5;
-                                        client.Player.HPFirstPurchaseTime = false;
+                                        client.Player.HpPotionPrice = 5;
+                                        client.Player.HpFirstPurchaseTime = false;
                                     }
-                                    client.Player.HPPotionPrice = 10;
+                                    client.Player.HpPotionPrice = 10;
                                     break;
                                 case 10:
-                                    client.Player.HPPotionPrice = 20;
+                                    client.Player.HpPotionPrice = 20;
                                     break;
                                 case 20:
-                                    client.Player.HPPotionPrice = 40;
+                                    client.Player.HpPotionPrice = 40;
                                     break;
                                 case 40:
-                                    client.Player.HPPotionPrice = 80;
+                                    client.Player.HpPotionPrice = 80;
                                     break;
                                 case 80:
-                                    client.Player.HPPotionPrice = 120;
+                                    client.Player.HpPotionPrice = 120;
                                     break;
                                 case 120:
-                                    client.Player.HPPotionPrice = 200;
+                                    client.Player.HpPotionPrice = 200;
                                     break;
                                 case 200:
-                                    client.Player.HPPotionPrice = 300;
+                                    client.Player.HpPotionPrice = 300;
                                     break;
                                 case 300:
-                                    client.Player.HPPotionPrice = 450;
+                                    client.Player.HpPotionPrice = 450;
                                     break;
                                 case 450:
-                                    client.Player.HPPotionPrice = 600;
+                                    client.Player.HpPotionPrice = 600;
                                     break;
                                 case 600:
                                     break;
                             }
                             client.Player.Owner.Timers.Add(new WorldTimer(8000, (world, j) =>
                             {
-                                switch (client.Player.HPPotionPrice)
+                                switch (client.Player.HpPotionPrice)
                                 {
                                     case 5:
                                         break;
                                     case 10:
-                                        client.Player.HPFirstPurchaseTime = true;
-                                        client.Player.HPPotionPrice = 5;
+                                        client.Player.HpFirstPurchaseTime = true;
+                                        client.Player.HpPotionPrice = 5;
                                         break;
                                     case 20:
-                                        client.Player.HPPotionPrice = 10;
+                                        client.Player.HpPotionPrice = 10;
                                         break;
                                     case 40:
-                                        client.Player.HPPotionPrice = 20;
+                                        client.Player.HpPotionPrice = 20;
                                         break;
                                     case 80:
-                                        client.Player.HPPotionPrice = 40;
+                                        client.Player.HpPotionPrice = 40;
                                         break;
                                     case 120:
-                                        client.Player.HPPotionPrice = 80;
+                                        client.Player.HpPotionPrice = 80;
                                         break;
                                     case 200:
-                                        client.Player.HPPotionPrice = 120;
+                                        client.Player.HpPotionPrice = 120;
                                         break;
                                     case 300:
-                                        client.Player.HPPotionPrice = 200;
+                                        client.Player.HpPotionPrice = 200;
                                         break;
                                     case 450:
-                                        client.Player.HPPotionPrice = 300;
+                                        client.Player.HpPotionPrice = 300;
                                         break;
                                     case 600:
-                                        client.Player.HPPotionPrice = 450;
+                                        client.Player.HpPotionPrice = 450;
                                         break;
                                 }
                             }));
                             using (var db = new Database())
                             {
-                                client.Player.Credits = client.Account.Credits = db.UpdateCredit(client.Account, -client.Player.HPPotionPrice);
+                                client.Player.Credits = client.Account.Credits = db.UpdateCredit(client.Account, -client.Player.HpPotionPrice);
                             }
                             client.Character.HitPoints += 100;
                             client.Player.SaveToCharacter();
@@ -151,84 +151,84 @@ namespace wServer.networking.handlers
                         client.Player.MagicPotions--;
                     else
                     {
-                        if (client.Account.Credits > client.Player.MPPotionPrice)
+                        if (client.Account.Credits > client.Player.MpPotionPrice)
                         {
-                            switch (client.Player.MPPotionPrice)
+                            switch (client.Player.MpPotionPrice)
                             {
                                 case 5:
-                                    if (client.Player.MPFirstPurchaseTime)
+                                    if (client.Player.MpFirstPurchaseTime)
                                     {
-                                        client.Player.MPPotionPrice = 5;
-                                        client.Player.MPFirstPurchaseTime = false;
+                                        client.Player.MpPotionPrice = 5;
+                                        client.Player.MpFirstPurchaseTime = false;
                                     }
-                                    client.Player.MPPotionPrice = 10;
+                                    client.Player.MpPotionPrice = 10;
                                     break;
                                 case 10:
-                                    client.Player.MPPotionPrice = 20;
+                                    client.Player.MpPotionPrice = 20;
                                     break;
                                 case 20:
-                                    client.Player.MPPotionPrice = 40;
+                                    client.Player.MpPotionPrice = 40;
                                     break;
                                 case 40:
-                                    client.Player.MPPotionPrice = 80;
+                                    client.Player.MpPotionPrice = 80;
                                     break;
                                 case 80:
-                                    client.Player.MPPotionPrice = 120;
+                                    client.Player.MpPotionPrice = 120;
                                     break;
                                 case 120:
-                                    client.Player.MPPotionPrice = 200;
+                                    client.Player.MpPotionPrice = 200;
                                     break;
                                 case 200:
-                                    client.Player.MPPotionPrice = 300;
+                                    client.Player.MpPotionPrice = 300;
                                     break;
                                 case 300:
-                                    client.Player.MPPotionPrice = 450;
+                                    client.Player.MpPotionPrice = 450;
                                     break;
                                 case 450:
-                                    client.Player.MPPotionPrice = 600;
+                                    client.Player.MpPotionPrice = 600;
                                     break;
                                 case 600:
                                     break;
                             }
                             client.Player.Owner.Timers.Add(new WorldTimer(10000, (world, j) =>
                             {
-                                switch (client.Player.MPPotionPrice)
+                                switch (client.Player.MpPotionPrice)
                                 {
                                     case 5:
                                         break;
                                     case 10:
-                                        client.Player.MPFirstPurchaseTime = true;
-                                        client.Player.MPPotionPrice = 5;
+                                        client.Player.MpFirstPurchaseTime = true;
+                                        client.Player.MpPotionPrice = 5;
                                         break;
                                     case 20:
-                                        client.Player.MPPotionPrice = 10;
+                                        client.Player.MpPotionPrice = 10;
                                         break;
                                     case 40:
-                                        client.Player.MPPotionPrice = 20;
+                                        client.Player.MpPotionPrice = 20;
                                         break;
                                     case 80:
-                                        client.Player.MPPotionPrice = 40;
+                                        client.Player.MpPotionPrice = 40;
                                         break;
                                     case 120:
-                                        client.Player.MPPotionPrice = 80;
+                                        client.Player.MpPotionPrice = 80;
                                         break;
                                     case 200:
-                                        client.Player.MPPotionPrice = 120;
+                                        client.Player.MpPotionPrice = 120;
                                         break;
                                     case 300:
-                                        client.Player.MPPotionPrice = 200;
+                                        client.Player.MpPotionPrice = 200;
                                         break;
                                     case 450:
-                                        client.Player.MPPotionPrice = 300;
+                                        client.Player.MpPotionPrice = 300;
                                         break;
                                     case 600:
-                                        client.Player.MPPotionPrice = 450;
+                                        client.Player.MpPotionPrice = 450;
                                         break;
                                 }
                             }));
                             using (var db = new Database())
                             {
-                                client.Player.Credits = client.Account.Credits = db.UpdateCredit(client.Account, -client.Player.MPPotionPrice);
+                                client.Player.Credits = client.Account.Credits = db.UpdateCredit(client.Account, -client.Player.MpPotionPrice);
                             }
                             client.Character.MagicPoints += 100;
                             client.Player.SaveToCharacter();

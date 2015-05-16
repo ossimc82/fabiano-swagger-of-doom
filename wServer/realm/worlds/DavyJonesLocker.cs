@@ -21,7 +21,7 @@ namespace wServer.realm.worlds
 
         protected override void Init()
         {
-            LoadMap("wServer.realm.worlds.maps.vault.wmap", MapType.WMAP);
+            LoadMap("wServer.realm.worlds.maps.vault.wmap", MapType.Wmap);
         }
 
         public override int EnterWorld(Entity entity)

@@ -41,7 +41,7 @@ namespace wServer.logic.behaviors
 
             var damage = Random.Next(minDamage, maxDamage);
 
-            host.Owner.AOE(pos, radius, players, enemy =>
+            host.Owner.Aoe(pos, radius, players, enemy =>
             {
                 if (!players)
                 {

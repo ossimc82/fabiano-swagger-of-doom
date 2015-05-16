@@ -39,7 +39,7 @@ namespace wServer.realm.worlds
                 case 5: petYard = "wServer.realm.worlds.maps.PetYard_Divine.wmap"; break;
             }
 
-            LoadMap(petYard, MapType.WMAP);
+            LoadMap(petYard, MapType.Wmap);
             LoadPetYardData(player);
         }
 

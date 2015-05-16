@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -11,6 +12,22 @@ using System.Text;
 
 public static class Utils
 {
+    public static class ConsoleCloseEventHandler
+    {
+        [DllImport("Kernel32")]
+        public static extern bool SetConsoleCtrlHandler(EventHandler handler, bool add);
+        public delegate bool EventHandler(CtrlType sig);
+
+        public enum CtrlType
+        {
+            CTRL_C_EVENT = 0,
+            CTRL_BREAK_EVENT = 1,
+            CTRL_CLOSE_EVENT = 2,
+            CTRL_LOGOFF_EVENT = 5,
+            CTRL_SHUTDOWN_EVENT = 6
+        }
+    }
+
     public static int FromString(string x)
     {
         if (x.StartsWith("0x")) return int.Parse(x.Substring(2), NumberStyles.HexNumber);

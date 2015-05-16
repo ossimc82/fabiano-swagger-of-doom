@@ -12,7 +12,7 @@ namespace wServer.realm.entities.player
     {
         public void SendAccountList(List<string> list, int id)
         {
-            for (int i = 0; i < list.Count; i++)
+            for (var i = 0; i < list.Count; i++)
                 list[i] = list[i].Trim();
 
             Client.SendPacket(new AccountListPacket
@@ -26,7 +26,7 @@ namespace wServer.realm.entities.player
         public bool IsUserInLegends()
         {
             //Week
-            using (Database db = new Database())
+            using (var db = new Database())
             {
                 var cmd = db.CreateQuery();
                 cmd.CommandText = "SELECT * FROM death WHERE (time >= DATE_SUB(NOW(), INTERVAL 1 WEEK)) ORDER BY totalFame DESC LIMIT 10;";
@@ -36,7 +36,7 @@ namespace wServer.realm.entities.player
             }
 
             //Month
-            using (Database db = new Database())
+            using (var db = new Database())
             {
                 var cmd = db.CreateQuery();
                 cmd.CommandText = "SELECT * FROM death WHERE (time >= DATE_SUB(NOW(), INTERVAL 1 MONTH)) ORDER BY totalFame DESC LIMIT 10;";
@@ -45,7 +45,7 @@ namespace wServer.realm.entities.player
                         if (rdr.GetString("accId") == AccountId) return true;
             }
             //All Time
-            using (Database db = new Database())
+            using (var db = new Database())
             {
                 var cmd = db.CreateQuery();
                 cmd.CommandText = "SELECT * FROM death WHERE TRUE ORDER BY totalFame DESC LIMIT 10;";

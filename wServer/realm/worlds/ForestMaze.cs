@@ -19,7 +19,7 @@ namespace wServer.realm.worlds
 
         protected override void Init()
         {
-            LoadMap("wServer.realm.worlds.maps.forestmaze.wmap", MapType.WMAP);
+            LoadMap("wServer.realm.worlds.maps.forestmaze.wmap", MapType.Wmap);
         }
     }
 }

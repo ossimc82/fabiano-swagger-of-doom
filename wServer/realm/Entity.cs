@@ -3,12 +3,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Xml.Linq;
 using log4net;
 using wServer.logic;
 using wServer.realm.entities;
 using wServer.realm.entities.player;
 using wServer.logic.transitions;
+using wServer.realm.entities.merchant;
 
 #endregion
 
@@ -17,17 +17,16 @@ namespace wServer.realm
     public class Entity : IProjectileOwner, ICollidable<Entity>, IDisposable
     {
         private const int EFFECT_COUNT = 31;
-        protected static readonly ILog log = LogManager.GetLogger(typeof(Entity));
+        protected static readonly ILog Log = LogManager.GetLogger(typeof(Entity));
         private readonly ObjectDesc desc;
         private readonly int[] effects;
-        private readonly bool interactive;
         private Position[] posHistory;
         private Projectile[] projectiles;
         public bool BagDropped;
         public TagList Tags;
-        public bool isPet;
+        public bool IsPet;
         private byte posIdx;
-        protected byte projectileId;
+        protected byte ProjectileId;
         private bool stateEntry;
         private State stateEntryCommonRoot;
         private Dictionary<object, object> states;
@@ -46,19 +45,15 @@ namespace wServer.realm
 
         protected Entity(RealmManager manager, ushort objType, bool interactive, bool isPet)
         {
-            this.interactive = interactive;
             Manager = manager;
             ObjectType = objType;
             Name = "";
             Usable = false;
             BagDropped = false;
-            this.isPet = isPet;
+            IsPet = isPet;
             Manager.Behaviors.ResolveBehavior(this);
             Manager.GameData.ObjectDescs.TryGetValue(objType, out desc);
-            if (desc != null)
-                Size = manager.GameData.ObjectDescs[objType].MaxSize;
-            else
-                Size = 100;
+            Size = desc != null ? manager.GameData.ObjectDescs[objType].MaxSize : 100;
 
             if (interactive)
             {
@@ -70,9 +65,7 @@ namespace wServer.realm
                 Usable = true;
 
             if (ObjectDesc != null)
-            {
-                Tags = desc.Tags;
-            }
+                Tags = ObjectDesc.Tags;
 
             if (objType == 0x0d60) ApplyConditionEffect(new ConditionEffect
             {
@@ -84,10 +77,7 @@ namespace wServer.realm
         public RealmManager Manager { get; private set; }
 
 
-        public ObjectDesc ObjectDesc
-        {
-            get { return desc; }
-        }
+        public ObjectDesc ObjectDesc => desc;
 
         public World Owner { get; internal set; }
 
@@ -106,14 +96,7 @@ namespace wServer.realm
         public int Size { get; set; }
         public ConditionEffects ConditionEffects { get; set; }
 
-        public IDictionary<object, object> StateStorage
-        {
-            get
-            {
-                if (states == null) states = new Dictionary<object, object>();
-                return states;
-            }
-        }
+        public IDictionary<object, object> StateStorage => states ?? (states = new Dictionary<object, object>());
 
         public State CurrentState { get; private set; }
 
@@ -122,19 +105,13 @@ namespace wServer.realm
         public CollisionNode<Entity> CollisionNode { get; set; }
         public CollisionMap<Entity> Parent { get; set; }
 
-        Entity IProjectileOwner.Self
-        {
-            get { return this; }
-        }
+        Entity IProjectileOwner.Self => this;
 
-        Projectile[] IProjectileOwner.Projectiles
-        {
-            get { return projectiles; }
-        }
+        Projectile[] IProjectileOwner.Projectiles => projectiles;
 
         public void SwitchTo(State state)
         {
-            State origState = CurrentState;
+            var origState = CurrentState;
 
             CurrentState = state;
             GoDeeeeeeeep();
@@ -153,7 +130,7 @@ namespace wServer.realm
 
         public void OnChatTextReceived(string text)
         {
-            State state = CurrentState;
+            var state = CurrentState;
             if (state != null)
                 foreach (var t in state.Transitions.OfType<ChatTransition>())
                     t.OnChatReceived(text);
@@ -161,13 +138,14 @@ namespace wServer.realm
 
         private void TickState(RealmTime time)
         {
+            State s;
             if (stateEntry)
             {
                 //State entry
-                State s = CurrentState;
+                s = CurrentState;
                 while (s != null && s != stateEntryCommonRoot)
                 {
-                    foreach (Behavior i in s.Behaviors)
+                    foreach (var i in s.Behaviors)
                         i.OnStateEntry(this, time);
                     s = s.Parent;
                 }
@@ -175,45 +153,36 @@ namespace wServer.realm
                 stateEntry = false;
             }
 
-            State origState = CurrentState;
-            State state = CurrentState;
-            bool transited = false;
+            var origState = CurrentState;
+            var state = CurrentState;
+            var transited = false;
             while (state != null)
             {
                 if (!transited)
-                    foreach (Transition i in state.Transitions)
-                        if (i.Tick(this, time))
-                        {
-                            transited = true;
-                            break;
-                        }
+                    if (state.Transitions.Any(i => i.Tick(this, time)))
+                        transited = true;
 
-                foreach (Behavior i in state.Behaviors)
-                {
-                    if (Owner == null) break;
+                foreach (var i in state.Behaviors.TakeWhile(i => Owner != null))
                     i.Tick(this, time);
-                }
                 if (Owner == null) break;
 
                 state = state.Parent;
             }
-            if (transited)
+            if (!transited) return;
+            //State exit
+            s = origState;
+            while (s != null && s != stateEntryCommonRoot)
             {
-                //State exit
-                State s = origState;
-                while (s != null && s != stateEntryCommonRoot)
-                {
-                    foreach (Behavior i in s.Behaviors)
-                        i.OnStateExit(this, time);
-                    s = s.Parent;
-                }
+                foreach (var i in s.Behaviors)
+                    i.OnStateExit(this, time);
+                s = s.Parent;
             }
         }
 
         public Entity Move(float x, float y)
         {
             if (Owner != null && !(this is Projectile) &&
-                (!(this is StaticObject) || (this as StaticObject).Hittestable))
+                (!(this is StaticObject) || ((StaticObject)this).Hittestable))
                 (this is Pet
                     ? Owner.PlayersCollision
                     : (this is Enemy
@@ -253,14 +222,14 @@ namespace wServer.realm
                 .Move(this, stat.Position.X, stat.Position.Y);
             X = stat.Position.X;
             Y = stat.Position.Y;
-            foreach (KeyValuePair<StatsType, object> i in stat.Stats)
+            foreach (var i in stat.Stats)
                 ImportStats(i.Key, i.Value);
             UpdateCount++;
         }
 
         public virtual ObjectStats ExportStats()
         {
-            Dictionary<StatsType, object> stats = new Dictionary<StatsType, object>();
+            var stats = new Dictionary<StatsType, object>();
             ExportStats(stats);
             return new ObjectStats
             {
@@ -298,7 +267,7 @@ namespace wServer.realm
 
             if (ObjectType == 0x0754)
             {
-                StaticObject en = new StaticObject(Manager, 0x1942, null, true, false, true);
+                var en = new StaticObject(Manager, 0x1942, null, true, false, true);
                 en.Move(X, Y);
                 owner.EnterWorld(en);
             }
@@ -325,9 +294,9 @@ namespace wServer.realm
         public Position? TryGetHistory(long timeAgo)
         {
             if (posHistory == null) return null;
-            long tickPast = timeAgo * Manager.TPS / 1000;
+            var tickPast = timeAgo * Manager.TPS / 1000;
             if (tickPast > 255) return null;
-            return posHistory[(byte)(posIdx - (byte)2)];
+            return posHistory[(byte)(posIdx - 2)];
         }
 
 
@@ -369,15 +338,15 @@ namespace wServer.realm
         public static Entity Resolve(RealmManager manager, string name)
         {
             ushort id;
-            if (!manager.GameData.IdToObjectType.TryGetValue(name, out id))
-                return null;
-            return Resolve(manager, id);
+            return !manager.GameData.IdToObjectType.TryGetValue(name, out id) ? null : Resolve(manager, id);
         }
 
         public static Entity Resolve(RealmManager manager, ushort id)
         {
-            XElement node = manager.GameData.ObjectTypeToElement[id];
-            string type = node.Element("Class").Value;
+            var node = manager.GameData.ObjectTypeToElement[id];
+            var cls = node.Element("Class");
+            if (cls == null) throw new ArgumentException("Invalid XML Element, field class is missing");
+            var type = cls.Value;
 
             switch (type)
             {
@@ -431,7 +400,7 @@ namespace wServer.realm
                 case "Pet":
                     throw new Exception("Pets should not instantiated using Entity.Resolve");
                 default:
-                    log.Warn("Not supported type: " + type);
+                    Log.Warn("Not supported type: " + type);
                     return new Entity(manager, id);
             }
         }
@@ -439,10 +408,10 @@ namespace wServer.realm
         public Projectile CreateProjectile(ProjectileDesc desc, short container, int dmg, long time, Position pos,
             float angle)
         {
-            Projectile ret = new Projectile(Manager, desc) //Assume only one
+            var ret = new Projectile(Manager, desc) //Assume only one
             {
                 ProjectileOwner = this,
-                ProjectileId = projectileId++,
+                ProjectileId = ProjectileId++,
                 Container = container,
                 Damage = dmg,
                 BeginTime = time,
@@ -476,7 +445,7 @@ namespace wServer.realm
 
             ConditionEffects newEffects = 0;
             tickingEffects = false;
-            for (int i = 0; i < effects.Length; i++)
+            for (var i = 0; i < effects.Length; i++)
                 if (effects[i] > 0)
                 {
                     effects[i] -= time.thisTickTimes;
@@ -488,11 +457,9 @@ namespace wServer.realm
                 }
                 else if (effects[i] != 0)
                     newEffects |= (ConditionEffects)(1 << i);
-            if (newEffects != ConditionEffects)
-            {
-                ConditionEffects = newEffects;
-                UpdateCount++;
-            }
+            if (newEffects == ConditionEffects) return;
+            ConditionEffects = newEffects;
+            UpdateCount++;
         }
 
         public bool HasConditionEffect(ConditionEffects eff)
@@ -502,14 +469,8 @@ namespace wServer.realm
 
         public void ApplyConditionEffect(params ConditionEffect[] effs)
         {
-            foreach (ConditionEffect i in effs)
+            foreach (var i in effs.Where(i => i.Effect != ConditionEffectIndex.Stunned || !HasConditionEffect(ConditionEffects.StunImmume)).Where(i => i.Effect != ConditionEffectIndex.Stasis || !HasConditionEffect(ConditionEffects.StasisImmune)))
             {
-                if (i.Effect == ConditionEffectIndex.Stunned &&
-                    HasConditionEffect(ConditionEffects.StunImmume))
-                    continue;
-                if (i.Effect == ConditionEffectIndex.Stasis &&
-                    HasConditionEffect(ConditionEffects.StasisImmune))
-                    continue;
                 effects[(int)i.Effect] = i.DurationMS;
                 if (i.DurationMS != 0)
                     ConditionEffects |= (ConditionEffects)(1 << (int)i.Effect);

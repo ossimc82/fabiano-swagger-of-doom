@@ -18,7 +18,7 @@ namespace wServer.realm.worlds
 
         protected override void Init()
         {
-            LoadMap("wServer.realm.worlds.maps.shittersmep.wmap", MapType.WMAP);
+            LoadMap("wServer.realm.worlds.maps.shittersmep.wmap", MapType.Wmap);
             Entity en = Entity.Resolve(Manager, "shtrs Bridge Titanum");
             en.Move(233.5f, 36.5f);
             this.EnterWorld(en);

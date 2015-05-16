@@ -20,7 +20,7 @@ namespace wServer.realm.worlds
 
         protected override void Init()
         {
-            LoadMap("wServer.realm.worlds.maps.snakepit.wmap", MapType.WMAP);
+            LoadMap("wServer.realm.worlds.maps.snakepit.wmap", MapType.Wmap);
         }
 
         public override World GetInstance(Client client)

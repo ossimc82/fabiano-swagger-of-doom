@@ -24,7 +24,7 @@ namespace wServer.realm.worlds
 
         protected override void Init()
         {
-            LoadMap("wServer.realm.worlds.maps.nexus_winter.jm", MapType.JSON);
+            LoadMap("wServer.realm.worlds.maps.nexus_winter.jm", MapType.Json);
         }
 
         public override void Tick(RealmTime time)

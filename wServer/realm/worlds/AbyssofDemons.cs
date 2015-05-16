@@ -11,20 +11,13 @@ namespace wServer.realm.worlds
         public AbyssofDemons()
         {
             Name = "Abyss of Demons";
-            ClientWorldName = "dungeons.Abyss_of_Demons";
+            ClientWorldName = "{dungeons.Abyss_of_Demons}";
             Dungeon = true;
             Background = 0;
             AllowTeleport = true;
         }
 
-        protected override void Init()
-        {
-            LoadMap("wServer.realm.worlds.maps.abyss.wmap", MapType.WMAP);
-        }
-
-        public override World GetInstance(Client psr)
-        {
-            return Manager.AddWorld(new AbyssofDemons());
-        }
+        protected override void Init() => LoadMap("wServer.realm.worlds.maps.abyss.wmap", MapType.Wmap);
+        public override World GetInstance(Client psr) => Manager.AddWorld(new AbyssofDemons());
     }
 }

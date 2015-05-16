@@ -48,7 +48,7 @@ namespace wServer.realm.entities
                 Skin = petData.SkinName;
                 SkinId = petData.Skin;
                 PetId = petData.InstanceId;
-                isPet = true;
+                IsPet = true;
             }
             catch (Exception e)
             {

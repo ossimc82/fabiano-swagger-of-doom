@@ -39,9 +39,9 @@ namespace wServer.realm.entities.player
                 healing += 28*(time.thisTickTimes/1000f);
             }
             if (HasConditionEffect(ConditionEffects.Quiet) &&
-                MP > 0)
+                Mp > 0)
             {
-                MP = 0;
+                Mp = 0;
                 UpdateCount++;
             }
             if (HasConditionEffect(ConditionEffects.Bleeding) &&

@@ -125,8 +125,8 @@ namespace wServer.realm.entities.player
         private static void ActivateHealMp(Player player, int amount, List<Packet> pkts)
         {
             int maxMp = player.Stats[1] + player.Boost[1];
-            int newMp = Math.Min(maxMp, player.MP + amount);
-            if (newMp != player.MP)
+            int newMp = Math.Min(maxMp, player.Mp + amount);
+            if (newMp != player.Mp)
             {
                 pkts.Add(new ShowEffectPacket
                 {
@@ -138,9 +138,9 @@ namespace wServer.realm.entities.player
                 {
                     Color = new ARGB(0x6084e0),
                     ObjectId = player.Id,
-                    Text = "{\"key\":\"blank\",\"tokens\":{\"data\":\"+" + (newMp - player.MP) + "\"}}"
+                    Text = "{\"key\":\"blank\",\"tokens\":{\"data\":\"+" + (newMp - player.Mp) + "\"}}"
                 });
-                player.MP = newMp;
+                player.Mp = newMp;
                 player.UpdateCount++;
             }
         }
@@ -223,7 +223,7 @@ namespace wServer.realm.entities.player
         {
             bool endMethod = false;
             Position target = pkt.ItemUsePos;
-            MP -= item.MpCost;
+            Mp -= item.MpCost;
 
             IContainer con = Owner.GetEntity(pkt.SlotObject.ObjectId) as IContainer;
             if(con == null) return true;
@@ -249,7 +249,7 @@ namespace wServer.realm.entities.player
                     Client.Character.HasBackpack = 1;
                     Manager.Database.DoActionAsync(db =>
                         db.SaveBackpacks(Client.Character, Client.Account));
-                    Array.Resize(ref _inventory, 20);
+                    Array.Resize(ref inventory, 20);
                     int[] slotTypes =
                         Utils.FromCommaSepString32(
                             Manager.GameData.ObjectTypeToElement[ObjectType].Element("SlotTypes").Value);
@@ -399,7 +399,7 @@ namespace wServer.realm.entities.player
                             if(eff.Stats == StatsType.Dexterity) idx = 7;
 
                             int s = eff.Amount;
-                            this.AOE(eff.Range / 2, true, player =>
+                            this.Aoe(eff.Range / 2, true, player =>
                             {
                                 (player as Player).Boost[idx] += s;
                                 player.UpdateCount++;
@@ -437,7 +437,7 @@ namespace wServer.realm.entities.player
 
                     case ActivateEffects.ConditionEffectAura:
                     {
-                        this.AOE(eff.Range/2, true, player =>
+                        this.Aoe(eff.Range/2, true, player =>
                         {
                             player.ApplyConditionEffect(new ConditionEffect
                             {
@@ -469,7 +469,7 @@ namespace wServer.realm.entities.player
                     case ActivateEffects.HealNova:
                     {
                         List<Packet> pkts = new List<Packet>();
-                        this.AOE(eff.Range/2, true, player => { ActivateHealHp(player as Player, eff.Amount, pkts); });
+                        this.Aoe(eff.Range/2, true, player => { ActivateHealHp(player as Player, eff.Amount, pkts); });
                         pkts.Add(new ShowEffectPacket
                         {
                             EffectType = EffectType.AreaBlast,
@@ -492,7 +492,7 @@ namespace wServer.realm.entities.player
                     case ActivateEffects.MagicNova:
                     {
                         List<Packet> pkts = new List<Packet>();
-                        this.AOE(eff.Range/2, true, player => { ActivateHealMp(player as Player, eff.Amount, pkts); });
+                        this.Aoe(eff.Range/2, true, player => { ActivateHealMp(player as Player, eff.Amount, pkts); });
                         pkts.Add(new ShowEffectPacket
                         {
                             EffectType = EffectType.AreaBlast,
@@ -555,13 +555,13 @@ namespace wServer.realm.entities.player
 
                         int totalDmg = 0;
                         List<Enemy> enemies = new List<Enemy>();
-                        Owner.AOE(target, eff.Radius, false, enemy =>
+                        Owner.Aoe(target, eff.Radius, false, enemy =>
                         {
                             enemies.Add(enemy as Enemy);
                             totalDmg += (enemy as Enemy).Damage(this, time, eff.TotalDamage, false);
                         });
                         List<Player> players = new List<Player>();
-                        this.AOE(eff.Radius, true, player =>
+                        this.Aoe(eff.Radius, true, player =>
                         {
                             players.Add(player as Player);
                             ActivateHealHp(player as Player, totalDmg, pkts);
@@ -622,7 +622,7 @@ namespace wServer.realm.entities.player
                             PosB = new Position {X = target.X + 3, Y = target.Y},
                             Color = new ARGB(0xffffffff)
                         });
-                        Owner.AOE(target, 3, false, enemy =>
+                        Owner.Aoe(target, 3, false, enemy =>
                         {
                             if (enemy.HasConditionEffect(ConditionEffects.StasisImmune))
                             {
@@ -676,7 +676,7 @@ namespace wServer.realm.entities.player
                         Enemy start = null;
                         double angle = Math.Atan2(target.Y - Y, target.X - X);
                         double diff = Math.PI/3;
-                        Owner.AOE(target, 6, false, enemy =>
+                        Owner.Aoe(target, 6, false, enemy =>
                         {
                             if (!(enemy is Enemy)) return;
                             double x = Math.Atan2(enemy.Y - Y, enemy.X - X);
@@ -759,7 +759,7 @@ namespace wServer.realm.entities.player
                                         TargetId = x.Id,
                                         PosA = new Position { X = eff.Radius }
                                     }, null);
-                                    world.AOE(target, eff.Radius, false,
+                                    world.Aoe(target, eff.Radius, false,
                                         enemy => PoisonEnemy(enemy as Enemy, eff));
                                 }));
                             }
@@ -776,7 +776,7 @@ namespace wServer.realm.entities.player
                         break;
                     case ActivateEffects.RemoveNegativeConditions:
                     {
-                        this.AOE(eff.Range/2, true, player => { ApplyConditionEffect(NegativeEffs); });
+                        this.Aoe(eff.Range/2, true, player => { ApplyConditionEffect(NegativeEffs); });
                         BroadcastSync(new ShowEffectPacket
                         {
                             EffectType = EffectType.AreaBlast,
@@ -1001,10 +1001,10 @@ namespace wServer.realm.entities.player
                                 });
                                 ushort obj;
                                 Manager.GameData.IdToObjectType.TryGetValue(item.ObjectId, out obj);
-                                if (MP >= item.MpEndCost)
+                                if (Mp >= item.MpEndCost)
                                 {
                                     ActivateShoot(time, item, pkt.ItemUsePos);
-                                    MP -= (int)item.MpEndCost;
+                                    Mp -= (int)item.MpEndCost;
                                 }
                                 targetlink = target;
                                 ninjaShoot = false;

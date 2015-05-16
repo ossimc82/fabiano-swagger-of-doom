@@ -18,7 +18,7 @@ namespace wServer.realm.worlds
 
         protected override void Init()
         {
-            LoadMap("wServer.realm.worlds.maps.OryxCastle.wmap", MapType.WMAP);
+            LoadMap("wServer.realm.worlds.maps.OryxCastle.wmap", MapType.Wmap);
         }
 
         public override World GetInstance(Client psr)

@@ -26,7 +26,7 @@ namespace wServer.realm.worlds
 
         protected override void Init()
         {
-            LoadMap("wServer.realm.worlds.maps.arena.wmap", MapType.WMAP);
+            LoadMap("wServer.realm.worlds.maps.arena.wmap", MapType.Wmap);
         }
 
         private readonly string[] WeakEnemies =
@@ -126,7 +126,7 @@ namespace wServer.realm.worlds
             }
             catch (Exception ex)
             {
-                log.Error(ex);
+                Log.Error(ex);
             }
         }
 

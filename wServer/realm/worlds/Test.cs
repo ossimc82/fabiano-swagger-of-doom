@@ -23,7 +23,7 @@ namespace wServer.realm.worlds
         public void LoadJson(string json)
         {
             js = json;
-            LoadMap(Manager, json);
+            LoadMap(json);
         }
 
         public override void Tick(RealmTime time)

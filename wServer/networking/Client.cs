@@ -9,7 +9,6 @@ using wServer.networking.cliPackets;
 using wServer.networking.svrPackets;
 using wServer.realm;
 using wServer.realm.entities.player;
-using System.Net.Mail;
 using System.Threading.Tasks;
 using db.JsonObjects;
 
@@ -29,9 +28,6 @@ namespace wServer.networking
     {
         public const string SERVER_VERSION = "27.3.1";
         private bool disposed;
-
-        public const int LOCKED_LIST_ID = 0;
-        public const int IGNORED_LIST_ID = 1;
 
         private static readonly ILog log = LogManager.GetLogger(typeof (Client));
 
@@ -78,23 +74,19 @@ namespace wServer.networking
 
         public void SendPacket(Packet pkt)
         {
-            if(handler != null)
-                handler.SendPacket(pkt);
+            handler?.SendPacket(pkt);
         }
 
         public void SendPackets(IEnumerable<Packet> pkts)
         {
-            if(handler != null)
-                handler.SendPackets(pkts);
+            handler?.SendPackets(pkts);
         }
 
         public bool IsReady()
         {
             if (Stage == ProtocalStage.Disconnected)
                 return false;
-            if (Stage == ProtocalStage.Ready && (Player == null || Player != null && Player.Owner == null))
-                return false;
-            return true;
+            return Stage != ProtocalStage.Ready || (Player != null && (Player == null || Player.Owner != null));
         }
 
         internal void ProcessPacket(Packet pkt)
@@ -187,7 +179,7 @@ namespace wServer.networking
 
         public void GiftCodeReceived(string type)
         {
-            int x = 1;
+            var x = 1;
             //Use later
             switch (type)
             {
@@ -204,7 +196,7 @@ namespace wServer.networking
         {
             Manager.Database.DoActionAsync(db =>
             {
-                string key = db.GenerateGiftcode(code.ToJson());
+                var key = db.GenerateGiftcode(code.ToJson());
 
                 //var message = new MailMessage();
                 //message.To.Add(Account.Email);
@@ -221,22 +213,20 @@ namespace wServer.networking
 
         public void Dispose()
         {
-            if (!disposed)
-            {
-                handler?.Dispose();
-                handler = null;
-                ReceiveKey = null;
-                SendKey = null;
-                Manager = null;
-                Socket = null;
-                Character = null;
-                Account = null;
-                Player?.Dispose();
-                Player = null;
-                Random = null;
-                ConnectedBuild = null;
-                disposed = true;
-            }
+            if (disposed) return;
+            handler?.Dispose();
+            handler = null;
+            ReceiveKey = null;
+            SendKey = null;
+            Manager = null;
+            Socket = null;
+            Character = null;
+            Account = null;
+            Player?.Dispose();
+            Player = null;
+            Random = null;
+            ConnectedBuild = null;
+            disposed = true;
         }
     }
 }

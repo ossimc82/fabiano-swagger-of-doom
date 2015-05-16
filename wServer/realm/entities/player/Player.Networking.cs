@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using wServer.networking;
 
 #endregion
@@ -17,10 +18,9 @@ namespace wServer.realm.entities.player
         {
             if (Owner != null)
             {
-                foreach (Player i in Owner.Players.Values)
-                    foreach (Tuple<Packet, Predicate<Player>> j in pendingPackets)
-                        if (j.Item2(i))
-                            i.Client.SendPacket(j.Item1);
+                foreach (var i in Owner.Players.Values)
+                    foreach (var j in pendingPackets.Where(j => j.Item2(i)))
+                        i.Client.SendPacket(j.Item1);
             }
             pendingPackets.Clear();
         }
@@ -37,13 +37,13 @@ namespace wServer.realm.entities.player
 
         private void BroadcastSync(IEnumerable<Packet> packets)
         {
-            foreach (Packet i in packets)
+            foreach (var i in packets)
                 BroadcastSync(i, _ => true);
         }
 
         private void BroadcastSync(IEnumerable<Packet> packets, Predicate<Player> cond)
         {
-            foreach (Packet i in packets)
+            foreach (var i in packets)
                 BroadcastSync(i, cond);
         }
     }

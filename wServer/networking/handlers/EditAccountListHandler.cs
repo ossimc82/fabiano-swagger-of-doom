@@ -3,6 +3,7 @@
 using System.Collections.Generic;
 using db;
 using wServer.networking.cliPackets;
+using wServer.networking.svrPackets;
 using wServer.realm;
 using wServer.realm.entities.player;
 
@@ -34,7 +35,7 @@ namespace wServer.networking.handlers
                     }
                     switch (packet.AccountListId)
                     {
-                        case Client.LOCKED_LIST_ID:
+                        case AccountListPacket.LOCKED_LIST_ID:
                             if (packet.Add)
                             {
                                 db.AddLock(client.Account.AccountId, target.AccountId);
@@ -46,7 +47,7 @@ namespace wServer.networking.handlers
                                 client.Player.Locked.Remove(target.AccountId);
                             }
                             break;
-                        case Client.IGNORED_LIST_ID:
+                        case AccountListPacket.IGNORED_LIST_ID:
                             if (packet.Add)
                             {
                                 db.AddIgnore(client.Account.AccountId, target.AccountId);

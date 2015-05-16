@@ -1,9 +1,4 @@
 ﻿using db;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.IO;
 using wServer.networking;
 
 namespace wServer.realm.worlds
@@ -29,13 +24,13 @@ namespace wServer.realm.worlds
                 switch (Level(db))
                 {
                     case 0:
-                        LoadMap("wServer.realm.worlds.maps.ghall0.wmap", MapType.WMAP); break;
+                        LoadMap("wServer.realm.worlds.maps.ghall0.wmap", MapType.Wmap); break;
                     case 1:
-                        LoadMap("wServer.realm.worlds.maps.ghall1.wmap", MapType.WMAP); break;
+                        LoadMap("wServer.realm.worlds.maps.ghall1.wmap", MapType.Wmap); break;
                     case 2:
-                        LoadMap("wServer.realm.worlds.maps.ghall2.wmap", MapType.WMAP); break;
+                        LoadMap("wServer.realm.worlds.maps.ghall2.wmap", MapType.Wmap); break;
                     default:
-                        LoadMap("wServer.realm.worlds.maps.ghall3.wmap", MapType.WMAP); break;
+                        LoadMap("wServer.realm.worlds.maps.ghall3.wmap", MapType.Wmap); break;
                 }
             });
         }

@@ -142,8 +142,8 @@ namespace wServer.networking.handlers
                         Background = world.Background,
                         AllowTeleport = world.AllowTeleport,
                         ShowDisplays = world.ShowDisplays,
-                        ClientXML = world.ClientXML,
-                        ExtraXML = world.ExtraXML
+                        ClientXML = world.ClientXml,
+                        ExtraXML = world.ExtraXml
                     });
                     client.Stage = ProtocalStage.Handshaked;
                 }

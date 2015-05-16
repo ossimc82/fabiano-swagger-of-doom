@@ -52,7 +52,7 @@ namespace wServer.realm.entities
             t += time.thisTickTimes;
 
             bool monsterNearby = false;
-            this.AOE(radius/2, false, enemy => monsterNearby = true);
+            this.Aoe(radius/2, false, enemy => monsterNearby = true);
             if (monsterNearby)
                 Explode(time);
 
@@ -68,7 +68,7 @@ namespace wServer.realm.entities
                 TargetId = Id,
                 PosA = new Position {X = radius}
             }, null);
-            this.AOE(radius, false, enemy =>
+            this.Aoe(radius, false, enemy =>
             {
                 (enemy as Enemy).Damage(player, time, dmg, false, new ConditionEffect
                 {

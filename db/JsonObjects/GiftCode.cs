@@ -4,8 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace db.JsonObjects
 {
@@ -39,14 +37,13 @@ namespace db.JsonObjects
             var rand = new Random();
             var ret = new GiftCode();
 
-            int types = rand.Next(minItemTypes, maxItemTypes);
-            int c = rand.Next(minItemStack, maxItemStack);
-            int t = -1;
+            var types = rand.Next(minItemTypes, maxItemTypes);
+            var c = rand.Next(minItemStack, maxItemStack);
 
-            for (int i = 0; i < types; i++)
+            for (var i = 0; i < types; i++)
             {
-                t = data.Items.ElementAt(rand.Next(0, data.Items.Count)).Key;
-                for (int j = 0; j < c; j++)
+                var t = data.Items.ElementAt(rand.Next(0, data.Items.Count)).Key;
+                for (var j = 0; j < c; j++)
                     ret.Gifts.Add(t);
                 c = rand.Next(minItemStack, maxItemStack);
             }

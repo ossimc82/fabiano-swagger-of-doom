@@ -34,10 +34,10 @@ namespace wServer.logic.behaviors.PetBehaviors
                     int maxMp = player.Stats[1] + player.Boost[1];
                     int h = GetMP(pet, ref cool);
                     if (h == -1) return;
-                    int newMp = Math.Min(player.MaxMP, player.MP + h);
-                    if (newMp != player.MP)
+                    int newMp = Math.Min(player.MaxMp, player.Mp + h);
+                    if (newMp != player.Mp)
                     {
-                        int n = newMp - player.MP;
+                        int n = newMp - player.Mp;
                         if (player.HasConditionEffect(ConditionEffects.Quiet))
                         {
                             player.Owner.BroadcastPacket(new ShowEffectPacket
@@ -57,7 +57,7 @@ namespace wServer.logic.behaviors.PetBehaviors
                             state = cool;
                             return;
                         }
-                        player.MP = newMp;
+                        player.Mp = newMp;
                         player.UpdateCount++;
                         player.Owner.BroadcastPacket(new ShowEffectPacket
                         {
