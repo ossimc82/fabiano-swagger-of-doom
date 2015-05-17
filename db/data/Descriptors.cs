@@ -404,6 +404,8 @@ public class PortalDesc
 
 public class Item : IFeedable
 {
+    private const bool DISABLE_SOULBOUND_UT = false;
+
     public Item(short type, XElement elem)
     {
         try
@@ -442,10 +444,8 @@ public class Item : IFeedable
             SuccessorId = (n = elem.Element("SuccessorId")) != null ? n.Value : null;
             if (elem.Element("Soulbound") != null)
             {
-                if (elem.Element("ActivateOnEquip") == null)
-                    Soulbound = true;
-                int s = Utils.FromString(elem.Element("SlotType").Value);
-                if (s == 10 || s == 26)
+                var s = Utils.FromString(elem.Element("SlotType").Value);
+                if (s == 10 || s == 26 || elem.Element("ActivateOnEquip") == null || !DISABLE_SOULBOUND_UT)
                     Soulbound = true;
                 else Soulbound = false;
             }

@@ -6,16 +6,14 @@ using System.Linq;
 using System.Globalization;
 using System.IO;
 using System.Net;
+using System.Net.NetworkInformation;
 using System.Threading;
 using db;
 using db.data;
 using log4net;
 using log4net.Config;
-using server.mysterybox;
 using server.sfx;
-//using System.Net.Mail;
 using System.Text;
-using MailKit;
 using MailKit.Net.Smtp;
 using MimeKit;
 
@@ -25,20 +23,15 @@ namespace server
 {
     internal class Program
     {
-        private const int NUM_WORKERS = 25;
-        //private static Thread[] workers = new Thread[NUM_WORKERS];
-        //private static readonly Queue<HttpListenerContext> contextQueue = new Queue<HttpListenerContext>();
-        //private static readonly object queueLock = new object();
-        //private static readonly ManualResetEvent queueReady = new ManualResetEvent(false);
         private static readonly List<HttpListenerContext> currentRequests = new List<HttpListenerContext>();
 
         private static HttpListener listener;
-        private static readonly ILog log = LogManager.GetLogger("Server");
 
         internal static SimpleSettings Settings { get; set; }
         internal static XmlData GameData { get; set; }
         internal static Database Database { get; set; }
-        internal static ILog Logger { get { return log; } }
+        internal static ILog Logger { get; } = LogManager.GetLogger("Server");
+
         internal static string InstanceId { get; set; }
 
         private static void Main(string[] args)
@@ -57,34 +50,41 @@ namespace server
             GameData = new XmlData();
 
             InstanceId = Guid.NewGuid().ToString();
+            Console.CancelKeyPress += (sender, e) => e.Cancel = true;
 
             var port = Settings.GetValue<int>("port", "80");
 
-            listener = new HttpListener();
-            listener.Prefixes.Add("http://*:" + port + "/");
-            listener.Prefixes.Add("https://*:8443/");
-            listener.Start();
+            if (RunPreCheck(port))
+            {
+                listener = new HttpListener();
+                listener.Prefixes.Add($"http://*:{port}/");
+                listener.Prefixes.Add("https://*:8443/");
+                listener.Start();
 
-            listener.BeginGetContext(ListenerCallback, null);
-            Console.CancelKeyPress += (sender, e) => e.Cancel = true;
-            log.Info("Listening at port " + port + "...");
+                listener.BeginGetContext(ListenerCallback, null);
+                Logger.Info($"Listening at port {port}...");
+            }
+            else
+                Logger.Error($"Port {port} is occupied. Can't start listening...\nPress ESC to exit.");
 
             while (Console.ReadKey(true).Key != ConsoleKey.Escape);
 
-            log.Info("Terminating...");
+            Logger.Info("Terminating...");
             //To prevent a char/list account in use if
             //both servers are closed at the same time
             while (currentRequests.Count > 0);
-            listener.Stop();
+            listener?.Stop();
             GameData.Dispose();
         }
+
+        private static bool RunPreCheck(int port) => IPGlobalProperties.GetIPGlobalProperties().GetActiveTcpConnections().All(_ => _.LocalEndPoint.Port != port) && IPGlobalProperties.GetIPGlobalProperties().GetActiveTcpListeners().All(_ => _.Port != port);
 
         private static void ListenerCallback(IAsyncResult ar)
         {
             try
             {
                 if (!listener.IsListening) return;
-                HttpListenerContext context = listener.EndGetContext(ar);
+                var context = listener.EndGetContext(ar);
                 listener.BeginGetContext(ListenerCallback, null);
                 ProcessRequest(context);
             }
@@ -97,7 +97,7 @@ namespace server
         {
             try
             {
-                log.InfoFormat("Request \"{0}\" from: {1}", 
+                Logger.InfoFormat("Request \"{0}\" from: {1}", 
                     context.Request.Url.LocalPath, context.Request.RemoteEndPoint);
 
                 if (context.Request.Url.LocalPath.Contains("sfx") || context.Request.Url.LocalPath.Contains("music"))
@@ -117,9 +117,9 @@ namespace server
                     s = "server" + context.Request.Url.LocalPath.Remove(context.Request.Url.LocalPath.IndexOf(".")).Replace("/", ".");
                 if ((t = Type.GetType(s)) == null)
                 {
-                    using (StreamWriter wtr = new StreamWriter(context.Response.OutputStream))
+                    using (var wtr = new StreamWriter(context.Response.OutputStream))
                     {
-                        string file = "game" + (context.Request.RawUrl == "/" ? "/index.html" : context.Request.RawUrl);
+                        var file = "game" + (context.Request.RawUrl == "/" ? "/index.html" : context.Request.RawUrl);
                         if (file.Contains("?"))
                             file = file.Remove(file.IndexOf('?'));
                         if (File.Exists(file))
@@ -139,10 +139,10 @@ namespace server
                     if (!(handler is RequestHandler))
                     {
                         if (handler == null)
-                            using (StreamWriter wtr = new StreamWriter(context.Response.OutputStream))
+                            using (var wtr = new StreamWriter(context.Response.OutputStream))
                                 wtr.Write("<Error>Class \"{0}\" not found.</Error>", t.FullName);
                         else
-                            using (StreamWriter wtr = new StreamWriter(context.Response.OutputStream))
+                            using (var wtr = new StreamWriter(context.Response.OutputStream))
                                 wtr.Write("<Error>Class \"{0}\" is not of the type RequestHandler.</Error>", t.FullName);
                     }
                     else
@@ -153,9 +153,9 @@ namespace server
             catch (Exception e)
             {
                 currentRequests.Remove(context);
-                using (StreamWriter wtr = new StreamWriter(context.Response.OutputStream))
+                using (var wtr = new StreamWriter(context.Response.OutputStream))
                     wtr.Write(e.ToString());
-                log.Error(e);
+                Logger.Error(e);
             }
 
             context.Response.Close();
@@ -176,15 +176,15 @@ namespace server
 
             if (context.Response.ContentType == "text/html" || context.Response.ContentType == "text/javascript" || context.Response.ContentType == "text/css")
             {
-                using (StreamReader rdr = File.OpenText(path))
+                using (var rdr = File.OpenText(path))
                 {
-                    string send = rdr.ReadToEnd();
+                    var send = rdr.ReadToEnd();
                     foreach (var toReplace in replaceVars)
                     {
-                        string tmp = String.Empty;
+                        var tmp = String.Empty;
                         if (toReplace.Value.StartsWith("PATH"))
                         {
-                            using (StreamReader r = File.OpenText(toReplace.Value.Split(':')[1]))
+                            using (var r = File.OpenText(toReplace.Value.Split(':')[1]))
                                 tmp = r.ReadToEnd();
 
                             send = send.Replace(toReplace.Key, tmp);
@@ -218,10 +218,10 @@ namespace server
 
         private static string getContentType(string fileExtention)
         {
-            string plain = fileExtention;
+            var plain = fileExtention;
             if (fileExtention.StartsWith(".")) 
                 plain = fileExtention.Remove(0, 1);
-            string ret = "text/html";
+            var ret = "text/html";
 
             switch (plain)
             {
@@ -254,7 +254,7 @@ namespace server
         {
             try
             {
-                MimeMessage m = new MimeMessage();
+                var m = new MimeMessage();
                 m.From.Add(new MailboxAddress("Forgot Password", message.From.Address));
                 m.To.Add(new MailboxAddress("", message.To[0].Address));
                 m.Subject = message.Subject;
@@ -263,7 +263,7 @@ namespace server
                 else
                     m.Body = new TextPart("plain") { Text = message.Body };
 
-                using (SmtpClient client = new SmtpClient())
+                using (var client = new SmtpClient())
                 {
                     client.Connect(Settings.GetValue<string>("smtpHost"), Settings.GetValue<int>("smtpPort"), enableSsl);
                     client.Authenticate(new NetworkCredential(Settings.GetValue<string>("serverEmail"), Settings.GetValue<string>("serverEmailPassword")));
@@ -273,7 +273,7 @@ namespace server
             }
             catch (Exception ex)
             {
-                log.Error(ex);
+                Logger.Error(ex);
             }
         }
     }

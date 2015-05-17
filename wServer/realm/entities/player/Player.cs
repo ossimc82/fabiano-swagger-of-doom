@@ -29,7 +29,7 @@ namespace wServer.realm.entities.player
 
     public partial class Player : Character, IContainer, IPlayer
     {
-        private static readonly new ILog log = LogManager.GetLogger(typeof(Player));
+        private static readonly ILog log = LogManager.GetLogger(typeof(Player));
 
         private bool dying;
 
