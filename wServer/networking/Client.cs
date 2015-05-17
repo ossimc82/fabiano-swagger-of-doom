@@ -161,18 +161,18 @@ namespace wServer.networking
         //Following must execute, network loop will discard disconnected client, so logic loop
         private void DisconnectFromRealm()
         {
-            Manager.Logic.AddPendingAction(async t =>
+            Manager.Logic.AddPendingAction(t =>
             {
-                await Save();
+                Save();
                 Manager.Disconnect(this);
             }, PendingPriority.Destruction);
         }
 
         public void Reconnect(ReconnectPacket pkt)
         {
-            Manager.Logic.AddPendingAction(async t =>
+            Manager.Logic.AddPendingAction(t =>
             {
-                await Save();
+                Save();
                 SendPacket(pkt);
             }, PendingPriority.Destruction);
         }

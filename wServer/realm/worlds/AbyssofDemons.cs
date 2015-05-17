@@ -17,6 +17,7 @@ namespace wServer.realm.worlds
             AllowTeleport = true;
         }
 
+        public override bool NeedsPortalKey => true;
         protected override void Init() => LoadMap("wServer.realm.worlds.maps.abyss.wmap", MapType.Wmap);
         public override World GetInstance(Client psr) => Manager.AddWorld(new AbyssofDemons());
     }

@@ -167,4 +167,12 @@ public static class Utils
     {
         return Enum.GetName(typeof (T), value);
     }
+
+    public static byte[] RandomBytes(int len)
+    {
+        var arr = new byte[len];
+        var r = new Random();
+        r.NextBytes(arr);
+        return arr;
+    }
 }

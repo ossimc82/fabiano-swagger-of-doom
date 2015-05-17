@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using wServer.networking;
 using wServer.networking.svrPackets;
 using wServer.realm.entities;
@@ -85,6 +86,11 @@ namespace wServer.realm.commands
         protected override bool Process(Player player, RealmTime time, string[] args)
         {
             var p = player.Manager.FindPlayer(args[1]);
+            if (p == null)
+            {
+                player.SendError("Player not found");
+                return false;
+            }
             player.Manager.Database.DoActionAsync(db =>
             {
                 var cmd = db.CreateQuery();
@@ -106,11 +112,7 @@ namespace wServer.realm.commands
 
         protected override bool Process(Player player, RealmTime time, string[] args)
         {
-            foreach (var i in player.Owner.Players)
-            {
-                i.Value.SendInfo("Short Lag, Please Wait!");
-            }
-            player.Manager.AddWorld(GameWorld.AutoName(1, true));
+            Task.Factory.StartNew(() => GameWorld.AutoName(1, true)).ContinueWith(_ => player.Manager.AddWorld(_.Result), TaskScheduler.Default);
             return true;
         }
     }

@@ -55,7 +55,12 @@ namespace wServer.realm
 
             //Mark world for removal after 2 minutes if the 
             //world is a dungeon and if no players in there;
-            Timers.Add(new WorldTimer(120 * 1000, (w, t) => canBeClosed = true));
+            Timers.Add(new WorldTimer(120 * 1000, (w, t) =>
+            {
+                canBeClosed = true;
+                if (NeedsPortalKey)
+                    PortalKeyExpired = true;
+            }));
         }
 
         public bool IsLimbo { get; protected set; }
@@ -66,8 +71,9 @@ namespace wServer.realm
             internal set
             {
                 manager = value;
-                if (manager != null)
-                    Init();
+                if (manager == null) return;
+                Init();
+                PortalKey = Utils.RandomBytes(NeedsPortalKey ? 16 : 0);
             }
         }
 
@@ -75,6 +81,10 @@ namespace wServer.realm
         public int Difficulty { get; protected set; }
         public string Name { get; protected set; }
         public string ClientWorldName { get; protected set; }
+        public byte[] PortalKey { get; private set; }
+        public bool PortalKeyExpired { get; private set; }
+
+        public virtual bool NeedsPortalKey => false;
 
         public ConcurrentDictionary<int, Player> Players { get; private set; }
         public ConcurrentDictionary<int, Enemy> Enemies { get; private set; }

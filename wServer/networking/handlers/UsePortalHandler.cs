@@ -152,7 +152,7 @@ namespace wServer.networking.handlers
                         Port = Program.Settings.GetValue<int>("port"),
                         GameId = world.Id,
                         Name = world.Name,
-                        Key = Empty<byte>.Array,
+                        Key = world.PortalKey,
                     });
                 }
             }, PendingPriority.Networking);

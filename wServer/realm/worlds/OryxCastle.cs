@@ -16,6 +16,8 @@ namespace wServer.realm.worlds
             AllowTeleport = false;
         }
 
+        public override bool NeedsPortalKey => true;
+
         protected override void Init()
         {
             LoadMap("wServer.realm.worlds.maps.OryxCastle.wmap", MapType.Wmap);

@@ -1,6 +1,7 @@
 ﻿#region
 
 using System;
+using System.Linq;
 using System.Text;
 using db;
 using wServer.networking.cliPackets;
@@ -117,10 +118,33 @@ namespace wServer.networking.handlers
                         client.SendPacket(new FailurePacket
                         {
                             ErrorId = 1,
-                            ErrorDescription = "Portal key expired"
+                            ErrorDescription = "Invalid world."
                         });
                         client.Disconnect();
                         return;
+                    }
+                    if (world.NeedsPortalKey)
+                    {
+                        if (!world.PortalKey.SequenceEqual(packet.Key))
+                        {
+                            client.SendPacket(new FailurePacket
+                            {
+                                ErrorId = 1,
+                                ErrorDescription = "Invalid Portal Key"
+                            });
+                            client.Disconnect();
+                            return;
+                        }
+                        if (world.PortalKeyExpired)
+                        {
+                            client.SendPacket(new FailurePacket
+                            {
+                                ErrorId = 1,
+                                ErrorDescription = "Portal key expired."
+                            });
+                            client.Disconnect();
+                            return;
+                        }
                     }
                     log.Info(@"Client joined world " + world.Id);
                     if (packet.MapInfo.Length > 0) //Test World

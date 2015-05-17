@@ -14,7 +14,7 @@ namespace wServer.realm
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(DatabaseTicker));
 
-        private DatabaseCollection databases;
+        private readonly DatabaseCollection databases;
 
         public DatabaseTicker()
         {

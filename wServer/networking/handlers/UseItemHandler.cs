@@ -286,7 +286,7 @@ namespace wServer.networking.handlers
 
                 client.Player.UpdateCount++;
                 client.Player.SaveToCharacter();
-                await client.Save();
+                client.Save();
             }, PendingPriority.Networking);
         }
     }

@@ -2,6 +2,8 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using log4net;
 using wServer.networking.svrPackets;
 using wServer.realm.entities;
@@ -195,10 +197,10 @@ namespace wServer.realm
         public static double GetNormal(Random rand)
         {
             // Use Box-Muller algorithm
-            double u1 = GetUniform(rand);
-            double u2 = GetUniform(rand);
-            double r = Math.Sqrt(-2.0 * Math.Log(u1));
-            double theta = 2.0 * Math.PI * u2;
+            var u1 = GetUniform(rand);
+            var u2 = GetUniform(rand);
+            var r = Math.Sqrt(-2.0 * Math.Log(u1));
+            var theta = 2.0 * Math.PI * u2;
             return r * Math.Sin(theta);
         }
 
@@ -210,7 +212,7 @@ namespace wServer.realm
         public static double GetUniform(Random rand)
         {
             // 0 <= u < 2^32
-            uint u = (uint)(rand.NextDouble() * uint.MaxValue);
+            var u = (uint)(rand.NextDouble() * uint.MaxValue);
             // The magic number below is 1/(2^32 + 2).
             // The result is strictly between 0 and 1.
             return (u + 1.0) * 2.328306435454494e-10;
@@ -223,13 +225,9 @@ namespace wServer.realm
                 "Ent Ancient", "Actual Ent Ancient",
                 "Phoenix Reborn",
                 "Oasis Giant", "Ghost King", "Cyclops God", "Red Demon",
-                "Skull Shrine", "Cube God", "Grand Sphinx", "Hermit God") == 0)
-            {
-                RealmClosed = true;
-                return true;
-            }
-            return false;
-            //return false;
+                "Skull Shrine", "Cube God", "Grand Sphinx", "Hermit God") != 0) return false;
+            RealmClosed = true;
+            return true;
         }
 
         public void CloseRealm()
@@ -242,7 +240,7 @@ namespace wServer.realm
             }));
             world.Timers.Add(new WorldTimer(8000, (w, t) =>
             {
-                foreach (Player i in world.Players.Values)
+                foreach (var i in world.Players.Values)
                 {
                     if (ocWorld == null) i.Client.Disconnect();
                     i.Client.SendPacket(new ReconnectPacket
@@ -251,11 +249,11 @@ namespace wServer.realm
                         Port = Program.Settings.GetValue<int>("port"),
                         GameId = ocWorld.Id,
                         Name = ocWorld.Name,
-                        Key = Empty<byte>.Array
+                        Key = ocWorld.PortalKey
                     });
                 }
             }));
-            foreach (Player i in world.Players.Values)
+            foreach (var i in world.Players.Values)
             {
                 SendMsg(i, "MY MINIONS HAVE FAILED ME!", "#Oryx the Mad God");
                 SendMsg(i, "BUT NOW YOU SHALL FEEL MY WRATH!", "#Oryx the Mad God");
@@ -270,8 +268,8 @@ namespace wServer.realm
 
         public int CountEnemies(params string[] enemies)
         {
-            List<ushort> enemyList = new List<ushort>();
-            foreach (string i in enemies)
+            var enemyList = new List<ushort>();
+            foreach (var i in enemies)
             {
                 try
                 {
@@ -282,25 +280,17 @@ namespace wServer.realm
                     log.Error(ex);
                 }
             }
-            int count = 0;
-            foreach (KeyValuePair<int, Enemy> i in world.Enemies)
-            {
-                if (enemyList.Contains(i.Value.ObjectType))
-                {
-                    count++;
-                }
-            }
-            return count;
+            return world.Enemies.Count(i => enemyList.Contains(i.Value.ObjectType));
         }
 
         public void Init()
         {
             log.InfoFormat("Oryx is controlling world {0}({1})...", world.Id, world.Name);
-            int w = world.Map.Width;
-            int h = world.Map.Height;
-            int[] stats = new int[12];
-            for (int y = 0; y < h; y++)
-                for (int x = 0; x < w; x++)
+            var w = world.Map.Width;
+            var h = world.Map.Height;
+            var stats = new int[12];
+            for (var y = 0; y < h; y++)
+                for (var x = 0; x < w; x++)
                 {
                     var tile = world.Map[x, y];
                     if (tile.Terrain != WmapTerrain.None)
@@ -312,12 +302,12 @@ namespace wServer.realm
             {
                 var terrain = i.Key;
                 var idx = (int)terrain - 1;
-                int enemyCount = stats[idx] / i.Value.Item1;
+                var enemyCount = stats[idx] / i.Value.Item1;
                 enemyMaxCounts[idx] = enemyCount;
                 enemyCounts[idx] = 0;
-                for (int j = 0; j < enemyCount; j++)
+                for (var j = 0; j < enemyCount; j++)
                 {
-                    ushort objType = GetRandomObjType(i.Value.Item2);
+                    var objType = GetRandomObjType(i.Value.Item2);
                     if (objType == 0) continue;
 
                     enemyCounts[idx] += Spawn(world.Manager.GameData.ObjectDescs[objType], terrain, w, h);
@@ -331,17 +321,13 @@ namespace wServer.realm
         {
             log.InfoFormat("Oryx has closed realm {0}...", world.Name);
             ClosingStarted = true;
-            foreach (Player i in world.Players.Values)
+            foreach (var i in world.Players.Values)
             {
                 SendMsg(i, "I HAVE CLOSED THIS REALM!", "#Oryx the Mad God");
                 SendMsg(i, "YOU WILL NOT LIVE TO SEE THE LIGHT OF DAY!", "#Oryx the Mad God");
             }
             world.Timers.Add(new WorldTimer(120000, (ww, tt) => { CloseRealm(); }));
-            world.Manager.GetWorld(World.NEXUS_ID).Timers.Add(new WorldTimer(130000, (w, t) =>
-            {
-                GameWorld newworld = GameWorld.AutoName(1, true);
-                w.Manager.AddWorld(newworld);
-            }));
+            world.Manager.GetWorld(World.NEXUS_ID).Timers.Add(new WorldTimer(130000, (w, t) => Task.Factory.StartNew(() => GameWorld.AutoName(1, true)).ContinueWith(_ => w.Manager.AddWorld(_.Result), TaskScheduler.Default)));
             world.Manager.CloseWorld(world);
         }
 
@@ -350,7 +336,7 @@ namespace wServer.realm
             if (enemy.ObjectDesc != null && enemy.ObjectDesc.Quest)
             {
                 TauntData? dat = null;
-                foreach (Tuple<string, TauntData> i in criticalEnemies)
+                foreach (var i in criticalEnemies)
                     if ((enemy.ObjectDesc.DisplayId ?? enemy.ObjectDesc.ObjectId) == i.Item1)
                     {
                         dat = i.Item2;
@@ -360,8 +346,8 @@ namespace wServer.realm
 
                 if (dat.Value.killed != null)
                 {
-                    string[] arr = dat.Value.killed;
-                    string msg = arr[rand.Next(0, arr.Length)];
+                    var arr = dat.Value.killed;
+                    var msg = arr[rand.Next(0, arr.Length)];
                     while (killer == null && msg.Contains("{PLAYER}"))
                         msg = arr[rand.Next(0, arr.Length)];
                     msg = msg.Replace("{PLAYER}", killer.Name);
@@ -370,7 +356,7 @@ namespace wServer.realm
 
                 if (rand.NextDouble() < 0.25)
                 {
-                    Tuple<string, ISetPiece> evt = events[rand.Next(0, events.Count)];
+                    var evt = events[rand.Next(0, events.Count)];
                     if (
                         world.Manager.GameData.ObjectDescs[world.Manager.GameData.IdToObjectType[evt.Item1]].PerRealmMax ==
                         1)
@@ -378,7 +364,7 @@ namespace wServer.realm
                     SpawnEvent(evt.Item1, evt.Item2);
 
                     dat = null;
-                    foreach (Tuple<string, TauntData> i in criticalEnemies)
+                    foreach (var i in criticalEnemies)
                         if (evt.Item1 == i.Item1)
                         {
                             dat = i.Item2;
@@ -388,8 +374,8 @@ namespace wServer.realm
 
                     if (dat.Value.spawn != null)
                     {
-                        string[] arr = dat.Value.spawn;
-                        string msg = arr[rand.Next(0, arr.Length)];
+                        var arr = dat.Value.spawn;
+                        var msg = arr[rand.Next(0, arr.Length)];
                         BroadcastMsg(msg);
                     }
                 }
@@ -439,10 +425,10 @@ namespace wServer.realm
         {
             log.Info("Oryx is controlling population...");
             RecalculateEnemyCount();
-            int[] state = new int[12];
-            int[] diff = new int[12];
-            int c = 0;
-            for (int i = 0; i < state.Length; i++)
+            var state = new int[12];
+            var diff = new int[12];
+            var c = 0;
+            for (var i = 0; i < state.Length; i++)
             {
                 if (enemyCounts[i] > enemyMaxCounts[i] * 1.5)  //Kill some
                 {
@@ -462,7 +448,7 @@ namespace wServer.realm
             }
             foreach (var i in world.Enemies)    //Kill
             {
-                int idx = (int)i.Value.Terrain - 1;
+                var idx = (int)i.Value.Terrain - 1;
                 if (idx == -1 || state[idx] == 0 ||
                     i.Value.GetNearestEntity(10, true) != null ||
                     diff[idx] == 0)
@@ -479,14 +465,14 @@ namespace wServer.realm
             }
 
             int w = world.Map.Width, h = world.Map.Height;
-            for (int i = 0; i < state.Length; i++)  //Add
+            for (var i = 0; i < state.Length; i++)  //Add
             {
                 if (state[i] != 2) continue;
-                int x = diff[i];
-                WmapTerrain t = (WmapTerrain)(i + 1);
-                for (int j = 0; j < x; )
+                var x = diff[i];
+                var t = (WmapTerrain)(i + 1);
+                for (var j = 0; j < x; )
                 {
-                    ushort objType = GetRandomObjType(spawn[t].Item2);
+                    var objType = GetRandomObjType(spawn[t].Item2);
                     if (objType == 0) continue;
 
                     j += Spawn(world.Manager.GameData.ObjectDescs[objType], t, w, h);
@@ -500,10 +486,10 @@ namespace wServer.realm
 
         private ushort GetRandomObjType(Tuple<string, double>[] dat)
         {
-            double p = rand.NextDouble();
+            var p = rand.NextDouble();
             double n = 0;
             ushort objType = 0;
-            foreach (Tuple<string, double> k in dat)
+            foreach (var k in dat)
             {
                 n += k.Item2;
                 if (n > p)
@@ -517,11 +503,11 @@ namespace wServer.realm
 
         private void HandleAnnouncements()
         {
-            Tuple<string, TauntData> taunt = criticalEnemies[rand.Next(0, criticalEnemies.Length)];
-            int count = 0;
-            foreach (KeyValuePair<int, Enemy> i in world.Enemies)
+            var taunt = criticalEnemies[rand.Next(0, criticalEnemies.Length)];
+            var count = 0;
+            foreach (var i in world.Enemies)
             {
-                ObjectDesc desc = i.Value.ObjectDesc;
+                var desc = i.Value.ObjectDesc;
                 if (desc == null || (desc.DisplayId ?? desc.ObjectId) != taunt.Item1)
                     continue;
                 count++;
@@ -530,14 +516,14 @@ namespace wServer.realm
             if (count == 0) return;
             if (count == 1 && taunt.Item2.final != null)
             {
-                string[] arr = taunt.Item2.final;
-                string msg = arr[rand.Next(0, arr.Length)];
+                var arr = taunt.Item2.final;
+                var msg = arr[rand.Next(0, arr.Length)];
                 BroadcastMsg(msg);
             }
             else
             {
-                string[] arr = taunt.Item2.numberOfEnemies;
-                string msg = arr[rand.Next(0, arr.Length)];
+                var arr = taunt.Item2.numberOfEnemies;
+                var msg = arr[rand.Next(0, arr.Length)];
                 msg = msg.Replace("{COUNT}", count.ToString());
                 BroadcastMsg(msg);
             }
@@ -545,9 +531,9 @@ namespace wServer.realm
 
         private void RecalculateEnemyCount()
         {
-            for (int i = 0; i < enemyCounts.Length; i++)
+            for (var i = 0; i < enemyCounts.Length; i++)
                 enemyCounts[i] = 0;
-            foreach (KeyValuePair<int, Enemy> i in world.Enemies)
+            foreach (var i in world.Enemies)
             {
                 if (i.Value.Terrain == WmapTerrain.None) continue;
                 enemyCounts[(int)i.Value.Terrain - 1]++;
@@ -572,11 +558,11 @@ namespace wServer.realm
         private int Spawn(ObjectDesc desc, WmapTerrain terrain, int w, int h)
         {
             Entity entity;
-            int ret = 0;
-            IntPoint pt = new IntPoint();
+            var ret = 0;
+            var pt = new IntPoint();
             if (desc.Spawn != null)
             {
-                int num = (int)GetNormal(rand, desc.Spawn.Mean, desc.Spawn.StdDev);
+                var num = (int)GetNormal(rand, desc.Spawn.Mean, desc.Spawn.StdDev);
                 if (num > desc.Spawn.Max) num = desc.Spawn.Max;
                 else if (num < desc.Spawn.Min) num = desc.Spawn.Min;
 
@@ -588,7 +574,7 @@ namespace wServer.realm
                          !world.IsPassable(pt.X, pt.Y) ||
                          world.AnyPlayerNearby(pt.X, pt.Y));
 
-                for (int k = 0; k < num; k++)
+                for (var k = 0; k < num; k++)
                 {
                     entity = Entity.Resolve(world.Manager, desc.ObjectType);
                     entity.Move(
@@ -621,7 +607,7 @@ namespace wServer.realm
 
         private void SpawnEvent(string name, ISetPiece setpiece)
         {
-            IntPoint pt = new IntPoint();
+            var pt = new IntPoint();
             do
             {
                 pt.X = rand.Next(0, world.Map.Width);

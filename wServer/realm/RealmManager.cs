@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 using db;
 using db.data;
 using log4net;
@@ -228,7 +229,7 @@ namespace wServer.realm
             AddWorld(World.DAILY_QUEST_ID, new DailyQuestRoom());
             Monitor = new RealmPortalMonitor(this);
 
-            AddWorld(GameWorld.AutoName(1, true));
+            Task.Factory.StartNew(() => GameWorld.AutoName(1, true)).ContinueWith(_ => AddWorld(_.Result), TaskScheduler.Default);
 
             Chat = new ChatManager(this);
             Commands = new CommandManager(this);

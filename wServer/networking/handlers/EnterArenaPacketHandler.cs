@@ -17,7 +17,7 @@ namespace wServer.networking.handlers
             get { return PacketID.ENTER_ARENA; }
         }
 
-        protected override async void HandlePacket(Client client, EnterArenaPacket packet)
+        protected override void HandlePacket(Client client, EnterArenaPacket packet)
         {
             using (Database db = new Database())
             {
@@ -37,7 +37,7 @@ namespace wServer.networking.handlers
                     client.Player.UpdateCount++;
                 }
             }
-            await client.Save();
+            client.Save();
 
             World world = client.Player.Manager.AddWorld(new Arena());
 

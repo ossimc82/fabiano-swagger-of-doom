@@ -58,8 +58,6 @@ namespace wServer.networking
             log.Info("Stoping server...");
             foreach (Client i in Manager.Clients.Values.ToArray())
             {
-                if(i.Player != null)
-                    i.Player.SaveToCharacter();
                 await i.Save();
                 i.Disconnect();
             }
