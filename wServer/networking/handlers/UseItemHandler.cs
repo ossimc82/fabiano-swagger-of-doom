@@ -23,7 +23,7 @@ namespace wServer.networking.handlers
         {
             if (client.Player.Owner == null) return;
 
-            client.Manager.Logic.AddPendingAction(async t =>
+            client.Manager.Logic.AddPendingAction(t =>
             {
                 IContainer container = client.Player.Owner.GetEntity(packet.SlotObject.ObjectId) as IContainer;
                 Item item;

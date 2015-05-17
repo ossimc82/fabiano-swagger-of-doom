@@ -18,7 +18,7 @@ namespace wServer.realm.entities.merchant
         private const int BUY_NO_FAME = 6;
         private const int BUY_NO_FORTUNETOKENS = 9;
         private const int MERCHANT_SIZE = 100;
-        private static readonly new ILog log = LogManager.GetLogger(typeof(Merchants));
+        private static readonly ILog log = LogManager.GetLogger(typeof(Merchants));
 
         private readonly Dictionary<int, Tuple<int, CurrencyType>> prices = MerchantLists.prices;
 

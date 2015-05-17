@@ -179,7 +179,6 @@ namespace wServer.networking
 
         public void GiftCodeReceived(string type)
         {
-            var x = 1;
             //Use later
             switch (type)
             {

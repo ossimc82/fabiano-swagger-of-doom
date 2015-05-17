@@ -27,13 +27,13 @@ namespace wServer.realm.entities.player
 
         private IEnumerable<Entity> GetNewEntities()
         {
-            foreach (var i in Owner.Players.Where(i => clientEntities.Add(i.Value)).Where(i => i.Value == this))
+            foreach (var i in Owner.Players.Where(i => clientEntities.Add(i.Value)))
                 yield return i.Value;
 
             foreach (var i in Owner.PlayersCollision.HitTest(X, Y, SIGHTRADIUS).OfType<Decoy>().Where(i => clientEntities.Add(i)))
                 yield return i;
 
-            foreach (var i in Owner.PlayersCollision.HitTest(X, Y, SIGHTRADIUS).OfType<Pet>().Where(i => clientEntities.Add(i)) )
+            foreach (var i in Owner.PlayersCollision.HitTest(X, Y, SIGHTRADIUS).OfType<Pet>().Where(i => clientEntities.Add(i)))
                 yield return i;
 
             foreach (var i in Owner.EnemiesCollision.HitTest(X, Y, SIGHTRADIUS))
@@ -43,12 +43,12 @@ namespace wServer.realm.entities.player
                     var owner = (i as Container).BagOwners?.Length == 1 ? (i as Container).BagOwners[0] : null;
                     if (owner != null && owner != AccountId) continue;
 
-                    if(owner == AccountId)
+                    if (owner == AccountId)
                         if ((LootDropBoost || LootTierBoost) && (i.ObjectType != 0x500 || i.ObjectType != 0x506))
                             (i as Container).BoostedBag = true; //boosted bag
 
                 }
-                if (!(MathsUtils.DistSqr(i.X, i.Y, X, Y) <= SIGHTRADIUS*SIGHTRADIUS)) continue;
+                if (!(MathsUtils.DistSqr(i.X, i.Y, X, Y) <= SIGHTRADIUS * SIGHTRADIUS)) continue;
                 if (clientEntities.Add(i))
                     yield return i;
             }
@@ -58,9 +58,6 @@ namespace wServer.realm.entities.player
 
         private IEnumerable<int> GetRemovedEntities()
         {
-            foreach (var i in clientEntities.Where(i => i is Player).Where(i => i != this))
-                yield return i.Id;
-
             foreach (var i in clientEntities.Where(i => !(i is Player) || i.Owner == null))
             {
                 if (MathsUtils.DistSqr(i.X, i.Y, X, Y) > SIGHTRADIUS * SIGHTRADIUS &&
