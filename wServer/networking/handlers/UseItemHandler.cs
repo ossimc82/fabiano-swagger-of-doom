@@ -26,6 +26,7 @@ namespace wServer.networking.handlers
             client.Manager.Logic.AddPendingAction(t =>
             {
                 IContainer container = client.Player.Owner.GetEntity(packet.SlotObject.ObjectId) as IContainer;
+                if(container == null) return;
                 Item item;
                 if (packet.SlotObject.SlotId == 254)
                 {
@@ -284,6 +285,7 @@ namespace wServer.networking.handlers
                     if (container.SlotTypes[packet.SlotObject.SlotId] != -1)
                         client.Player.FameCounter.UseAbility();
 
+                ((Entity)container).UpdateCount++;
                 client.Player.UpdateCount++;
                 client.Player.SaveToCharacter();
                 client.Save();
