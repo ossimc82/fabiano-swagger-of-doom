@@ -224,7 +224,7 @@ namespace wServer.networking.handlers
 
         private bool IsValid(Item item1, Item item2, IContainer con1, IContainer con2, InvSwapPacket packet, Client client)
         {
-            if (con2 is Container)
+            if (con2 is Container || con2 is OneWayContainer)
                 return true;
 
             bool ret = false;
