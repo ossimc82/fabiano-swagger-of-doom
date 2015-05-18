@@ -13,7 +13,7 @@
 
         protected override void Init()
         {
-            LoadMap("wServer.realm.worlds.maps.cland.wmap", MapType.Wmap);
+            LoadMap("wServer.realm.worlds.maps.candyland.wmap", MapType.Wmap);
         }
     }
 }
