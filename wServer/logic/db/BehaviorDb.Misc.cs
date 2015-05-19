@@ -15,6 +15,12 @@ namespace wServer.logic
                     new NexusHealHp(5, 100, 1000)
                     )
             )
+            .Init("Winter Fountain Frozen", //Frozen <3
+                                            //Kabam let it go :DDD
+                new State(
+                    new NexusHealHp(5, 100, 1000)
+                    )
+            )
             .Init("Sheep",
                 new State(
                     new PlayerWithinTransition(15, "player_nearby"),
