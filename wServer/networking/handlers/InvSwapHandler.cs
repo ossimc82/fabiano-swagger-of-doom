@@ -154,21 +154,9 @@ namespace wServer.networking.handlers
 
                 if (en1 is Player && en2 is Player & en1.Id != en2.Id)
                 {
-                    foreach (Client c in client.Manager.Clients.Values)
-                    {
-                        c.SendPacket(new TextPacket
-                        {
-                            BubbleTime = 0,
-                            CleanText = "",
-                            Name = "@ANNOUNCEMENT",
-                            ObjectId = 0,
-                            Recipient = "",
-                            Stars = -1,
-                            Text = String.Format("{0} just tried to steal items from {1}'s inventory, GTFO YOU GOD DAMN FEGIT!!!!11111oneoneoneeleven")
-                        });
-                        return;
-                    }
-                }
+                    client.Manager.Chat.Announce($"{en1.Name} just tried to steal items from {en2.Name}'s inventory, GTFO YOU GOD DAMN FEGIT!!!!11111oneoneoneeleven");
+                    return;
+                };
 
                 con1.Inventory[packet.SlotObject1.SlotId] = item2;
                 con2.Inventory[packet.SlotObject2.SlotId] = item1;
@@ -211,11 +199,6 @@ namespace wServer.networking.handlers
                 if (client.Player.Owner is Vault)
                     if ((client.Player.Owner as Vault).PlayerOwnerName == client.Account.Name)
                         return;
-
-                if (!(en2 is Player))
-                {
-                    Container con = en2 as Container;
-                }
 
                 client.Player.SaveToCharacter();
                 client.Save();

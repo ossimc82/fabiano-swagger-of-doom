@@ -46,13 +46,6 @@ namespace wServer.realm.entities
             base.ExportStats(stats);
         }
 
-        protected override void ImportStats(StatsType stats, object val)
-        {
-            if (stats == StatsType.AltTextureIndex)
-                AltTextureIndex = (int) val;
-            base.ImportStats(stats, val);
-        }
-
         public override void Init(World owner)
         {
             base.Init(owner);

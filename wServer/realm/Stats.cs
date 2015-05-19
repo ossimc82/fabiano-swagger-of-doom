@@ -115,7 +115,7 @@ namespace wServer.realm
         public readonly static StatsType PetAbilityType0 = 93;
         public readonly static StatsType PetAbilityType1 = 94;
         public readonly static StatsType PetAbilityType2 = 95;
-        public readonly static StatsType _04I = 96;
+        public readonly static StatsType Effects2 = 96;
         //case StatData._-04I:
         //   param1.condition_[ConditionEffect._-KL]=_loc8_;
         //   break;

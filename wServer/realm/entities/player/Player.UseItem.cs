@@ -367,9 +367,15 @@ namespace wServer.realm.entities.player
 
                         ActivateBoostStat(this, idx, pkts);
                         int OGstat = oldstat;
+                        int bit = idx + 40;
 
                         int s = eff.Amount;
                         Boost[idx] += s;
+                        ApplyConditionEffect(new ConditionEffect
+                        {
+                            DurationMS = eff.DurationMS,
+                            Effect = (ConditionEffectIndex)bit
+                        });
                         UpdateCount++;
                         Owner.Timers.Add(new WorldTimer(eff.DurationMS, (world, t) =>
                         {
@@ -399,8 +405,15 @@ namespace wServer.realm.entities.player
                             if(eff.Stats == StatsType.Dexterity) idx = 7;
 
                             int s = eff.Amount;
+                            int bit = idx + 40;
+
                             this.Aoe(eff.Range / 2, true, player =>
                             {
+                                ApplyConditionEffect(new ConditionEffect
+                                {
+                                    DurationMS = eff.DurationMS,
+                                    Effect = (ConditionEffectIndex)bit
+                                });
                                 (player as Player).Boost[idx] += s;
                                 player.UpdateCount++;
                                 Owner.Timers.Add(new WorldTimer(eff.DurationMS, (world, t) =>
@@ -1129,6 +1142,35 @@ namespace wServer.realm.entities.player
                                 log.ErrorFormat("Couldn't despawn portal.\n{0}", ex);
                             }
                         }));
+                        break;
+                    case ActivateEffects.GenericActivate:
+                        Owner.Aoe(eff.Center == "mouse" ? pkt.ItemUsePos : new Position(X, Y), eff.Range / 2, eff.Target?.ToLower() == "player", player =>
+                        {
+                            player.ApplyConditionEffect(new ConditionEffect
+                            {
+                                Effect = eff.ConditionEffect.Value,
+                                DurationMS = eff.DurationMS
+                            });
+                        });
+
+                        if (eff.VisualEffect > 0)
+                        {
+                            Placeholder x = null;
+                            if (eff.Center == "mouse")
+                            {
+                                x = new Placeholder(Manager, 1500);
+                                x.Move(pkt.ItemUsePos.X, pkt.ItemUsePos.Y);
+                                Owner.EnterWorld(x);
+                            }
+
+                            BroadcastSync(new ShowEffectPacket
+                            {
+                                EffectType = EffectType.AreaBlast,
+                                TargetId = x?.Id ?? Id,
+                                Color = new ARGB(eff.Color ?? 0xffffffff),
+                                PosA = new Position {X = eff.VisualEffect/2},
+                            }, p => this.Dist(p) < 25);
+                        }
                         break;
                 }
             }

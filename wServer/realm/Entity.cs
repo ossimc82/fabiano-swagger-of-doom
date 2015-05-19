@@ -16,7 +16,7 @@ namespace wServer.realm
 {
     public class Entity : IProjectileOwner, ICollidable<Entity>, IDisposable
     {
-        private const int EFFECT_COUNT = 31;
+        private const int EFFECT_COUNT = 32 * 2; //64 should be enough for now :P
         protected static readonly ILog Log = LogManager.GetLogger(typeof(Entity));
         private readonly ObjectDesc desc;
         private readonly int[] effects;
@@ -95,6 +95,7 @@ namespace wServer.realm
         public string Name { get; set; }
         public int Size { get; set; }
         public ConditionEffects ConditionEffects { get; set; }
+        public ConditionEffects ConditionEffects2 { get; set; }
 
         public IDictionary<object, object> StateStorage => states ?? (states = new Dictionary<object, object>());
 
@@ -194,37 +195,12 @@ namespace wServer.realm
             return this;
         }
 
-
-        protected virtual void ImportStats(StatsType stats, object val)
-        {
-            //if (stats == StatsType.Name) Name = (string) val;
-            //else if (stats == StatsType.Size) Size = (int) val;
-            //else if (stats == StatsType.Effects) ConditionEffects = (ConditionEffects) (int) val;
-        }
-
         protected virtual void ExportStats(IDictionary<StatsType, object> stats)
         {
             stats[StatsType.Name] = Name ?? ""; //Name was null for some reason O.o
             stats[StatsType.Size] = Size;
             stats[StatsType.Effects] = (int)ConditionEffects;
-        }
-
-        public void FromDefinition(ObjectDef def)
-        {
-            ObjectType = def.ObjectType;
-            ImportStats(def.Stats);
-        }
-
-        public void ImportStats(ObjectStats stat)
-        {
-            Id = stat.Id;
-            (this is Enemy ? Owner.EnemiesCollision : Owner.PlayersCollision)
-                .Move(this, stat.Position.X, stat.Position.Y);
-            X = stat.Position.X;
-            Y = stat.Position.Y;
-            foreach (var i in stat.Stats)
-                ImportStats(i.Key, i.Value);
-            UpdateCount++;
+            stats[StatsType.Effects2] = (int)ConditionEffects2;
         }
 
         public virtual ObjectStats ExportStats()
@@ -287,8 +263,9 @@ namespace wServer.realm
             }
             if (posHistory != null)
                 posHistory[posIdx++] = new Position { X = X, Y = Y };
-            if (effects != null)
-                ProcessConditionEffects(time);
+            if (effects == null) return;
+            ProcessConditionEffects(time);
+            ProcessConditionEffects2(time);
         }
 
         public Position? TryGetHistory(long timeAgo)
@@ -444,8 +421,7 @@ namespace wServer.realm
             if (effects == null || !tickingEffects) return;
 
             ConditionEffects newEffects = 0;
-            tickingEffects = false;
-            for (var i = 0; i < effects.Length; i++)
+            for (var i = 0; i < 32; i++)
                 if (effects[i] > 0)
                 {
                     effects[i] -= time.thisTickTimes;
@@ -453,13 +429,35 @@ namespace wServer.realm
                         newEffects |= (ConditionEffects)(1 << i);
                     else
                         effects[i] = 0;
-                    tickingEffects = true;
                 }
                 else if (effects[i] != 0)
                     newEffects |= (ConditionEffects)(1 << i);
             if (newEffects == ConditionEffects) return;
             ConditionEffects = newEffects;
             UpdateCount++;
+        }
+
+        private void ProcessConditionEffects2(RealmTime time)
+        {
+            if (effects == null || !tickingEffects) return;
+
+            ConditionEffects newEffects = 0;
+            for (var i = 32; i < effects.Length; i++)
+
+                if (effects[i] > 0)
+                {
+                    effects[i] -= time.thisTickTimes;
+                    if (effects[i] > 0)
+                        newEffects |= (ConditionEffects)(1 << (i - 32));
+                    else
+                        effects[i] = 0;
+                }
+                else if (effects[i] != 0)
+                    newEffects |= (ConditionEffects)(1 << (i - 32));
+            if (newEffects == ConditionEffects2) return;
+            ConditionEffects2 = newEffects;
+            UpdateCount++;
+            tickingEffects = effects.Any(_ => _ > 0);
         }
 
         public bool HasConditionEffect(ConditionEffects eff)
@@ -472,8 +470,11 @@ namespace wServer.realm
             foreach (var i in effs.Where(i => i.Effect != ConditionEffectIndex.Stunned || !HasConditionEffect(ConditionEffects.StunImmume)).Where(i => i.Effect != ConditionEffectIndex.Stasis || !HasConditionEffect(ConditionEffects.StasisImmune)))
             {
                 effects[(int)i.Effect] = i.DurationMS;
-                if (i.DurationMS != 0)
-                    ConditionEffects |= (ConditionEffects)(1 << (int)i.Effect);
+                if (i.DurationMS == 0) continue;
+                if (i.Effect < (ConditionEffectIndex)31)
+                    ConditionEffects |= (ConditionEffects) (1 << (int) i.Effect);
+                else
+                    ConditionEffects2 |= (ConditionEffects) (1 << (int)(i.Effect - 32));
             }
             tickingEffects = true;
             UpdateCount++;
