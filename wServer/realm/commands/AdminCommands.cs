@@ -624,12 +624,39 @@ namespace wServer.realm.commands
 
         protected override bool Process(Player player, RealmTime time, string[] args)
         {
-            foreach (KeyValuePair<int, Player> i in player.Owner.Players)
+            foreach (KeyValuePair<string, Client> i in player.Manager.Clients)
             {
-                if (i.Value.Name.EqualsIgnoreCase(args[0]))
+                if (i.Value.Player.Name.EqualsIgnoreCase(args[0]))
                 {
-                    i.Value.Move(player.X, player.Y);
-                    player.SendInfo("Player summoned!");
+                    Packet pkt;
+                    if (i.Value.Player.Owner == player.Owner)
+                    {
+                        i.Value.Player.Move(player.X, player.Y);
+                        pkt = new GotoPacket
+                        {
+                            ObjectId = i.Value.Player.Id,
+                            Position = new Position(player.X, player.Y)
+                        };
+                        i.Value.Player.UpdateCount++;
+                        player.SendInfo("Player summoned!");
+                    }
+                    else
+                    {
+                        pkt = new ReconnectPacket
+                        {
+                            GameId = player.Owner.Id,
+                            Host = "",
+                            IsFromArena = false,
+                            Key = player.Owner.PortalKey,
+                            KeyTime = -1,
+                            Name = player.Owner.Name,
+                            Port = -1
+                        };
+                        player.SendInfo("Player will connect to you now!");
+                    }
+
+                    i.Value.SendPacket(pkt);
+
                     return true;
                 }
             }
