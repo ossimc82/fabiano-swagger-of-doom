@@ -816,7 +816,10 @@ public class ActivateEffect
         if (elem.Attribute("range") != null)
             Range = float.Parse(elem.Attribute("range").Value, NumberStyles.Any, ci);
         if (elem.Attribute("duration") != null)
-            DurationMS = (int) (float.Parse(elem.Attribute("duration").Value, NumberStyles.Any, ci)*1000);
+        {
+            DurationSec = float.Parse(elem.Attribute("duration").Value, NumberStyles.Any, ci);
+            DurationMS = (int)(DurationSec * 1000);
+        }
         if (elem.Attribute("duration2") != null)
             DurationMS2 = (int) (float.Parse(elem.Attribute("duration2").Value, NumberStyles.Any, ci)*1000);
         if (elem.Attribute("effect") != null)
@@ -873,6 +876,7 @@ public class ActivateEffect
     public int Stats { get; private set; }
     public int Amount { get; private set; }
     public float Range { get; private set; }
+    public float DurationSec { get; private set; }
     public int DurationMS { get; private set; }
     public int DurationMS2 { get; private set; }
     public ConditionEffectIndex? ConditionEffect { get; private set; }

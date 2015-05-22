@@ -403,22 +403,32 @@ namespace wServer.realm.entities.player
                             if(eff.Stats == StatsType.Vitality) idx = 5;
                             if(eff.Stats == StatsType.Wisdom) idx = 6;
                             if(eff.Stats == StatsType.Dexterity) idx = 7;
-
-                            int s = eff.Amount;
+                            
                             int bit = idx + 40;
 
-                            this.Aoe(eff.Range / 2, true, player =>
+                            var amountSBA = eff.Amount;
+                            var durationSBA = eff.DurationMS;
+                            var rangeSBA = eff.Range;
+                            if (eff.UseWisMod)
                             {
+                                amountSBA = (int)UseWisMod(eff.Amount, 0);
+                                durationSBA = (int)(UseWisMod(eff.DurationSec) * 1000);
+                                rangeSBA = UseWisMod(eff.Range);
+                            }
+                            
+                            this.Aoe(rangeSBA, true, player =>
+                            {
+                                // TODO support for noStack StatBoostAura attribute (paladin total hp increase / insta heal)
                                 ApplyConditionEffect(new ConditionEffect
                                 {
-                                    DurationMS = eff.DurationMS,
+                                    DurationMS = durationSBA,
                                     Effect = (ConditionEffectIndex)bit
                                 });
-                                (player as Player).Boost[idx] += s;
+                                (player as Player).Boost[idx] += amountSBA;
                                 player.UpdateCount++;
-                                Owner.Timers.Add(new WorldTimer(eff.DurationMS, (world, t) =>
+                                Owner.Timers.Add(new WorldTimer(durationSBA, (world, t) =>
                                 {
-                                    (player as Player).Boost[idx] -= s;
+                                    (player as Player).Boost[idx] -= amountSBA;
                                     player.UpdateCount++;
                                 }));
                             });
@@ -427,16 +437,20 @@ namespace wServer.realm.entities.player
                                 EffectType = EffectType.AreaBlast,
                                 TargetId = Id,
                                 Color = new ARGB(0xffffffff),
-                                PosA = new Position() { X = eff.Range / 2 }
+                                PosA = new Position() { X = rangeSBA }
                             }, p => this.Dist(p) < 25);
                         } break;
 
                     case ActivateEffects.ConditionEffectSelf:
                     {
+                        var durationCES = eff.DurationMS;
+                        if (eff.UseWisMod)
+                            durationCES = (int)(UseWisMod(eff.DurationSec) * 1000);
+
                         ApplyConditionEffect(new ConditionEffect
                         {
                             Effect = eff.ConditionEffect.Value,
-                            DurationMS = eff.DurationMS
+                            DurationMS = durationCES
                         });
                         Owner.BroadcastPacket(new ShowEffectPacket
                         {
@@ -450,12 +464,20 @@ namespace wServer.realm.entities.player
 
                     case ActivateEffects.ConditionEffectAura:
                     {
-                        this.Aoe(eff.Range/2, true, player =>
+                        var durationCEA = eff.DurationMS;
+                        var rangeCEA = eff.Range;
+                        if (eff.UseWisMod)
+                        {
+                            durationCEA = (int)(UseWisMod(eff.DurationSec) * 1000);
+                            rangeCEA = UseWisMod(eff.Range);
+                        }
+
+                        this.Aoe(rangeCEA, true, player =>
                         {
                             player.ApplyConditionEffect(new ConditionEffect
                             {
                                 Effect = eff.ConditionEffect.Value,
-                                DurationMS = eff.DurationMS
+                                DurationMS = durationCEA
                             });
                         });
                         uint color = 0xffffffff;
@@ -466,7 +488,7 @@ namespace wServer.realm.entities.player
                             EffectType = EffectType.AreaBlast,
                             TargetId = Id,
                             Color = new ARGB(color),
-                            PosA = new Position {X = eff.Range/2}
+                            PosA = new Position {X = rangeCEA}
                         }, p => this.Dist(p) < 25);
                     }
                         break;
@@ -481,14 +503,22 @@ namespace wServer.realm.entities.player
 
                     case ActivateEffects.HealNova:
                     {
+                        var amountHN = eff.Amount;
+                        var rangeHN = eff.Range;
+                        if (eff.UseWisMod)
+                        {
+                            amountHN = (int)UseWisMod(eff.Amount, 0);
+                            rangeHN = UseWisMod(eff.Range);
+                        }
+                        
                         List<Packet> pkts = new List<Packet>();
-                        this.Aoe(eff.Range/2, true, player => { ActivateHealHp(player as Player, eff.Amount, pkts); });
+                        this.Aoe(rangeHN, true, player => { ActivateHealHp(player as Player, amountHN, pkts); });
                         pkts.Add(new ShowEffectPacket
                         {
                             EffectType = EffectType.AreaBlast,
                             TargetId = Id,
                             Color = new ARGB(0xffffffff),
-                            PosA = new Position {X = eff.Range/2}
+                            PosA = new Position {X = rangeHN}
                         });
                         BroadcastSync(pkts, p => this.Dist(p) < 25);
                     }
@@ -1144,16 +1174,38 @@ namespace wServer.realm.entities.player
                         }));
                         break;
                     case ActivateEffects.GenericActivate:
-                        Owner.Aoe(eff.Center == "mouse" ? pkt.ItemUsePos : new Position(X, Y), eff.Range / 2, eff.Target?.ToLower() == "player", player =>
+                        var targetPlayer = eff.Target.Equals("player");
+                        var centerPlayer = eff.Target.Equals("player");
+                        var duration = (eff.UseWisMod) ?
+                            (int)(UseWisMod(eff.DurationSec) * 1000) :
+                            eff.DurationMS;
+                        var range = (eff.UseWisMod)
+                            ? UseWisMod(eff.Range)
+                            : eff.Range;
+                        
+                        Owner.Aoe((eff.Center.Equals("mouse")) ? target : new Position { X = X, Y = Y }, range, targetPlayer, entity =>
                         {
-                            player.ApplyConditionEffect(new ConditionEffect
+                            if (!entity.HasConditionEffect(ConditionEffects.Stasis) &&
+                                !entity.HasConditionEffect(ConditionEffects.Invincible))
                             {
-                                Effect = eff.ConditionEffect.Value,
-                                DurationMS = eff.DurationMS
-                            });
+                                entity.ApplyConditionEffect(
+                                new ConditionEffect()
+                                {
+                                    Effect = eff.ConditionEffect.Value,
+                                    DurationMS = duration
+                                });
+                            }
                         });
 
-                        if (eff.VisualEffect > 0)
+                        // replaced this last bit with what I had, never noticed any issue with it. Perhaps I'm wrong?
+                        BroadcastSync(new ShowEffectPacket()
+                        {
+                            EffectType = (EffectType)eff.VisualEffect,
+                            TargetId = Id,
+                            Color = new ARGB(eff.Color ?? 0xffffffff),
+                            PosA = (centerPlayer) ? new Position() { X = range } : target
+                        }, p => this.DistSqr(p) < 25);
+                        /*if (eff.VisualEffect > 0)
                         {
                             Placeholder x = null;
                             if (eff.Center == "mouse")
@@ -1170,12 +1222,30 @@ namespace wServer.realm.entities.player
                                 Color = new ARGB(eff.Color ?? 0xffffffff),
                                 PosA = new Position {X = eff.VisualEffect/2},
                             }, p => this.Dist(p) < 25);
-                        }
+                        }*/
                         break;
                 }
             }
             UpdateCount++;
             return endMethod;
+        }
+
+        private float UseWisMod(float value, int offset = 1)
+        {
+            double totalWisdom = Stats[6] + 2 * Boost[6];
+
+            if (totalWisdom < 30)
+                return value;
+
+            double m = (value < 0) ? -1 : 1;
+            double n = (value * totalWisdom / 150) + (value * m);
+            n = Math.Floor(n * Math.Pow(10, offset)) / Math.Pow(10, offset);
+            if (n - (int)n * m >= 1 / Math.Pow(10, offset) * m)
+            {
+                return ((int)(n * 10)) / 10.0f;
+            }
+
+            return (int)n;
         }
     }
 }
