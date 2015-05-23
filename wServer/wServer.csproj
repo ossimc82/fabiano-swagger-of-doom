@@ -152,6 +152,7 @@
     <Compile Include="logic\db\BehaviorDb.CandyLand.cs" />
     <Compile Include="logic\db\BehaviorDb.Draconis.cs" />
     <Compile Include="logic\db\BehaviorDb.Drakes.cs" />
+    <Compile Include="logic\db\BehaviorDb.Lotll.cs" />
     <Compile Include="logic\db\BehaviorDb.Nexus.cs" />
     <Compile Include="logic\db\BehaviorDb.OryxCastle.cs" />
     <Compile Include="logic\db\BehaviorDb.Pentaract.cs" />

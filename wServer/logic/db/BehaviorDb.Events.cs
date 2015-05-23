@@ -11,34 +11,36 @@ namespace wServer.logic
     partial class BehaviorDb
     {
         private _ Events = () => Behav()
-        #region Skull Shrine
+            #region Skull Shrine
 
-.Init("Skull Shrine",
+            .Init("Skull Shrine",
                 new State(
                     new Shoot(25, 9, 10, predictive: 1),
                     new Spawn("Red Flaming Skull", 8, coolDown: 5000),
                     new Spawn("Blue Flaming Skull", 10, coolDown: 1000),
                     new Reproduce("Red Flaming Skull", 10, 8, 5000),
                     new Reproduce("Blue Flaming Skull", 10, 10, 1000)
-                    ),
-                new TierLoot(3, ItemType.Ring, 0.2),
-                new TierLoot(7, ItemType.Armor, 0.2),
-                new TierLoot(8, ItemType.Weapon, 0.2),
-                new TierLoot(4, ItemType.Ability, 0.1),
-                new TierLoot(8, ItemType.Armor, 0.1),
-                new TierLoot(4, ItemType.Ring, 0.05),
-                new TierLoot(9, ItemType.Armor, 0.03),
-                new TierLoot(5, ItemType.Ability, 0.03),
-                new TierLoot(9, ItemType.Weapon, 0.03),
-                new TierLoot(10, ItemType.Armor, 0.02),
-                new TierLoot(10, ItemType.Weapon, 0.02),
-                new TierLoot(11, ItemType.Armor, 0.01),
-                new TierLoot(11, ItemType.Weapon, 0.01),
-                new TierLoot(5, ItemType.Ring, 0.01),
-                new ItemLoot("Orb of Conflict", 0.01),
-                new ItemLoot("Wine Cellar Incantation", 0.01),
-                new ItemLoot("Potion of Dexterity", 0.5),
-                new ItemLoot("Potion of Attack", 0.5)
+                ),
+                new MostDamagers(3,
+                    LootTemplates.StatIncreasePotionsLoot()
+                ),
+                new Threshold(0.05,
+                    new TierLoot(8, ItemType.Weapon, 0.2),
+                    new TierLoot(9, ItemType.Weapon, 0.03),
+                    new TierLoot(10, ItemType.Weapon, 0.02),
+                    new TierLoot(11, ItemType.Weapon, 0.01),
+                    new TierLoot(3, ItemType.Ring, 0.2),
+                    new TierLoot(4, ItemType.Ring, 0.05),
+                    new TierLoot(5, ItemType.Ring, 0.01),
+                    new TierLoot(7, ItemType.Armor, 0.2),
+                    new TierLoot(8, ItemType.Armor, 0.1),
+                    new TierLoot(9, ItemType.Armor, 0.03),
+                    new TierLoot(10, ItemType.Armor, 0.02),
+                    new TierLoot(11, ItemType.Armor, 0.01),
+                    new TierLoot(4, ItemType.Ability, 0.1),
+                    new TierLoot(5, ItemType.Ability, 0.03),
+                    new ItemLoot("Orb of Conflict", 0.005)
+                )
             )
             .Init("Red Flaming Skull",
                 new State(
@@ -58,12 +60,13 @@ namespace wServer.logic
                     new Shoot(15, 2, 5, 0, predictive: 1, coolDown: 750)
                     )
             )
-        #endregion
+            #endregion
 
-        #region Hermit God
+            #region Hermit God
 
-.Init("Hermit God",
+            .Init("Hermit God",
                 new State(
+                    new CopyDamageOnDeath("Hermit God Drop"),
                     new State("invis",
                         new SetAltTexture(3),
                         new ConditionalEffect(ConditionEffectIndex.Invincible),
@@ -96,7 +99,7 @@ namespace wServer.logic
                         new InvisiToss("Hermit God Tentacle", 5, 225, 90000001, coolDownOffset: 0),
                         new InvisiToss("Hermit God Tentacle", 5, 270, 90000001, coolDownOffset: 0),
                         new InvisiToss("Hermit God Tentacle", 5, 315, 90000001, coolDownOffset: 0),
-            //new InvisiToss("Hermit God Drop", 5, 0, coolDown: 90000001, coolDownOffset: 0),
+                        //new InvisiToss("Hermit God Drop", 5, 0, coolDown: 90000001, coolDownOffset: 0),
 
                         //new Spawn("Hermit God Tentacle", 8, 8, coolDown:9000001),
                         new TimedTransition(1000, "check")
@@ -166,7 +169,7 @@ namespace wServer.logic
             )
             .Init("Hermit God Drop",
                 new State(
-                    new State(
+                    new State("idle",
                         new ConditionalEffect(ConditionEffectIndex.Invincible),
                         new EntityNotExistsTransition("Hermit God", 10, "despawn")
                         ),
@@ -174,32 +177,21 @@ namespace wServer.logic
                         new Suicide()
                         )
                     ),
-                new ItemLoot("Potion of Dexterity", 0.99),
-                new ItemLoot("Wine Cellar Incantation", 0.005),
-                new ItemLoot("Helm of the Juggernaut", 0.005),
-                new ItemLoot("Potion of Vitality", 0.99)
-            )
-        #endregion
-
-        #region Ghost Ship
-
-.Init("Ghost Ship",
-                new State(
-                    new State("idle",
-                        new HpLessTransition(0.9999, "active")
-                        ),
-                    new State("active",
-                        new Prioritize(
-                            new Wander(0.1)
-                            )
-                        )
+                new MostDamagers(3,
+                    new OnlyOne(
+                        new ItemLoot("Potion of Dexterity", 1),
+                        new ItemLoot("Potion of Vitality", 1)
                     )
+                ),
+                new Threshold(0.05,
+                    new ItemLoot("Helm of the Juggernaut", 0.005)
+                )
             )
-        #endregion
+            #endregion
 
-        #region Lord of the Lost Lands
+            #region Ghost Ship
 
-.Init("Lord of the Lost Lands",
+            .Init("Ghost Ship",
                 new State(
                     new State("idle",
                         new HpLessTransition(0.9999, "active")

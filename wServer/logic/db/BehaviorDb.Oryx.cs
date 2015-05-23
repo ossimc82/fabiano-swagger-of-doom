@@ -59,7 +59,7 @@ namespace wServer.logic
                         new Taunt(1, 6000, "Puny mortals! My {HP} HP will annihilate you!")
                     )
                 ),
-                new Threshold(0.29,
+                new MostDamagers(3,
                     new ItemLoot("Potion of Vitality", 1)
                 ),
                 new Threshold(0.05,
