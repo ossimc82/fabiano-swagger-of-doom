@@ -38,7 +38,7 @@ namespace wServer.logic.behaviors.PetBehaviors
                 Enemy[] targets = host.GetNearestEntities(dist).OfType<Enemy>().ToArray();
                 foreach (Enemy e in targets)
                 {
-                    if (e.HasConditionEffect(ConditionEffects.Invulnerable) || e.HasConditionEffect(ConditionEffects.Invincible)) continue;
+                    if (e.HasConditionEffect(ConditionEffects.Invulnerable) || e.HasConditionEffect(ConditionEffects.Invincible) || e.HasConditionEffect(ConditionEffects.Stasis)) continue;
                     if (Random.Next(0, 100) > level.Level) break;
 
                     if (e.ObjectDesc == null | !e.ObjectDesc.Enemy) continue;

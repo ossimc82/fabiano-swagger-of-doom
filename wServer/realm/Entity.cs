@@ -462,7 +462,9 @@ namespace wServer.realm
 
         public bool HasConditionEffect(ConditionEffects eff)
         {
-            return (ConditionEffects & eff) != 0;
+            if ((int)eff < 31)
+                return (ConditionEffects & eff) != 0;
+            return (ConditionEffects2 & eff) != 0;
         }
 
         public void ApplyConditionEffect(params ConditionEffect[] effs)

@@ -7,12 +7,13 @@ var SLOT_ORDER = [1,2,3,17,8,24, 14,6,7, 4,5,11,12,13,15,16,18,19,20,21,22,23,25
 var GOOD = [0xa1f, 0xa20, 0xa21, 0xa34, 0xa35, 0xa4c, 0xae9, 0xaea, 0x722, 0xb3e]
 
 // max width of an account box in columns
-var ROW = window.rowlength || 7
+var ROW = window.rowlength || 7;
 
 // are totals not following equip/inv/vaults options?
 var TKGP = false;
 
-var URL = 'http://c453.pw/playerMuledump/view?'
+//Change it to your server (localhost will not work, it must be reachable from the outside)
+var URL = 'http://localhost/playerMuledump/view?';
 
 var autherr = {}
 

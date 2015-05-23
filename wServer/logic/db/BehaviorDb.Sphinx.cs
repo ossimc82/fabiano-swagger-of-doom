@@ -64,17 +64,17 @@ namespace wServer.logic
                             new TimedTransition(2000, "BlindAttack")
                         )
                     ),
-                    new Threshold(0.3,
-                        new ItemLoot("Potion of Vitality", 1)
+                    new MostDamagers(3,
+                        new ItemLoot("Potion of Vitality", 1),
+                        new ItemLoot("Potion of Wisdom", 1)
                     ),
-                    new Threshold(0.15,
-                        new ItemLoot("Potion of Wisdom", 0.5)
-                    ),
-                    new Threshold(0.015,
+                    new Threshold(0.05,
                         new ItemLoot("Helm of the Juggernaut", 0.005)
                     ),
                     new Threshold(0.1,
-                        LootTemplates.DefaultEggLoot(EggRarity.Legendary)
+                        new OnlyOne(
+                            LootTemplates.DefaultEggLoot(EggRarity.Legendary)
+                        )
                     )
                 )
                 .Init("Horrid Reaper",
