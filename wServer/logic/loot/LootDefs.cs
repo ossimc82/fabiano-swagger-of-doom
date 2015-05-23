@@ -187,6 +187,57 @@ namespace wServer.logic.loot
         }
     }
 
+    internal class MostDamagers : ILootDef
+    {
+        private readonly ILootDef[] loots;
+        private readonly int amount;
+
+        public MostDamagers(int amount, params ILootDef[] loots)
+        {
+            this.amount = amount;
+            this.loots = loots;
+        }
+
+        public string Lootstate { get; set; }
+
+        public void Populate(RealmManager manager, Enemy enemy, Tuple<Player, int> playerDat, Random rand, string lootState, IList<LootDef> lootDefs)
+        {
+            var data = enemy.DamageCounter.GetPlayerData();
+            var mostDamage = GetMostDamage(data);
+            foreach (var loot in mostDamage.Where(pl => pl.Equals(playerDat)).SelectMany(pl => loots))
+                loot.Populate(manager, enemy, null, rand, lootState, lootDefs);
+        }
+
+        private IEnumerable<Tuple<Player, int>> GetMostDamage(IEnumerable<Tuple<Player, int>> data)
+        {
+            var damages = data.Select(_ => _.Item2).ToList();
+            var len = damages.Count < amount ? damages.Count : amount;
+            for (var i = 0; i < len; i++)
+            {
+                var val = damages.Max();
+                yield return data.FirstOrDefault(_ => _.Item2 == val);
+                damages.Remove(val);
+            }
+        }
+    }
+
+    public class OnlyOne : ILootDef
+    {
+        private readonly ILootDef[] loots;
+
+        public OnlyOne(params ILootDef[] loots)
+        {
+            this.loots = loots;
+        }
+
+        public string Lootstate { get; set; }
+
+        public void Populate(RealmManager manager, Enemy enemy, Tuple<Player, int> playerDat, Random rand, string lootState, IList<LootDef> lootDefs)
+        {
+            loots[rand.Next(0, loots.Length)].Populate(manager, enemy, playerDat, rand, lootState, lootDefs);
+        }
+    }
+
     public static class LootTemplates
     {
         public static ILootDef[] DefaultEggLoot(EggRarity maxRarity)
@@ -204,6 +255,21 @@ namespace wServer.logic.loot
                 default:
                     throw new InvalidOperationException("Not a valid Egg Rarity");
             }
+        }
+
+        public static ILootDef[] StatIncreasePotionsLoot()
+        {
+            return new ILootDef[]
+            {
+                new OnlyOne(
+                    new ItemLoot("Potion of Defense", 1),
+                    new ItemLoot("Potion of Attack", 1),
+                    new ItemLoot("Potion of Speed", 1),
+                    new ItemLoot("Potion of Vitality", 1),
+                    new ItemLoot("Potion of Wisdom", 1),
+                    new ItemLoot("Potion of Dexterity", 1)
+                )
+            };
         }
     }
 }

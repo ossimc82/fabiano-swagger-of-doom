@@ -11,6 +11,8 @@ namespace wServer.realm.entities.player
 {
     partial class Player
     {
+        private bool worldBroadcast = true;
+
         private readonly Queue<Tuple<Packet, Predicate<Player>>> pendingPackets =
             new Queue<Tuple<Packet, Predicate<Player>>>();
 
@@ -32,7 +34,10 @@ namespace wServer.realm.entities.player
 
         public void BroadcastSync(Packet packet, Predicate<Player> cond)
         {
-            pendingPackets.Enqueue(Tuple.Create(packet, cond));
+            if(worldBroadcast)
+                Owner.BroadcastPacketSync(packet, cond);
+            else
+                pendingPackets.Enqueue(Tuple.Create(packet, cond));
         }
 
         private void BroadcastSync(IEnumerable<Packet> packets)
