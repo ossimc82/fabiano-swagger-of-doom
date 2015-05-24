@@ -446,7 +446,18 @@ namespace wServer.realm.entities.player
                     {
                         var durationCES = eff.DurationMS;
                         if (eff.UseWisMod)
-                            durationCES = (int)(UseWisMod(eff.DurationSec) * 1000);
+                            durationCES = (int) (UseWisMod(eff.DurationSec)*1000);
+
+                        var color = 0xffffffff;
+                        switch (eff.ConditionEffect.Value)
+                        {
+                            case ConditionEffectIndex.Damaging:
+                                color = 0xffff0000;
+                                break;
+                            case ConditionEffectIndex.Berserk:
+                                color = 0x808080;
+                                break;
+                        }
 
                         ApplyConditionEffect(new ConditionEffect
                         {
@@ -457,8 +468,8 @@ namespace wServer.realm.entities.player
                         {
                             EffectType = EffectType.AreaBlast,
                             TargetId = Id,
-                            Color = new ARGB(0xffffffff),
-                            PosA = new Position {X = 1}
+                            Color = new ARGB(color),
+                            PosA = new Position {X = 2F}
                         }, null);
                     }
                         break;
@@ -481,9 +492,18 @@ namespace wServer.realm.entities.player
                                 DurationMS = durationCEA
                             });
                         });
-                        uint color = 0xffffffff;
-                        if (eff.ConditionEffect.Value == ConditionEffectIndex.Damaging)
-                            color = 0xffff0000;
+
+                        var color = 0xffffffff;
+                        switch (eff.ConditionEffect.Value)
+                        {
+                            case ConditionEffectIndex.Damaging:
+                                color = 0xffff0000;
+                                break;
+                            case ConditionEffectIndex.Berserk:
+                                color = 0x808080;
+                                break;
+                        }
+
                         BroadcastSync(new ShowEffectPacket
                         {
                             EffectType = EffectType.AreaBlast,
@@ -664,10 +684,12 @@ namespace wServer.realm.entities.player
                             TargetId = Id,
                             PosA = target,
                             PosB = new Position {X = target.X + 3, Y = target.Y},
-                            Color = new ARGB(0xffffffff)
+                            Color = new ARGB(0xFF00D0)
                         });
                         Owner.Aoe(target, 3, false, enemy =>
                         {
+                            if (enemy.ObjectType == 0x750d || enemy.ObjectType == 0x750e) return;
+
                             if (enemy.HasConditionEffect(ConditionEffectIndex.StasisImmune))
                             {
                                 if (!enemy.HasConditionEffect(ConditionEffectIndex.Invincible))
@@ -1188,7 +1210,7 @@ namespace wServer.realm.entities.player
                         break;
                     case ActivateEffects.GenericActivate:
                         var targetPlayer = eff.Target.Equals("player");
-                        var centerPlayer = eff.Target.Equals("player");
+                        var centerPlayer = eff.Center.Equals("player");
                         var duration = (eff.UseWisMod) ?
                             (int)(UseWisMod(eff.DurationSec) * 1000) :
                             eff.DurationMS;
@@ -1198,6 +1220,7 @@ namespace wServer.realm.entities.player
                         
                         Owner.Aoe((eff.Center.Equals("mouse")) ? target : new Position { X = X, Y = Y }, range, targetPlayer, entity =>
                         {
+                            if (entity.ObjectType == 0x750d || entity.ObjectType == 0x750e) return;
                             if (!entity.HasConditionEffect(ConditionEffectIndex.Stasis) &&
                                 !entity.HasConditionEffect(ConditionEffectIndex.Invincible))
                             {
@@ -1216,26 +1239,9 @@ namespace wServer.realm.entities.player
                             EffectType = (EffectType)eff.VisualEffect,
                             TargetId = Id,
                             Color = new ARGB(eff.Color ?? 0xffffffff),
-                            PosA = (centerPlayer) ? new Position() { X = range } : target
+                            PosA = centerPlayer ? new Position { X = range } : target,
+                            PosB = new Position(target.X - range, target.Y) //Its the range of the diffuse effect
                         }, p => this.DistSqr(p) < 25);
-                        /*if (eff.VisualEffect > 0)
-                        {
-                            Placeholder x = null;
-                            if (eff.Center == "mouse")
-                            {
-                                x = new Placeholder(Manager, 1500);
-                                x.Move(pkt.ItemUsePos.X, pkt.ItemUsePos.Y);
-                                Owner.EnterWorld(x);
-                            }
-
-                            BroadcastSync(new ShowEffectPacket
-                            {
-                                EffectType = EffectType.AreaBlast,
-                                TargetId = x?.Id ?? Id,
-                                Color = new ARGB(eff.Color ?? 0xffffffff),
-                                PosA = new Position {X = eff.VisualEffect/2},
-                            }, p => this.Dist(p) < 25);
-                        }*/
                         break;
                 }
             }
