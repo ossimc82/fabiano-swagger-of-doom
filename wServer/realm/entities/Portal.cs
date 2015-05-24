@@ -11,17 +11,21 @@ namespace wServer.realm.entities
         public Portal(RealmManager manager, ushort objType, int? life)
             : base(manager, objType, life, false, true, false)
         {
-            if (objType == 0x0721)
-                Usable = false;
-            else
-                Usable = true;
-            EWorld = "";
-
+            Usable = objType != 0x0721;
+            ObjectDesc = Manager.GameData.Portals[objType];
             Name = manager.GameData.Portals[objType].DisplayId;
         }
 
+        private Portal(RealmManager manager, PortalDesc desc, int? life)
+            : base(manager, desc.ObjectType, life, false, true, false)
+        {
+            ObjectDesc = desc;
+            Name = desc.DisplayId;
+        }
+
         public string PortalName { get; set; }
-        public string EWorld { get; set; }
+        public new PortalDesc ObjectDesc { get; }
+        public new ushort ObjectType => ObjectDesc.ObjectType;
         public new World WorldInstance { get; set; }
 
         protected override void ExportStats(IDictionary<StatsType, object> stats)
@@ -29,6 +33,16 @@ namespace wServer.realm.entities
             if (ObjectType != 0x072f)
                 stats[StatsType.PortalUsable] = Usable ? 1 : 0;
             base.ExportStats(stats);
+            stats[StatsType.Name] = ObjectDesc.DungeonName ?? Name;
+        }
+
+        public override ObjectDef ToDefinition()
+        {
+            return new ObjectDef
+            {
+                ObjectType = ObjectDesc.ObjectType,
+                Stats = ExportStats()
+            };
         }
 
         public override void Tick(RealmTime time)
@@ -48,10 +62,13 @@ namespace wServer.realm.entities
             get { return Owner.Id == -2 && Name.StartsWith("NexusPortal."); }
         }
 
-        public void Unlock()
+        public void Unlock(PortalDesc newDesc)
         {
-            this.Name = "{objects.Wine_Cellar}";
-            this.UpdateCount++;
+            var portal = new Portal(Manager, newDesc, newDesc.TimeoutTime * 1000);
+            portal.Move(X, Y);
+            portal.Usable = true;
+            Owner.EnterWorld(portal);
+            Owner.LeaveWorld(this);
         }
 
         public override void Dispose()

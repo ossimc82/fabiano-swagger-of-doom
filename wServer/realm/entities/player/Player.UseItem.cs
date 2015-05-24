@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Xml.Linq;
 using db;
 using MySql.Data.MySqlClient;
 using wServer.networking;
@@ -873,25 +874,37 @@ namespace wServer.realm.entities.player
 
                         Portal portal = this.GetNearestEntity(5, Manager.GameData.IdToObjectType[eff.LockedName]) as Portal;
 
-                        BroadcastSync(new ShowEffectPacket
+                        Packet[] packets = new Packet[3];
+                        packets[0] = new ShowEffectPacket
                         {
                             EffectType = EffectType.AreaBlast,
                             Color = new ARGB(0xFFFFFF),
-                            PosA = new Position { X = 5, },
+                            PosA = new Position { X = 5 },
                             TargetId = Id
-                        }, p => this.Dist(p) < 10);
-
+                        };
                         if (portal == null) break;
 
-                        portal.Unlock();
+                        string wineCellarDesc =
+@"<Object type=""0x0717"" id=""Wine Cellar Portal"">
+  <Class>Portal</Class>
+  <IntergamePortal/>
+  <Texture>
+     <File>lofiEnvironment</File>
+     <Index>0x7c</Index>
+  </Texture>
+  <DungeonName>Wine Cellar</DungeonName>
+  <DisplayId>{objects.Wine_Cellar}</DisplayId>
+</Object>";
+
+                        portal.Unlock(new PortalDesc(0x0717, XElement.Parse(wineCellarDesc)));
 
                         //Entity targetPortal = Entity.Resolve(Manager, eff.DungeonName + " Portal");
                         //targetPortal.Move(portal.X, portal.Y);
                         //Owner.LeaveWorld(portal);
                         //Owner.EnterWorld(targetPortal);
 
-                        Packet[] packets = new Packet[2];
-                        packets[0] = new NotificationPacket
+                        
+                        packets[1] = new NotificationPacket
                         {
                             Color = new ARGB(0x00FF00),
                             Text =
@@ -900,7 +913,7 @@ namespace wServer.realm.entities.player
                             ObjectId = Id
                         };
 
-                        packets[1] = new TextPacket
+                        packets[2] = new TextPacket
                         {
                             BubbleTime = 0,
                             Stars = -1,
@@ -908,7 +921,7 @@ namespace wServer.realm.entities.player
                             Text = eff.DungeonName + " Unlocked by " + Name + "."
                         };
 
-                        BroadcastSync(packets, p => this.Dist(p) < 10);
+                        BroadcastSync(packets);
 
                         break;
                     case ActivateEffects.Create: //this is a portal

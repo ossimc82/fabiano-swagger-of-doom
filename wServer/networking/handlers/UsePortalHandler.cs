@@ -25,109 +25,106 @@ namespace wServer.networking.handlers
 
             client.Manager.Logic.AddPendingAction(t =>
             {
-                Entity entity = client.Player.Owner.GetEntity(packet.ObjectId);
-                if (entity == null) return;
-                if (!entity.Usable)
+                Portal portal = client.Player.Owner.GetEntity(packet.ObjectId) as Portal;
+                if (portal == null) return;
+                if (!portal.Usable)
                 {
                     client.Player.SendError("{\"key\":\"server.realm_full\"}");
                     return;
                 }
-                World world = null;
-                Portal p = null;
-                if (entity is Portal)
-                {
-                    p = entity as Portal;
-                    world = p.WorldInstance;
-                }
+                World world = portal.WorldInstance;
 
                 if (world == null)
                 {
-                    if (p != null)
+                    bool setWorldInstance = true;
+                    var desc = portal.ObjectDesc;
+                    if (desc == null)
                     {
-                        bool setWorldInstance = true;
-                        PortalDesc desc;
-                        if (!client.Player.Manager.GameData.Portals.TryGetValue(entity.ObjectType, out desc))
+                        client.SendPacket(new FailurePacket
                         {
-                            client.SendPacket(new FailurePacket
-                            {
-                                ErrorId = 0,
-                                ErrorDescription = "Portal not found!"
-                            });
-                        }
-                        else
-                        {
-                            switch (entity.ObjectType) //handling default case for not found. Add more as implemented
-                            {
-                                case 0x0720:
-                                    world = client.Player.Manager.PlayerVault(client);
-                                    setWorldInstance = false;
-                                    break;
-                                case 0x0704:
-                                case 0x0703: //portal of cowardice
-                                case 0x0d40:
-                                case 0x070d:
-                                case 0x070e:
-                                    {
-                                        if (client.Player.Manager.LastWorld.ContainsKey(client.Player.AccountId))
-                                        {
-                                            World w = client.Player.Manager.LastWorld[client.Player.AccountId];
-                                            if (w != null && client.Player.Manager.Worlds.ContainsKey(w.Id))
-                                                world = w;
-                                            else
-                                                world = client.Player.Manager.GetWorld(World.NEXUS_ID);
-                                        }
-                                        else
-                                            world = client.Player.Manager.GetWorld(World.NEXUS_ID);
-                                    }
-                                    break;
-                                case 0x0750:
-                                    world = client.Player.Manager.GetWorld(World.MARKET);
-                                    break;
-                                case 0x071d:
-                                    world = client.Player.Manager.GetWorld(World.NEXUS_ID);
-                                    break;
-                                case 0x0753:
-                                    world = client.Manager.AddWorld(new PetYard(client.Player));
-                                    setWorldInstance = false;
-                                    break;
-                                case 0x0712:
-                                    world = client.Player.Manager.GetWorld(World.NEXUS_ID);
-                                    break;
-                                case 0x1756:
-                                    world = client.Player.Manager.GetWorld(World.DAILY_QUEST_ID);
-                                    break;
-                                case 0x072f:
-                                    if (client.Player.Guild != null)
-                                    {
-                                        client.Player.SendInfo("Sorry, you are unable to enter the GuildHall because of a possible memory leak, check back later");
-                                        client.Player.SendInfo("Thanks.");
-                                        //world = client.Player.Guild.GuildHall;
-                                    }
-                                    break;
-                                default:
-                                    Type worldType = Type.GetType("wServer.realm.worlds." + desc.DungeonName.Replace(" ", String.Empty).Replace("'", String.Empty));
-                                    if (worldType != null)
-                                    {
-                                        try
-                                        {
-                                            world = client.Manager.AddWorld((World)Activator.CreateInstance(worldType,
-                                                System.Reflection.BindingFlags.CreateInstance, null, null, CultureInfo.InvariantCulture, null));
-                                        }
-                                        catch (Exception ex)
-                                        {
-                                            client.Player.SendError("Error while creating world instance:");
-                                            client.Player.SendError(ex.ToString());
-                                            log.Error(ex);
-                                        }
-                                    }
-                                    else
-                                        client.Player.SendError("WorldClass for " + desc.DungeonName + " not found, can not load world.");
-                                    break;
-                            }
-                        }
-                        if (setWorldInstance)
-                            p.WorldInstance = world;
+                            ErrorId = 0,
+                            ErrorDescription = "Portal not found!"
+                        });
                     }
+                    else
+                    {
+                        switch (portal.ObjectType)
+                        {
+                            case 0x0720:
+                                world = client.Player.Manager.PlayerVault(client);
+                                setWorldInstance = false;
+                                break;
+                            case 0x0704:
+                            case 0x0703: //portal of cowardice
+                            case 0x0d40:
+                            case 0x070d:
+                            case 0x070e:
+                            {
+                                if (client.Player.Manager.LastWorld.ContainsKey(client.Player.AccountId))
+                                {
+                                    World w = client.Player.Manager.LastWorld[client.Player.AccountId];
+                                    if (w != null && client.Player.Manager.Worlds.ContainsKey(w.Id))
+                                        world = w;
+                                    else
+                                        world = client.Player.Manager.GetWorld(World.NEXUS_ID);
+                                }
+                                else
+                                    world = client.Player.Manager.GetWorld(World.NEXUS_ID);
+                                setWorldInstance = false;
+                            }
+                                break;
+                            case 0x0750:
+                                world = client.Player.Manager.GetWorld(World.MARKET);
+                                break;
+                            case 0x071d:
+                                world = client.Player.Manager.GetWorld(World.NEXUS_ID);
+                                break;
+                            case 0x0753:
+                                world = client.Manager.AddWorld(new PetYard(client.Player));
+                                setWorldInstance = false;
+                                break;
+                            case 0x0712:
+                                world = client.Player.Manager.GetWorld(World.NEXUS_ID);
+                                break;
+                            case 0x1756:
+                                world = client.Player.Manager.GetWorld(World.DAILY_QUEST_ID);
+                                break;
+                            case 0x072f:
+                                if (client.Player.Guild != null)
+                                {
+                                    client.Player.SendInfo(
+                                        "Sorry, you are unable to enter the GuildHall because of a possible memory leak, check back later");
+                                    client.Player.SendInfo("Thanks.");
+                                    //world = client.Player.Guild.GuildHall;
+                                }
+                                break;
+                            default:
+                                Type worldType =
+                                    Type.GetType("wServer.realm.worlds." +
+                                                 desc.DungeonName.Replace(" ", String.Empty).Replace("'", String.Empty));
+                                if (worldType != null)
+                                {
+                                    try
+                                    {
+                                        world = client.Manager.AddWorld((World) Activator.CreateInstance(worldType,
+                                            System.Reflection.BindingFlags.CreateInstance, null, null,
+                                            CultureInfo.InvariantCulture, null));
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        client.Player.SendError("Error while creating world instance:");
+                                        client.Player.SendError(ex.ToString());
+                                        log.Error(ex);
+                                    }
+                                }
+                                else
+                                    client.Player.SendError("WorldClass for " + desc.DungeonName +
+                                                            " not found, can not load world.");
+                                break;
+                        }
+                    }
+                    if (setWorldInstance)
+                        portal.WorldInstance = world;
                 }
 
                 if (world != null)
