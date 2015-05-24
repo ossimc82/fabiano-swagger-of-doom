@@ -22,7 +22,7 @@ namespace wServer.networking.handlers
 
                 client.Player.Flush();
 
-                if (client.Player.HasConditionEffect(ConditionEffects.Paralyzed)) return;
+                if (client.Player.HasConditionEffect(ConditionEffectIndex.Paralyzed)) return;
                 if (packet.Position.X == -1 || packet.Position.Y == -1) return;
 
                 double newX = client.Player.X;

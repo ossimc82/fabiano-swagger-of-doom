@@ -18,25 +18,25 @@ namespace server.app
     {
         protected override void HandleRequest()
         {
-            //string s = "[";
-            //
-            //using (Database db = new Database())
-            //{
-            //    var toSerialize = GetGlobalNews(db);
-            //    int len = toSerialize.Count;
-            //
-            //    for (int i = 0; i < len; i++)
-            //    {
-            //        if (toSerialize.Count > 1)
-            //            s += JsonConvert.SerializeObject(toSerialize[0]) + ",";
-            //        else
-            //            s += JsonConvert.SerializeObject(toSerialize[0]);
-            //        toSerialize.RemoveAt(0);
-            //    }
-            //    s += "]";
-            //}
+            string s = "[";
+            
+            using (Database db = new Database())
+            {
+                var toSerialize = GetGlobalNews(db);
+                int len = toSerialize.Count;
+            
+                for (int i = 0; i < len; i++)
+                {
+                    if (toSerialize.Count > 1)
+                        s += JsonConvert.SerializeObject(toSerialize[0]) + ",";
+                    else
+                        s += JsonConvert.SerializeObject(toSerialize[0]);
+                    toSerialize.RemoveAt(0);
+                }
+                s += "]";
+            }
 
-            byte[] buf = Encoding.ASCII.GetBytes(File.ReadAllText("app/globalNews/globalNews.txt"));
+            byte[] buf = Encoding.UTF8.GetBytes(s);
             Context.Response.OutputStream.Write(buf, 0, buf.Length);
         }
 

@@ -16,9 +16,9 @@ namespace wServer.realm.entities.player
 
         public bool IsVisibleToEnemy()
         {
-            if (HasConditionEffect(ConditionEffects.Paused))
+            if (HasConditionEffect(ConditionEffectIndex.Paused))
                 return false;
-            if (HasConditionEffect(ConditionEffects.Invisible))
+            if (HasConditionEffect(ConditionEffectIndex.Invisible))
                 return false;
             if (newbieTime > 0)
                 return false;
@@ -27,7 +27,7 @@ namespace wServer.realm.entities.player
 
         private void HandleEffects(RealmTime time)
         {
-            if (HasConditionEffect(ConditionEffects.Healing))
+            if (HasConditionEffect(ConditionEffectIndex.Healing))
             {
                 if (healing > 1)
                 {
@@ -38,13 +38,13 @@ namespace wServer.realm.entities.player
                 }
                 healing += 28*(time.thisTickTimes/1000f);
             }
-            if (HasConditionEffect(ConditionEffects.Quiet) &&
+            if (HasConditionEffect(ConditionEffectIndex.Quiet) &&
                 Mp > 0)
             {
                 Mp = 0;
                 UpdateCount++;
             }
-            if (HasConditionEffect(ConditionEffects.Bleeding) &&
+            if (HasConditionEffect(ConditionEffectIndex.Bleeding) &&
                 HP > 1)
             {
                 if (bleeding > 1)
@@ -72,14 +72,14 @@ namespace wServer.realm.entities.player
 
         private bool CanHpRegen()
         {
-            if (HasConditionEffect(ConditionEffects.Sick) || HasConditionEffect(ConditionEffects.Bleeding) || OxygenBar == 0)
+            if (HasConditionEffect(ConditionEffectIndex.Sick) || HasConditionEffect(ConditionEffectIndex.Bleeding) || OxygenBar == 0)
                 return false;
             return true;
         }
 
         private bool CanMpRegen()
         {
-            if (HasConditionEffect(ConditionEffects.Quiet) || ninjaShoot)
+            if (HasConditionEffect(ConditionEffectIndex.Quiet) || ninjaShoot)
                 return false;
             return true;
         }

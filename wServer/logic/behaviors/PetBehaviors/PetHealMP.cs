@@ -38,7 +38,7 @@ namespace wServer.logic.behaviors.PetBehaviors
                     if (newMp != player.Mp)
                     {
                         int n = newMp - player.Mp;
-                        if (player.HasConditionEffect(ConditionEffects.Quiet))
+                        if (player.HasConditionEffect(ConditionEffectIndex.Quiet))
                         {
                             player.Owner.BroadcastPacket(new ShowEffectPacket
                             {

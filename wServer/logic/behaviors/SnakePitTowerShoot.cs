@@ -34,7 +34,7 @@ namespace wServer.logic.behaviors
 
             if (cool <= 0)
             {
-                if (host.HasConditionEffect(ConditionEffects.Stunned)) return;
+                if (host.HasConditionEffect(ConditionEffectIndex.Stunned)) return;
 
                 Entity player = host.GetNearestEntity(radius, null);
 

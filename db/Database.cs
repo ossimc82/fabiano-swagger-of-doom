@@ -965,7 +965,6 @@ bestFame = GREATEST(bestFame, @bestFame);";
         {
             if (chr.HasBackpack == 1)
             {
-                Array.Reverse(chr.Backpack);
                 MySqlCommand cmd = CreateQuery();
                 cmd.CommandText = @"INSERT INTO backpacks(accId, charId, items)
 VALUES(@accId, @charId, @items)

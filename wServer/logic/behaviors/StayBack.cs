@@ -29,7 +29,7 @@ namespace wServer.logic.behaviors
 
             Status = CycleStatus.NotStarted;
 
-            if (host.HasConditionEffect(ConditionEffects.Paralyzed)) return;
+            if (host.HasConditionEffect(ConditionEffectIndex.Paralyzed)) return;
 
             Player player = (Player) host.GetNearestEntity(distance, null);
             if (player != null)

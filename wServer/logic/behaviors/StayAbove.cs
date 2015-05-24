@@ -24,7 +24,7 @@ namespace wServer.logic.behaviors
         {
             Status = CycleStatus.NotStarted;
 
-            if (host.HasConditionEffect(ConditionEffects.Paralyzed)) return;
+            if (host.HasConditionEffect(ConditionEffectIndex.Paralyzed)) return;
 
             Wmap map = host.Owner.Map;
             WmapTile tile = map[(int) host.X, (int) host.Y];

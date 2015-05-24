@@ -70,17 +70,17 @@ namespace wServer.realm.entities
         public override bool HitByProjectile(Projectile projectile, RealmTime time)
         {
             if (Static || !Vulnerable) return false;
-            if (HasConditionEffect(ConditionEffects.Invincible))
+            if (HasConditionEffect(ConditionEffectIndex.Invincible))
                 return false;
             if (projectile.ProjectileOwner is Player &&
-                !HasConditionEffect(ConditionEffects.Paused) &&
-                !HasConditionEffect(ConditionEffects.Stasis))
+                !HasConditionEffect(ConditionEffectIndex.Paused) &&
+                !HasConditionEffect(ConditionEffectIndex.Stasis))
             {
                 int def = ObjectDesc.Defense;
                 if (projectile.Descriptor.ArmorPiercing)
                     def = 0;
                 int dmg = (int)StatsManager.GetDefenseDamage(this, projectile.Damage, def);
-                if (!HasConditionEffect(ConditionEffects.Invulnerable))
+                if (!HasConditionEffect(ConditionEffectIndex.Invulnerable))
                     HP -= dmg;
                 foreach (ConditionEffect effect in projectile.Descriptor.Effects)
                 {

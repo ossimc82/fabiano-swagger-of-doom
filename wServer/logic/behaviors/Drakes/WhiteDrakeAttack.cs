@@ -23,7 +23,7 @@ namespace wServer.logic.behaviors.Drakes
             {
                 var entity = host.GetPlayerOwner();
 
-                if (!entity.HasConditionEffect(ConditionEffects.Sick))
+                if (!entity.HasConditionEffect(ConditionEffectIndex.Sick))
                 {
                     try
                     {

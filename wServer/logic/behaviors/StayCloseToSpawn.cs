@@ -34,7 +34,7 @@ namespace wServer.logic.behaviors
 
             Status = CycleStatus.NotStarted;
 
-            if (host.HasConditionEffect(ConditionEffects.Paralyzed)) return;
+            if (host.HasConditionEffect(ConditionEffectIndex.Paralyzed)) return;
 
             Vector2 vect = (Vector2) state;
             var l = (vect - new Vector2(host.X, host.Y)).Length;

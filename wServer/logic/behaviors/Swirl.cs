@@ -39,7 +39,7 @@ namespace wServer.logic.behaviors
 
             Status = CycleStatus.NotStarted;
 
-            if (host.HasConditionEffect(ConditionEffects.Paralyzed)) return;
+            if (host.HasConditionEffect(ConditionEffectIndex.Paralyzed)) return;
 
             int period = (int) (1000*radius/host.GetSpeed(speed)*(2*Math.PI));
             if (!s.Acquired &&

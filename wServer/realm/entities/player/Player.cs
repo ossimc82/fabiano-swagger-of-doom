@@ -285,13 +285,13 @@ namespace wServer.realm.entities.player
         {
             try
             {
-                if (HasConditionEffect(ConditionEffects.Paused) ||
-                    HasConditionEffect(ConditionEffects.Stasis) ||
-                    HasConditionEffect(ConditionEffects.Invincible))
+                if (HasConditionEffect(ConditionEffectIndex.Paused) ||
+                    HasConditionEffect(ConditionEffectIndex.Stasis) ||
+                    HasConditionEffect(ConditionEffectIndex.Invincible))
                     return;
 
                 dmg = (int)StatsManager.GetDefenseDamage(dmg, false);
-                if (!HasConditionEffect(ConditionEffects.Invulnerable))
+                if (!HasConditionEffect(ConditionEffectIndex.Invulnerable))
                     HP -= dmg;
                 UpdateCount++;
                 Owner.BroadcastPacket(new DamagePacket
@@ -539,9 +539,9 @@ namespace wServer.realm.entities.player
         public override bool HitByProjectile(Projectile projectile, RealmTime time)
         {
             if (projectile.ProjectileOwner is Player ||
-                HasConditionEffect(ConditionEffects.Paused) ||
-                HasConditionEffect(ConditionEffects.Stasis) ||
-                HasConditionEffect(ConditionEffects.Invincible))
+                HasConditionEffect(ConditionEffectIndex.Paused) ||
+                HasConditionEffect(ConditionEffectIndex.Stasis) ||
+                HasConditionEffect(ConditionEffectIndex.Invincible))
                 return false;
 
             return base.HitByProjectile(projectile, time);
@@ -647,11 +647,11 @@ namespace wServer.realm.entities.player
                     break;
                 case 20:
                     var equip = Inventory.Select(_ => _?.ObjectType ?? (short)-1).ToArray();
+                    var backpack = new short[8];
+                    Array.Copy(equip, 12, backpack, 0, 8);
                     Array.Resize(ref equip, 12);
                     chr.Equipment = equip;
-                    equip = Inventory.Select(_ => _?.ObjectType ?? (short)-1).Reverse().ToArray();
-                    Array.Resize(ref equip, 8);
-                    chr.Backpack = equip;
+                    chr.Backpack = backpack;
                     break;
             }
             chr.MaxHitPoints = Stats[0];
@@ -683,12 +683,12 @@ namespace wServer.realm.entities.player
                     SendError("Player.teleportCoolDown");
                     return;
                 }
-                if (obj.HasConditionEffect(ConditionEffects.Invisible))
+                if (obj.HasConditionEffect(ConditionEffectIndex.Invisible))
                 {
                     SendError("server.no_teleport_to_invisible");
                     return;
                 }
-                if (obj.HasConditionEffect(ConditionEffects.Paused))
+                if (obj.HasConditionEffect(ConditionEffectIndex.Paused))
                 {
                     SendError("server.no_teleport_to_paused");
                     return;

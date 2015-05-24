@@ -35,7 +35,7 @@ namespace wServer.logic.behaviors
 
             Status = CycleStatus.NotStarted;
 
-            if (host.HasConditionEffect(ConditionEffects.Paralyzed)) return;
+            if (host.HasConditionEffect(ConditionEffectIndex.Paralyzed)) return;
 
             float moveDist = host.GetSpeed(speed)*(time.thisTickTimes/1000f);
             if (dist > 0)

@@ -25,7 +25,7 @@ namespace wServer.logic.behaviors
         {
             if (!returned)
             {
-                if (host.HasConditionEffect(ConditionEffects.Paralyzed)) return;
+                if (host.HasConditionEffect(ConditionEffectIndex.Paralyzed)) return;
                 var spd = host.GetSpeed(speed) * (time.thisTickTimes / 1000f);
 
                 Position pos = (host as Enemy).SpawnPoint;

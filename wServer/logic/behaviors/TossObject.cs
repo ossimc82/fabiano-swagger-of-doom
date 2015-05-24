@@ -42,7 +42,7 @@ namespace wServer.logic.behaviors
 
             if (cool <= 0)
             {
-                if (host.HasConditionEffect(ConditionEffects.Stunned)) return;
+                if (host.HasConditionEffect(ConditionEffectIndex.Stunned)) return;
 
                 double? tossAngle = randomToss ? Random.Next(0, 360)*Math.PI/180 : angle;
                 Entity en = null;

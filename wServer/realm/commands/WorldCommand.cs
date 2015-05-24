@@ -102,7 +102,7 @@ namespace wServer.realm.commands
 
         protected override bool Process(Player player, RealmTime time, string[] args)
         {
-            if (player.HasConditionEffect(ConditionEffects.Paused))
+            if (player.HasConditionEffect(ConditionEffectIndex.Paused))
             {
                 player.ApplyConditionEffect(new ConditionEffect
                 {

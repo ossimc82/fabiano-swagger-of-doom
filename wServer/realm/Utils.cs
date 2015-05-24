@@ -187,7 +187,7 @@ namespace wServer.realm
 
         public static float GetSpeed(this Entity entity, float spd)
         {
-            if (entity.HasConditionEffect(ConditionEffects.Slowed))
+            if (entity.HasConditionEffect(ConditionEffectIndex.Slowed))
                 return 2.22f * spd + 0.74f;
             return 5.55f*spd + 0.74f;
         }
@@ -195,7 +195,7 @@ namespace wServer.realm
         public static bool ValidateAndMove(this Entity entity, float x, float y)
         {
             if (entity.Owner == null ||
-                entity.HasConditionEffect(ConditionEffects.Paralyzed)) return false;
+                entity.HasConditionEffect(ConditionEffectIndex.Paralyzed)) return false;
             if (entity.Validate(x, y))
                 entity.Move(x, y);
             else if (entity.Validate(entity.X, y))
@@ -210,7 +210,7 @@ namespace wServer.realm
         public static bool Validate(this Entity entity, float x, float y)
         {
             if (entity.Owner == null ||
-                entity.HasConditionEffect(ConditionEffects.Paralyzed)) return false;
+                entity.HasConditionEffect(ConditionEffectIndex.Paralyzed)) return false;
             if (x < 0 || x >= entity.Owner.Map.Width ||
                 y < 0 || y >= entity.Owner.Map.Height)
                 return false;

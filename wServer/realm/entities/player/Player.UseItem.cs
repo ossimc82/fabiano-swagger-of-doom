@@ -667,9 +667,9 @@ namespace wServer.realm.entities.player
                         });
                         Owner.Aoe(target, 3, false, enemy =>
                         {
-                            if (enemy.HasConditionEffect(ConditionEffects.StasisImmune))
+                            if (enemy.HasConditionEffect(ConditionEffectIndex.StasisImmune))
                             {
-                                if (!enemy.HasConditionEffect(ConditionEffects.Invincible))
+                                if (!enemy.HasConditionEffect(ConditionEffectIndex.Invincible))
                                 {
                                     pkts.Add(new NotificationPacket
                                     {
@@ -679,7 +679,7 @@ namespace wServer.realm.entities.player
                                     });
                                 }
                             }
-                            else if (!enemy.HasConditionEffect(ConditionEffects.Stasis))
+                            else if (!enemy.HasConditionEffect(ConditionEffectIndex.Stasis))
                             {
                                 enemy.ApplyConditionEffect(new ConditionEffect
                                 {
@@ -751,7 +751,7 @@ namespace wServer.realm.entities.player
                         for (int i = 0; i < targets.Length; i++)
                         {
                             if (targets[i] == null) break;
-                            if(targets[i].HasConditionEffect(ConditionEffects.Invincible)) continue;
+                            if(targets[i].HasConditionEffect(ConditionEffectIndex.Invincible)) continue;
                             Entity prev = i == 0 ? (Entity) this : targets[i - 1];
                             targets[i].Damage(this, time, eff.TotalDamage, false);
                             if (eff.ConditionEffect != null)
@@ -1185,8 +1185,8 @@ namespace wServer.realm.entities.player
                         
                         Owner.Aoe((eff.Center.Equals("mouse")) ? target : new Position { X = X, Y = Y }, range, targetPlayer, entity =>
                         {
-                            if (!entity.HasConditionEffect(ConditionEffects.Stasis) &&
-                                !entity.HasConditionEffect(ConditionEffects.Invincible))
+                            if (!entity.HasConditionEffect(ConditionEffectIndex.Stasis) &&
+                                !entity.HasConditionEffect(ConditionEffectIndex.Invincible))
                             {
                                 entity.ApplyConditionEffect(
                                 new ConditionEffect()

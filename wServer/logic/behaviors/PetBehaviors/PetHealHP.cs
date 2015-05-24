@@ -37,7 +37,7 @@ namespace wServer.logic.behaviors.PetBehaviors
                     int newHp = Math.Min(maxHp, player.HP + h);
                     if (newHp != player.HP)
                     {
-                        if (player.HasConditionEffect(ConditionEffects.Sick))
+                        if (player.HasConditionEffect(ConditionEffectIndex.Sick))
                         {
                             player.Owner.BroadcastPacket(new ShowEffectPacket
                             {

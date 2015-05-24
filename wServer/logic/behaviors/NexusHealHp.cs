@@ -35,7 +35,7 @@ namespace wServer.logic.behaviors
 
             if (cool <= 0)
             {
-                if (host.HasConditionEffect(ConditionEffects.Sick)) return;
+                if (host.HasConditionEffect(ConditionEffectIndex.Sick)) return;
 
                 Player entity = host.GetNearestEntity(range, null) as Player;
 

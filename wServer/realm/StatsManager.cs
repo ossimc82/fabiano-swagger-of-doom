@@ -25,12 +25,12 @@ namespace wServer.realm
         public float GetAttackDamage(int min, int max)
         {
             int att = GetStats(2);
-            if (player.HasConditionEffect(ConditionEffects.Paralyzed))
+            if (player.HasConditionEffect(ConditionEffectIndex.Paralyzed))
                 att = 0;
 
             float ret = player.Random.Next(min, max)*(0.5f + att/50f);
 
-            if (player.HasConditionEffect(ConditionEffects.Damaging))
+            if (player.HasConditionEffect(ConditionEffectIndex.Damaging))
                 ret *= 1.5f;
 
             return ret;
@@ -38,9 +38,9 @@ namespace wServer.realm
 
         public static float GetDefenseDamage(Entity host, int dmg, int def)
         {
-            if (host.HasConditionEffect(ConditionEffects.Armored))
+            if (host.HasConditionEffect(ConditionEffectIndex.Armored))
                 def *= 2;
-            if (host.HasConditionEffect(ConditionEffects.ArmorBroken))
+            if (host.HasConditionEffect(ConditionEffectIndex.ArmorBroken))
                 def = 0;
 
             float limit = dmg*0.15f;
@@ -49,8 +49,8 @@ namespace wServer.realm
             if (dmg - def < limit) ret = limit;
             else ret = dmg - def;
 
-            if (host.HasConditionEffect(ConditionEffects.Invulnerable) ||
-                host.HasConditionEffect(ConditionEffects.Invincible))
+            if (host.HasConditionEffect(ConditionEffectIndex.Invulnerable) ||
+                host.HasConditionEffect(ConditionEffectIndex.Invincible))
                 ret = 0;
             return ret;
         }
@@ -58,9 +58,9 @@ namespace wServer.realm
         public float GetDefenseDamage(int dmg, bool noDef)
         {
             int def = GetStats(3);
-            if (player.HasConditionEffect(ConditionEffects.Armored))
+            if (player.HasConditionEffect(ConditionEffectIndex.Armored))
                 def *= 2;
-            if (player.HasConditionEffect(ConditionEffects.ArmorBroken) ||
+            if (player.HasConditionEffect(ConditionEffectIndex.ArmorBroken) ||
                 noDef)
                 def = 0;
 
@@ -70,8 +70,8 @@ namespace wServer.realm
             if (dmg - def < limit) ret = limit;
             else ret = dmg - def;
 
-            if (player.HasConditionEffect(ConditionEffects.Invulnerable) ||
-                player.HasConditionEffect(ConditionEffects.Invincible))
+            if (player.HasConditionEffect(ConditionEffectIndex.Invulnerable) ||
+                player.HasConditionEffect(ConditionEffectIndex.Invincible))
                 ret = 0;
             return ret;
         }
@@ -79,11 +79,11 @@ namespace wServer.realm
         public static float GetSpeed(Entity entity, float stat)
         {
             float ret = 4 + 5.6f*(stat/75f);
-            if (entity.HasConditionEffect(ConditionEffects.Speedy))
+            if (entity.HasConditionEffect(ConditionEffectIndex.Speedy))
                 ret *= 1.5f;
-            if (entity.HasConditionEffect(ConditionEffects.Slowed))
+            if (entity.HasConditionEffect(ConditionEffectIndex.Slowed))
                 ret = 4;
-            if (entity.HasConditionEffect(ConditionEffects.Paralyzed))
+            if (entity.HasConditionEffect(ConditionEffectIndex.Paralyzed))
                 ret = 0;
             return ret;
         }
@@ -96,7 +96,7 @@ namespace wServer.realm
         public float GetHPRegen()
         {
             int vit = GetStats(5);
-            if (player.HasConditionEffect(ConditionEffects.Sick))
+            if (player.HasConditionEffect(ConditionEffectIndex.Sick))
                 vit = 0;
             return 1 + 0.12f * vit;
         }
@@ -104,7 +104,7 @@ namespace wServer.realm
         public float GetMPRegen()
         {
             int wis = GetStats(6);
-            if (player.HasConditionEffect(ConditionEffects.Quiet))
+            if (player.HasConditionEffect(ConditionEffectIndex.Quiet))
                 return 0;
             return 0.5f + 0.06f * wis;
         }
@@ -112,13 +112,13 @@ namespace wServer.realm
         public float GetDex()
         {
             int dex = GetStats(7);
-            if (player.HasConditionEffect(ConditionEffects.Dazed))
+            if (player.HasConditionEffect(ConditionEffectIndex.Dazed))
                 dex = 0;
 
             float ret = 1.5f + 6.5f*(dex/75f);
-            if (player.HasConditionEffect(ConditionEffects.Berserk))
+            if (player.HasConditionEffect(ConditionEffectIndex.Berserk))
                 ret *= 1.5f;
-            if (player.HasConditionEffect(ConditionEffects.Stunned))
+            if (player.HasConditionEffect(ConditionEffectIndex.Stunned))
                 ret = 0;
             return ret;
         }

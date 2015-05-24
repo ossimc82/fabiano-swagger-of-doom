@@ -394,7 +394,7 @@ namespace wServer.realm.entities
         public bool IsVisibleToEnemy()
         {
             //Todo: Implement decoy here
-            if (HasConditionEffect(global::ConditionEffects.Stasis)) return false;
+            if (HasConditionEffect(global::ConditionEffectIndex.Stasis)) return false;
             return true;
         }
     }

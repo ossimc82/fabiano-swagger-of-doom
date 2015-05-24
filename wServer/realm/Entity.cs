@@ -258,7 +258,7 @@ namespace wServer.realm
             }
             if (CurrentState != null && Owner != null)
             {
-                if (!HasConditionEffect(ConditionEffects.Stasis))
+                if (!HasConditionEffect(ConditionEffectIndex.Stasis))
                     TickState(time);
             }
             if (posHistory != null)
@@ -460,16 +460,16 @@ namespace wServer.realm
             tickingEffects = effects.Any(_ => _ > 0);
         }
 
-        public bool HasConditionEffect(ConditionEffects eff)
+        public bool HasConditionEffect(ConditionEffectIndex eff)
         {
-            if ((int)eff < 31)
-                return (ConditionEffects & eff) != 0;
-            return (ConditionEffects2 & eff) != 0;
+            if (eff < (ConditionEffectIndex)31)
+                return (ConditionEffects & (ConditionEffects)(1 << (int)eff)) != 0;
+            return (ConditionEffects2 & (ConditionEffects)(1 << (int)(eff - 32))) != 0;
         }
 
         public void ApplyConditionEffect(params ConditionEffect[] effs)
         {
-            foreach (var i in effs.Where(i => i.Effect != ConditionEffectIndex.Stunned || !HasConditionEffect(ConditionEffects.StunImmume)).Where(i => i.Effect != ConditionEffectIndex.Stasis || !HasConditionEffect(ConditionEffects.StasisImmune)))
+            foreach (var i in effs.Where(i => i.Effect != ConditionEffectIndex.Stunned || !HasConditionEffect(ConditionEffectIndex.StunImmume)).Where(i => i.Effect != ConditionEffectIndex.Stasis || !HasConditionEffect(ConditionEffectIndex.StasisImmune)))
             {
                 effects[(int)i.Effect] = i.DurationMS;
                 if (i.DurationMS == 0) continue;

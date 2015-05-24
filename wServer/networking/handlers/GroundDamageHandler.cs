@@ -19,8 +19,8 @@ namespace wServer.networking.handlers
         {
             client.Manager.Logic.AddPendingAction(t =>
             {
-                if (client.Player.HasConditionEffect(ConditionEffects.Paused) ||
-                    client.Player.HasConditionEffect(ConditionEffects.Invincible))
+                if (client.Player.HasConditionEffect(ConditionEffectIndex.Paused) ||
+                    client.Player.HasConditionEffect(ConditionEffectIndex.Invincible))
                     return;
 
                 try
