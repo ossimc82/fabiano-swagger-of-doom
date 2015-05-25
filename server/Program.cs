@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Globalization;
 using System.IO;
@@ -171,7 +172,11 @@ namespace server
 
         public static void SendFile(string path, HttpListenerContext context)
         {
-            context.Response.ContentType = getContentType(new FileInfo(path).Extension);
+            var ext = new FileInfo(path).Extension;
+            if (ext.StartsWith("."))
+                ext = ext.Remove(0, 1);
+            context.Response.ContentType = getContentType(ext);
+
             byte[] buffer;
 
             if (context.Response.ContentType == "text/html" || context.Response.ContentType == "text/javascript" || context.Response.ContentType == "text/css")
@@ -179,6 +184,21 @@ namespace server
                 using (var rdr = File.OpenText(path))
                 {
                     var send = rdr.ReadToEnd();
+
+                    if (ext == "php")
+                    {
+                        Process p = new Process();
+                        p.StartInfo = new ProcessStartInfo("php\\php.exe", "-f " + path)
+                        {
+                            UseShellExecute = false,
+                            RedirectStandardInput = true,
+                            RedirectStandardOutput = true,
+                            WindowStyle = ProcessWindowStyle.Hidden
+                        };
+                        p.Start();
+                        send = p.StandardOutput.ReadToEnd();
+                    }
+
                     foreach (var toReplace in replaceVars)
                     {
                         var tmp = String.Empty;
@@ -218,16 +238,14 @@ namespace server
 
         private static string getContentType(string fileExtention)
         {
-            var plain = fileExtention;
-            if (fileExtention.StartsWith(".")) 
-                plain = fileExtention.Remove(0, 1);
             var ret = "text/html";
 
-            switch (plain)
+            switch (fileExtention)
             {
                 case "html":
                 case "shtml":
                 case "htm":
+                case "php":
                     ret = "text/html";
                     break;
                 case "js":
