@@ -120,7 +120,9 @@ namespace wServer.networking.handlers
                 {
                     if (con2.Inventory[packet.SlotObject2.SlotId] != null)
                     {
-                        (en2 as Player).Client.SendPacket(new InvResultPacket {Result = -1});
+                        (en2 as Player)?.Client.SendPacket(new InvResultPacket {Result = -1});
+                        (con1 as OneWayContainer).UpdateCount++;
+                        en2.UpdateCount++;
                         return;
                     }
 

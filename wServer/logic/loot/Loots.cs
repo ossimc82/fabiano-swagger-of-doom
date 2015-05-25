@@ -92,7 +92,7 @@ namespace wServer.logic.loot
                         if (rand.NextDouble() < prob)
                         {
                             if (dat.Item1.LootTierBoost)
-                                playerLoot.Add(IncreaseTier(enemy.Manager, i.Item));
+                                playerLoot.Add(IncreaseTier(enemy.Manager, i.Item, consideration));
                             else
                                 playerLoot.Add(i.Item);
                         }
@@ -103,12 +103,13 @@ namespace wServer.logic.loot
             AddBagsToWorld(enemy, sharedLoots, loots);
         }
 
-        private Item IncreaseTier(RealmManager manager, Item item)
+        private Item IncreaseTier(RealmManager manager, Item item, List<LootDef> consideration)
         {
             if (item.SlotType == 10) return item;
             Item[] tier = manager.GameData.Items
                  .Where(i => item.SlotType == i.Value.SlotType)
                  .Where(i => i.Value.Tier >= item.Tier + 3)
+                 .Where(i => consideration.Select(_ => _.Item).Contains(i.Value))
                  .Select(i => i.Value).ToArray();
 
             return tier.Length > 0 ? tier[rand.Next(1, tier.Length)] : item;

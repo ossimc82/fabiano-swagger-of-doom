@@ -112,12 +112,13 @@ namespace wServer.realm.entities
         {
             try
             {
-                if (Vulnerable & HP < 0)
+                if (Vulnerable && HP < 0)
                 {
                     if (ObjectDesc != null &&
                         (ObjectDesc.EnemyOccupySquare || ObjectDesc.OccupySquare))
-                        Owner.Obstacles[(int) (X - 0.5), (int) (Y - 0.5)] = 0;
-                    Owner.LeaveWorld(this);
+                        if (Owner!= null)
+                            Owner.Obstacles[(int) (X - 0.5), (int) (Y - 0.5)] = 0;
+                    Owner?.LeaveWorld(this);
                     return false;
                 }
             }

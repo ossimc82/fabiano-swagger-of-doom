@@ -19,7 +19,7 @@ namespace wServer.realm.worlds
             new ConcurrentDictionary<Tuple<Container, VaultChest>, int>();
 
         private readonly bool isLimbo;
-        private readonly Client psr;
+        private Client psr;
         public string AccountId { get; private set; }
 
         public Vault(bool isLimbo, Client psr = null)
@@ -32,10 +32,7 @@ namespace wServer.realm.worlds
             this.isLimbo = isLimbo;
             ShowDisplays = true;
             if (psr != null)
-                if (psr.Account != null)
-                    AccountId = psr.Account.AccountId;
-                else
-                    AccountId = "-1";
+                AccountId = psr.Account != null ? psr.Account.AccountId : "-1";
             else
                 AccountId = "-1";
         }
@@ -295,6 +292,12 @@ namespace wServer.realm.worlds
         private class GiftChest
         {
             public List<Item> Items { get; set; }
+        }
+
+        public void Reload(Client client)
+        {
+            psr = client;
+            Init();
         }
     }
 }

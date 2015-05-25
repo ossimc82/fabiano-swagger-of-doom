@@ -348,7 +348,6 @@ namespace wServer.networking.handlers
             {
                 Account acc = player.Client.Account;
                 db.ReadStats(acc);
-                if (!player.NameChosen) return false;
 
                 if (currency == CurrencyType.Fame)
                 {

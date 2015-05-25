@@ -31,6 +31,7 @@ public static class Utils
 
     public static int FromString(string x)
     {
+        x = x.Trim();
         if (x.StartsWith("0x")) return int.Parse(x.Substring(2), NumberStyles.HexNumber);
         return int.Parse(x);
     }

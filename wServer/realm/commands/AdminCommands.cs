@@ -624,6 +624,11 @@ namespace wServer.realm.commands
 
         protected override bool Process(Player player, RealmTime time, string[] args)
         {
+            if (player.Owner is Vault || player.Owner is PetYard)
+            {
+                player.SendInfo("You cant summon in this world.");
+                return false;
+            }
             foreach (KeyValuePair<string, Client> i in player.Manager.Clients)
             {
                 if (i.Value.Player.Name.EqualsIgnoreCase(args[0]))

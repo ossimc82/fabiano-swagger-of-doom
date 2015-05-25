@@ -242,6 +242,8 @@ namespace wServer.realm
             Vault v;
             if(!vaults.TryGetValue(processor.Account.AccountId, out v))
                 vaults.TryAdd(processor.Account.AccountId, v = (Vault)AddWorld(new Vault(false, processor)));
+            else
+                v.Reload(processor);
             return v;
         }
 
