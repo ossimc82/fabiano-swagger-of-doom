@@ -1,4 +1,7 @@
+#Build Status: [![Build status](https://img.shields.io/appveyor/ci/ossimc82/fabiano-swagger-of-doom/master.svg)](https://ci.appveyor.com/project/ossimc82/fabiano-swagger-of-doom)
+
 ##License or Disclaimer, however you wanna call it. :D
+
 You are free to use this source as long as u credit this guys:
 
 - ossimc82/Fabian Fischer
