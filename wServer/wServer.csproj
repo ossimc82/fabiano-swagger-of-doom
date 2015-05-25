@@ -388,7 +388,6 @@
     <Compile Include="realm\entities\SellableObject.cs" />
     <Compile Include="realm\entities\Sign.cs" />
     <Compile Include="realm\entities\StaticObject.cs" />
-    <Compile Include="realm\entities\Tinker.cs" />
     <Compile Include="realm\entities\Trap.cs" />
     <Compile Include="realm\entities\Wall.cs" />
     <Compile Include="realm\Entity.cs" />

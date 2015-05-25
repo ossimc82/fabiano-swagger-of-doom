@@ -371,9 +371,8 @@ namespace wServer.realm
                 case "FortuneTeller":
                 case "YardUpgrader":
                 case "FortuneGround":
-                    return new StaticObject(manager, id, null, true, false, false);
                 case "QuestRewards":
-                    return new Tinker(manager, id, null, false);
+                    return new StaticObject(manager, id, null, true, false, false);
                 case "Pet":
                     throw new Exception("Pets should not instantiated using Entity.Resolve");
                 default:
