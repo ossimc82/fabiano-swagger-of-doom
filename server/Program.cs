@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Diagnostics;
 using System.Linq;
 using System.Globalization;
@@ -120,9 +121,15 @@ namespace server
                 {
                     using (var wtr = new StreamWriter(context.Response.OutputStream))
                     {
-                        var file = "game" + (context.Request.RawUrl == "/" ? "/index.html" : context.Request.RawUrl);
+                        var file = "game" + (context.Request.RawUrl == "/" ? "/index.php" : context.Request.RawUrl);
                         if (file.Contains("?"))
                             file = file.Remove(file.IndexOf('?'));
+                        var info = new FileInfo(file);
+                        if (info.Attributes == FileAttributes.Directory)
+                        {
+                            string[] files = Directory.GetFiles(file, "*", SearchOption.TopDirectoryOnly);
+                            file = (from f in files let inf = new FileInfo(f) where inf.Name.Replace(inf.Extension, string.Empty).Equals("index", StringComparison.OrdinalIgnoreCase) select f).FirstOrDefault();
+                        }
                         if (File.Exists(file))
                         {
                             if (file.StartsWith("game/Testing.html"))
@@ -188,7 +195,7 @@ namespace server
                     if (ext == "php")
                     {
                         Process p = new Process();
-                        p.StartInfo = new ProcessStartInfo("php\\php.exe", "-f " + path)
+                        p.StartInfo = new ProcessStartInfo("php\\php-cgi.exe", $"-f {path} {GetPhpArgumentQuery(context.Request.QueryString)}")
                         {
                             UseShellExecute = false,
                             RedirectStandardInput = true,
@@ -234,6 +241,14 @@ namespace server
             context.Response.StatusDescription = "OK";
             context.Response.ContentLength64 = buffer.Length;
             context.Response.OutputStream.Write(buffer, 0, buffer.Length);
+        }
+
+        private static string GetPhpArgumentQuery(NameValueCollection query)
+        {
+            var sb = new StringBuilder();
+            foreach (string q in query.Keys)
+                sb.Append(q + "=" + query[q]);
+            return sb.ToString();
         }
 
         private static string getContentType(string fileExtention)

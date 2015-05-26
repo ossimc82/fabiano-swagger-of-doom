@@ -138,7 +138,7 @@ CREATE TABLE IF NOT EXISTS `characters` (
   `deathTime` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `totalFame` int(11) NOT NULL DEFAULT '0',
   `lastSeen` datetime NOT NULL,
-  `lastLocation` int(128) NOT NULL,
+  `lastLocation` varchar(128) NOT NULL,
   PRIMARY KEY (`id`,`accId`,`dead`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
