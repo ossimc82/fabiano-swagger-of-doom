@@ -1,6 +1,7 @@
 ﻿#region
 
 using System.Collections.Generic;
+using System.Linq;
 using wServer.logic;
 using wServer.networking.svrPackets;
 using wServer.realm.entities.player;
@@ -136,19 +137,12 @@ namespace wServer.realm.entities
                 !HasConditionEffect(ConditionEffectIndex.Paused) &&
                 !HasConditionEffect(ConditionEffectIndex.Stasis))
             {
-                int def = ObjectDesc.Defense;
-                if (projectile.Descriptor.ArmorPiercing)
-                    def = 0;
-                int dmg = (int) StatsManager.GetDefenseDamage(this, projectile.Damage, def);
+                var dmg = (int)StatsManager.GetDefenseDamage(this, projectile.Damage, projectile.Descriptor.ArmorPiercing ? 0 : ObjectDesc.Defense);
                 if (!HasConditionEffect(ConditionEffectIndex.Invulnerable))
                     HP -= dmg;
-                foreach (ConditionEffect effect in projectile.Descriptor.Effects)
-                {
-                    if (effect.Effect == ConditionEffectIndex.Stunned && ObjectDesc.StunImmune ||
-                        effect.Effect == ConditionEffectIndex.Paralyzed && ObjectDesc.ParalyzedImmune ||
-                        effect.Effect == ConditionEffectIndex.Dazed && ObjectDesc.DazedImmune) continue;
+                foreach (ConditionEffect effect in projectile.Descriptor.Effects.Where(effect => (effect.Effect != ConditionEffectIndex.Stunned || !ObjectDesc.StunImmune) && (effect.Effect != ConditionEffectIndex.Paralyzed || !ObjectDesc.ParalyzedImmune) && (effect.Effect != ConditionEffectIndex.Dazed || !ObjectDesc.DazedImmune)))
                     ApplyConditionEffect(effect);
-                }
+
                 Owner.BroadcastPacket(new DamagePacket
                 {
                     TargetId = Id,
@@ -157,7 +151,7 @@ namespace wServer.realm.entities
                     Killed = HP < 0,
                     BulletId = projectile.ProjectileId,
                     ObjectId = projectile.ProjectileOwner.Self.Id
-                }, projectile.ProjectileOwner as Player);
+                }, HP < 0 ? null : projectile.ProjectileOwner as Player);
 
                 counter.HitBy(projectile.ProjectileOwner as Player, time, projectile, dmg);
 

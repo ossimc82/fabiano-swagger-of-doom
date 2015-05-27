@@ -155,6 +155,7 @@ namespace wServer.networking.handlers
                     uint seed = (uint)((long)Environment.TickCount * packet.GUID.GetHashCode()) % uint.MaxValue;
                     client.Random = new wRandom(seed);
                     client.TargetWorld = world.Id;
+                    client.Seed = seed;
                     client.SendPacket(new MapInfoPacket
                     {
                         Width = world.Map.Width,
@@ -167,7 +168,7 @@ namespace wServer.networking.handlers
                         AllowTeleport = world.AllowTeleport,
                         ShowDisplays = world.ShowDisplays,
                         ClientXML = world.ClientXml,
-                        ExtraXML = world.ExtraXml
+                        ExtraXML = Manager.GameData.AdditionXml
                     });
                     client.Stage = ProtocalStage.Handshaked;
                 }

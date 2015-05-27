@@ -64,6 +64,7 @@ namespace wServer.networking
         public wRandom Random { get; internal set; }
         public string ConnectedBuild { get; internal set; }
         public int TargetWorld { get; internal set; }
+        public uint Seed { get; set; }
 
         public void BeginProcess()
         {

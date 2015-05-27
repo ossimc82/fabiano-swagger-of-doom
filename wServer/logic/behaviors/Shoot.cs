@@ -95,7 +95,7 @@ namespace wServer.logic.behaviors
                     for (int i = 0; i < count; i++)
                     {
                         Projectile prj = host.CreateProjectile(
-                            desc, (short)host.ObjectType, dmg, time.tickTimes,
+                            desc, host.ObjectType, dmg, time.tickTimes,
                             prjPos, (float) (startAngle + shootAngle*i));
                         host.Owner.EnterWorld(prj);
                         if (i == 0)

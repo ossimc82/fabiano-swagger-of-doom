@@ -50,7 +50,7 @@ namespace wServer.realm.entities.player
             {
                 Client = psr;
                 Manager = psr.Manager;
-                StatsManager = new StatsManager(this);
+                StatsManager = new StatsManager(this, psr.Seed);
                 Name = psr.Account.Name;
                 AccountId = psr.Account.AccountId;
                 FameCounter = new FameCounter(this);
@@ -643,10 +643,10 @@ namespace wServer.realm.entities.player
             switch (Inventory.Length)
             {
                 case 12:
-                    chr.Equipment = Inventory.Select(_ => _?.ObjectType ?? (short)-1).ToArray();
+                    chr.Equipment = Inventory.Select(_ => _?.ObjectType ?? -1).ToArray();
                     break;
                 case 20:
-                    var equip = Inventory.Select(_ => _?.ObjectType ?? (short)-1).ToArray();
+                    var equip = Inventory.Select(_ => _?.ObjectType ?? -1).ToArray();
                     var backpack = new short[8];
                     Array.Copy(equip, 12, backpack, 0, 8);
                     Array.Resize(ref equip, 12);

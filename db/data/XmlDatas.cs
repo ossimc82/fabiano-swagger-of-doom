@@ -38,6 +38,7 @@ namespace db.data
         private string[] addXml;
         private int prevUpdateCount = -1;
         private int updateCount;
+        private AutoAssign assign;
 
         public XmlData(string path = "data")
         {
@@ -74,7 +75,7 @@ namespace db.data
 
             addition = new XElement("ExtData");
 
-            //assign = new AutoAssign(this);
+            assign = new AutoAssign(this);
 
             string basePath = Path.Combine(AssemblyDirectory, path);
             log.InfoFormat("Loading game data from '{0}'...", basePath);
@@ -128,16 +129,20 @@ namespace db.data
 
         public void Dispose()
         {
-            //assign.Dispose();
+            assign.Dispose();
         }
 
         public void AddSetTypes(XElement root)
         {
             foreach (XElement elem in root.XPathSelectElements("//EquipmentSet"))
             {
+                string id = elem.Attribute("id").Value;
                 ushort type;
                 XAttribute typeAttr = elem.Attribute("type");
-                type = (ushort)Utils.FromString(typeAttr.Value);
+                if (typeAttr == null)
+                    type = (ushort)assign.Assign(id, elem);
+                else
+                    type = (ushort)Utils.FromString(typeAttr.Value);
                 setTypeSkins[type] = new SetTypeSkin(elem, type);
                 XAttribute extAttr = elem.Attribute("ext");
                 bool ext;
@@ -159,9 +164,10 @@ namespace db.data
 
                 ushort type;
                 XAttribute typeAttr = elem.Attribute("type");
-                if (typeAttr == null) continue;
-                //    type = assign.Assign(id, elem);
-                type = (ushort)Utils.FromString(typeAttr.Value);
+                if (typeAttr == null)
+                    type = (ushort)assign.Assign(id, elem);
+                else
+                    type = (ushort)Utils.FromString(typeAttr.Value);
 
                 if (cls == "PetBehavior" || cls == "PetAbility") continue;
 
@@ -178,7 +184,7 @@ namespace db.data
                 {
                     case "Equipment":
                     case "Dye":
-                        items[type] = new Item((short)type, elem);
+                        items[type] = new Item(type, elem);
                         break;
                     case "Portal":
                     case "GuildHallPortal":
@@ -227,7 +233,10 @@ namespace db.data
 
                 ushort type;
                 XAttribute typeAttr = elem.Attribute("type");
-                type = (ushort)Utils.FromString(typeAttr.Value);
+                if (typeAttr == null)
+                    type = (ushort)assign.Assign(id, elem);
+                else
+                    type = (ushort)Utils.FromString(typeAttr.Value);
 
                 if (type2id_tile.ContainsKey(type))
                     log.WarnFormat("'{0}' and '{1}' has the same ID of 0x{2:x4}!", id, type2id_tile[type], type);
@@ -276,8 +285,8 @@ namespace db.data
                 : base("autoId")
             {
                 this.dat = dat;
-                nextSignedId = GetValue<int>("nextSigned", "24576"); //0x6000
-                nextFullId = GetValue<int>("nextFull", "32768"); //0x8000
+                nextSignedId = GetValue<int>("nextSigned", "50000"); //0xC350
+                nextFullId = GetValue<int>("nextFull", "58000"); //0xE290
             }
 
             public int Assign(string id, XElement elem)

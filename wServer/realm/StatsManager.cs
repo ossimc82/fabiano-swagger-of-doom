@@ -1,5 +1,6 @@
 ﻿#region
 
+using System;
 using wServer.realm.entities.player;
 
 #endregion
@@ -9,10 +10,12 @@ namespace wServer.realm
     public class StatsManager
     {
         private readonly Player player;
+        private readonly DamageRandom rand;
 
-        public StatsManager(Player player)
+        public StatsManager(Player player, uint seed)
         {
             this.player = player;
+            this.rand = new DamageRandom(seed);
         }
 
         //from wiki
@@ -24,11 +27,14 @@ namespace wServer.realm
 
         public float GetAttackDamage(int min, int max)
         {
-            int att = GetStats(2);
-            if (player.HasConditionEffect(ConditionEffectIndex.Paralyzed))
-                att = 0;
+            return rand.obf6((uint)min, (uint)max) * DamageModifier();
+        }
 
-            float ret = player.Random.Next(min, max)*(0.5f + att/50f);
+        private float DamageModifier()
+        {
+            if (player.HasConditionEffect(ConditionEffectIndex.Weak))
+                return 0.5f;
+            var ret = (0.5f + GetStats(2) / 75F*(2 - 0.5f));
 
             if (player.HasConditionEffect(ConditionEffectIndex.Damaging))
                 ret *= 1.5f;
@@ -193,6 +199,68 @@ namespace wServer.realm
                     return "Dexterity";
             }
             return null;
+        }
+
+        public class DamageRandom
+        {
+            public DamageRandom(uint seed = 1)
+            {
+                Seed = seed;
+            }
+
+            public uint Seed { get; private set; }
+
+            public static uint obf1()
+            {
+                return (uint) Math.Round(new Random().NextDouble()*(uint.MaxValue - 1) + 1);
+            }
+
+            public uint obf2()
+            {
+                return this.obf3();
+            }
+
+            public float obf4()
+            {
+                return this.obf3()/2147483647;
+            }
+
+            public float obf5(float param1 = 0.0f, float param2 = 1.0f)
+            {
+                float _loc3_ = this.obf3()/2147483647;
+                float _loc4_ = this.obf3()/2147483647;
+                float _loc5_ = (float) Math.Sqrt(-2*(float) Math.Log(_loc3_))*(float) Math.Cos(2*_loc4_*Math.PI);
+                return param1 + _loc5_*param2;
+            }
+
+            public uint obf6(uint param1, uint param2)
+            {
+                if (param1 == param2)
+                {
+                    return param1;
+                }
+                return param1 + this.obf3()%(param2 - param1);
+            }
+
+            public float obf7(float param1, float param2)
+            {
+                return param1 + (param2 - param1)*this.obf4();
+            }
+
+            private uint obf3()
+            {
+                uint _loc1_ = 0;
+                uint _loc2_ = 0;
+                _loc2_ = 16807*(this.Seed & 65535);
+                _loc1_ = 16807*(this.Seed >> 16);
+                _loc2_ = _loc2_ + ((_loc1_ & 32767) << 16);
+                _loc2_ = _loc2_ + (_loc1_ >> 15);
+                if (_loc2_ > 2147483647)
+                {
+                    _loc2_ = _loc2_ - 2147483647;
+                }
+                return this.Seed = _loc2_;
+            }
         }
     }
 }

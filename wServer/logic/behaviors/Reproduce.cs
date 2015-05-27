@@ -15,15 +15,17 @@ namespace wServer.logic.behaviors
         private readonly ushort? children;
         private readonly int densityMax;
         private readonly double densityRadius;
+        private readonly double spawnRadius;
         private Cooldown coolDown;
 
-        public Reproduce(string children = null, double densityRadius = 10, int densityMax = 5,
+        public Reproduce(string children = null, double densityRadius = 10, int densityMax = 5, double spawnRadius = -1,
             Cooldown coolDown = new Cooldown())
         {
             this.children = children == null ? null : (ushort?) BehaviorDb.InitGameData.IdToObjectType[children];
             this.densityRadius = densityRadius;
             this.densityMax = densityMax;
             this.coolDown = coolDown.Normalize(60000);
+            this.spawnRadius = spawnRadius == -1 ? densityRadius : spawnRadius;
         }
 
         protected override void TickCore(Entity host, RealmTime time, ref object state)
@@ -46,8 +48,8 @@ namespace wServer.logic.behaviors
                     do
                     {
                         double angle = Random.NextDouble()*2*Math.PI;
-                        targetX = host.X + densityRadius*0.5*Math.Cos(angle);
-                        targetY = host.Y + densityRadius*0.5*Math.Sin(angle);
+                        targetX = host.X + spawnRadius*0.5*Math.Cos(angle);
+                        targetY = host.Y + spawnRadius* 0.5*Math.Sin(angle);
                         i++;
                     } while (targetX < host.Owner.Map.Width &&
                              targetY < host.Owner.Map.Height &&

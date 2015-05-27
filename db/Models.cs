@@ -438,9 +438,9 @@ public class Char
     public string _Equipment { get; set; }
 
     [XmlIgnore]
-    public short[] Equipment
+    public int[] Equipment
     {
-        get { return Utils.FromCommaSepString16(_Equipment); }
+        get { return Utils.FromCommaSepString32(_Equipment); }
         set { _Equipment = Utils.GetCommaSepString(value); }
     }
 

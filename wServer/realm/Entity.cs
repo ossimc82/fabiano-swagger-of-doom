@@ -381,14 +381,14 @@ namespace wServer.realm
             }
         }
 
-        public Projectile CreateProjectile(ProjectileDesc desc, short container, int dmg, long time, Position pos,
+        public Projectile CreateProjectile(ProjectileDesc desc, ushort container, int dmg, long time, Position pos,
             float angle)
         {
             var ret = new Projectile(Manager, desc) //Assume only one
             {
                 ProjectileOwner = this,
                 ProjectileId = ProjectileId++,
-                Container = container,
+                Container = (short)container,
                 Damage = dmg,
                 BeginTime = time,
                 BeginPos = pos,

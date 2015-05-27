@@ -3,7 +3,7 @@
     public partial class Player
     {
         internal Projectile PlayerShootProjectile(
-            byte id, ProjectileDesc desc, short objType,
+            byte id, ProjectileDesc desc, ushort objType,
             int time, Position position, float angle)
         {
             ProjectileId = id;

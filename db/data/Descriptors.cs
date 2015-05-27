@@ -932,7 +932,7 @@ public class Item : IFeedable
 {
     private const bool DISABLE_SOULBOUND_UT = false;
 
-    public Item(short type, XElement elem)
+    public Item(ushort type, XElement elem)
     {
         try
         {
@@ -1014,7 +1014,7 @@ public class Item : IFeedable
         }
     }
 
-    public short ObjectType { get; private set; }
+    public ushort ObjectType { get; private set; }
     public string ObjectId { get; private set; }
     public int SlotType { get; private set; }
     public ushort FeedPower { get; set; }
