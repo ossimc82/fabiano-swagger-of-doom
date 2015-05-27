@@ -647,7 +647,7 @@ namespace wServer.realm.entities.player
                     break;
                 case 20:
                     var equip = Inventory.Select(_ => _?.ObjectType ?? -1).ToArray();
-                    var backpack = new short[8];
+                    var backpack = new int[8];
                     Array.Copy(equip, 12, backpack, 0, 8);
                     Array.Resize(ref equip, 12);
                     chr.Equipment = equip;

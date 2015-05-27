@@ -10,13 +10,14 @@ namespace wServer.realm
     public class StatsManager
     {
         private readonly Player player;
-        private readonly DamageRandom rand;
 
         public StatsManager(Player player, uint seed)
         {
             this.player = player;
-            this.rand = new DamageRandom(seed);
+            this.Random = new DamageRandom(seed);
         }
+
+        public DamageRandom Random { get; }
 
         //from wiki
 
@@ -27,7 +28,7 @@ namespace wServer.realm
 
         public float GetAttackDamage(int min, int max)
         {
-            return rand.obf6((uint)min, (uint)max) * DamageModifier();
+            return Random.obf6((uint)min, (uint)max) * DamageModifier();
         }
 
         private float DamageModifier()

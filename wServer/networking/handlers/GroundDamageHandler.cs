@@ -26,12 +26,12 @@ namespace wServer.networking.handlers
                 try
                 {
                     if (client.Player.Owner == null) return;
-                    WmapTile tile = client.Player.Owner.Map[(int) client.Player.X, (int) client.Player.Y];
+                    WmapTile tile = client.Player.Owner.Map[(int)packet.Position.X, (int)packet.Position.Y];
                     ObjectDesc objDesc = tile.ObjType == 0 ? null : client.Manager.GameData.ObjectDescs[tile.ObjType];
                     TileDesc tileDesc = client.Manager.GameData.Tiles[tile.TileId];
                     if (tileDesc.Damaging && (objDesc == null || !objDesc.ProtectFromGroundDamage))
                     {
-                        int dmg = client.Player.Random.Next(tileDesc.MinDamage, tileDesc.MaxDamage);
+                        int dmg = (int)client.Player.StatsManager.Random.obf6((uint)tileDesc.MinDamage, (uint)tileDesc.MaxDamage);
                         dmg = (int) client.Player.StatsManager.GetDefenseDamage(dmg, true);
 
                         client.Player.HP -= dmg;

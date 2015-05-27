@@ -944,19 +944,19 @@ bestFame = GREATEST(bestFame, @bestFame);";
             SaveBackpacks(chr, acc);
         }
 
-        public short[] GetBackpack(Char chr, Account acc)
+        public int[] GetBackpack(Char chr, Account acc)
         {
             MySqlCommand cmd = CreateQuery();
             cmd.CommandText = "SELECT * FROM backpacks WHERE charId=@charId AND accId=@accId";
             cmd.Parameters.AddWithValue("@charId", chr.CharacterId);
             cmd.Parameters.AddWithValue("@accId", acc.AccountId);
-            short[] ret = new short[8];
+            var ret = new int[8];
             using (MySqlDataReader rdr = cmd.ExecuteReader())
             {
                 if (!rdr.HasRows)
-                    return new short[] { -1, -1, -1, -1, -1, -1, -1, -1 };
+                    return new [] { -1, -1, -1, -1, -1, -1, -1, -1 };
                 while (rdr.Read())
-                    ret = Utils.FromCommaSepString16(rdr.GetString("items"));
+                    ret = Utils.FromCommaSepString32(rdr.GetString("items"));
             }
             return ret;
         }
@@ -1453,7 +1453,7 @@ bestFame = GREATEST(bestFame, @bestFame);";
 
                     if (@char.Equipment.Length > 12)
                     {
-                        @char.Backpack = new short[8];
+                        @char.Backpack = new int[8];
                         Array.Copy(@char.Equipment, 12, @char.Backpack, 0, 8);
                         var eq = @char.Equipment;
                         Array.Resize(ref eq, 12);

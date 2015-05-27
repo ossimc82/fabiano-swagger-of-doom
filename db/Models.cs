@@ -445,7 +445,7 @@ public class Char
     }
 
     [XmlIgnore]
-    public short[] Backpack { get; set; }
+    public int[] Backpack { get; set; }
 
     public int HasBackpack { get; set; }
     public int MaxHitPoints { get; set; }

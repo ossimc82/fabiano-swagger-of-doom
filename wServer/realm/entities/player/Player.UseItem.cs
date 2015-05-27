@@ -243,24 +243,21 @@ namespace wServer.realm.entities.player
 
             if (item.IsBackpack)
             {
-                if (HasBackpack == 0)
-                {
-                    Client.Character.Backpack = new short[] {-1, -1, -1, -1, -1, -1, -1, -1};
-                    HasBackpack = 1;
-                    Client.Character.HasBackpack = 1;
-                    Manager.Database.DoActionAsync(db =>
-                        db.SaveBackpacks(Client.Character, Client.Account));
-                    Array.Resize(ref inventory, 20);
-                    int[] slotTypes =
-                        Utils.FromCommaSepString32(
-                            Manager.GameData.ObjectTypeToElement[ObjectType].Element("SlotTypes").Value);
-                    Array.Resize(ref slotTypes, 20);
-                    for (int i = 0; i < slotTypes.Length; i++)
-                        if (slotTypes[i] == 0) slotTypes[i] = 10;
-                    SlotTypes = slotTypes;
-                    return false;
-                }
-                return true;
+                if (HasBackpack != 0) return true;
+                Client.Character.Backpack = new [] {-1, -1, -1, -1, -1, -1, -1, -1};
+                HasBackpack = 1;
+                Client.Character.HasBackpack = 1;
+                Manager.Database.DoActionAsync(db =>
+                    db.SaveBackpacks(Client.Character, Client.Account));
+                Array.Resize(ref inventory, 20);
+                int[] slotTypes =
+                    Utils.FromCommaSepString32(
+                        Manager.GameData.ObjectTypeToElement[ObjectType].Element("SlotTypes").Value);
+                Array.Resize(ref slotTypes, 20);
+                for (int i = 0; i < slotTypes.Length; i++)
+                    if (slotTypes[i] == 0) slotTypes[i] = 10;
+                SlotTypes = slotTypes;
+                return false;
             }
             if (item.XpBooster)
             {
