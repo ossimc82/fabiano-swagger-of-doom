@@ -53,7 +53,9 @@ namespace wServer.realm
                             if (work.Item1.Stage == ProtocalStage.Disconnected)
                             {
                                 Client client;
-                                Manager.Clients.TryRemove(work.Item1.Account.AccountId, out client);
+                                var accId = work.Item1?.Account?.AccountId;
+                                if(accId != null)
+                                Manager.Clients.TryRemove(accId, out client);
                                 continue;
                             }
                             try
