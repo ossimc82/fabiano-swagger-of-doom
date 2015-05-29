@@ -28,4 +28,39 @@
     <Soulbound/>
     <DisplayId>Niggo</DisplayId>
   </Object>
+
+  <Object ext="true" id="Over Niggo">
+      <Enemy/>
+      <Class>Character</Class>
+      <Texture>
+         <File>lofiObjBig</File>
+         <Index>0x40</Index>
+      </Texture>
+      <AltTexture id="1">
+         <Texture>
+            <File>lofiObjBig</File>
+            <Index>0x41</Index>
+         </Texture>
+      </AltTexture>
+      <AltTexture id="2">
+         <Texture>
+            <File>lofiObjBig</File>
+            <Index>0x42</Index>
+         </Texture>
+      </AltTexture>
+      <AltTexture id="3">
+         <Texture>
+            <File>lofiObjBig</File>
+            <Index>0x3f</Index>
+         </Texture>
+      </AltTexture>
+      <HitSound>monster/default_hit</HitSound>
+      <DeathSound>monster/dark_elves_death</DeathSound>
+      <Size>140</Size>
+      <ShadowSize>70</ShadowSize>
+      <MaxHitPoints>30000</MaxHitPoints>
+      <Defense>10</Defense>
+      <DisplayId>Over Niggo</DisplayId>
+   </Object>
+
 </ExtData>

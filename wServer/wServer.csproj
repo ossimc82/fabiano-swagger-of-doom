@@ -147,6 +147,7 @@
     <Compile Include="logic\behaviors\JumpToRandomOffset.cs" />
     <Compile Include="logic\behaviors\OnDeathBehavior.cs" />
     <Compile Include="logic\behaviors\PentaractStar.cs" />
+    <Compile Include="logic\behaviors\PetBehaviors\PetBehavior.cs" />
     <Compile Include="logic\behaviors\PetBehaviors\PetShoot.cs" />
     <Compile Include="logic\behaviors\RemoveEntity.cs" />
     <Compile Include="logic\db\BehaviorDb.Abyss.cs" />

@@ -62,13 +62,16 @@ namespace wServer.realm.entities
             get { return Owner.Id == -2 && Name.StartsWith("NexusPortal."); }
         }
 
-        public void Unlock(PortalDesc newDesc)
+        public Portal Unlock(string dungeonName)
         {
-            var portal = new Portal(Manager, newDesc, newDesc.TimeoutTime * 1000);
+            var desc = Manager.GameData.Portals[0x0700];
+            desc.DungeonName = dungeonName;
+            var portal = new Portal(Manager, desc, desc.TimeoutTime * 1000);
             portal.Move(X, Y);
             portal.Usable = true;
             Owner.EnterWorld(portal);
             Owner.LeaveWorld(this);
+            return portal;
         }
 
         public override void Dispose()

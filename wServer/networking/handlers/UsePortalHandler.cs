@@ -92,10 +92,10 @@ namespace wServer.networking.handlers
                             case 0x072f:
                                 if (client.Player.Guild != null)
                                 {
-                                    client.Player.SendInfo(
-                                        "Sorry, you are unable to enter the GuildHall because of a possible memory leak, check back later");
-                                    client.Player.SendInfo("Thanks.");
-                                    //world = client.Player.Guild.GuildHall;
+                                    //client.Player.SendInfo(
+                                    //    "Sorry, you are unable to enter the GuildHall because of a possible memory leak, check back later");
+                                    //client.Player.SendInfo("Thanks.");
+                                    world = client.Player.Guild.GuildHall;
                                 }
                                 break;
                             default:

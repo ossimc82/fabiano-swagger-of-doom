@@ -87,12 +87,12 @@ namespace wServer.realm
 
 
         public bool UpgradeInProgress { get; private set; }
-        //public World GuildHall { get; private set; }
+        public World GuildHall { get; private set; }
 
         public GuildManager(Guild guildInfo, RealmManager manager)
         {
             _guildStructs = new Dictionary<string, Guild>();
-            //GuildHall = guildInfo.Name == "" ? null : manager.AddWorld(new GuildHall(guildInfo.Name));
+            GuildHall = guildInfo.Name == "" ? null : manager.AddWorld(new GuildHall(guildInfo.Name));
             this.name = guildInfo.Name;
             this.id = guildInfo.Id;
         }
@@ -116,23 +116,23 @@ namespace wServer.realm
 
         public void UpdateGuildHall()
         {
-            //WorldTimer ghallTimer = null;
-            //UpgradeInProgress = true;
-            //GuildHall.Timers.Add(ghallTimer = new WorldTimer(60 * 1000, (w, t) =>
-            //{
-            //    if (w.Players.Count > 0)
-            //    {
-            //        ghallTimer.Reset();
-            //        GuildHall.Manager.Logic.AddPendingAction(_ => w.Timers.Add(ghallTimer), PendingPriority.Creation);
-            //    }
-            //    else
-            //    {
-            //        RealmManager manager = GuildHall.Manager;
-            //        GuildHall.Manager.RemoveWorld(GuildHall);
-            //        GuildHall = manager.AddWorld(new GuildHall(Name));
-            //        UpgradeInProgress = false;
-            //    }
-            //}));
+            WorldTimer ghallTimer = null;
+            UpgradeInProgress = true;
+            GuildHall.Timers.Add(ghallTimer = new WorldTimer(60 * 1000, (w, t) =>
+            {
+                if (w.Players.Count > 0)
+                {
+                    ghallTimer.Reset();
+                    GuildHall.Manager.Logic.AddPendingAction(_ => w.Timers.Add(ghallTimer), PendingPriority.Creation);
+                }
+                else
+                {
+                    RealmManager manager = GuildHall.Manager;
+                    GuildHall.Manager.RemoveWorld(GuildHall);
+                    GuildHall = manager.AddWorld(new GuildHall(Name));
+                    UpgradeInProgress = false;
+                }
+            }));
         }
 
         public void JoinGuild(Player player)

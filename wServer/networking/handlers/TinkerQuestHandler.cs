@@ -29,12 +29,9 @@ namespace wServer.networking.handlers
                         Message = client.Player.GetLanguageString("server.quest_complete")
                     });
                     client.Player.Inventory[packet.Object.SlotId] = null;
-                    if(client.Player.DailyQuest.Tier == 3)
-                        client.Player.Tokens = db.UpdateFortuneToken(client.Account, +2);
-                    else
-                        client.Player.Tokens = db.UpdateFortuneToken(client.Account, +1);
+                    GiveRewards(db, client.Player.DailyQuest.Tier - 1);
                     var cmd = db.CreateQuery();
-                    int tier = client.Player.DailyQuest.Tier == 3 ? -1 : (client.Player.DailyQuest.Tier + 1);
+                    int tier = client.Player.DailyQuest.Tier == DailyQuestConstants.QuestsPerDay ? -1 : (client.Player.DailyQuest.Tier + 1);
                     cmd.CommandText = "UPDATE dailyquests SET tier=@tier WHERE accId=@accId;";
                     cmd.Parameters.AddWithValue("@accId", client.Account.AccountId);
                     cmd.Parameters.AddWithValue("@tier", tier);
@@ -43,6 +40,16 @@ namespace wServer.networking.handlers
                     client.Player.UpdateCount++;
                     client.Player.SaveToCharacter();
                 }
+            }
+        }
+
+        private void GiveRewards(Database db, int index)
+        {
+            switch (DailyQuestConstants.Rewards[index])
+            {
+                case "FortuneToken":
+                    Client.Player.Tokens = db.UpdateFortuneToken(Client.Account, +2);
+                    break;
             }
         }
     }

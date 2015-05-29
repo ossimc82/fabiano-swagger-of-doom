@@ -164,7 +164,7 @@
     <Compile Include="app\init.cs" />
     <Compile Include="app\getLanguageStrings.cs" />
     <Compile Include="app\globalNews.cs" />
-    <Compile Include="Picture\Get.cs" />
+    <Compile Include="picture\get.cs" />
     <Compile Include="arena\getRecords.cs" />
   </ItemGroup>
   <ItemGroup>
