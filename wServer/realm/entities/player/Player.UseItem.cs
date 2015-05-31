@@ -365,7 +365,7 @@ namespace wServer.realm.entities.player
 
                         ActivateBoostStat(this, idx, pkts);
                         int OGstat = oldstat;
-                        int bit = idx + 40;
+                        int bit = idx + 39;
 
                         int s = eff.Amount;
                         Boost[idx] += s;
@@ -402,7 +402,7 @@ namespace wServer.realm.entities.player
                             if(eff.Stats == StatsType.Wisdom) idx = 6;
                             if(eff.Stats == StatsType.Dexterity) idx = 7;
                             
-                            int bit = idx + 40;
+                            int bit = idx + 39;
 
                             var amountSBA = eff.Amount;
                             var durationSBA = eff.DurationMS;
