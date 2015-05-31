@@ -16,7 +16,7 @@ namespace wServer.realm
 {
     public class Entity : IProjectileOwner, ICollidable<Entity>, IDisposable
     {
-        private const int EFFECT_COUNT = 32 * 2; //64 should be enough for now :P
+        private const int EFFECT_COUNT = 47;
         protected static readonly ILog Log = LogManager.GetLogger(typeof(Entity));
         private readonly ObjectDesc desc;
         private readonly int[] effects;
@@ -94,8 +94,20 @@ namespace wServer.realm
         //Stats
         public string Name { get; set; }
         public int Size { get; set; }
-        public ConditionEffects ConditionEffects { get; set; }
-        public ConditionEffects ConditionEffects2 { get; set; }
+
+        private ConditionEffects _conditionEffects;
+        private Int32 _conditionEffects1;
+        private Int32 _conditionEffects2;
+        public ConditionEffects ConditionEffects
+        {
+            get { return _conditionEffects; }
+            set
+            {
+                _conditionEffects = value;
+                _conditionEffects1 = (int)value;
+                _conditionEffects2 = (int)((ulong)value >> 31);
+            }
+        }
 
         public IDictionary<object, object> StateStorage => states ?? (states = new Dictionary<object, object>());
 
@@ -199,8 +211,8 @@ namespace wServer.realm
         {
             stats[StatsType.Name] = Name ?? ""; //Name was null for some reason O.o
             stats[StatsType.Size] = Size;
-            stats[StatsType.Effects] = (int)ConditionEffects;
-            stats[StatsType.Effects2] = (int)ConditionEffects2;
+            stats[StatsType.Effects] = (int)_conditionEffects1;
+            stats[StatsType.Effects2] = (int)_conditionEffects2;
         }
 
         public virtual ObjectStats ExportStats()
@@ -265,7 +277,6 @@ namespace wServer.realm
                 posHistory[posIdx++] = new Position { X = X, Y = Y };
             if (effects == null) return;
             ProcessConditionEffects(time);
-            ProcessConditionEffects2(time);
         }
 
         public Position? TryGetHistory(long timeAgo)
@@ -415,70 +426,97 @@ namespace wServer.realm
         }
 
 
-        private void ProcessConditionEffects(RealmTime time)
+        void ProcessConditionEffects(RealmTime time)
         {
             if (effects == null || !tickingEffects) return;
 
             ConditionEffects newEffects = 0;
-            for (var i = 0; i < 32; i++)
+            tickingEffects = false;
+            for (int i = 0; i < effects.Length; i++)
                 if (effects[i] > 0)
                 {
                     effects[i] -= time.thisTickTimes;
                     if (effects[i] > 0)
-                        newEffects |= (ConditionEffects)(1 << i);
+                        newEffects |= (ConditionEffects)((ulong)1 << i);
                     else
                         effects[i] = 0;
+                    tickingEffects = true;
                 }
                 else if (effects[i] != 0)
-                    newEffects |= (ConditionEffects)(1 << i);
-            if (newEffects == ConditionEffects) return;
-            ConditionEffects = newEffects;
-            UpdateCount++;
+                    newEffects |= (ConditionEffects)((ulong)1 << i);
+            if (newEffects != ConditionEffects)
+            {
+                ConditionEffects = newEffects;
+                UpdateCount++;
+            }
         }
 
-        private void ProcessConditionEffects2(RealmTime time)
+        public bool HasConditionEffect(ConditionEffects eff)
         {
-            if (effects == null || !tickingEffects) return;
-
-            ConditionEffects newEffects = 0;
-            for (var i = 32; i < effects.Length; i++)
-
-                if (effects[i] > 0)
-                {
-                    effects[i] -= time.thisTickTimes;
-                    if (effects[i] > 0)
-                        newEffects |= (ConditionEffects)(1 << (i - 32));
-                    else
-                        effects[i] = 0;
-                }
-                else if (effects[i] != 0)
-                    newEffects |= (ConditionEffects)(1 << (i - 32));
-            if (newEffects == ConditionEffects2) return;
-            ConditionEffects2 = newEffects;
-            UpdateCount++;
-            tickingEffects = effects.Any(_ => _ > 0);
+            return (ConditionEffects & eff) != 0;
         }
 
         public bool HasConditionEffect(ConditionEffectIndex eff)
         {
-            if (eff < (ConditionEffectIndex)31)
-                return (ConditionEffects & (ConditionEffects)(1 << (int)eff)) != 0;
-            return (ConditionEffects2 & (ConditionEffects)(1 << (int)(eff - 32))) != 0;
+            return (ConditionEffects & (ConditionEffects)((ulong)1 << (int)eff)) != 0;
+        }
+
+        public void ApplyConditionEffect(ConditionEffectIndex effect, int durationMs = -1)
+        {
+            if (!ApplyCondition(effect))
+                return;
+
+            var eff = (int)effect;
+
+            effects[eff] = durationMs;
+            if (durationMs != 0)
+                ConditionEffects |= (ConditionEffects)((ulong)1 << eff);
+
+            tickingEffects = true;
+            UpdateCount++;
         }
 
         public void ApplyConditionEffect(params ConditionEffect[] effs)
         {
-            foreach (var i in effs.Where(i => i.Effect != ConditionEffectIndex.Stunned || !HasConditionEffect(ConditionEffectIndex.StunImmume)).Where(i => i.Effect != ConditionEffectIndex.Stasis || !HasConditionEffect(ConditionEffectIndex.StasisImmune)))
-            {
-                effects[(int)i.Effect] = i.DurationMS;
-                if (i.DurationMS == 0) continue;
-                if (i.Effect < (ConditionEffectIndex)31)
-                    ConditionEffects |= (ConditionEffects) (1 << (int) i.Effect);
-                else
-                    ConditionEffects2 |= (ConditionEffects) (1 << (int)(i.Effect - 32));
-            }
-            tickingEffects = true;
-            UpdateCount++;
+            foreach (var eff in effs)
+                ApplyConditionEffect(eff.Effect, eff.DurationMS);
+        }
+
+        private bool ApplyCondition(ConditionEffectIndex effect)
+        {
+            if (effect == ConditionEffectIndex.Stunned &&
+                HasConditionEffect(ConditionEffects.StunImmume))
+                return false;
+
+            if (effect == ConditionEffectIndex.Stasis &&
+                HasConditionEffect(ConditionEffects.StasisImmune))
+                return false;
+
+            if (effect == ConditionEffectIndex.Paralyzed &&
+                HasConditionEffect(ConditionEffects.ParalyzeImmune))
+                return false;
+
+            if (effect == ConditionEffectIndex.ArmorBroken &&
+                HasConditionEffect(ConditionEffects.ArmorBreakImmune))
+                return false;
+
+            if (effect == ConditionEffectIndex.Curse &&
+                HasConditionEffect(ConditionEffects.CurseImmune))
+                return false;
+
+            if (effect == ConditionEffectIndex.Petrify &&
+                HasConditionEffect(ConditionEffects.PetrifyImmune))
+                return false;
+
+            if (effect == ConditionEffectIndex.Dazed &&
+                HasConditionEffect(ConditionEffects.DazedImmune))
+                return false;
+
+            if (effect == ConditionEffectIndex.Slowed &&
+                HasConditionEffect(ConditionEffects.SlowedImmune))
+                return false;
+
+            return true;
         }
 
         public virtual void Dispose()
