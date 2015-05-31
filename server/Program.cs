@@ -60,7 +60,6 @@ namespace server
             {
                 listener = new HttpListener();
                 listener.Prefixes.Add($"http://*:{port}/");
-                listener.Prefixes.Add("https://*:8443/");
                 listener.Start();
 
                 listener.BeginGetContext(ListenerCallback, null);

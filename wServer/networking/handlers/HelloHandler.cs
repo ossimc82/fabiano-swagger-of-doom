@@ -152,16 +152,14 @@ namespace wServer.networking.handlers
 
                     if (world.IsLimbo)
                         world = world.GetInstance(client);
-                    uint seed = (uint)((long)Environment.TickCount * packet.GUID.GetHashCode()) % uint.MaxValue;
-                    client.Random = new wRandom(seed);
+                    client.Random = new wRandom(world.Seed);
                     client.TargetWorld = world.Id;
-                    client.Seed = seed;
                     client.SendPacket(new MapInfoPacket
                     {
                         Width = world.Map.Width,
                         Height = world.Map.Height,
                         Name = world.Name,
-                        Seed = seed,
+                        Seed = world.Seed,
                         ClientWorldName = world.ClientWorldName,
                         Difficulty = world.Difficulty,
                         Background = world.Background,

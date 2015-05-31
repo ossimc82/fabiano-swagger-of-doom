@@ -2,8 +2,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
+using System.Net.Mail;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
@@ -27,6 +29,45 @@ public static class Utils
             CTRL_LOGOFF_EVENT = 5,
             CTRL_SHUTDOWN_EVENT = 6
         }
+    }
+
+    public static uint NextUInt32(this Random rand)
+    {
+        return (uint)(rand.Next(1 << 30)) << 2 | (uint)(rand.Next(1 << 2));
+    }
+
+    public static void Swap<T>(ref T a, ref T b)
+    {
+        var obj = a;
+        a = b;
+        b = obj;
+    }
+
+    public static int ToUnixTimestamp(this DateTime dt)
+    {
+        return (int)(dt.ToUniversalTime() - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds;
+    }
+
+    public static bool IsValidEmail(string email)
+    {
+        try
+        {
+            return new MailAddress(email).Address == email;
+        }
+        catch
+        {
+            return false;
+        }
+    }
+
+    public static T Convert<T>(this string value)
+    {
+        return (T)TypeDescriptor.GetConverter(typeof(T)).ConvertFrom((object)value);
+    }
+
+    public static T[] FromCSV<T>(this string csv)
+    {
+        return (csv.Split(',')).Select((value => value.Trim().Convert<T>())).ToArray();
     }
 
     public static int FromString(string x)
@@ -93,7 +134,7 @@ public static class Utils
         {
             try
             {
-                ret.Add(Convert.ToInt32(i));
+                ret.Add(System.Convert.ToInt32(i));
             }
             catch
             {

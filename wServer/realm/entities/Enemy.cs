@@ -137,6 +137,7 @@ namespace wServer.realm.entities
                 !HasConditionEffect(ConditionEffectIndex.Paused) &&
                 !HasConditionEffect(ConditionEffectIndex.Stasis))
             {
+                var prevHp = HP;
                 var dmg = (int)StatsManager.GetDefenseDamage(this, projectile.Damage, projectile.Descriptor.ArmorPiercing ? 0 : ObjectDesc.Defense);
                 if (!HasConditionEffect(ConditionEffectIndex.Invulnerable))
                     HP -= dmg;
@@ -151,7 +152,7 @@ namespace wServer.realm.entities
                     Killed = HP < 0,
                     BulletId = projectile.ProjectileId,
                     ObjectId = projectile.ProjectileOwner.Self.Id
-                }, HP < 0 ? null : projectile.ProjectileOwner as Player);
+                }, HP < 0 && !IsOneHit(dmg, prevHp) ? null : projectile.ProjectileOwner as Player);
 
                 counter.HitBy(projectile.ProjectileOwner as Player, time, projectile, dmg);
 
@@ -163,6 +164,11 @@ namespace wServer.realm.entities
                 return true;
             }
             return false;
+        }
+
+        private bool IsOneHit(int dmg, int hp)
+        {
+            return ObjectDesc.MaxHP == hp && ObjectDesc.MaxHP <= dmg;
         }
 
         public override void Tick(RealmTime time)

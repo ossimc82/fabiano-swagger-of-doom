@@ -50,7 +50,7 @@ namespace wServer.realm.entities.player
             {
                 Client = psr;
                 Manager = psr.Manager;
-                StatsManager = new StatsManager(this, psr.Seed);
+                StatsManager = new StatsManager(this, psr.Random.CurrentSeed);
                 Name = psr.Account.Name;
                 AccountId = psr.Account.AccountId;
                 FameCounter = new FameCounter(this);

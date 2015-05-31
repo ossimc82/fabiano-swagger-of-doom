@@ -336,7 +336,7 @@ namespace wServer
                 using (StreamReader rdr = new StreamReader(File.Open(path, FileMode.Open)))
                 {
                     filetext = rdr.ReadToEnd();
-                    if (filetext.Contains(PRODAPPSPOT_DOMAIN) || filetext.Contains(PROD_DOMAIN) || filetext.Contains(PRODAPPSPOT_DOMAIN_WWW) || filetext.Contains(PROD_DOMAIN_WWW))
+                    if (filetext.Contains(PRODAPPSPOT_DOMAIN) || filetext.Contains(PROD_DOMAIN) || filetext.Contains(PRODAPPSPOT_DOMAIN_WWW) || filetext.Contains(PROD_DOMAIN_WWW) || filetext.Contains(PRODAPPSPOTHRD_DOMAIN_WWW) || filetext.Contains(PRODAPPSPOTHRD_DOMAIN))
                     {
                         UpdateLabel("domain found!");
                         files.Add(path, filetext);
@@ -351,6 +351,8 @@ namespace wServer
                 filetext = filetext.Replace(PROD_DOMAIN_WWW, domain);
                 filetext = filetext.Replace(PRODAPPSPOT_DOMAIN, domain);
                 filetext = filetext.Replace(PROD_DOMAIN, domain);
+                filetext = filetext.Replace(PRODAPPSPOTHRD_DOMAIN_WWW, domain);
+                filetext = filetext.Replace(PRODAPPSPOTHRD_DOMAIN, domain);
 
                 using (StreamWriter wtr = new StreamWriter(file.Key, false))
                     wtr.Write(filetext);

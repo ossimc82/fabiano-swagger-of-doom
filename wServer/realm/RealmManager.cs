@@ -102,6 +102,8 @@ namespace wServer.realm
 
         private ConcurrentDictionary<string, Vault> vaults;
 
+        public Random Random { get; }
+
         private Thread logic;
         private Thread network;
         private int nextClientId;
@@ -117,6 +119,7 @@ namespace wServer.realm
             GuildHalls = new ConcurrentDictionary<string, GuildHall>();
             LastWorld = new ConcurrentDictionary<string, World>();
             vaults = new ConcurrentDictionary<string, Vault>();
+            Random = new Random();
         }
 
         public BehaviorDb Behaviors { get; private set; }

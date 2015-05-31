@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using wServer.generator;
+using wServer.generator.templates.pirateCave;
 
 namespace wServer.realm.worlds
 {
@@ -19,7 +21,9 @@ namespace wServer.realm.worlds
 
         protected override void Init()
         {
-            LoadMap("wServer.realm.worlds.maps.pcave.wmap", MapType.Wmap);
+            var gen = new DungeonGenerator(Seed, new PirateCaveTemplate());
+            gen.Generate();
+            LoadMap(gen.ExportToJson());
         }
     }
 }
