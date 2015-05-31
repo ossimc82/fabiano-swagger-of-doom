@@ -1,6 +1,6 @@
 #Build Status: [![Build status](https://img.shields.io/appveyor/ci/ossimc82/fabiano-swagger-of-doom/master.svg)](https://ci.appveyor.com/project/ossimc82/fabiano-swagger-of-doom)
 
-##License or Disclaimer, however you wanna call it. :D
+##Additional License information
 
 You are free to use this source as long as u credit this guys:
 
@@ -13,6 +13,3 @@ You are free to use this source as long as u credit this guys:
 - Barm
 - Kieron for making 1 behavior
 - everyone else that have contributed to this project on mpgh or any other site
-
-You are allowed to modify it or do whatever you want with it but not to sell it
-Whatever you are doing with it, you need to give credits to the guys shown at the top
