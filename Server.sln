@@ -20,7 +20,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E00ABBB9-9692-4DAF-8A9E-E563E54D71A4}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
-		..\RotMG-Dungeon-Generator-master\RotMG.Common.dll = ..\RotMG-Dungeon-Generator-master\RotMG.Common.dll
+		RotMG.Common.dll = RotMG.Common.dll
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DungeonGen", "DungeonGen\DungeonGen.csproj", "{E3061024-61ED-46AA-8A0D-CD9747E7BFAE}"
