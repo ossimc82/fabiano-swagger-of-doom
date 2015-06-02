@@ -11,5 +11,6 @@ You are free to use this source as long as u credit this guys:
 - creepylava
 - Krazyshank
 - Barm
+- Nilly
 - Kieron for making 1 behavior
 - everyone else that have contributed to this project on mpgh or any other site
