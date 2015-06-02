@@ -1,5 +1,9 @@
 ﻿#region
 
+using System.Threading;
+using System.Threading.Tasks;
+using DungeonGenerator;
+using DungeonGenerator.Templates.Abyss;
 using wServer.networking;
 
 #endregion
@@ -18,7 +22,12 @@ namespace wServer.realm.worlds
         }
 
         public override bool NeedsPortalKey => true;
-        protected override void Init() => LoadMap("wServer.realm.worlds.maps.abyss.wmap", MapType.Wmap);
+
+        protected override void Init()
+        {
+            LoadMap(GeneratorCache.NextAbyss(Seed));
+        }
+
         public override World GetInstance(Client psr) => Manager.AddWorld(new AbyssofDemons());
     }
 }

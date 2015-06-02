@@ -94,7 +94,7 @@ namespace wServer.networking
             try
             {
                 log.Logger.Log(typeof (Client), Level.Verbose,
-                   $"Handling packet '{pkt.ID}'...", null);
+                   $"Handling packet '{pkt}'...", null);
                 if (pkt.ID == (PacketID) 255) return;
                 IPacketHandler handler;
                 if (!PacketHandlers.Handlers.TryGetValue(pkt.ID, out handler))

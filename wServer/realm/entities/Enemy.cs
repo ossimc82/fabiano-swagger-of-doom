@@ -166,11 +166,6 @@ namespace wServer.realm.entities
             return false;
         }
 
-        private bool IsOneHit(int dmg, int hp)
-        {
-            return ObjectDesc.MaxHP == hp && ObjectDesc.MaxHP <= dmg;
-        }
-
         public override void Tick(RealmTime time)
         {
             if (pos == null)

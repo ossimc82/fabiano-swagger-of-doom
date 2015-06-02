@@ -132,6 +132,8 @@ namespace wServer.realm.entities.player
                     var score = (20 - Math.Abs((i.ObjectDesc.Level ?? 0) - Level))*x.Item1 -
                                 //priority * level diff
                                 Dist(this, i)/100; //minus 1 for every 100 tile distance
+                    if (score < 0)
+                        score = 1;
                     if (!(score > bestScore)) continue;
                     bestScore = score;
                     ret = i;

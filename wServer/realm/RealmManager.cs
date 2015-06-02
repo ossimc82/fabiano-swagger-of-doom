@@ -223,6 +223,7 @@ namespace wServer.realm
 
             GameData = new XmlData();
             Behaviors = new BehaviorDb(this);
+            GeneratorCache.Init();
             MerchantLists.InitMerchatLists(GameData);
 
             AddWorld(World.NEXUS_ID, Worlds[0] = new Nexus());

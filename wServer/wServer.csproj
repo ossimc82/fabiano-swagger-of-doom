@@ -97,10 +97,6 @@
       <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="RotMG.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Generator\RotMG.Common.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core">
@@ -127,29 +123,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="generator\dungeon\DungeonGraph.cs" />
-    <Compile Include="generator\dungeon\DungeonObject.cs" />
-    <Compile Include="generator\dungeon\DungeonTile.cs" />
-    <Compile Include="generator\dungeon\Edge.cs" />
-    <Compile Include="generator\dungeon\Room.cs" />
-    <Compile Include="generator\DugeonGenerator.cs" />
-    <Compile Include="generator\Generator.cs" />
-    <Compile Include="generator\Range.cs" />
-    <Compile Include="generator\Rasterizer.cs" />
-    <Compile Include="generator\RoomCollision.cs" />
-    <Compile Include="generator\SimpleJson.cs" />
-    <Compile Include="generator\templates\DungeonTemplate.cs" />
-    <Compile Include="generator\templates\MapBackground.cs" />
-    <Compile Include="generator\templates\MapCorridor.cs" />
-    <Compile Include="generator\templates\MapOverlay.cs" />
-    <Compile Include="generator\templates\pirateCave\Background.cs" />
-    <Compile Include="generator\templates\pirateCave\BossRoom.cs" />
-    <Compile Include="generator\templates\pirateCave\Corridor.cs" />
-    <Compile Include="generator\templates\pirateCave\NormalRoom.cs" />
-    <Compile Include="generator\templates\pirateCave\Overlay.cs" />
-    <Compile Include="generator\templates\pirateCave\PirateCaveTemplate.cs" />
-    <Compile Include="generator\templates\pirateCave\StartRoom.cs" />
-    <Compile Include="generator\Zlib.cs" />
+    <Compile Include="GeneratorCache.cs" />
     <Compile Include="logic\Behavior.cs" />
     <Compile Include="logic\behaviors\Aoe.cs" />
     <Compile Include="logic\behaviors\ApplySetpiece.cs" />
@@ -546,12 +520,15 @@
   <ItemGroup>
     <Content Include="air_icon.ico" />
     <Content Include="bugs.txt" />
-    <Content Include="generator\RotMG.Common.dll" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\db\db.csproj">
       <Project>{A417BDBC-8D6F-4661-9B23-2BEE92E295AB}</Project>
       <Name>db</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DungeonGen\DungeonGen.csproj">
+      <Project>{e3061024-61ed-46aa-8a0d-cd9747e7bfae}</Project>
+      <Name>DungeonGen</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

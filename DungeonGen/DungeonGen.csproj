@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E3061024-61ED-46AA-8A0D-CD9747E7BFAE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DungeonGenerator</RootNamespace>
+    <AssemblyName>DungeonGen</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="RotMG.Common">
+      <HintPath>..\RotMG.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DungeonGen.cs" />
+    <Compile Include="Dungeon\DungeonGraph.cs" />
+    <Compile Include="Dungeon\DungeonObject.cs" />
+    <Compile Include="Dungeon\DungeonTile.cs" />
+    <Compile Include="Dungeon\Edge.cs" />
+    <Compile Include="Dungeon\FixedRoom.cs" />
+    <Compile Include="Dungeon\Room.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="Generator.cs" />
+    <Compile Include="JsonMap.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Range.cs" />
+    <Compile Include="Rasterizer.cs" />
+    <Compile Include="RoomCollision.cs" />
+    <Compile Include="SimpleJson.cs" />
+    <Compile Include="Templates\Abyss\AbyssTemplate.cs" />
+    <Compile Include="Templates\Abyss\BossRoom.cs" />
+    <Compile Include="Templates\Abyss\Corridor.cs" />
+    <Compile Include="Templates\Abyss\NormalRoom.cs" />
+    <Compile Include="Templates\Abyss\Overlay.cs" />
+    <Compile Include="Templates\Abyss\StartRoom.cs" />
+    <Compile Include="Templates\Abyss\TreasureRoom.cs" />
+    <Compile Include="Templates\DungeonTemplate.cs" />
+    <Compile Include="Templates\MapCorridor.cs" />
+    <Compile Include="Templates\MapRender.cs" />
+    <Compile Include="Templates\PirateCave\Background.cs" />
+    <Compile Include="Templates\PirateCave\BossRoom.cs" />
+    <Compile Include="Templates\PirateCave\Corridor.cs" />
+    <Compile Include="Templates\PirateCave\NormalRoom.cs" />
+    <Compile Include="Templates\PirateCave\Overlay.cs" />
+    <Compile Include="Templates\PirateCave\PirateCaveTemplate.cs" />
+    <Compile Include="Templates\PirateCave\StartRoom.cs" />
+    <Compile Include="Zlib.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Templates\Abyss\template.jm" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
