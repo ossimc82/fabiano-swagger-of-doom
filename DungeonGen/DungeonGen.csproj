@@ -64,6 +64,12 @@
     <Compile Include="Templates\Abyss\StartRoom.cs" />
     <Compile Include="Templates\Abyss\TreasureRoom.cs" />
     <Compile Include="Templates\DungeonTemplate.cs" />
+    <Compile Include="Templates\Lab\BossRoom.cs" />
+    <Compile Include="Templates\Lab\Corridor.cs" />
+    <Compile Include="Templates\Lab\LabTemplate.cs" />
+    <Compile Include="Templates\Lab\NormalRoom.cs" />
+    <Compile Include="Templates\Lab\Overlay.cs" />
+    <Compile Include="Templates\Lab\StartRoom.cs" />
     <Compile Include="Templates\MapCorridor.cs" />
     <Compile Include="Templates\MapRender.cs" />
     <Compile Include="Templates\PirateCave\Background.cs" />
@@ -77,6 +83,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Templates\Abyss\template.jm" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Templates\Lab\template.jm" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

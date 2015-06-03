@@ -19,35 +19,15 @@
 */
 
 using System;
-using System.Collections.Generic;
+using DungeonGenerator.Dungeon;
 using RotMG.Common.Rasterizer;
 
-namespace DungeonGenerator.Dungeon {
-	public enum RoomType {
-		Normal,
-		Start,
-		Target,
-		Special
-	}
-
-	public abstract class Room {
-		protected Room() {
-			Edges = new List<Edge>(4);
+namespace DungeonGenerator.Templates.Lab {
+	internal class Corridor : MapCorridor {
+		public override void Rasterize(Room src, Room dst, Point srcPos, Point dstPos) {
+			Default(srcPos, dstPos, new DungeonTile {
+				TileType = LabTemplate.LabFloor
+			});
 		}
-
-		public IList<Edge> Edges { get; private set; }
-		public int Depth { get; internal set; }
-
-		public abstract RoomType Type { get; }
-		public abstract int Width { get; }
-		public abstract int Height { get; }
-
-		public Point Pos { get; set; }
-
-		public Rect Bounds { get { return new Rect(Pos.X, Pos.Y, Pos.X + Width, Pos.Y + Height); } }
-
-		public virtual Range NumBranches { get { return new Range(1, 4); } }
-
-		public abstract void Rasterize(BitmapRasterizer<DungeonTile> rasterizer, Random rand);
 	}
 }

@@ -33,6 +33,7 @@ namespace DungeonGenerator.Templates {
 
 		public abstract int MaxDepth { get; }
 		public abstract NormDist TargetDepth { get; }
+		public virtual Range NumRoomRate { get { return new Range(3, 5); } }
 
 		public abstract NormDist SpecialRmCount { get; }
 		public abstract NormDist SpecialRmDepthDist { get; }

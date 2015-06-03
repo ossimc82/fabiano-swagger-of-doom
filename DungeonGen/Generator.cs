@@ -97,7 +97,7 @@ namespace DungeonGenerator {
 		Link? PlaceRoom(Room src, Room target, int connPt) {
 			var sep = template.RoomSeparation.Random(rand);
 			if (src is FixedRoom && target is FixedRoom)
-				throw new NotSupportedException();
+				return PlaceRoomFixed((FixedRoom)src, (FixedRoom)target, connPt, sep);
 			if (src is FixedRoom)
 				return PlaceRoomSourceFixed((FixedRoom)src, target, connPt, sep);
 			if (target is FixedRoom)
@@ -271,6 +271,64 @@ namespace DungeonGenerator {
 			return link;
 		}
 
+		Link? PlaceRoomFixed(FixedRoom src, FixedRoom target, int connPt, int sep) {
+			var conn = src.ConnectionPoints[connPt];
+
+			var targetDirection = conn.Item1.Reverse();
+			var targetConns = (Tuple<Direction, int>[])target.ConnectionPoints.Clone();
+			rand.Shuffle(targetConns);
+			Tuple<Direction, int> targetConnPt = null;
+			foreach (var targetConn in targetConns)
+				if (targetConn.Item1 == targetDirection) {
+					targetConnPt = targetConn;
+					break;
+				}
+
+			if (targetConnPt == null)
+				return null;
+
+			int x, y;
+			Link? link = null;
+			switch (conn.Item1) {
+				case Direction.North:
+				case Direction.South:
+					// North & South
+					x = src.Pos.X + conn.Item2 - targetConnPt.Item2;
+
+					if (conn.Item1 == Direction.South)
+						y = src.Pos.Y + src.Height + sep;
+					else
+						y = src.Pos.Y - sep - target.Height;
+
+					target.Pos = new Point(x, y);
+					if (collision.HitTest(target))
+						return null;
+
+					link = new Link(conn.Item1, src.Pos.X + conn.Item2);
+					break;
+
+				case Direction.East:
+				case Direction.West:
+					// East & West
+					y = src.Pos.Y + conn.Item2 - targetConnPt.Item2;
+
+					if (conn.Item1 == Direction.East)
+						x = src.Pos.X + src.Width + sep;
+					else
+						x = src.Pos.X - sep - target.Width;
+
+					target.Pos = new Point(x, y);
+					if (collision.HitTest(target))
+						return null;
+
+					link = new Link(conn.Item1, src.Pos.Y + conn.Item2);
+					break;
+			}
+
+			collision.Add(target);
+			return link;
+		}
+
 		int GetMaxConnectionPoints(Room rm) {
 			if (rm is FixedRoom)
 				return ((FixedRoom)rm).ConnectionPoints.Length;
@@ -286,8 +344,8 @@ namespace DungeonGenerator {
 			rooms.Add(rootRoom);
 
 			if (GenerateTargetInternal(rootRoom, 1, targetDepth)) {
-				minRoomNum = targetDepth * 3;
-				maxRoomNum = targetDepth * 5;
+				minRoomNum = targetDepth * template.NumRoomRate.Begin;
+				maxRoomNum = targetDepth * template.NumRoomRate.End;
 				maxDepth = rooms.Count;
 				return true;
 			}
@@ -334,6 +392,9 @@ namespace DungeonGenerator {
 		}
 
 		void GenerateSpecials() {
+			if (template.SpecialRmCount == null)
+				return;
+
 			int numRooms = (int)template.SpecialRmCount.NextValue();
 			for (int i = 0; i < numRooms; i++) {
 				int targetDepth;
@@ -392,39 +453,84 @@ namespace DungeonGenerator {
 
 		void GenerateBranches() {
 			int numRooms = new Range(minRoomNum, maxRoomNum).Random(rand);
+
+			List<Room> copy;
 			while (rooms.Count < numRooms) {
-				var room = rooms[rand.Next(rooms.Count)];
-				GenerateBranchInternal(room, room.Depth + 1, template.MaxDepth);
+				copy = new List<Room>(rooms);
+				rand.Shuffle(copy);
+
+				bool worked = false;
+				foreach (var room in copy) {
+					if (rooms.Count > numRooms)
+						break;
+					if (rand.Next() % 2 == 0)
+						continue;
+					worked |= GenerateBranchInternal(room, room.Depth + 1, template.MaxDepth, true);
+				}
+				if (!worked)
+					break;
 			}
 		}
 
-		void GenerateBranchInternal(Room prev, int depth, int maxDepth) {
+		bool GenerateBranchInternal(Room prev, int depth, int maxDepth, bool doBranch) {
 			if (depth >= maxDepth)
-				return;
+				return false;
 
 			var connPtNum = GetMaxConnectionPoints(prev);
 			var seq = Enumerable.Range(0, connPtNum).ToList();
 			rand.Shuffle(seq);
 
-			var numBranch = new Range(1, connPtNum).Random(rand);
-			numBranch -= prev.Edges.Count;
-			for (int i = 0; i < numBranch; i++) {
-				var rm = template.CreateNormal(depth, prev);
+			if (doBranch) {
+				var numBranch = prev.NumBranches.Random(rand);
+				numBranch -= prev.Edges.Count;
+				for (int i = 0; i < numBranch; i++) {
+					var rm = template.CreateNormal(depth, prev);
 
-				Link? link = null;
-				foreach (var connPt in seq)
-					if ((link = PlaceRoom(prev, rm, connPt)) != null) {
-						seq.Remove(connPt);
-						break;
+					Link? link = null;
+					foreach (var connPt in seq)
+						if ((link = PlaceRoom(prev, rm, connPt)) != null) {
+							seq.Remove(connPt);
+							break;
+						}
+
+					if (link == null)
+						return false;
+
+					Edge.Link(prev, rm, link.Value);
+					if (!GenerateBranchInternal(rm, depth + 1, maxDepth, false)) {
+						collision.Remove(rm);
+						Edge.UnLink(prev, rm);
+						return false;
 					}
-
-				if (link == null)
-					return;
-
-				rm.Depth = depth;
-				Edge.Link(prev, rm, link.Value);
-				rooms.Add(rm);
+					rm.Depth = depth;
+					rooms.Add(rm);
+				}
 			}
+			else {
+				while (prev.Edges.Count < prev.NumBranches.Begin) {
+					var rm = template.CreateNormal(depth, prev);
+
+					Link? link = null;
+					foreach (var connPt in seq)
+						if ((link = PlaceRoom(prev, rm, connPt)) != null) {
+							seq.Remove(connPt);
+							break;
+						}
+
+					if (link == null)
+						return false;
+
+					Edge.Link(prev, rm, link.Value);
+					if (!GenerateBranchInternal(rm, depth + 1, maxDepth, false)) {
+						collision.Remove(rm);
+						Edge.UnLink(prev, rm);
+						return false;
+					}
+					rm.Depth = depth;
+					rooms.Add(rm);
+				}
+			}
+			return true;
 		}
 
 		public DungeonGraph ExportGraph() {

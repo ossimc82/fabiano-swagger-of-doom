@@ -2,6 +2,7 @@
 
 using wServer.networking.cliPackets;
 using wServer.realm;
+using wServer.realm.entities.player;
 
 #endregion
 
@@ -18,7 +19,7 @@ namespace wServer.networking.handlers
         {
             client.Manager.Logic.AddPendingAction(t =>
             {
-                if (client.Player == null || client.Player.Owner == null) return;
+                if (client.Player?.Owner == null) return;
 
                 client.Player.Flush();
 
@@ -27,7 +28,7 @@ namespace wServer.networking.handlers
 
                 double newX = client.Player.X;
                 double newY = client.Player.Y;
-
+                
                 if (newX != packet.Position.X)
                 {
                     newX = packet.Position.X;
@@ -38,30 +39,41 @@ namespace wServer.networking.handlers
                     newY = packet.Position.Y;
                     client.Player.UpdateCount++;
                 }
-                if ((int)packet.Position.X == 38 & (int)packet.Position.Y == 61)
-                {
-                    client.Player.SendEnemy("Mysterious ossi", "Player1: VGFibGV0IFdpemFyZA==");
-                }
-                if ((int)packet.Position.X == 36 & (int)packet.Position.Y == 61)
-                {
-                    client.Player.SendEnemy("Mysterious ossi", "Player2: VGFibGV0IFdpemFyZA==");
-                }
-                if ((int)packet.Position.X == 35 & (int)packet.Position.Y == 59)
-                {
-                    client.Player.SendEnemy("Mysterious ossi", "Player3: RWxlIFdpemFyZA==");
-                }
-                if ((int)packet.Position.X == 39 & (int)packet.Position.Y == 59)
-                {
-                    client.Player.SendEnemy("Mysterious ossi", "Player4: RWxlIFdpemFyZA==");
-                }
-                if ((int)packet.Position.X == 37 & (int)packet.Position.Y == 57)
-                {
-                    client.Player.SendEnemy("Mysterious ossi", "Player5: VDAgU3BlbGwgV2l6YXJk");
-                }
-                client.Player.Move((float) newX, (float) newY);
+
+                CheckLabConditions(client.Player, packet);
+
+                client.Player.Move((float)newX, (float)newY);
 
                 client.Player.ClientTick(t, packet);
             }, PendingPriority.Networking);
+        }
+
+        private static void CheckLabConditions(Entity player, MovePacket packet)
+        {
+            var tileId = player.Owner.Map[(int) packet.Position.X, (int) packet.Position.Y].TileId;
+            switch (tileId)
+            {
+                //Green water
+                case 0xa9:
+                case 0x82:
+                    if (!player.HasConditionEffect(ConditionEffectIndex.Hexed) ||
+                        !player.HasConditionEffect(ConditionEffectIndex.Stunned))
+                    {
+                        player.ApplyConditionEffect(ConditionEffectIndex.Hexed);
+                        player.ApplyConditionEffect(ConditionEffectIndex.Stunned);
+                    }
+                    break;
+                //Blue water
+                case 0xa7:
+                case 0x83:
+                    if (player.HasConditionEffect(ConditionEffectIndex.Hexed) ||
+                        player.HasConditionEffect(ConditionEffectIndex.Stunned))
+                    {
+                        player.ApplyConditionEffect(ConditionEffectIndex.Hexed, 0);
+                        player.ApplyConditionEffect(ConditionEffectIndex.Stunned, 0);
+                    }
+                    break;
+            }
         }
     }
 }

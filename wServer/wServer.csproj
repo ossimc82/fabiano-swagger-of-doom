@@ -449,6 +449,7 @@
     <Compile Include="realm\worlds\ForestMaze.cs" />
     <Compile Include="realm\worlds\GuildHall.cs" />
     <Compile Include="realm\worlds\DailyQuestRoom.cs" />
+    <Compile Include="realm\worlds\MadLab.cs" />
     <Compile Include="realm\worlds\PirateCave.cs" />
     <Compile Include="realm\worlds\SpiderDen.cs" />
     <Compile Include="realm\worlds\SpriteWorld.cs" />

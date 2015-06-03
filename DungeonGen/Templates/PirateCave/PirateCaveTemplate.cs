@@ -63,9 +63,9 @@ namespace DungeonGenerator.Templates.PirateCave {
 		NormDist targetDepth;
 		public override NormDist TargetDepth { get { return targetDepth; } }
 
-		public override NormDist SpecialRmCount { get { return new NormDist(0, 0, 0, 0); } }
+		public override NormDist SpecialRmCount { get { return null; } }
 
-		public override NormDist SpecialRmDepthDist { get { return new NormDist(0, 0, 0, 0); } }
+		public override NormDist SpecialRmDepthDist { get { return null; } }
 
 		public override Range RoomSeparation { get { return new Range(3, 7); } }
 

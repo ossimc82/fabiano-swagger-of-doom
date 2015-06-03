@@ -202,6 +202,8 @@ namespace wServer.realm
                         ? Owner.EnemiesCollision
                         : Owner.PlayersCollision))
                     .Move(this, x, y);
+            if (X != x || Y != y)
+                UpdateCount++;
             X = x;
             Y = y;
             return this;
@@ -516,11 +518,7 @@ namespace wServer.realm
                 HasConditionEffect(ConditionEffects.DazedImmune))
                 return false;
 
-            if (effect == ConditionEffectIndex.Slowed &&
-                HasConditionEffect(ConditionEffects.SlowedImmune))
-                return false;
-
-            return true;
+            return effect != ConditionEffectIndex.Slowed || !HasConditionEffect(ConditionEffects.SlowedImmune);
         }
 
         public virtual void Dispose()
