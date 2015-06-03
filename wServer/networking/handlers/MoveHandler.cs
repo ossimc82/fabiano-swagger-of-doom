@@ -50,12 +50,13 @@ namespace wServer.networking.handlers
 
         private static void CheckLabConditions(Entity player, MovePacket packet)
         {
-            var tileId = player.Owner.Map[(int) packet.Position.X, (int) packet.Position.Y].TileId;
-            switch (tileId)
+            var tile = player.Owner.Map[(int) packet.Position.X, (int) packet.Position.Y];
+            switch (tile.TileId)
             {
                 //Green water
                 case 0xa9:
                 case 0x82:
+                    if(tile.ObjId != 0) return;
                     if (!player.HasConditionEffect(ConditionEffectIndex.Hexed) ||
                         !player.HasConditionEffect(ConditionEffectIndex.Stunned))
                     {
@@ -66,6 +67,7 @@ namespace wServer.networking.handlers
                 //Blue water
                 case 0xa7:
                 case 0x83:
+                    if (tile.ObjId != 0) return;
                     if (player.HasConditionEffect(ConditionEffectIndex.Hexed) ||
                         player.HasConditionEffect(ConditionEffectIndex.Stunned))
                     {
