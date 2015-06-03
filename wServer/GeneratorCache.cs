@@ -20,15 +20,15 @@ namespace wServer
             createCache("Pirate Cave", new PirateCaveTemplate());
         }
 
-        public static string NextAbyss(uint seed) => nextMap(seed, "Abyss of Demons");
-        public static string NextPirateCave(uint seed) => nextMap(seed, "Pirate Cave");
+        public static string NextAbyss(uint seed) => nextMap(seed, "Abyss of Demons", new AbyssTemplate());
+        public static string NextPirateCave(uint seed) => nextMap(seed, "Pirate Cave", new PirateCaveTemplate());
 
-        private static string nextMap(uint seed, string key)
+        private static string nextMap(uint seed, string key, DungeonTemplate template)
         {
             var map = cachedMaps[key][0];
             cachedMaps[key].RemoveAt(0);
             log.Info($"Generating new map for dungeon: {key}");
-            Task.Factory.StartNew(() => cachedMaps[key].Add(generateNext(seed, new AbyssTemplate())));
+            Task.Factory.StartNew(() => cachedMaps[key].Add(generateNext(seed, template)));
             return map;
         }
 
