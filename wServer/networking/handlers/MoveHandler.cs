@@ -58,10 +58,12 @@ namespace wServer.networking.handlers
                 case 0x82:
                     if(tile.ObjId != 0) return;
                     if (!player.HasConditionEffect(ConditionEffectIndex.Hexed) ||
-                        !player.HasConditionEffect(ConditionEffectIndex.Stunned))
+                        !player.HasConditionEffect(ConditionEffectIndex.Stunned) ||
+                        !player.HasConditionEffect(ConditionEffectIndex.Speedy))
                     {
                         player.ApplyConditionEffect(ConditionEffectIndex.Hexed);
                         player.ApplyConditionEffect(ConditionEffectIndex.Stunned);
+                        player.ApplyConditionEffect(ConditionEffectIndex.Speedy);
                     }
                     break;
                 //Blue water
@@ -69,10 +71,12 @@ namespace wServer.networking.handlers
                 case 0x83:
                     if (tile.ObjId != 0) return;
                     if (player.HasConditionEffect(ConditionEffectIndex.Hexed) ||
-                        player.HasConditionEffect(ConditionEffectIndex.Stunned))
+                        player.HasConditionEffect(ConditionEffectIndex.Stunned) ||
+                        player.HasConditionEffect(ConditionEffectIndex.Speedy))
                     {
                         player.ApplyConditionEffect(ConditionEffectIndex.Hexed, 0);
                         player.ApplyConditionEffect(ConditionEffectIndex.Stunned, 0);
+                        player.ApplyConditionEffect(ConditionEffectIndex.Speedy, 0);
                     }
                     break;
             }
