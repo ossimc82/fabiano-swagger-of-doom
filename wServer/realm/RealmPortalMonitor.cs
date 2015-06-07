@@ -62,7 +62,7 @@ namespace wServer.realm
                 portal.Move(pos.X + 0.5f, pos.Y + 0.5f);
                 nexus.EnterWorld(portal);
                 portals.Add(world, portal);
-                log.InfoFormat("World {0}({1}) added.", world.Id, world.Name);
+                log.InfoFormat("World {0}({1}) added to monitor.", world.Id, world.Name);
             }
         }
 

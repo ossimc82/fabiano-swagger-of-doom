@@ -146,6 +146,7 @@ namespace wServer.networking.handlers
                     }
                     con1.Inventory[packet.SlotObject1.SlotId] = null;
                     con2.Inventory[packet.SlotObject2.SlotId] = item1;
+                    (en2 as Player).CalcBoost();
                     client.Player.SaveToCharacter();
                     client.Save();
                     en1.UpdateCount++;
