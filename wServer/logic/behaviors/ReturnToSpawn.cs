@@ -9,7 +9,7 @@ using wServer.realm.entities;
 
 namespace wServer.logic.behaviors
 {
-    internal class ReturnToSpawn : CycleBehavior
+    public class ReturnToSpawn : CycleBehavior
     {
         private readonly float speed;
         private bool once;

@@ -8,7 +8,7 @@ using wServer.realm.entities.player;
 
 namespace wServer.logic.behaviors
 {
-    internal class Charge : CycleBehavior
+    public class Charge : CycleBehavior
     {
         //State storage: charge state
         private readonly float range;

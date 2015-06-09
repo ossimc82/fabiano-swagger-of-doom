@@ -9,7 +9,7 @@ using wServer.realm.entities.player;
 
 namespace wServer.logic.behaviors
 {
-    internal class NexusHealHp : Behavior
+    public class NexusHealHp : Behavior
     {
         //State storage: cooldown timer
 

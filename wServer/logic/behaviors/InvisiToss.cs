@@ -8,7 +8,7 @@ using wServer.realm.entities;
 
 namespace wServer.logic.behaviors
 {
-    internal class InvisiToss : Behavior
+    public class InvisiToss : Behavior
     {
         //State storage: cooldown timer
 

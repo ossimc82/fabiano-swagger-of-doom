@@ -6,7 +6,7 @@ using wServer.realm;
 
 namespace wServer.logic.behaviors
 {
-    internal class Transform : Behavior
+    public class Transform : Behavior
     {
         //State storage: none
 

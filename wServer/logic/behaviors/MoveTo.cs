@@ -4,7 +4,7 @@ using wServer.realm;
 
 namespace wServer.logic.behaviors
 {
-    internal class MoveTo : CycleBehavior
+    public class MoveTo : CycleBehavior
     {
         private readonly float speed;
         private readonly float baseX;

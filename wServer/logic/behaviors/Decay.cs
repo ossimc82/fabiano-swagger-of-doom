@@ -6,7 +6,7 @@ using wServer.realm;
 
 namespace wServer.logic.behaviors
 {
-    internal class Decay : Behavior
+    public class Decay : Behavior
     {
         //State storage: timer
 

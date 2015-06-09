@@ -8,7 +8,7 @@ using wServer.realm.entities;
 
 namespace wServer.logic.behaviors
 {
-    internal class SetLootState : Behavior
+    public class SetLootState : Behavior
     {
         private readonly string lootState;
 

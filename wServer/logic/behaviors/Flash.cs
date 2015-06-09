@@ -7,7 +7,7 @@ using wServer.realm;
 
 namespace wServer.logic.behaviors
 {
-    internal class Flash : Behavior
+    public class Flash : Behavior
     {
         //State storage: none
 

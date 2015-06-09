@@ -7,7 +7,7 @@ using wServer.realm;
 
 namespace wServer.logic.behaviors
 {
-    internal class RealmPortalDrop : Behavior
+    public class RealmPortalDrop : Behavior
     {
 
         protected internal override void Resolve(State parent)

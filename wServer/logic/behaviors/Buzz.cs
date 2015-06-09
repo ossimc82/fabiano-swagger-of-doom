@@ -7,7 +7,7 @@ using wServer.realm;
 
 namespace wServer.logic.behaviors
 {
-    internal class Buzz : CycleBehavior
+    public class Buzz : CycleBehavior
     {
         //State storage: direction & remain
         private readonly float dist;

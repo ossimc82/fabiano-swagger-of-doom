@@ -7,7 +7,7 @@ using wServer.realm;
 
 namespace wServer.logic.transitions
 {
-    internal class EntitiesNotExistsTransition : Transition
+    public class EntitiesNotExistsTransition : Transition
     {
         private readonly double dist;
         private readonly string[] childrens;

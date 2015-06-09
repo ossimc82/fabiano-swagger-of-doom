@@ -6,7 +6,7 @@ using wServer.realm;
 
 namespace wServer.logic.behaviors
 {
-    internal class ChangeSize : Behavior
+    public class ChangeSize : Behavior
     {
         //State storage: cooldown timer
 

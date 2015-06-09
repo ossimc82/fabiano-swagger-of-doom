@@ -8,7 +8,7 @@ using wServer.realm.entities;
 
 namespace wServer.logic.behaviors
 {
-    internal class Reproduce : Behavior
+    public class Reproduce : Behavior
     {
         //State storage: cooldown timer
 

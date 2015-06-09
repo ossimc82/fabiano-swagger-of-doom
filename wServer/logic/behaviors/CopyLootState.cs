@@ -8,7 +8,7 @@ using wServer.realm.entities;
 
 namespace wServer.logic.behaviors
 {
-    internal class CopyLootState : Behavior
+    public class CopyLootState : Behavior
     {
         private readonly ushort children;
         private readonly double radius;

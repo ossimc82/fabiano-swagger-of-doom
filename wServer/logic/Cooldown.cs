@@ -6,7 +6,7 @@ using System;
 
 namespace wServer.logic
 {
-    internal struct Cooldown
+    public struct Cooldown
     {
         public readonly int CoolDown;
         public readonly int Variance;

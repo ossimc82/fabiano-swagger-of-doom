@@ -7,7 +7,7 @@ using wServer.realm;
 
 namespace wServer.logic.behaviors
 {
-    internal class RemoveEntity : Behavior
+    public class RemoveEntity : Behavior
     {
         private readonly float dist;
         private readonly string children;

@@ -7,7 +7,7 @@ using wServer.realm;
 
 namespace wServer.logic.behaviors
 {
-    internal class JumpToRandomOffset : CycleBehavior
+    public class JumpToRandomOffset : CycleBehavior
     {
         private readonly int minX;
         private readonly int maxX;

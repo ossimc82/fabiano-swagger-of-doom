@@ -8,7 +8,7 @@ using wServer.realm;
 
 namespace wServer.logic.behaviors
 {
-    internal class Swirl : CycleBehavior
+    public class Swirl : CycleBehavior
     {
         //State storage: swirl state
         private readonly float acquireRange;

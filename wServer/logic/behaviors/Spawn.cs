@@ -7,7 +7,7 @@ using wServer.realm.entities;
 
 namespace wServer.logic.behaviors
 {
-    internal class Spawn : Behavior
+    public class Spawn : Behavior
     {
         //State storage: Spawn state
         private readonly ushort children;

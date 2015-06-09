@@ -87,14 +87,14 @@ namespace wServer.logic
                 entity.SwitchTo(def.Item1);
         }
 
-        private static ctor Behav()
+        public static ctor Behav()
         {
             return new ctor();
         }
 
-        private delegate ctor _();
+        public delegate ctor _();
 
-        private struct ctor
+        public struct ctor
         {
             public ctor Init(string objType, State rootState, params ILootDef[] defs)
             {

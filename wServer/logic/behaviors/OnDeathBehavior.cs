@@ -2,7 +2,7 @@
 
 namespace wServer.logic.behaviors
 {
-    internal class OnDeathBehavior : Behavior
+    public class OnDeathBehavior : Behavior
     {
         private readonly Behavior behavior;
 

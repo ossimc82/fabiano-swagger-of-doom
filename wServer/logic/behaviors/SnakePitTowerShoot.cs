@@ -9,7 +9,7 @@ using wServer.realm.entities;
 
 namespace wServer.logic.behaviors
 {
-    internal class SnakePitTowerShoot : Shoot
+    public class SnakePitTowerShoot : Shoot
     {
         public SnakePitTowerShoot()
             : base(radius: 25, count: 1, projectileIndex: 0, coolDown: 2000)

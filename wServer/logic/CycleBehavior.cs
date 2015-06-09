@@ -1,13 +1,13 @@
 ﻿namespace wServer.logic
 {
-    internal enum CycleStatus
+    public enum CycleStatus
     {
         NotStarted,
         InProgress,
         Completed
     }
 
-    internal abstract class CycleBehavior : Behavior
+    public abstract class CycleBehavior : Behavior
     {
         public CycleStatus Status { get; protected set; }
     }

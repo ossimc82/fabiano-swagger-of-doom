@@ -8,7 +8,7 @@ using wServer.realm.entities;
 
 namespace wServer.logic.behaviors
 {
-    internal class Suicide : Behavior
+    public class Suicide : Behavior
     {
         //State storage: timer
 

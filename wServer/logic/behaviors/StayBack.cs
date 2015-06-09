@@ -8,7 +8,7 @@ using wServer.realm.entities.player;
 
 namespace wServer.logic.behaviors
 {
-    internal class StayBack : CycleBehavior
+    public class StayBack : CycleBehavior
     {
         //State storage: cooldown timer
 

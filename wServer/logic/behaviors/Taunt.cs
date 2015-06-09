@@ -10,7 +10,7 @@ using wServer.realm.entities.player;
 
 namespace wServer.logic.behaviors
 {
-    internal class Taunt : Behavior
+    public class Taunt : Behavior
     {
         //State storage: time
 

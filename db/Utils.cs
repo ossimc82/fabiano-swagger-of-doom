@@ -9,12 +9,15 @@ using System.Net.Mail;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 #endregion
 
 public static class Utils
 {
+    public const string BAD_WORDS = "(anus|ass|arse|arsehole|ass|asshat|assjabber|asspirate|assbag|assbandit|assbanger|assbite|assclown|asscock|asscracker|asses|assface|assfuck|assfucker|assgoblin|asshat|asshead|asshole|asshopper|assjacker|asslick|asslicker|assmonkey|assmunch|assmuncher|assnigger|asspirate|assshit|assshole)";
+
     public static class ConsoleCloseEventHandler
     {
         [DllImport("Kernel32")]
@@ -174,17 +177,8 @@ public static class Utils
 
     public static string ToSafeText(this string str)
     {
-        return Encoding.ASCII.GetString(
-            Encoding.Convert(
-                Encoding.UTF8,
-                Encoding.GetEncoding(
-                    Encoding.ASCII.EncodingName,
-                    new EncoderReplacementFallback(string.Empty),
-                    new DecoderExceptionFallback()
-                    ),
-                Encoding.UTF8.GetBytes(str)
-                )
-            );
+        Regex wordFilter = new Regex(BAD_WORDS);
+        return wordFilter.Replace(str, "<3");
     }
 
     public static short[] PackFromEquips(this Char chr)

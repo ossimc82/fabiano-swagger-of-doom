@@ -7,7 +7,7 @@ using wServer.realm.entities;
 
 namespace wServer.logic.transitions
 {
-    internal class HpLessTransition : Transition
+    public class HpLessTransition : Transition
     {
         //State storage: none
 

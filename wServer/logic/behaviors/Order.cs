@@ -6,7 +6,7 @@ using wServer.realm;
 
 namespace wServer.logic.behaviors
 {
-    internal class Order : Behavior
+    public class Order : Behavior
     {
         //State storage: none
 

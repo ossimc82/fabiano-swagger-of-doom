@@ -8,7 +8,7 @@ using wServer.realm.entities;
 
 namespace wServer.logic.behaviors
 {
-    internal class CopyDamageOnDeath : Behavior
+    public class CopyDamageOnDeath : Behavior
     {
         private float dist;
         private string child;

@@ -6,7 +6,7 @@ using wServer.realm;
 
 namespace wServer.logic.behaviors
 {
-    internal class ConditionalEffect : Behavior
+    public class ConditionalEffect : Behavior
     {
         //State storage: none
 

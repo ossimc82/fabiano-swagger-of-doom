@@ -11,7 +11,7 @@ namespace wServer.logic
 {
     partial class BehaviorDb
     {
-        _ CandyLand = () => Behav()
+        private _ CandyLand = () => Behav()
             .Init("Desire Troll",
                 new State(
                     new Wander(0.5),

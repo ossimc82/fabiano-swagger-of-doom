@@ -7,7 +7,7 @@ using wServer.realm;
 
 namespace wServer.logic.behaviors
 {
-    internal class StayAbove : CycleBehavior
+    public class StayAbove : CycleBehavior
     {
         //State storage: none
 

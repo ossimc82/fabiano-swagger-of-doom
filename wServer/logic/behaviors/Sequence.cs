@@ -7,7 +7,7 @@ using wServer.realm;
 namespace wServer.logic.behaviors
 {
     //replacement for simple sequential state transition
-    internal class Sequence : Behavior
+    public class Sequence : Behavior
     {
         //State storage: index
 

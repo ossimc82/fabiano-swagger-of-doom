@@ -70,14 +70,16 @@ public class NWriter : BinaryWriter
             Write((short) 0);
         else
         {
-            Write((short) str.Length);
-            Write(Encoding.UTF8.GetBytes(str));
+            var bytes = Encoding.UTF8.GetBytes(str);
+            Write((short)bytes.Length);
+            Write(bytes);
         }
     }
 
     public void Write32UTF(string str)
     {
-        Write(str.Length);
-        Write(Encoding.UTF8.GetBytes(str));
+        var bytes = Encoding.UTF8.GetBytes(str);
+        Write(bytes.Length);
+        Write(bytes);
     }
 }

@@ -8,7 +8,7 @@ using wServer.realm;
 
 namespace wServer.logic.behaviors
 {
-    internal class Orbit : CycleBehavior
+    public class Orbit : CycleBehavior
     {
         //State storage: orbit state
         private readonly float acquireRange;

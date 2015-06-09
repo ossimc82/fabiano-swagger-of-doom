@@ -10,7 +10,7 @@ using wServer.realm.entities.player;
 
 namespace wServer.logic.behaviors
 {
-    internal class Grenade : Behavior
+    public class Grenade : Behavior
     {
         //State storage: cooldown timer
 

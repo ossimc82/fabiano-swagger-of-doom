@@ -9,7 +9,7 @@ using wServer.realm.entities;
 
 namespace wServer.logic.behaviors
 {
-    internal class Shoot : CycleBehavior
+    public class Shoot : CycleBehavior
     {
         //State storage: cooldown timer
 

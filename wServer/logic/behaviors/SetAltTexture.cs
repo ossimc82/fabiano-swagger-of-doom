@@ -7,7 +7,7 @@ using wServer.realm.entities;
 
 namespace wServer.logic.behaviors
 {
-    internal class SetAltTexture : Behavior
+    public class SetAltTexture : Behavior
     {
         //State storage: none
 

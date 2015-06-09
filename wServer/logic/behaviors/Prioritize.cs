@@ -6,7 +6,7 @@ using wServer.realm;
 
 namespace wServer.logic.behaviors
 {
-    internal class Prioritize : Behavior
+    public class Prioritize : Behavior
     {
         //State storage: none
 

@@ -9,7 +9,7 @@ using wServer.realm.entities;
 
 namespace wServer.logic.behaviors
 {
-    internal class TossObject : Behavior
+    public class TossObject : Behavior
     {
         //State storage: cooldown timer
 

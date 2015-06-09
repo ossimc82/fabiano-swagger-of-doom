@@ -8,7 +8,7 @@ using wServer.realm.setpieces;
 
 namespace wServer.logic.behaviors
 {
-    internal class ApplySetpiece : Behavior
+    public class ApplySetpiece : Behavior
     {
         private readonly string name;
 

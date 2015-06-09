@@ -7,7 +7,7 @@ using wServer.realm;
 namespace wServer.logic.behaviors
 {
     //replacement for simple timed transition in sequence
-    internal class Timed : CycleBehavior
+    public class Timed : CycleBehavior
     {
         //State storage: time
 

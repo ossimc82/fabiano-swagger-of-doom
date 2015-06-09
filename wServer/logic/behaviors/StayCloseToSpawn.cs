@@ -8,7 +8,7 @@ using wServer.realm.entities;
 
 namespace wServer.logic.behaviors
 {
-    internal class StayCloseToSpawn : CycleBehavior
+    public class StayCloseToSpawn : CycleBehavior
     {
         //State storage: target position
         //assume spawn=state entry position

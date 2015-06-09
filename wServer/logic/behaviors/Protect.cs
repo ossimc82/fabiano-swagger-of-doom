@@ -7,7 +7,7 @@ using wServer.realm;
 
 namespace wServer.logic.behaviors
 {
-    internal class Protect : CycleBehavior
+    public class Protect : CycleBehavior
     {
         //State storage: protect state
         private readonly float acquireRange;

@@ -8,7 +8,7 @@ using wServer.realm.entities;
 
 namespace wServer.logic.behaviors
 {
-    internal class DropPortalOnDeath : Behavior
+    public class DropPortalOnDeath : Behavior
     {
         private readonly int despawnTime;
         private readonly int dropDelay;

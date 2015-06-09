@@ -6,7 +6,7 @@ using wServer.realm;
 
 namespace wServer.logic.transitions
 {
-    internal class TimedTransition : Transition
+    public class TimedTransition : Transition
     {
         //State storage: cooldown timer
 

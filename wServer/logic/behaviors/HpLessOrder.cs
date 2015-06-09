@@ -8,7 +8,7 @@ using wServer.realm.entities;
 
 namespace wServer.logic.behaviors
 {
-    internal class HpLessOrder : Behavior
+    public class HpLessOrder : Behavior
     {
         private readonly float dist;
         private readonly float threshold;

@@ -11,7 +11,7 @@ using wServer.realm.worlds;
 
 namespace wServer.logic.behaviors
 {
-    internal class PentaractStar : Behavior
+    public class PentaractStar : Behavior
     {
         //StateStorage: cooldown
         private Cooldown cool;

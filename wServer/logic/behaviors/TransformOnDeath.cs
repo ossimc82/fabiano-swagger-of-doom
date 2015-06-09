@@ -7,7 +7,7 @@ using wServer.realm.entities;
 
 namespace wServer.logic.behaviors
 {
-    internal class TransformOnDeath : Behavior
+    public class TransformOnDeath : Behavior
     {
         private readonly int max;
         private readonly int min;

@@ -9,7 +9,7 @@ using wServer.realm.entities;
 
 namespace wServer.logic.behaviors
 {
-    internal class Heal : Behavior
+    public class Heal : Behavior
     {
         //State storage: cooldown timer
 

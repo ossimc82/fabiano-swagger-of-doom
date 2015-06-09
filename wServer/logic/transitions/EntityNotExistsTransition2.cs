@@ -6,7 +6,7 @@ using wServer.realm;
 
 namespace wServer.logic.transitions
 {
-    internal class EntityNotExistsTransition2 : Transition
+    public class EntityNotExistsTransition2 : Transition
     {
         //State storage: none
 

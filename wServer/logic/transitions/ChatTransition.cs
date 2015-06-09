@@ -7,7 +7,7 @@ using wServer.realm;
 
 namespace wServer.logic.transitions
 {
-    internal class ChatTransition : Transition
+    public class ChatTransition : Transition
     {
         private readonly string[] texts;
         private bool transit;

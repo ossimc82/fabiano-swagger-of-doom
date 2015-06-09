@@ -8,7 +8,7 @@ using wServer.realm.entities.player;
 
 namespace wServer.logic.behaviors
 {
-    internal class Follow : CycleBehavior
+    public class Follow : CycleBehavior
     {
         //State storage: follow state
         private readonly float acquireRange;

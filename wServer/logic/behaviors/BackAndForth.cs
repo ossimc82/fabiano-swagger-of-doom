@@ -6,7 +6,7 @@ using wServer.realm;
 
 namespace wServer.logic.behaviors
 {
-    internal class BackAndForth : CycleBehavior
+    public class BackAndForth : CycleBehavior
     {
         //State storage: remaining distance
 

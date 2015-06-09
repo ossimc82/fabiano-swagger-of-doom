@@ -6,7 +6,7 @@ using wServer.realm;
 
 namespace wServer.logic.transitions
 {
-    internal class PlayerWithinTransition : Transition
+    public class PlayerWithinTransition : Transition
     {
         //State storage: none
 

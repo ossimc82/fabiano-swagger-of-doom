@@ -7,7 +7,7 @@ using wServer.realm;
 
 namespace wServer.logic.behaviors
 {
-    internal class Wander : CycleBehavior
+    public class Wander : CycleBehavior
     {
         //State storage: direction & remain time
 
