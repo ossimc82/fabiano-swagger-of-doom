@@ -337,59 +337,31 @@ namespace wServer.realm.commands
         }
     }
 
-    internal class KillAll : Command
+    class KillAll : Command
     {
-        public KillAll()
-            : base("killall", 1)
-        {
-        }
-
+        public KillAll() : base("killAll", permLevel: 1) { }
+        
         protected override bool Process(Player player, RealmTime time, string[] args)
         {
-            if (args.Length == 0)
-            {
-                player.SendHelp("Usage: /killall <entityname>");
-                return false;
-            }
-            foreach (KeyValuePair<int, Enemy> i in player.Owner.Enemies)
-            {
-                if ((i.Value.ObjectDesc != null) &&
-                    (i.Value.ObjectDesc.ObjectId != null) &&
-                    (i.Value.ObjectDesc.ObjectId.Contains(args[0])))
-                {
-                    i.Value.Damage(player, new RealmTime(), 1000 * 10000, true); //may not work for ents/liches
-                    //i.Value.Owner.LeaveWorld(i.Value);
-                }
-            }
-            player.SendInfo("Success!");
-            return true;
-        }
-    }
+            var iterations = 0;
+            var lastKilled = -1;
+            var killed = 0;
 
-    internal class KillAllX : Command
-    {
-        public KillAllX()
-            : base("killallx", 1)
-        {
-        }
-
-        protected override bool Process(Player player, RealmTime time, string[] args)
-        {
-            if (args.Length == 0)
+            var mobName = args.Aggregate((s, a) => string.Concat(s, " ", a));
+            while (killed != lastKilled)
             {
-                player.SendHelp("Usage: /killallx <entityname>");
-                return false;
-            }
-            foreach (KeyValuePair<int, Enemy> i in player.Owner.Enemies)
-            {
-                if ((i.Value.ObjectDesc != null) &&
-                    (i.Value.ObjectDesc.ObjectId != null))
+                lastKilled = killed;
+                foreach (var i in player.Owner.Enemies.Values.Where(e =>
+                    e.ObjectDesc?.ObjectId != null && e.ObjectDesc.ObjectId.ContainsIgnoreCase(mobName)))
                 {
-                    i.Value.Damage(player, new RealmTime(), 1000 * 10000, true); //may not work for ents/liches, 
-                    //i.Value.Owner.LeaveWorld(i.Value);
+                    i.Death(time);
+                    killed++;
                 }
+                if (++iterations >= 5)
+                    break;
             }
-            player.SendInfo("Success!");
+
+            player.SendInfo($"{killed} enemy killed!");
             return true;
         }
     }
