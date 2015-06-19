@@ -25,7 +25,7 @@ USE `rotmgprod`;
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `accounts`
+-- Tabellenstruktur fÃ¼r Tabelle `accounts`
 --
 
 CREATE TABLE IF NOT EXISTS `accounts` (
@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `accounts` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `arenalb`
+-- Tabellenstruktur fÃ¼r Tabelle `arenalb`
 --
 
 CREATE TABLE IF NOT EXISTS `arenalb` (
@@ -81,7 +81,7 @@ CREATE TABLE IF NOT EXISTS `arenalb` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `backpacks`
+-- Tabellenstruktur fÃ¼r Tabelle `backpacks`
 --
 
 CREATE TABLE IF NOT EXISTS `backpacks` (
@@ -94,7 +94,7 @@ CREATE TABLE IF NOT EXISTS `backpacks` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `boards`
+-- Tabellenstruktur fÃ¼r Tabelle `boards`
 --
 
 CREATE TABLE IF NOT EXISTS `boards` (
@@ -106,7 +106,7 @@ CREATE TABLE IF NOT EXISTS `boards` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `characters`
+-- Tabellenstruktur fÃ¼r Tabelle `characters`
 --
 
 CREATE TABLE IF NOT EXISTS `characters` (
@@ -145,7 +145,7 @@ CREATE TABLE IF NOT EXISTS `characters` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `classstats`
+-- Tabellenstruktur fÃ¼r Tabelle `classstats`
 --
 
 CREATE TABLE IF NOT EXISTS `classstats` (
@@ -159,7 +159,7 @@ CREATE TABLE IF NOT EXISTS `classstats` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `dailyquests`
+-- Tabellenstruktur fÃ¼r Tabelle `dailyquests`
 --
 
 CREATE TABLE IF NOT EXISTS `dailyquests` (
@@ -173,7 +173,7 @@ CREATE TABLE IF NOT EXISTS `dailyquests` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `death`
+-- Tabellenstruktur fÃ¼r Tabelle `death`
 --
 
 CREATE TABLE IF NOT EXISTS `death` (
@@ -198,18 +198,20 @@ CREATE TABLE IF NOT EXISTS `death` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `giftcodes`
+-- Tabellenstruktur fÃ¼r Tabelle `giftcodes`
 --
 
 CREATE TABLE IF NOT EXISTS `giftcodes` (
   `code` varchar(128) NOT NULL,
-  `content` varchar(512) NOT NULL
+  `content` varchar(512) NOT NULL,
+  `accId` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `globalnews`
+-- Tabellenstruktur fÃ¼r Tabelle `globalnews`
 --
 
 CREATE TABLE IF NOT EXISTS `globalnews` (
@@ -228,7 +230,7 @@ CREATE TABLE IF NOT EXISTS `globalnews` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `guilds`
+-- Tabellenstruktur fÃ¼r Tabelle `guilds`
 --
 
 CREATE TABLE IF NOT EXISTS `guilds` (
@@ -244,7 +246,7 @@ CREATE TABLE IF NOT EXISTS `guilds` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `mysteryboxes`
+-- Tabellenstruktur fÃ¼r Tabelle `mysteryboxes`
 --
 
 CREATE TABLE IF NOT EXISTS `mysteryboxes` (
@@ -268,7 +270,7 @@ CREATE TABLE IF NOT EXISTS `mysteryboxes` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `news`
+-- Tabellenstruktur fÃ¼r Tabelle `news`
 --
 
 CREATE TABLE IF NOT EXISTS `news` (
@@ -284,7 +286,7 @@ CREATE TABLE IF NOT EXISTS `news` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `packages`
+-- Tabellenstruktur fÃ¼r Tabelle `packages`
 --
 
 CREATE TABLE IF NOT EXISTS `packages` (
@@ -303,7 +305,7 @@ CREATE TABLE IF NOT EXISTS `packages` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `pets`
+-- Tabellenstruktur fÃ¼r Tabelle `pets`
 --
 
 CREATE TABLE IF NOT EXISTS `pets` (
@@ -324,7 +326,7 @@ CREATE TABLE IF NOT EXISTS `pets` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `stats`
+-- Tabellenstruktur fÃ¼r Tabelle `stats`
 --
 
 CREATE TABLE IF NOT EXISTS `stats` (
@@ -341,7 +343,7 @@ CREATE TABLE IF NOT EXISTS `stats` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `thealchemist`
+-- Tabellenstruktur fÃ¼r Tabelle `thealchemist`
 --
 
 CREATE TABLE IF NOT EXISTS `thealchemist` (
@@ -362,7 +364,7 @@ CREATE TABLE IF NOT EXISTS `thealchemist` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `unlockedclasses`
+-- Tabellenstruktur fÃ¼r Tabelle `unlockedclasses`
 --
 
 CREATE TABLE IF NOT EXISTS `unlockedclasses` (
@@ -376,7 +378,7 @@ CREATE TABLE IF NOT EXISTS `unlockedclasses` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `vaults`
+-- Tabellenstruktur fÃ¼r Tabelle `vaults`
 --
 
 CREATE TABLE IF NOT EXISTS `vaults` (
