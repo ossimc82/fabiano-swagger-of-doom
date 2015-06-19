@@ -603,6 +603,7 @@
     <EmbeddedResource Include="realm\worlds\maps\spiderden.wmap" />
     <EmbeddedResource Include="realm\worlds\maps\spriteworld.wmap" />
     <EmbeddedResource Include="realm\worlds\maps\nexus_winter.jm" />
+    <EmbeddedResource Include="realm\worlds\maps\nexus_summer.jm" />
     <None Include="wServer.cfg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

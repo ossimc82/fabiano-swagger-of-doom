@@ -40,18 +40,18 @@ namespace server.@char
             if (ip == IPAddress.Any) return null;
             try
             {
-                string json;
-                WebRequest wb = WebRequest.Create("http://freegeoip.net/json/" + ip.ToString());
-                using (StreamReader rdr = new StreamReader(wb.GetResponse().GetResponseStream()))
-                    json = rdr.ReadToEnd();
-
-                JsonSerializer serializer = new JsonSerializer();
-                var point = (locationPoint)serializer.Deserialize(new StringReader(json), typeof(locationPoint));
-                return new MapPoint
-                {
-                    Latitude = point.latitude,
-                    Longitude = point.longitude
-                };
+                //string json;
+                //WebRequest wb = WebRequest.Create("http://freegeoip.net/json/" + ip.ToString());
+                //using (StreamReader rdr = new StreamReader(wb.GetResponse().GetResponseStream()))
+                //    json = rdr.ReadToEnd();
+                //
+                //JsonSerializer serializer = new JsonSerializer();
+                //var point = (locationPoint)serializer.Deserialize(new StringReader(json), typeof(locationPoint));
+                //return new MapPoint
+                //{
+                //    Latitude = point.latitude,
+                //    Longitude = point.longitude
+                //};
             }
             catch (Exception) { }
             return null;

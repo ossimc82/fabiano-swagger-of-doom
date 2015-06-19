@@ -3,6 +3,8 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.Globalization;
 using System.Linq;
 using System.Net.Mail;
@@ -61,6 +63,33 @@ public static class Utils
         {
             return false;
         }
+    }
+
+    public static byte[] GetPixels(this Bitmap bmp, byte transparency = 255)
+    {
+        const int RED_PIXEL = 2;
+        const int GREEN_PIXEL = 1;
+        const int BLUE_PIXEL = 0;
+
+        var bmpData = bmp.LockBits(new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.ReadWrite, PixelFormat.Format32bppArgb);
+        var bytes = Math.Abs(bmpData.Stride) * bmp.Height;
+        var rgbValues = new byte[bytes];
+        Marshal.Copy(bmpData.Scan0, rgbValues, 0, bytes);
+        Marshal.Copy(rgbValues, 0, bmpData.Scan0, bytes);
+        bmp.UnlockBits(bmpData);
+
+        //Pixels are messed up by default, thats why we need to convert them :3
+        var argb32bpp = new byte[bmp.Width * bmp.Height * 4];
+
+        for (var i = 0; i < bmp.Width * bmp.Height; i++)
+        {
+            argb32bpp[i * 4] = transparency;
+            argb32bpp[(i * 4) + 1 + BLUE_PIXEL] = rgbValues[(i * 4) + RED_PIXEL];
+            argb32bpp[(i * 4) + 1 + GREEN_PIXEL] = rgbValues[(i * 4) + GREEN_PIXEL];
+            argb32bpp[(i * 4) + 1 + RED_PIXEL] = rgbValues[(i * 4) + BLUE_PIXEL];
+        }
+
+        return argb32bpp;
     }
 
     public static T Convert<T>(this string value)

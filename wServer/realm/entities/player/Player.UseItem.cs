@@ -243,9 +243,9 @@ namespace wServer.realm.entities.player
 
             if (item.IsBackpack)
             {
-                if (HasBackpack != 0) return true;
+                if (HasBackpack) return true;
                 Client.Character.Backpack = new [] {-1, -1, -1, -1, -1, -1, -1, -1};
-                HasBackpack = 1;
+                HasBackpack = true;
                 Client.Character.HasBackpack = 1;
                 Manager.Database.DoActionAsync(db =>
                     db.SaveBackpacks(Client.Character, Client.Account));

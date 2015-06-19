@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.IO;
 using System.Net;
+using System.Text;
 using System.Web;
 
 namespace server.account
@@ -13,23 +14,17 @@ namespace server.account
     {
         protected override void HandleRequest()
         {
-            //#Giftcode content format
-            //#gold:amount
-            //#fame:amount
-            //#items:itemId's:amount
-            //#charSlot:amount
-            //#vaultChest:amount
-
             using (Database db = new Database())
             {
-                Account acc = db.Verify(Query["guid"], Query["password"], Program.GameData);
+                string code = Query["code"];
+                Account acc = Query["data"] != null ? AccountDataHelper.GetAccountGiftCodeData(HttpUtility.UrlDecode(Query["data"], Encoding.UTF8)).GetGiftCode(out code).GetAccount(Program.GameData) : db.Verify(Query["guid"], Query["password"], Program.GameData);
 
                 if (CheckAccount(acc, db, false))
                 {
                     string contents = String.Empty;
                     var cmd = db.CreateQuery();
                     cmd.CommandText = "SELECT * FROM giftCodes WHERE code=@code";
-                    cmd.Parameters.AddWithValue("@code", Query["code"]);
+                    cmd.Parameters.AddWithValue("@code", code);
 
                     using (var rdr = cmd.ExecuteReader())
                     {
@@ -48,7 +43,7 @@ namespace server.account
                         Context.Response.Redirect("../GiftCodeSuccess.html");
                         cmd = db.CreateQuery();
                         cmd.CommandText = "DELETE FROM giftCodes WHERE code=@code";
-                        cmd.Parameters.AddWithValue("@code", Query["code"]);
+                        cmd.Parameters.AddWithValue("@code", code);
                         cmd.ExecuteNonQuery();
                     }
                     else

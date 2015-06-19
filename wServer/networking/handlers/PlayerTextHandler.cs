@@ -2,6 +2,7 @@
 
 using System;
 using System.Text;
+using System.Threading.Tasks;
 using wServer.networking.cliPackets;
 
 #endregion
@@ -25,23 +26,18 @@ namespace wServer.networking.handlers
                     client.Player.Manager.Commands.Execute(client.Player, t, packet.Text);
                 else
                 {
-                    string txt = Encoding.ASCII.GetString(
-                        Encoding.Convert(
-                            Encoding.UTF8,
-                            Encoding.GetEncoding(
-                                Encoding.ASCII.EncodingName,
-                                new EncoderReplacementFallback(string.Empty),
-                                new DecoderExceptionFallback()
-                                ),
-                            Encoding.UTF8.GetBytes(packet.Text)
-                            ));
                     if (client.Player.Muted)
                     {
                         client.Player.SendInfo("{\"key\":\"server.muted\"}");
                         return;
                     }
-                    if (!String.IsNullOrWhiteSpace(txt))
-                        client.Player.Manager.Chat.Say(client.Player, txt);
+                    if (!client.Player.NameChosen)
+                    {
+                        client.Player.SendInfo("{\"key\":\"server.must_be_named\"}");
+                        return;
+                    }
+                    if (!String.IsNullOrWhiteSpace(packet.Text))
+                        client.Player.Manager.Chat.Say(client.Player, packet.Text);
                     else
                         client.Player.SendInfo("{\"key\":\"server.invalid_chars\"}");
                 }

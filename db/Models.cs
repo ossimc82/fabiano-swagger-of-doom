@@ -308,6 +308,17 @@ public class Account
     public bool IsGuestAccount { get; set; }
     [XmlIgnore]
     public int DailyQuestId { get; set; }
+
+    [XmlIgnore]
+    internal List<string> GiftCodes { get; set; }
+
+    public string NextGiftCode()
+    {
+        if (GiftCodes.Count <= 0) return null;
+        var gc = GiftCodes[0];
+        GiftCodes.Remove(gc);
+        return gc;
+    }
 }
 
 public class IP

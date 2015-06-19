@@ -69,6 +69,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -81,6 +82,7 @@
     <Compile Include="Database.Guilds.cs" />
     <Compile Include="data\Descriptors.cs" />
     <Compile Include="data\XmlDatas.cs" />
+    <Compile Include="AccountDataHelper.cs" />
     <Compile Include="FameStats.cs" />
     <Compile Include="IFeedable.cs" />
     <Compile Include="JsonObjects\GiftCode.cs" />
@@ -88,6 +90,7 @@
     <Compile Include="NWriter.cs" />
     <Compile Include="NReader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QRCodeGenerator.cs" />
     <Compile Include="SimpleSettings.cs" />
     <Compile Include="WeakDictionary.cs" />
   </ItemGroup>

@@ -19,7 +19,7 @@ namespace server.account
         {
             using (Database db = new Database())
             {
-                string authKey = Database.GenerateRandomAuthKey(128);
+                string authKey = Database.GenerateRandomString(128);
                 var cmd = db.CreateQuery();
                 cmd.CommandText = "UPDATE accounts SET authToken=@authToken WHERE uuid=@email;";
                 cmd.Parameters.AddWithValue("@authToken", authKey);

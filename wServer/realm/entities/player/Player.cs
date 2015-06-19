@@ -84,7 +84,7 @@ namespace wServer.realm.entities.player
                 Mp = psr.Character.MagicPoints;
                 ConditionEffects = 0;
                 OxygenBar = 100;
-                HasBackpack = psr.Character.HasBackpack;
+                HasBackpack = psr.Character.HasBackpack == 1;
                 PlayerSkin = Client.Account.OwnedSkins.Contains(Client.Character.Skin) ? Client.Character.Skin : 0;
                 HealthPotions = psr.Character.HealthStackCount < 0 ? 0 : psr.Character.HealthStackCount;
                 MagicPotions = psr.Character.MagicStackCount < 0 ? 0 : psr.Character.MagicStackCount;
@@ -106,7 +106,7 @@ namespace wServer.realm.entities.player
                     log.Error(ex);
                 }
 
-                if (HasBackpack == 1)
+                if (HasBackpack)
                 {
                     var inv =
                         psr.Character.Equipment.Select(
@@ -207,7 +207,7 @@ namespace wServer.realm.entities.player
 
         public bool Glowing { get; set; }
 
-        public int HasBackpack { get; set; }
+        public bool HasBackpack { get; set; }
 
         public int HealthPotions { get; set; }
 
@@ -381,18 +381,16 @@ namespace wServer.realm.entities.player
             }
 
             stats[StatsType.Size] = setTypeSkin?.Size ?? Size;
-            stats[StatsType.Has_Backpack] = HasBackpack;
-            if (HasBackpack == 1)
-            {
-                stats[StatsType.Backpack0] = (int)(Inventory[12]?.ObjectType ?? -1);
-                stats[StatsType.Backpack1] = (int)(Inventory[13]?.ObjectType ?? -1);
-                stats[StatsType.Backpack2] = (int)(Inventory[14]?.ObjectType ?? -1);
-                stats[StatsType.Backpack3] = (int)(Inventory[15]?.ObjectType ?? -1);
-                stats[StatsType.Backpack4] = (int)(Inventory[16]?.ObjectType ?? -1);
-                stats[StatsType.Backpack5] = (int)(Inventory[17]?.ObjectType ?? -1);
-                stats[StatsType.Backpack6] = (int)(Inventory[18]?.ObjectType ?? -1);
-                stats[StatsType.Backpack7] = (int)(Inventory[19]?.ObjectType ?? -1);
-            }
+            stats[StatsType.Has_Backpack] = HasBackpack.GetHashCode();
+
+            stats[StatsType.Backpack0] = (int)(HasBackpack ? (Inventory[12]?.ObjectType ?? -1) : -1);
+            stats[StatsType.Backpack1] = (int)(HasBackpack ? (Inventory[13]?.ObjectType ?? -1) : -1);
+            stats[StatsType.Backpack2] = (int)(HasBackpack ? (Inventory[14]?.ObjectType ?? -1) : -1);
+            stats[StatsType.Backpack3] = (int)(HasBackpack ? (Inventory[15]?.ObjectType ?? -1) : -1);
+            stats[StatsType.Backpack4] = (int)(HasBackpack ? (Inventory[16]?.ObjectType ?? -1) : -1);
+            stats[StatsType.Backpack5] = (int)(HasBackpack ? (Inventory[17]?.ObjectType ?? -1) : -1);
+            stats[StatsType.Backpack6] = (int)(HasBackpack ? (Inventory[18]?.ObjectType ?? -1) : -1);
+            stats[StatsType.Backpack7] = (int)(HasBackpack ? (Inventory[19]?.ObjectType ?? -1) : -1);
 
             stats[StatsType.Skin] = setTypeSkin?.SkinType ?? PlayerSkin;
             stats[StatsType.HealStackCount] = HealthPotions;
@@ -664,7 +662,7 @@ namespace wServer.realm.entities.player
             chr.Dexterity = Stats[7];
             chr.HealthStackCount = HealthPotions;
             chr.MagicStackCount = MagicPotions;
-            chr.HasBackpack = HasBackpack;
+            chr.HasBackpack = HasBackpack.GetHashCode();
             chr.Skin = PlayerSkin;
             chr.XpBoosted = XpBoosted;
             chr.XpTimer = (int)XpBoostTimeLeft;

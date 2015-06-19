@@ -9,6 +9,7 @@ using Ionic.Zlib;
 using MySql.Data.MySqlClient;
 using System.IO;
 using System.Text;
+using System.Text.RegularExpressions;
 
 #endregion
 
@@ -193,7 +194,7 @@ AND characters.charId=death.chrId;";
 
         public Account Verify(string uuid, string password, XmlData data)
         {
-            MySqlCommand cmd = CreateQuery();
+            var cmd = CreateQuery();
             cmd.CommandText = "SELECT * FROM accounts WHERE uuid=@uuid AND password=SHA1(@password);";
             cmd.Parameters.AddWithValue("@uuid", uuid);
             cmd.Parameters.AddWithValue("@password", password);
@@ -284,7 +285,7 @@ AND characters.charId=death.chrId;";
             cmd.Parameters.AddWithValue("@name", Names[(uint)uuid.GetHashCode() % Names.Length]);
             cmd.Parameters.AddWithValue("@guest", isGuest);
             cmd.Parameters.AddWithValue("@regTime", DateTime.Now);
-            cmd.Parameters.AddWithValue("@authToken", GenerateRandomAuthKey(128));
+            cmd.Parameters.AddWithValue("@authToken", GenerateRandomString(128));
             cmd.Parameters.AddWithValue("@empty", "");
 
             if (emails.Contains(uuid))
@@ -355,17 +356,17 @@ AND characters.charId=death.chrId;";
             return GetDailyQuest(accId, data);
         }
 
-        public static string GenerateRandomAuthKey(int size)
+        public static string GenerateRandomString(int size, Random rand=null)
         {
-            StringBuilder builder = new StringBuilder();
-            Random random = new Random();
+            var chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            var builder = new StringBuilder();
+            var random = rand ?? new Random();
             char ch;
-            for (int i = 0; i < size; i++)
+            for (var i = 0; i < size; i++)
             {
-                ch = Convert.ToChar(Convert.ToInt32(Math.Floor(26 * random.NextDouble() + 65)));
+                ch = chars[random.Next(0, chars.Length - 1)];
                 builder.Append(ch);
             }
-
             return builder.ToString();
         }
 
@@ -393,13 +394,13 @@ AND characters.charId=death.chrId;";
             return GetAccount(accId, data);
         }
 
-        public Account GetAccount(string id, XmlData data, string uuid=null, string password=null)
+        public Account GetAccount(string accId, XmlData data, string uuid=null, string password=null)
         {
-            if (String.IsNullOrWhiteSpace(id)) return CreateGuestAccount(id ?? String.Empty);
+            if (String.IsNullOrWhiteSpace(accId)) return CreateGuestAccount(accId ?? String.Empty);
             MySqlCommand cmd = CreateQuery();
             cmd.CommandText =
                 "SELECT * FROM accounts WHERE id=@id;";
-            cmd.Parameters.AddWithValue("@id", id);
+            cmd.Parameters.AddWithValue("@id", accId);
             Account ret;
             using (MySqlDataReader rdr = cmd.ExecuteReader())
             {
@@ -410,8 +411,8 @@ AND characters.charId=death.chrId;";
                     Name = rdr.GetString(UppercaseFirst("name")),
                     AccountId = rdr.GetString("id"),
                     Admin = rdr.GetInt32("rank") >= 2,
-                    Email = uuid,
-                    Password = password,
+                    Email = uuid ?? rdr.GetString("uuid"),
+                    Password = password ?? rdr.GetString("password"),
                     VisibleMuledump = rdr.GetInt32("publicMuledump") == 1,
                     Rank = rdr.GetInt32("rank"),
                     Banned = rdr.GetBoolean("banned"),
@@ -438,6 +439,7 @@ AND characters.charId=death.chrId;";
                 };
             }
             ReadStats(ret);
+            ReadGiftCodes(ret);
             ret.Guild.Name = GetGuildName(ret.Guild.Id);
             ret.DailyQuest = GetDailyQuest(ret.AccountId, data);
             return ret;
@@ -532,6 +534,17 @@ SELECT credits FROM stats WHERE accId=@accId;";
             if (acc.Stats.ClassStates.Count > 0)
                 acc.Stats.BestCharFame = acc.Stats.ClassStates.Max(_ => _.BestFame);
             acc.Vault = ReadVault(acc);
+        }
+
+        public void ReadGiftCodes(Account acc)
+        {
+            var cmd = CreateQuery();
+            cmd.CommandText = "SELECT * FROM giftcodes WHERE accId=@accId;";
+            cmd.Parameters.AddWithValue("@accId", acc.AccountId);
+            acc.GiftCodes = new List<string>();
+            using (var rdr = cmd.ExecuteReader())
+                while (rdr.Read())
+                    acc.GiftCodes.Add(rdr.GetString("code"));
         }
 
         public List<ClassStats> ReadClassStates(Account acc)
@@ -1339,15 +1352,41 @@ VALUES(@accId, @petId, @objType, @skinName, @skin, @rarity, @maxLevel, @abilitie
             cmd.ExecuteScalar();
         }
 
-        public string GenerateGiftcode(string contents)
+        public string GenerateGiftcode(string contents, string accId)
         {
-            string code = GenerateRandomAuthKey(29);
+            var code = generateGiftCode(5, 5);
+            while (giftCodeExists(code))
+                code = generateGiftCode(5, 5);
+
             var cmd = CreateQuery();
-            cmd.CommandText = "INSERT INTO giftCodes(code, content) VALUES(@code, @contents);";
+            cmd.CommandText = "INSERT INTO giftCodes(code, content, accId) VALUES(@code, @contents, @accId);";
             cmd.Parameters.AddWithValue("@code", code);
             cmd.Parameters.AddWithValue("@contents", contents);
+            cmd.Parameters.AddWithValue("@accId", accId);
             cmd.ExecuteNonQuery();
             return code;
+        }
+
+        private string generateGiftCode(int blocks, int blockLength)
+        {
+            var builder = new StringBuilder();
+            var rand = new Random();
+            for (var i = 0; i < blocks; i++)
+            {
+                builder.Append(GenerateRandomString(blockLength, rand));
+                if(i < blocks-1)
+                    builder.Append("-");
+            }
+            return builder.ToString();
+        }
+
+        private bool giftCodeExists(string code)
+        {
+            var cmd = CreateQuery();
+            cmd.CommandText = "SELECT code FROM giftCodes WHERE code=@code";
+            cmd.Parameters.AddWithValue("@code", code);
+            using (var rdr = cmd.ExecuteReader())
+                return rdr.HasRows;
         }
 
         public bool SaveChars(string oldAccId, Chars oldChars, Chars chrs, XmlData data)

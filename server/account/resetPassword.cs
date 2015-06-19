@@ -12,7 +12,7 @@ namespace server.account
         {
             using (Database db = new Database())
             {
-                string password = Database.GenerateRandomAuthKey(10);
+                string password = Database.GenerateRandomString(10);
                 var cmd = db.CreateQuery();
                 cmd.CommandText = "UPDATE accounts SET password=SHA1(@password) WHERE authToken=@authToken;";
                 cmd.Parameters.AddWithValue("@password", password);
