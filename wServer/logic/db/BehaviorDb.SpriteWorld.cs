@@ -244,7 +244,7 @@ namespace wServer.logic
                 new ItemLoot("Magic Potion", 0.05),
                 new ItemLoot("Ring of Greater Magic", 0.05)
             )
-        .Init("Native Nature Sprite",
+        .Init("Native Darkness Sprite", 
              new State(
                     new Shoot(10, 5, 20, angleOffset: 0 / 5, projectileIndex: 0, coolDown: 1000),
                     new Prioritize(
