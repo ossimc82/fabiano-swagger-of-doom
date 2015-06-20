@@ -255,7 +255,7 @@ namespace wServer.logic
                 new ItemLoot("Health Potion", 0.05),
                 new ItemLoot("Ring of Dexterity", 0.05)
         )
-        .Init("Sprite God",
+        .Init("Native Sprite God",
                 new State(
                     new Prioritize(
                         new StayAbove(1, 200),
