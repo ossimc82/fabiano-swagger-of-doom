@@ -18,7 +18,7 @@ namespace wServer.networking
     //hackish code
     internal class NetworkHandler : IDisposable
     {
-        public const int BUFFER_SIZE = int.MaxValue / 2;
+        public const int BUFFER_SIZE = int.MaxValue / 4096;
         private static readonly ILog log = LogManager.GetLogger(typeof (NetworkHandler));
         private readonly Client parent;
         private readonly ConcurrentQueue<Packet> pendingPackets = new ConcurrentQueue<Packet>();
