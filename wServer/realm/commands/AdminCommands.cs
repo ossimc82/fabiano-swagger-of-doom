@@ -1229,6 +1229,150 @@ namespace wServer.realm.commands
         }
     }
 
+    internal class SetCommand : Command
+    {
+        public SetCommand()
+            : base("setStat", 1)
+        {
+        }
+
+        protected override bool Process(Player player, RealmTime time, string[] args)
+        {
+            if (args.Length == 2)
+            {
+                try
+                {
+                    string stat = args[0].ToLower();
+                    int amount = int.Parse(args[1]);
+                    switch (stat)
+                    {
+                        case "health":
+                        case "hp":
+                            player.Stats[0] = amount;
+                            break;
+                        case "mana":
+                        case "mp":
+                            player.Stats[1] = amount;
+                            break;
+                        case "atk":
+                        case "attack":
+                            player.Stats[2] = amount;
+                            break;
+                        case "def":
+                        case "defence":
+                            player.Stats[3] = amount;
+                            break;
+                        case "spd":
+                        case "speed":
+                            player.Stats[4] = amount;
+                            break;
+                        case "vit":
+                        case "vitality":
+                            player.Stats[5] = amount;
+                            break;
+                        case "wis":
+                        case "wisdom":
+                            player.Stats[6] = amount;
+                            break;
+                        case "dex":
+                        case "dexterity":
+                            player.Stats[7] = amount;
+                            break;
+                        default:
+                            player.SendError("Invalid Stat");
+                            player.SendHelp("Stats: Health, Mana, Attack, Defence, Speed, Vitality, Wisdom, Dexterity");
+                            player.SendHelp("Shortcuts: Hp, Mp, Atk, Def, Spd, Vit, Wis, Dex");
+                            return false;
+                    }
+                    player.SaveToCharacter();
+                    player.Client.Save();
+                    player.UpdateCount++;
+                    player.SendInfo("Success");
+                }
+                catch
+                {
+                    player.SendError("Error while setting stat");
+                    return false;
+                }
+                return true;
+            }
+            else if (args.Length == 3)
+            {
+                foreach (Client i in player.Manager.Clients.Values)
+                {
+                    if (i.Account.Name.EqualsIgnoreCase(args[0]))
+                    {
+                        try
+                        {
+                            string stat = args[1].ToLower();
+                            int amount = int.Parse(args[2]);
+                            switch (stat)
+                            {
+                                case "health":
+                                case "hp":
+                                    i.Player.Stats[0] = amount;
+                                    break;
+                                case "mana":
+                                case "mp":
+                                    i.Player.Stats[1] = amount;
+                                    break;
+                                case "atk":
+                                case "attack":
+                                    i.Player.Stats[2] = amount;
+                                    break;
+                                case "def":
+                                case "defence":
+                                    i.Player.Stats[3] = amount;
+                                    break;
+                                case "spd":
+                                case "speed":
+                                    i.Player.Stats[4] = amount;
+                                    break;
+                                case "vit":
+                                case "vitality":
+                                    i.Player.Stats[5] = amount;
+                                    break;
+                                case "wis":
+                                case "wisdom":
+                                    i.Player.Stats[6] = amount;
+                                    break;
+                                case "dex":
+                                case "dexterity":
+                                    i.Player.Stats[7] = amount;
+                                    break;
+                                default:
+                                    player.SendError("Invalid Stat");
+                                    player.SendHelp("Stats: Health, Mana, Attack, Defence, Speed, Vitality, Wisdom, Dexterity");
+                                    player.SendHelp("Shortcuts: Hp, Mp, Atk, Def, Spd, Vit, Wis, Dex");
+                                    return false;
+                            }
+                            i.Player.SaveToCharacter();
+                            i.Player.Client.Save();
+                            i.Player.UpdateCount++;
+                            player.SendInfo("Success");
+                        }
+                        catch
+                        {
+                            player.SendError("Error while setting stat");
+                            return false;
+                        }
+                        return true;
+                    }
+                }
+                player.SendError(string.Format("Player '{0}' could not be found!", args));
+                return false;
+            }
+            else
+            {
+                player.SendHelp("Usage: /setStat <Stat> <Amount>");
+                player.SendHelp("or");
+                player.SendHelp("Usage: /setStat <Player> <Stat> <Amount>");
+                player.SendHelp("Shortcuts: Hp, Mp, Atk, Def, Spd, Vit, Wis, Dex");
+                return false;
+            }
+        }
+    }
+
     internal class SetpieceCommand : Command
     {
         public SetpieceCommand()
