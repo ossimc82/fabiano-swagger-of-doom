@@ -186,24 +186,7 @@ namespace wServer.logic
                 new Threshold(0.05,
                     new ItemLoot("Helm of the Juggernaut", 0.005)
                 )
-            )
-            #endregion
-
-            #region Ghost Ship
-
-            .Init("Ghost Ship",
-                new State(
-                    new State("idle",
-                        new HpLessTransition(0.9999, "active")
-                        ),
-                    new State("active",
-                        new Prioritize(
-                            new Wander(0.1)
-                            )
-                        )
-                    )
             );
-
-        #endregion
+            #endregion
     }
 }
