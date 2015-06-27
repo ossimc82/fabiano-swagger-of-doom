@@ -366,7 +366,7 @@ namespace wServer.logic
                 new Wander(0.5),
                 new Shoot(10, 3, 20, angleOffset: 0 / 3, projectileIndex: 0, coolDown: 1000),
                 new Shoot(10, 4, 20, angleOffset: 0 / 4, projectileIndex: 1, coolDown: 1000),
-                new SpawnOnDeath("Mini Bot", 1.0, 2)
+                new TransformOnDeath("Mini Bot", 0, 3)
 
                 )
             )
