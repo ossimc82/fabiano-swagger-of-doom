@@ -166,6 +166,7 @@
     <Compile Include="logic\behaviors\RealmPortalDrop.cs" />
     <Compile Include="logic\behaviors\InvisiToss.cs" />
     <Compile Include="logic\behaviors\MoveTo.cs" />
+    <Compile Include="logic\behaviors\SpecificHeal.cs" />
     <Compile Include="logic\behaviors\NexusHealHp.cs" />
     <Compile Include="logic\behaviors\PetBehaviors\PetAttack.cs" />
     <Compile Include="logic\behaviors\PetBehaviors\PetElectric.cs" />
