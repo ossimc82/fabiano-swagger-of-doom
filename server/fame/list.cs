@@ -1,14 +1,10 @@
 ﻿#region
 
-using System.Collections.Specialized;
-using System.IO;
-using System.Net;
-using System.Text;
-using System.Web;
-using System.Xml;
 using db;
 using MySql.Data.MySqlClient;
 using System;
+using System.Text;
+using System.Xml;
 
 #endregion
 
@@ -55,7 +51,7 @@ namespace server.fame
                 {
                     MySqlCommand cmd = db.CreateQuery();
                     cmd.CommandText = @"SELECT * FROM death WHERE " + span + @" OR " + ac +
-                                      @" ORDER BY totalFame DESC LIMIT 10;";
+                                      @" ORDER BY totalFame DESC LIMIT 20;";
                     if (Query["accountId"] != null)
                     {
                         cmd.Parameters.AddWithValue("@accId", Query["accountId"]);
