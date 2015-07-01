@@ -155,6 +155,7 @@
     <Compile Include="logic\db\BehaviorDb.CandyLand.cs" />
     <Compile Include="logic\db\BehaviorDb.Draconis.cs" />
     <Compile Include="logic\db\BehaviorDb.Drakes.cs" />
+    <Compile Include="logic\db\BehaviorDb.EpicForestMaze.cs" />    
     <Compile Include="logic\db\BehaviorDb.ForestMaze.cs" />
     <Compile Include="logic\db\BehaviorDb.GhostShip.cs" />
     <Compile Include="logic\db\BehaviorDb.Lab.cs" />
