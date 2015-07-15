@@ -169,6 +169,7 @@ namespace wServer.logic
             )
             .Init("Wasp Queen",
                 new State(
+                    new DropPortalOnDeath("Forest Maze Portal", 20, PortalDespawnTimeSec: 100),
                     new Spawn("Worker Wasp", 5, coolDown: 3400),
                     new Spawn("Warrior Wasp", 2, coolDown: 4400),
                     new State("idle",
@@ -465,6 +466,7 @@ namespace wServer.logic
             )
             .Init("Dwarf King",
                 new State(
+                    new DropPortalOnDeath("Forest Maze Portal", 20, PortalDespawnTimeSec: 100),
                     new SpawnGroup("Dwarves", 10, coolDown: 8000),
                     new Shoot(4, coolDown: 2000),
                     new State("Circling",
@@ -637,6 +639,7 @@ namespace wServer.logic
             )
             .Init("Drake Baby",
                 new State(
+                    new DropPortalOnDeath("Forest Maze Portal", 20, PortalDespawnTimeSec: 100),
                     new State("unharmed",
                         new Shoot(8, coolDown: 1500),
                         new State("wander",
