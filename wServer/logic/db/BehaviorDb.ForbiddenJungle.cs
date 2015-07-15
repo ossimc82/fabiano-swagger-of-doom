@@ -12,6 +12,7 @@ namespace wServer.logic
         private _ ForbiddenJungle = () => Behav()
             .Init("Great Coil Snake",
                 new State(
+                    new DropPortalOnDeath("Forbidden Jungle Portal", 20, PortalDespawnTimeSec: 100),
                     new Prioritize(
                         new StayCloseToSpawn(0.8, 5),
                         new Wander(0.4)
