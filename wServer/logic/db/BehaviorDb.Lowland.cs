@@ -304,6 +304,7 @@ namespace wServer.logic
             )
             .Init("Goblin Warrior",
                 new State(
+                    new DropPortalOnDeath("Pirate Cave Portal", 20, PortalDespawnTimeSec: 100),
                     new State("protect",
                         new Protect(0.8, "Goblin Mage", 12, 1.5, 1.5),
                         new TimedTransition(1200, "scatter", true)
@@ -389,6 +390,7 @@ namespace wServer.logic
             )
             .Init("Forest Nymph",
                 new State(
+                    new DropPortalOnDeath("Pirate Cave Portal", 20, PortalDespawnTimeSec: 100),
                     new State("circle",
                         new Shoot(4, projectileIndex: 0, count: 1, predictive: 0.1, coolDown: 900),
                         new Prioritize(
@@ -448,6 +450,7 @@ namespace wServer.logic
             )
             .Init("Giant Crab",
                 new State(
+                    new DropPortalOnDeath("Pirate Cave Portal", 20, PortalDespawnTimeSec: 100),
                     new State("idle",
                         new Prioritize(
                             new StayAbove(0.6, 13),
@@ -500,6 +503,7 @@ namespace wServer.logic
             )
             .Init("Sand Devil",
                 new State(
+                    new DropPortalOnDeath("Pirate Cave Portal", 20, PortalDespawnTimeSec: 100),
                     new State("wander",
                         new Shoot(8, predictive: 0.3, coolDown: 700),
                         new Prioritize(
