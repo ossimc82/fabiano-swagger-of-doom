@@ -156,6 +156,7 @@ namespace wServer.logic
             )
             .Init("Red Gelatinous Cube",
                 new State(
+                    new DropPortalOnDeath("Pirate Cave Portal", 20, PortalDespawnTimeSec: 100),
                     new Shoot(8, 2, 10, predictive: 0.2, coolDown: 1000),
                     new Wander(0.4),
                     new Reproduce(densityMax: 5)
@@ -165,6 +166,7 @@ namespace wServer.logic
             )
             .Init("Purple Gelatinous Cube",
                 new State(
+                    new DropPortalOnDeath("Pirate Cave Portal", 20, PortalDespawnTimeSec: 100),
                     new Shoot(8, predictive: 0.2, coolDown: 600),
                     new Wander(0.4),
                     new Reproduce(densityMax: 5)
@@ -174,6 +176,7 @@ namespace wServer.logic
             )
             .Init("Green Gelatinous Cube",
                 new State(
+                    new DropPortalOnDeath("Pirate Cave Portal", 20, PortalDespawnTimeSec: 100),
                     new Shoot(8, 5, 72, predictive: 0.2, coolDown: 1800),
                     new Wander(0.4),
                     new Reproduce(densityMax: 5)
