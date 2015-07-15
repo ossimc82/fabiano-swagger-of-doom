@@ -13,6 +13,7 @@ namespace wServer.logic
         private _ Lowland = () => Behav()
             .Init("Hobbit Mage",
                 new State(
+                    new DropPortalOnDeath("Forest Maze Portal", 20, PortalDespawnTimeSec: 100),
                     new State("idle",
                         new PlayerWithinTransition(12, "ring1")
                         ),
@@ -209,6 +210,7 @@ namespace wServer.logic
             )
             .Init("Elf Wizard",
                 new State(
+                    new DropPortalOnDeath("Forest Maze Portal", 20, PortalDespawnTimeSec: 100),
                     new State("idle",
                         new Wander(0.4),
                         new PlayerWithinTransition(11, "move1")
@@ -323,6 +325,7 @@ namespace wServer.logic
             )
             .Init("Goblin Mage",
                 new State(
+                    new DropPortalOnDeath("Forest Maze Portal", 20, PortalDespawnTimeSec: 100),
                     new State("unharmed",
                         new Shoot(8, projectileIndex: 0, predictive: 0.35, coolDown: 1000),
                         new Shoot(8, projectileIndex: 1, predictive: 0.35, coolDown: 1300),
@@ -365,6 +368,7 @@ namespace wServer.logic
             )
             .Init("Enraged Bunny",
                 new State(
+                    new DropPortalOnDeath("Forest Maze Portal", 20, PortalDespawnTimeSec: 100),
                     new Shoot(9, predictive: 0.5, coolDown: 400),
                     new State("red",
                         new Flash(0xff0000, 1.5, 1),
