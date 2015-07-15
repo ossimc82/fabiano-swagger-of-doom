@@ -282,6 +282,7 @@ namespace wServer.logic
             )
             .Init("Undead Dwarf Warrior",
                 new State(
+                    new DropPortalOnDeath("Spider Den Portal", 20, PortalDespawnTimeSec: 100),
                     new Shoot(3),
                     new Prioritize(
                         new StayAbove(1, 160),
@@ -689,6 +690,7 @@ namespace wServer.logic
             )
             .Init("Urgle",
                 new State(
+                    new DropPortalOnDeath("Spider Den Portal", 20, PortalDespawnTimeSec: 100),
                     new Prioritize(
                         new StayCloseToSpawn(0.8, 3),
                         new Wander(0.5)
