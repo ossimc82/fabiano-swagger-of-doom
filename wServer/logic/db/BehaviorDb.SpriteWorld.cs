@@ -103,7 +103,7 @@ namespace wServer.logic
                     new ItemLoot("Cloak of the Planewalker", 0.005),
                     new ItemLoot("Wine Cellar Incantation", 0.005),
                     new ItemLoot("Sprite Wand", 0.01),
-                    new ItemLoot("Sprite Star Generator", 0.05),
+                    //new ItemLoot("Sprite Star Generator", 0.05),
 
                     new TierLoot(3, ItemType.Ring, 0.2),
 
