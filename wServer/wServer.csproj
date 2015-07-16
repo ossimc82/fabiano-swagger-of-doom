@@ -155,12 +155,18 @@
     <Compile Include="logic\db\BehaviorDb.CandyLand.cs" />
     <Compile Include="logic\db\BehaviorDb.Draconis.cs" />
     <Compile Include="logic\db\BehaviorDb.Drakes.cs" />
+    <Compile Include="logic\db\BehaviorDb.EpicForestMaze.cs" />    
+    <Compile Include="logic\db\BehaviorDb.ForestMaze.cs" />
+    <Compile Include="logic\db\BehaviorDb.GhostShip.cs" />
+    <Compile Include="logic\db\BehaviorDb.Lab.cs" />
     <Compile Include="logic\db\BehaviorDb.Lotll.cs" />
     <Compile Include="logic\db\BehaviorDb.Nexus.cs" />
     <Compile Include="logic\db\BehaviorDb.OryxCastle.cs" />
     <Compile Include="logic\db\BehaviorDb.Pentaract.cs" />
     <Compile Include="logic\db\BehaviorDb.PirateCave.cs" />
     <Compile Include="logic\db\BehaviorDb.Sphinx.cs" />
+    <Compile Include="logic\db\BehaviorDb.SpiderDen.cs" />
+    <Compile Include="logic\db\BehaviorDb.SpriteWorld.cs" />
     <Compile Include="logic\transitions\ChatTransition.cs" />
     <Compile Include="logic\transitions\EntitiesNotExistsTransition.cs" />
     <Compile Include="logic\behaviors\RealmPortalDrop.cs" />
@@ -410,6 +416,7 @@
     <Compile Include="realm\setpieces\Building.cs" />
     <Compile Include="realm\setpieces\Castle.cs" />
     <Compile Include="realm\setpieces\CubeGod.cs" />
+    <Compile Include="realm\setpieces\GhostShip.cs" />
     <Compile Include="realm\setpieces\Graveyard.cs" />
     <Compile Include="realm\setpieces\Grove.cs" />
     <Compile Include="realm\setpieces\Hermit.cs" />

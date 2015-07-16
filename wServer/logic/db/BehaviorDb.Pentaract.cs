@@ -14,6 +14,7 @@ namespace wServer.logic
         private _ Pentaract = () => Behav()
             .Init("Pentaract",
                 new State(
+                    new ConditionalEffect(ConditionEffectIndex.Invincible),
                     new State("Entry",
                         new PentaractStar(250),
                         new EntitiesNotExistsTransition(50, "Suicide", "Pentaract Tower"),
