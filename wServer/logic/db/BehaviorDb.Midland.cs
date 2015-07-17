@@ -49,6 +49,7 @@ namespace wServer.logic
             )
             .Init("Orc King",
                 new State(
+                    new DropPortalOnDeath("Spider Den Portal", 20, PortalDespawnTimeSec: 100),
                     new Shoot(3),
                     new Spawn("Orc Queen", 2, coolDown: 60000),
                     new Prioritize(
@@ -465,6 +466,7 @@ namespace wServer.logic
             )
             .Init("Dwarf King",
                 new State(
+                    new DropPortalOnDeath("Spider Den Portal", 20, PortalDespawnTimeSec: 100),
                     new SpawnGroup("Dwarves", 10, coolDown: 8000),
                     new Shoot(4, coolDown: 2000),
                     new State("Circling",
@@ -494,6 +496,7 @@ namespace wServer.logic
             )
             .Init("Werelion",
                 new State(
+                    new DropPortalOnDeath("Spider Den Portal", 20, PortalDespawnTimeSec: 100),
                     new Spawn("Weretiger", 1, coolDown: 23000),
                     new Spawn("Wereleopard", 2, coolDown: 9000),
                     new Spawn("Werepanther", 3, coolDown: 15000),
