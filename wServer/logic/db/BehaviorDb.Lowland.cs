@@ -13,6 +13,7 @@ namespace wServer.logic
         private _ Lowland = () => Behav()
             .Init("Hobbit Mage",
                 new State(
+                    new DropPortalOnDeath("Forest Maze Portal", 20, PortalDespawnTimeSec: 100),
                     new State("idle",
                         new PlayerWithinTransition(12, "ring1")
                         ),
@@ -209,6 +210,7 @@ namespace wServer.logic
             )
             .Init("Elf Wizard",
                 new State(
+                    new DropPortalOnDeath("Forest Maze Portal", 20, PortalDespawnTimeSec: 100),
                     new State("idle",
                         new Wander(0.4),
                         new PlayerWithinTransition(11, "move1")
@@ -304,6 +306,7 @@ namespace wServer.logic
             )
             .Init("Goblin Warrior",
                 new State(
+                    new DropPortalOnDeath("Pirate Cave Portal", 20, PortalDespawnTimeSec: 100),
                     new State("protect",
                         new Protect(0.8, "Goblin Mage", 12, 1.5, 1.5),
                         new TimedTransition(1200, "scatter", true)
@@ -323,6 +326,7 @@ namespace wServer.logic
             )
             .Init("Goblin Mage",
                 new State(
+                    new DropPortalOnDeath("Forest Maze Portal", 20, PortalDespawnTimeSec: 100),
                     new State("unharmed",
                         new Shoot(8, projectileIndex: 0, predictive: 0.35, coolDown: 1000),
                         new Shoot(8, projectileIndex: 1, predictive: 0.35, coolDown: 1300),
@@ -365,6 +369,7 @@ namespace wServer.logic
             )
             .Init("Enraged Bunny",
                 new State(
+                    new DropPortalOnDeath("Forest Maze Portal", 20, PortalDespawnTimeSec: 100),
                     new Shoot(9, predictive: 0.5, coolDown: 400),
                     new State("red",
                         new Flash(0xff0000, 1.5, 1),
@@ -389,6 +394,7 @@ namespace wServer.logic
             )
             .Init("Forest Nymph",
                 new State(
+                    new DropPortalOnDeath("Pirate Cave Portal", 20, PortalDespawnTimeSec: 100),
                     new State("circle",
                         new Shoot(4, projectileIndex: 0, count: 1, predictive: 0.1, coolDown: 900),
                         new Prioritize(
@@ -448,6 +454,7 @@ namespace wServer.logic
             )
             .Init("Giant Crab",
                 new State(
+                    new DropPortalOnDeath("Pirate Cave Portal", 20, PortalDespawnTimeSec: 100),
                     new State("idle",
                         new Prioritize(
                             new StayAbove(0.6, 13),
@@ -500,6 +507,7 @@ namespace wServer.logic
             )
             .Init("Sand Devil",
                 new State(
+                    new DropPortalOnDeath("Pirate Cave Portal", 20, PortalDespawnTimeSec: 100),
                     new State("wander",
                         new Shoot(8, predictive: 0.3, coolDown: 700),
                         new Prioritize(

@@ -12,6 +12,22 @@ namespace wServer.logic
     partial class BehaviorDb
     {
         private _ CandyLand = () => Behav()
+        .Init("Candy Gnome",
+            new State(
+                new DropPortalOnDeath("Candyland Portal", percent: 50, PortalDespawnTimeSec: 120),
+                new Prioritize(
+                    new StayBack(1.5, 55),
+                    new Wander(1.4)
+                    )
+                ),
+            new Threshold(0.18,
+                new ItemLoot("Red Gumball", 0.5),
+                new ItemLoot("Purple Gumball", 0.5),
+                new ItemLoot("Blue Gumball", 0.5),
+                new ItemLoot("Green Gumball", 0.5),
+                new ItemLoot("Yellow Gumball", 0.5)
+                )
+            )
             .Init("Desire Troll",
                 new State(
                     new Wander(0.5),
