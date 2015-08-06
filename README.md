@@ -1,3 +1,5 @@
+#NOTE: I am not gunna update this server to 27.4 because the build (1438804979) is bugged as hell.
+
 #Build Status: [![Build status](https://img.shields.io/appveyor/ci/ossimc82/fabiano-swagger-of-doom/master.svg)](https://ci.appveyor.com/project/ossimc82/fabiano-swagger-of-doom)
 
 ##Additional License information
