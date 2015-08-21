@@ -10,19 +10,37 @@ namespace wServer.logic
         .Init("Limon the Sprite God",
              new State(
                  new State("idle",
-                 new ConditionalEffect(ConditionEffectIndex.Invulnerable),
-                 new PlayerWithinTransition(12, "nothing")
+                     new Flash(0x66FF00, 0.6, 9),
+                     new Wander(0.07),
+                     new PlayerWithinTransition(12, "nothing")
                  ),
                  new State("nothing",
+                     new Wander(0.07),
                      new ConditionalEffect(ConditionEffectIndex.Invulnerable),
                      new TimedTransition(2000, "e.e")
                      ),
                  new State("e.e",
-                     new Wander(1.4),
-                     new Shoot(10, 2, 20, angleOffset: 0 / 2, projectileIndex: 0, coolDown: 1000),
-                     new Shoot(10, 1, 0, defaultAngle: 180, angleOffset: 0, projectileIndex: 0, predictive: 1,
-                     coolDown: 800, coolDownOffset: 0),
-                     new TimedTransition(10000, ":P")
+                     new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                     new Prioritize(
+                         new StayCloseToSpawn(2, 14),
+                         new StayAbove(2, 55),
+                         new Wander(2)
+                     ),
+                     new Shoot(10, 2, 20, angleOffset: 0 / 2, projectileIndex: 0, coolDown: 300),
+                     new Shoot(10, 1, 0, defaultAngle: 180, angleOffset: 180, projectileIndex: 0, predictive: 1,
+                     coolDown: 300, coolDownOffset: 0),
+                     new TimedTransition(3000, ":c")
+                     ),
+                 new State(":c",
+                     new Prioritize(
+                         new StayCloseToSpawn(2, 14),
+                         new StayAbove(2, 55),
+                         new Wander(2)
+                     ),
+                     new Shoot(10, 2, 20, angleOffset: 0 / 2, projectileIndex: 0, coolDown: 300),
+                     new Shoot(10, 1, 0, defaultAngle: 180, angleOffset: 180, projectileIndex: 0, predictive: 1,
+                     coolDown: 300, coolDownOffset: 0),
+                     new TimedTransition(7000, ":P")
                      ),
                  new State(":P",
                      new ReturnToSpawn(speed: 1.4),
@@ -30,7 +48,6 @@ namespace wServer.logic
                      new TimedTransition(1000, "rage")
                      ),
                  new State("rage",
-                     new ConditionalEffect(ConditionEffectIndex.Invulnerable),
                      new TossObject("Limon Element 1", 6, 45, 100000),
                      new TossObject("Limon Element 2", 6, 135, 100000),
                      new TossObject("Limon Element 3", 6, 225, 100000),
@@ -45,18 +62,28 @@ namespace wServer.logic
                      coolDown: 800, coolDownOffset: 0),
                      new Shoot(10, 1, 0, defaultAngle: 240, angleOffset: 240, projectileIndex: 0, predictive: 1,
                      coolDown: 800, coolDownOffset: 0),
-                     new TimedTransition(3000, "rage2")
+                     new TimedTransition(2000, "rage2")
                      ),
                  new State("rage2",
+                     new ConditionalEffect(ConditionEffectIndex.Invulnerable),
                      new Shoot(10, 1, 0, defaultAngle: 0, angleOffset: 0, projectileIndex: 0, predictive: 1,
                      coolDown: 800, coolDownOffset: 0),
                      new Shoot(10, 1, 0, defaultAngle: 120, angleOffset: 120, projectileIndex: 0, predictive: 1,
                      coolDown: 800, coolDownOffset: 0),
                      new Shoot(10, 1, 0, defaultAngle: 240, angleOffset: 240, projectileIndex: 0, predictive: 1,
                      coolDown: 800, coolDownOffset: 0),
-                     new TimedTransition(5000, "rage3")
+                     new TimedTransition(3000, "rage3")
                      ),
                  new State("rage3",
+                      new Shoot(10, 1, 0, defaultAngle: 0, angleOffset: 0, projectileIndex: 0, predictive: 1,
+                     coolDown: 800, coolDownOffset: 0),
+                     new Shoot(10, 1, 0, defaultAngle: 120, angleOffset: 120, projectileIndex: 0, predictive: 1,
+                     coolDown: 800, coolDownOffset: 0),
+                     new Shoot(10, 1, 0, defaultAngle: 240, angleOffset: 240, projectileIndex: 0, predictive: 1,
+                     coolDown: 800, coolDownOffset: 0),
+                     new TimedTransition(3000, "rage4")
+                     ),
+                 new State("rage4",
                      new ConditionalEffect(ConditionEffectIndex.Invulnerable),
                      new Order(100, "Limon Element 1", "X Shape"),
                      new Order(100, "Limon Element 2", "X Shape"),
@@ -68,18 +95,38 @@ namespace wServer.logic
                      coolDown: 800, coolDownOffset: 0),
                      new Shoot(10, 1, 0, defaultAngle: 240, angleOffset: 240, projectileIndex: 0, predictive: 1,
                      coolDown: 800, coolDownOffset: 0),
-                     new TimedTransition(4000, "rage4")
+                     new TimedTransition(3000, "rage5")
                      ),
-                 new State("rage4",
+                 new State("rage5",
                      new Shoot(10, 1, 0, defaultAngle: 0, angleOffset: 0, projectileIndex: 0, predictive: 1,
                      coolDown: 800, coolDownOffset: 0),
                      new Shoot(10, 1, 0, defaultAngle: 120, angleOffset: 120, projectileIndex: 0, predictive: 1,
                      coolDown: 800, coolDownOffset: 0),
                      new Shoot(10, 1, 0, defaultAngle: 240, angleOffset: 240, projectileIndex: 0, predictive: 1,
                      coolDown: 800, coolDownOffset: 0),
-                     new TimedTransition(5000, "brown shield")
+                     new TimedTransition(3000, "rage6")
+                     ),
+                 new State("rage6",
+                     new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                     new Shoot(10, 1, 0, defaultAngle: 0, angleOffset: 0, projectileIndex: 0, predictive: 1,
+                     coolDown: 800, coolDownOffset: 0),
+                     new Shoot(10, 1, 0, defaultAngle: 120, angleOffset: 120, projectileIndex: 0, predictive: 1,
+                     coolDown: 800, coolDownOffset: 0),
+                     new Shoot(10, 1, 0, defaultAngle: 240, angleOffset: 240, projectileIndex: 0, predictive: 1,
+                     coolDown: 800, coolDownOffset: 0),
+                     new TimedTransition(3000, "rage7")
+                     ),
+                 new State("rage7",
+                     new Shoot(10, 1, 0, defaultAngle: 0, angleOffset: 0, projectileIndex: 0, predictive: 1,
+                     coolDown: 800, coolDownOffset: 0),
+                     new Shoot(10, 1, 0, defaultAngle: 120, angleOffset: 120, projectileIndex: 0, predictive: 1,
+                     coolDown: 800, coolDownOffset: 0),
+                     new Shoot(10, 1, 0, defaultAngle: 240, angleOffset: 240, projectileIndex: 0, predictive: 1,
+                     coolDown: 800, coolDownOffset: 0),
+                     new TimedTransition(3000, "brown shield")
                      ),
                  new State("brown shield",
+                     new Wander(0.07),
                      new ConditionalEffect(ConditionEffectIndex.Armored),
                      new Spawn("Native Magic Sprite", maxChildren: 2, initialSpawn: 0.5),
                      new Spawn("Native Ice Sprite", maxChildren: 2, initialSpawn: 0.5),
@@ -87,10 +134,9 @@ namespace wServer.logic
                      new Order(100, "Limon Element 2", "suicide"),
                      new Order(100, "Limon Element 3", "suicide"),
                      new Order(100, "Limon Element 4", "suicide"),
-                     new Wander(1.4),
-                     new Shoot(10, 2, 20, angleOffset: 0 / 2, projectileIndex: 0, coolDown: 1000),
+                     new Shoot(10, 2, 20, angleOffset: 0 / 2, projectileIndex: 0, coolDown: 300),
                      new Shoot(10, 1, 0, defaultAngle: 180, angleOffset: 0, projectileIndex: 0, predictive: 1,
-                     coolDown: 800, coolDownOffset: 0),
+                     coolDown: 300, coolDownOffset: 0),
                      new TimedTransition(2000, "nothing")
                      )
                  ),
@@ -103,7 +149,6 @@ namespace wServer.logic
                     new ItemLoot("Cloak of the Planewalker", 0.005),
                     new ItemLoot("Wine Cellar Incantation", 0.005),
                     new ItemLoot("Sprite Wand", 0.01),
-                    //new ItemLoot("Sprite Star Generator", 0.05),
 
                     new TierLoot(3, ItemType.Ring, 0.2),
 
