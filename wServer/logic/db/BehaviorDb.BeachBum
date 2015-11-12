@@ -1,0 +1,22 @@
+using wServer.logic.behaviors;
+using wServer.logic.transitions;
+using wServer.logic.loot;
+
+namespace wServer.logic
+{
+    partial class BehaviorDb
+    {
+        private _ BeachBum = () => Behav()
+        .Init("Beach Bum",
+                new State(
+                new DropPortalOnDeath("Beachzone Portal", percent: 50, PortalDespawnTimeSec: 120),
+                new Prioritize(
+                  new StayCloseToSpawn(0.06, 3),
+                  new Wander(0.05)
+                  )
+                    ),
+                new ItemLoot("Davy's Key", 1)
+            )
+    ;
+    }
+}
