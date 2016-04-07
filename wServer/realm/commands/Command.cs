@@ -27,6 +27,10 @@ namespace wServer.realm.commands
         private static int GetPermissionLevel(Player player)
         {
             if (player.Client.Account.Rank == 3)
+                return 3;
+            if (player.Client.Account.Rank == 2)
+                return 2;
+            if (player.Client.Account.Rank == 1)
                 return 1;
             return 0;
         }
