@@ -736,7 +736,7 @@ SELECT MAX(chestId) FROM vaults WHERE accId = @accId;";
             {
                 ObjectType = type,
                 CharacterId = chrId,
-                Level = 1,
+                Level = 20,
                 Exp = 0,
                 CurrentFame = 0,
                 HasBackpack = 0,
