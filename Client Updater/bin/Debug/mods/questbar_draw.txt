@@ -1,0 +1,63 @@
+;-----------------------------------------------------
+;Quest HP BAR by jnoob
+;---------------------------------------------------
+
+;Add this at the end of "onEnterFrame" in GameSprite
+
+#set currenthp "CHANGE01" ;"_-7w" 
+#set maxhp "CHANGE02" ;"_-wd"
+
+ 
+;---------------------------------------
+      getlocal0
+      getproperty         QName(PackageNamespace("", "#0"), "QUESTBAR")
+      pushfalse
+      setproperty         QName(PackageNamespace("", "#4"), "visible")
+      
+
+			getlocal0
+      getlex              QName(PackageNamespace("", "#4"), "map")
+      getproperty         QName(PackageNamespace("", "#0"), "quest_")
+      setlocal            4      	
+      
+      getlocal            4
+      pushnull
+      ifeq IGNORE      	
+
+      getlocal            4
+      getproperty         QName(PackageNamespace("", "#0"), "objectId_")
+      setlocal            4      		
+    
+      getlex              QName(PackageNamespace("", "#4"), "map")
+      getproperty         QName(PackageNamespace("", "#0"), "quest_")
+      getlocal            4
+      callproperty        QName(PackageNamespace("", "#0"), "getObject"), 1
+      coerce              QName(PackageNamespace("com.company.assembleegameclient.objects"), "GameObject")
+      setlocal3
+      
+      getlocal3
+      pushnull
+      ifeq IGNORE
+
+      getlocal            3
+      getlex              QName(PackageNamespace("com.company.assembleegameclient.objects"), "Character")
+      istypelate
+      iffalse             IGNORE      
+
+      getlocal0
+      getproperty         QName(PackageNamespace("", "#0"), "QUESTBAR")
+      pushtrue
+      setproperty         QName(PackageNamespace("", "#4"), "visible")
+
+      getlocal0
+      getproperty         QName(PackageNamespace("", "#0"), "QUESTBAR")
+      getlocal3
+      getproperty         QName(PackageNamespace("", "#0"), $"currenthp")
+      getlocal3
+      getproperty         QName(PackageNamespace("", "#0"), $"maxhp")
+      pushbyte            0
+      callpropvoid        QName(PackageNamespace("", "#4"), "draw"), 3
+     
+     IGNORE:
+
+;-------------------------------------      

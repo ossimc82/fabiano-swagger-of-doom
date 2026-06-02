@@ -1,0 +1,332 @@
+body {
+	background: #363636;
+	color: #b3b3b3;
+	padding: 10px;
+	margin: 0;
+	cursor: default;
+	font: 12px Arial,sans-serif;
+}
+
+#cnt {
+	position: fixed;
+	top: 4px;
+	left: 4px;
+	padding: 4px;
+	z-index: 200;
+	background-color: #ccc;
+	color: #333;
+}
+
+#top {
+	font-size: 15px;
+	margin: 0 3px;
+	text-align: right;
+}
+
+#top > div, #top > a {
+	display: inline-block;
+	cursor: pointer;
+	border: 2px solid #555;
+	padding: 0 4px;
+}
+#top > a { color: inherit; text-decoration: none; }
+
+.menu {
+	display: none;
+	position: absolute;
+	right: -2px;
+	z-index: 100;
+	padding: 5px;
+	border: solid 2px #555;
+	background: #363636;
+	color: #b3b3b3;
+	width: 200px;
+	text-align: left;
+	font-weight: normal;
+	font-size: 15px;
+}
+.menu:hover { display: block; }
+.handle { position: relative; }
+.handle:hover .menu { display: block; }
+
+.menu input,label { cursor: pointer; }
+.menu input { float: left; clear: left; margin: 4px;  }
+.menu label {display: block; padding: 2px; }
+
+.menu label:hover,
+.menu input:hover ~ label,
+#export div:hover,
+#top > div:hover, #top > a:hover {
+    background: #555;
+    color: #fff;
+}
+
+.menu div>div>div { padding-left: 15px; }
+
+#export { width: auto; text-align: center; }
+#export div { padding: 0 5px; }
+
+#errors, #totals, .mule, .guid, .reload, .item { display: inline-block; }
+
+#errors, #totals {
+	margin: 10px 3px;
+	border: solid 2px #555;
+}
+
+#errors { background-color: #503636; font-size: 13px; }
+#errors:empty { display: none; }
+.error {
+	color: #eaa;
+	margin: 6px 8px;
+	line-height: 1.5em;
+	overflow: hidden;
+}
+.error span {
+	margin-left: 1em;
+	color: #ddd;
+	cursor: pointer;
+}
+
+#totals {
+	line-height: 0;
+	max-width: 528px;
+	padding: 5px;
+}
+
+.mule {
+	padding: 2px;
+	margin: 3px;
+	border: solid 2px #555;
+	min-width: 184px;
+}
+
+.guid {
+	color: #ccc;
+	background: #303030;
+	border: solid 1px #888;
+	font-family: monospace;
+	width: 100%;
+}
+
+.name, .error, .reload, #counter { font-weight: bold; }
+
+.name {
+	font-size: 16px;
+	margin: 4px;
+	text-align: center;
+	cursor: pointer;
+	overflow: hidden;
+}
+
+.reload, .mulelink, .warn {
+	line-height: 2em;
+	cursor: pointer;
+	color: white;
+	font-size: 16px;
+	line-height: 1em;
+	margin: 5px 4px 0 0;
+	float: right;
+	overflow: hidden;
+}
+.mulelink {
+	text-decoration: none;
+}
+
+.portrait {
+	float: left;
+	width: 22px;
+	height: 22px;
+	margin: 4px 6px 0 4px;
+}
+
+hr {
+	margin: 0;
+	background-color: #555;
+	border-style: none;
+	height: 2px;
+}
+
+.stats, .pcstats, .chdesc {
+	width: 180px;
+	margin: 4px 0;
+}
+
+.chdesc {
+	white-space: nowrap;
+}
+
+.stats td {
+	line-height: 1em;
+	padding: 0;
+}
+
+.stats td.sname {
+	text-align: right;
+	padding: 0 5px 0 0;
+}
+
+.stat.avg { /*color: #73cce2;*/ }
+.stat.max { color: #f0f0a0; }
+.stat.maxed { color: #fcdf00; }
+.stat.good { color: #90ff90; }
+.stat.good.very { color: #00ff00; }
+.stat.bad { color: #ff9090; }
+.stat.bad.very { color: #ff0000; }
+
+.items {
+	line-height: 0;
+}
+
+.itemsc {
+	width: 176px;
+	margin: 2px;
+	padding: 0;
+	overflow: hidden;
+}
+
+.item {
+	position: relative;
+	width: 40px;
+	height: 40px;
+	margin: 2px;
+	background: url(renders.png) #545454;
+	overflow: hidden;
+}
+
+.item.selected {
+	background-color: #ffcd57;
+	outline: 2px solid #fefe8e;
+	outline-offset: -1px;
+}
+
+/* counter */
+.item div {
+	position: absolute;
+	right: 4px;
+	bottom: 1px;
+	color: white;
+	font: bold 15px Arial,sans-serif;
+	text-shadow: -1px 0 3px black, 0 1px 3px black, 1px 0 3px black, 0 -1px 3px black;
+}
+
+/* unknown item indicator */
+.item span {
+	position: absolute;
+	left: 2px;
+	font: 11px monospace;
+	color: white;
+}
+
+/*hp and mp */
+.hp{
+	background-color: #545454;
+	background-image: url(hp.png);
+	background-position: 22px 2px;
+	background-repeat: no-repeat;
+	color: white;
+	float: left;
+	font: bold 15px/20px Arial, sans-serif;
+	height: 20px;
+	margin: 0 2px 4px 4px;
+	padding: 2px 2px 2px 17px;
+	text-align: center;
+	text-shadow: -1px 0px 1px black, 1px 0px 1px black, 0px -1px 1px black, 0px 1px 1px black;
+	width: 65px;
+}
+
+.mp{
+	background-color: #545454;
+	background-image: url(mp.png);
+	background-position: 22px 2px;
+	background-repeat: no-repeat;
+	color: white;
+	float: right;
+	font: bold 15px/20px Arial, sans-serif;
+	height: 20px;
+	margin: 0 4px 4px 2px;
+	padding: 2px 2px 2px 17px;
+	text-align: center;
+	text-shadow: -1px 0px 1px black, 1px 0px 1px black, 0px -1px 1px black, 0px 1px 1px black;
+	width: 65px;
+}
+
+/* achievements etc */
+.pcstats {
+	overflow: hidden;
+}
+
+.pcstats td {
+	padding: 0;
+	line-height: 1.1em;
+	text-align: right;
+	overflow: hidden;
+	max-width: 110px;
+}
+
+.pcstats .goal {
+	text-align: left;
+}
+
+.pcstats .goal .bonus {
+	white-space: nowrap;
+	font-weight: normal;
+	padding: 0;
+}
+
+.pcstats .pcstat, .pcstats .bonus, .pcstats .info {
+	text-align: left;
+	font-weight: bold;
+	padding-left: 5px;
+}
+
+.pcstats .pcstat { color: #57AD62; }
+.pcstats .bonus { color: #FFC800; }
+
+.mule.disabled { opacity: 0.5; }
+
+.mule > table {
+	margin: 0;
+	padding: 2px;
+	border-spacing: 0;
+	width: 100%;
+}
+td.cont {
+	vertical-align: top;
+	text-align: center;
+	padding: 0;
+}
+td.cont > div {
+	text-align: left;
+	display: inline-block;
+}
+
+.giftchest .itemsc {
+	background-color: #8b4513;
+	margin-left: 0;
+	margin-right: 0;
+	padding: 2px;
+}
+
+.giftchest .item {
+	background-color: #daa520;
+}
+
+/* stars */
+.scont {
+	background-color: #222;
+	border-radius: 6px;
+	float: left;
+	padding: 1px 1px 1px 4px;
+	font-weight: normal;
+	font-size: 14px;
+	margin: 4px 2px;
+}
+.scont .star {
+	font-size: 1.2em;
+	line-height: 0;
+	margin: 0 0.1em 0 0.2em;
+}
+
+.warn {
+	color: #d70;
+}

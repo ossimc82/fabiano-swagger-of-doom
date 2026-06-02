@@ -1,0 +1,8 @@
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\DungeonGen\bin\Debug\DungeonGen.dll
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\DungeonGen\bin\Debug\DungeonGen.pdb
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\DungeonGen\bin\Debug\RotMG.Common.dll
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\DungeonGen\obj\Debug\DungeonGen.csproj.AssemblyReference.cache
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\DungeonGen\obj\Debug\DungeonGen.csproj.CoreCompileInputs.cache
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\DungeonGen\obj\Debug\DungeonGen.csproj.CopyComplete
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\DungeonGen\obj\Debug\DungeonGen.dll
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\DungeonGen\obj\Debug\DungeonGen.pdb

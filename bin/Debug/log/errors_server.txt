@@ -1,0 +1,22 @@
+2026-06-01 22:24:09,937 [Entry] WARN  db.data.XmlData - 0x0065 and 0x0061 has the same name of Grey Circle!
+2026-06-01 22:36:41,232 [10] ERROR Server - Not supported server detected: 
+Host: 68.43.56.248
+Port: 2050
+2026-06-01 22:42:21,220 [Entry] WARN  db.data.XmlData - 0x0065 and 0x0061 has the same name of Grey Circle!
+2026-06-01 22:51:44,865 [Entry] WARN  db.data.XmlData - 0x0065 and 0x0061 has the same name of Grey Circle!
+2026-06-01 23:00:36,394 [Entry] WARN  db.data.XmlData - 0x0065 and 0x0061 has the same name of Grey Circle!
+2026-06-01 23:01:04,942 [Entry] WARN  db.data.XmlData - 0x0065 and 0x0061 has the same name of Grey Circle!
+2026-06-01 23:01:05,001 [Entry] ERROR Server - Port 27015 is occupied. Can't start listening...
+Press ESC to exit.
+2026-06-01 23:01:23,605 [Entry] WARN  db.data.XmlData - 0x0065 and 0x0061 has the same name of Grey Circle!
+2026-06-01 23:06:28,786 [Entry] WARN  db.data.XmlData - 0x0065 and 0x0061 has the same name of Grey Circle!
+2026-06-01 23:06:28,847 [Entry] ERROR Server - Port 2050 is occupied. Can't start listening...
+Press ESC to exit.
+2026-06-01 23:08:44,042 [Entry] WARN  db.data.XmlData - 0x0065 and 0x0061 has the same name of Grey Circle!
+2026-06-01 23:17:06,265 [Entry] WARN  db.data.XmlData - 0x0065 and 0x0061 has the same name of Grey Circle!
+2026-06-02 18:03:13,949 [Entry] WARN  db.data.XmlData - 0x0065 and 0x0061 has the same name of Grey Circle!
+2026-06-02 18:26:13,490 [Entry] WARN  db.data.XmlData - 0x0065 and 0x0061 has the same name of Grey Circle!
+2026-06-02 18:54:38,388 [Entry] WARN  db.data.XmlData - 0x0065 and 0x0061 has the same name of Grey Circle!
+2026-06-02 19:00:38,925 [Entry] WARN  db.data.XmlData - 0x0065 and 0x0061 has the same name of Grey Circle!
+2026-06-02 19:22:13,815 [Entry] WARN  db.data.XmlData - 0x0065 and 0x0061 has the same name of Grey Circle!
+2026-06-02 19:24:49,126 [Entry] WARN  db.data.XmlData - 0x0065 and 0x0061 has the same name of Grey Circle!

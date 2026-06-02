@@ -1,0 +1,43 @@
+;-----------------------------------------------------
+;Quest HP BAR by jnoob
+;---------------------------------------------------
+
+;Add this at the end of "init" in GameSprite
+
+
+     getlocal0
+     findpropstrict      QName(PackageNamespace("com.company.assembleegameclient.ui"), "StatusBar")
+     pushshort           200
+     pushbyte            16
+     pushint             14835456
+     pushint             5526612
+     pushstring          "QuestToolTip.quest"
+     constructprop       QName(PackageNamespace("com.company.assembleegameclient.ui"), "StatusBar"), 5
+     initproperty        QName(PackageNamespace("", "#0"), "QUESTBAR")
+     getlocal0
+     getproperty         QName(PackageNamespace("", "#0"), "QUESTBAR")
+     pushshort           10
+     setproperty         QName(PackageNamespace("", "#4"), "x")
+
+     getlocal0
+     getproperty         QName(PackageNamespace("", "#0"), "QUESTBAR")
+     pushbyte            10
+     setproperty         QName(PackageNamespace("", "#4"), "y")
+
+     findpropstrict      QName(PackageNamespace("", "#4"), "addChild")
+     getlocal0
+     getproperty         QName(PackageNamespace("", "#0"), "QUESTBAR")
+     callpropvoid        QName(PackageNamespace("", "#4"), "addChild"), 1
+
+     getlocal0
+     getproperty         QName(PackageNamespace("", "#0"), "QUESTBAR")
+     pushtrue
+     setproperty         QName(PackageNamespace("", "#4"), "visible")    
+     
+     
+     findpropstrict      QName(PackageNamespace("", "#0"), "addChild")
+     getlocal0
+     getproperty         QName(PackageNamespace("", "#0"), "QUESTBAR")
+     callpropvoid        QName(PackageNamespace("", "#0"), "addChild"), 1
+     
+     ;---------------------------------------------------

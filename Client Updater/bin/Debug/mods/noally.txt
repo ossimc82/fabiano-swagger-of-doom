@@ -1,0 +1,18 @@
+; _-names
+#set ownBullet "CHANGE1"
+
+; code
+      getlex              QName(PackageNamespace(""), "map_")
+      getproperty         QName(PackageNamespace(""), "player_")
+      getproperty         QName(PackageNamespace(""), "objectId_")
+      getlocal0
+      getproperty         QName(PackageNamespace(""), "ownerId_")
+      ifeq                DRAWIT
+
+      getlocal0
+      getproperty         QName(PackageNamespace(""), $"ownBullet")
+      iffalse             DRAWIT
+
+      returnvoid
+
+DRAWIT:

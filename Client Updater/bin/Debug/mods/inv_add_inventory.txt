@@ -1,0 +1,40 @@
+;HACKCONTENT4
+;--------------------------------------------------------------------------
+; Add player inventory
+;--------------------------------------------------------------------------
+#set fullclass "CHANGE01"    ;"_-0Tj:PlayerToolTip/instance" ; CurrentClass
+#set invfolder "CHANGE06"    ;"_-0GS"
+#set invclass  "CHANGE07"             ;"_-0ZD"
+#set getproperty "CHANGE08"           ;"_-0ck" 
+		
+		getlocal0
+ 		findpropstrict      QName(PackageNamespace($"invfolder"), $"invclass")
+ 		getlocal0
+ 		getproperty         QName(PackageNamespace(""), "player_")
+ 		dup
+ 		pushbyte 4
+ 		constructprop       QName(PackageNamespace($"invfolder"), $"invclass"), 3
+ 		initproperty        QName(PrivateNamespace("*", $"fullclass"), "_inventory")
+ 		
+ 		getlocal0
+ 		getproperty         QName(PrivateNamespace("*", $"fullclass"), "_inventory")
+ 		pushbyte            8
+ 		setproperty         QName(PackageNamespace(""), "x")
+ 		
+ 		getlocal0
+ 		getproperty         QName(PrivateNamespace("*", $"fullclass"), "_inventory")
+ 		getlocal0
+ 		getproperty         QName(PrivateNamespace("*", $"fullclass"), $"getproperty")
+ 		getproperty         QName(PackageNamespace(""), "y")
+ 		getlocal0
+ 		getproperty         QName(PrivateNamespace("*", $"fullclass"), $"getproperty") 
+ 		getproperty         QName(PackageNamespace(""), "height")
+ 		add
+ 		pushbyte            4
+ 		add
+ 		setproperty         QName(PackageNamespace(""), "y") 
+ 		 
+ 		findpropstrict      QName(PackageNamespace(""), "addChild")
+ 		getlocal0
+ 		getproperty         QName(PrivateNamespace("*", $"fullclass"), "_inventory")
+ 		callpropvoid        QName(PackageNamespace(""), "addChild"), 1

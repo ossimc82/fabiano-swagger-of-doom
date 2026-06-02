@@ -1,0 +1,21 @@
+;10
+dup
+dup
+pushshort			  464
+getlex              QName(PackageNamespace(""), "stage")
+getproperty         QName(PackageNamespace(""), "stageWidth")
+convert_d
+pushbyte			  2
+convert_d
+divide
+subtract
+setproperty         QName(PackageNamespace(""), "x")
+pushshort			  306
+getlex              QName(PackageNamespace(""), "stage")
+getproperty         QName(PackageNamespace(""), "stageHeight")
+convert_d
+pushbyte			  2
+convert_d
+divide
+subtract
+setproperty         QName(PackageNamespace(""), "y")

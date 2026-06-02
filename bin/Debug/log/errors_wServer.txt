@@ -1,0 +1,20 @@
+2026-06-01 22:24:10,904 [Entry] WARN  db.data.XmlData - 0x0065 and 0x0061 has the same name of Grey Circle!
+2026-06-01 22:42:17,784 [Entry] WARN  db.data.XmlData - 0x0065 and 0x0061 has the same name of Grey Circle!
+2026-06-01 22:51:45,442 [Entry] WARN  db.data.XmlData - 0x0065 and 0x0061 has the same name of Grey Circle!
+2026-06-01 23:00:39,869 [Entry] WARN  db.data.XmlData - 0x0065 and 0x0061 has the same name of Grey Circle!
+2026-06-01 23:01:27,388 [Entry] WARN  db.data.XmlData - 0x0065 and 0x0061 has the same name of Grey Circle!
+2026-06-01 23:01:27,972 [Entry] FATAL Server - System.Net.Sockets.SocketException (0x80004005): An attempt was made to access a socket in a way forbidden by its access permissions
+   at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+   at wServer.networking.Server.Start() in E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\wServer\networking\Server.cs:line 30
+   at wServer.Program.Main(String[] args) in E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\wServer\Program.cs:line 64
+2026-06-01 23:06:23,472 [Entry] WARN  db.data.XmlData - 0x0065 and 0x0061 has the same name of Grey Circle!
+2026-06-01 23:08:47,709 [Entry] WARN  db.data.XmlData - 0x0065 and 0x0061 has the same name of Grey Circle!
+2026-06-01 23:17:08,319 [Entry] WARN  db.data.XmlData - 0x0065 and 0x0061 has the same name of Grey Circle!
+2026-06-01 23:38:24,799 [Logic] ERROR wServer.networking.handlers.PlayerHitHander - Can't register playerhit.2142 - 114
+2026-06-02 18:03:17,300 [Entry] WARN  db.data.XmlData - 0x0065 and 0x0061 has the same name of Grey Circle!
+2026-06-02 18:26:10,003 [Entry] WARN  db.data.XmlData - 0x0065 and 0x0061 has the same name of Grey Circle!
+2026-06-02 18:54:40,722 [Entry] WARN  db.data.XmlData - 0x0065 and 0x0061 has the same name of Grey Circle!
+2026-06-02 19:00:42,423 [Entry] WARN  db.data.XmlData - 0x0065 and 0x0061 has the same name of Grey Circle!
+2026-06-02 19:22:16,774 [Entry] WARN  db.data.XmlData - 0x0065 and 0x0061 has the same name of Grey Circle!
+2026-06-02 19:24:51,859 [Entry] WARN  db.data.XmlData - 0x0065 and 0x0061 has the same name of Grey Circle!

@@ -1,0 +1,4 @@
+﻿#Play More Pack
+charSlot:1
+vaultChest:3
+items:0xc6c:2

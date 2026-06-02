@@ -1,0 +1,40 @@
+;-------------------------------------------------------------------
+; DONT DRAW PLAYERS IN NEXUS BASED ON CHAT FILTER -jnoob's mod
+; GAMEOBJECT PART
+
+     #set gameobjnamespace "CHANGE1"  
+     
+
+      ;Test if object is a player (this is done because we are in GameObject)
+      getlocal0
+      getlex              QName(PackageNamespace("com.company.assembleegameclient.objects"), "Player")
+      istypelate
+      iffalse             DRAWIT
+     
+     ; We must ALWAYS draw ourself :)
+     getlocal0
+     getlex              QName(PackageNamespace(""), "map_")
+     getproperty         QName(PackageNamespace(""), "player_")
+     ifeq                DRAWIT    
+     
+     ; We must ALWAYS draw him if we are not in Nexus            
+     getlex              QName(PackageNamespace(""), "map_")
+     getproperty         QName(PackageNamespace(""), "name_")
+     pushstring          "Nexus"
+     ifne                DRAWIT  
+
+     ; get player rank
+     getlocal0
+     getproperty         QName(PackageNamespace("", "#0"), "numStars_")
+
+
+     ;Get the rank set in chat filter options : GAMEOBJ
+     getlex              QName(PackageNamespace("com.company.assembleegameclient.parameters"), "Parameters")
+     getproperty         QName(PackageNamespace("", "#0"), "data_")
+     getproperty         Multiname("chatStarRequirement", [PrivateNamespace("*", "com.company.assembleegameclient:GameObject#0"), PackageNamespace("", "#0"), PrivateNamespace("*", "com.company.assembleegameclient:GameObject#1"), PackageNamespace("com.company.assembleegameclient"), PackageInternalNs("com.company.assembleegameclient"), Namespace("http://adobe.com/AS3/2006/builtin"), ProtectedNamespace($"gameobjnamespace"), StaticProtectedNs($"gameobjnamespace")])
+     lessthan
+     iffalse       DRAWIT
+     returnvoid
+	 
+DRAWIT:
+	 

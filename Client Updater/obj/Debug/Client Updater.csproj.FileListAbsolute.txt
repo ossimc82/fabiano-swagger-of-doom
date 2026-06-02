@@ -1,0 +1,116 @@
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\mods\60fps.txt
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\mods\autoaim.txt
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\mods\autoaimcall.txt
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\mods\autoaimnotif.txt
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\mods\autoaimshootfix.txt
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\mods\autonexus.txt
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\mods\drv2_dispatch.txt
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\mods\drv2_save.txt
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\mods\drv2_var.txt
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\mods\eventnotifier.txt
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\mods\forcelq.txt
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\mods\friendlist_locklist.txt
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\mods\friendlist_minimap.txt
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\mods\friendlist_player.txt
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\mods\fsv2_1.txt
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\mods\fsv2_10.txt
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\mods\fsv2_11.txt
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\mods\fsv2_12.txt
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\mods\fsv2_2.txt
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\mods\fsv2_3.txt
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\mods\fsv2_4.txt
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\mods\fsv2_5.txt
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\mods\fsv2_6.txt
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\mods\fsv2_7.txt
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\mods\fsv2_8.txt
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\mods\fsv2_9.txt
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\mods\hideplayers.txt
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\mods\hideshadows.txt
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\mods\hpbar.txt
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\mods\inv_addprops.txt
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\mods\inv_addstats.txt
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\mods\inv_add_inventory.txt
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\mods\inv_adjust_text.txt
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\mods\inv_drawbars.txt
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\mods\inv_localcount.txt
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\mods\inv_make_xp_fame_bars.txt
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\mods\inv_patchstats.txt
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\mods\noally.txt
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\mods\noclip.txt
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\mods\noss.txt
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\mods\passescover.txt
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\mods\proxyserver_add.txt
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\mods\proxyserver_func.txt
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\mods\questbar_draw.txt
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\mods\questbar_init.txt
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\mods\questbar_trait.txt
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\mods\realmeye_addmenu.txt
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\mods\realmeye_func.txt
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\mods\realmeye_sbmod.txt
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\mods\realmeye_sbparams.txt
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\mods\roundjitter.txt
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\mods\safewalk.txt
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\mods\swap_call.txt
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\mods\swap_funcs.txt
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\mods\swnoslow.txt
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\mods\swspeed.txt
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\Orape.exe
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\Orape.jar
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\rabcdasm\abcexport.exe
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\rabcdasm\abcreplace.exe
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\rabcdasm\liblzma.dll
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\rabcdasm\rabcasm.exe
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\rabcdasm\rabcdasm.exe
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\rabcdasm\rabcdasm_easy.exe
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\rabcdasm\swf7zcompress.exe
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\rabcdasm\swfbinexport.exe
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\rabcdasm\swfbinreplace.exe
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\rabcdasm\swfdecompress.exe
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\rabcdasm\swflzmacompress.exe
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\config.ini
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\Orape.cmd
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\Orape.command
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\rabcdasm\01.bat
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\rabcdasm\02.bat
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\rabcdasm\03 xml export.bat
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\rabcdasm\abcexport.d
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\rabcdasm\abcfile.d
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\rabcdasm\abcreplace.d
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\rabcdasm\asasm.hrc
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\rabcdasm\asprogram.d
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\rabcdasm\assembler.d
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\rabcdasm\autodata.d
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\rabcdasm\build_rabcdasm.d
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\rabcdasm\CHANGELOG.md
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\rabcdasm\common.d
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\rabcdasm\COPYING
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\rabcdasm\disassembler.d
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\rabcdasm\liblzma.lib
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\rabcdasm\lzma.d
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\rabcdasm\main.o
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\rabcdasm\Makefile.win
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\rabcdasm\murmurhash2a.d
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\rabcdasm\rabcasm.d
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\rabcdasm\rabcdasm.d
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\rabcdasm\README.md
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\rabcdasm\swf7zcompress.d
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\rabcdasm\swfbinexport.d
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\rabcdasm\swfbinreplace.d
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\rabcdasm\swfdecompress.d
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\rabcdasm\swffile.d
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\rabcdasm\swflzmacompress.d
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\rabcdasm\zlibx.d
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\Client Updater.exe.config
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\Client Updater.exe
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\Client Updater.pdb
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\MetroFramework.Design.dll
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\MetroFramework.dll
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\bin\Debug\MetroFramework.Fonts.dll
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\obj\Debug\Client Updater.csproj.AssemblyReference.cache
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\obj\Debug\Client_Updater.Form1.resources
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\obj\Debug\Client_Updater.Properties.Resources.resources
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\obj\Debug\Client Updater.csproj.GenerateResource.cache
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\obj\Debug\Client Updater.csproj.CoreCompileInputs.cache
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\obj\Debug\Client Updater.csproj.CopyComplete
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\obj\Debug\Client Updater.exe
+E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\Client Updater\obj\Debug\Client Updater.pdb

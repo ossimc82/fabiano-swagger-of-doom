@@ -1,0 +1,816 @@
+2026-06-01 22:24:09,717 [Entry] INFO  db.SimpleSettings - Loading settings for 'server'...
+2026-06-01 22:24:09,730 [Entry] INFO  db.SimpleSettings - Settings loaded.
+2026-06-01 22:24:09,927 [Entry] INFO  db.SimpleSettings - Loading settings for 'autoId'...
+2026-06-01 22:24:09,927 [Entry] INFO  db.SimpleSettings - Settings not found.
+2026-06-01 22:24:09,928 [Entry] INFO  db.data.XmlData - Loading game data from 'E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\bin\Debug\data'...
+2026-06-01 22:24:09,928 [Entry] INFO  db.data.XmlData - Loading 'E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\bin\Debug\data\dat0.xml'(1/4)...
+2026-06-01 22:24:09,938 [Entry] INFO  db.data.XmlData - Loading 'E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\bin\Debug\data\dat1.xml'(2/4)...
+2026-06-01 22:24:09,995 [Entry] INFO  db.data.XmlData - Loading 'E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\bin\Debug\data\Addition.xml'(3/4)...
+2026-06-01 22:24:09,996 [Entry] INFO  db.data.XmlData - Auto assigned 'Niggo' to 0xc350
+2026-06-01 22:24:09,996 [Entry] INFO  db.data.XmlData - Auto assigned 'Over Niggo' to 0xc351
+2026-06-01 22:24:09,996 [Entry] INFO  db.data.XmlData - Auto assigned 'Forgotten Archmage of Flame' to 0xc352
+2026-06-01 22:24:09,996 [Entry] INFO  db.data.XmlData - Loading 'E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\bin\Debug\data\EquipmentSets.xml'(4/4)...
+2026-06-01 22:24:10,001 [Entry] INFO  db.data.XmlData - Finish loading game data.
+2026-06-01 22:24:10,002 [Entry] INFO  db.data.XmlData - 1281 Items
+2026-06-01 22:24:10,002 [Entry] INFO  db.data.XmlData - 333 Tiles
+2026-06-01 22:24:10,002 [Entry] INFO  db.data.XmlData - 2232 Objects
+2026-06-01 22:24:10,002 [Entry] INFO  db.data.XmlData - 3 Additions
+2026-06-01 22:24:10,005 [Entry] INFO  Server - Listening at port 80...
+2026-06-01 22:36:39,006 [3] INFO  Server - Request "/sfx/use_potion.mp3" from: 127.0.0.1:56278
+2026-06-01 22:36:39,008 [3] INFO  Server - Request "/sfx/level_up.mp3" from: 127.0.0.1:56277
+2026-06-01 22:36:39,009 [3] INFO  Server - Request "/sfx/button_click.mp3" from: 127.0.0.1:56277
+2026-06-01 22:36:39,010 [3] INFO  Server - Request "/sfx/enter_realm.mp3" from: 127.0.0.1:56278
+2026-06-01 22:36:39,010 [10] INFO  Server - Request "/sfx/no_mana.mp3" from: 127.0.0.1:56277
+2026-06-01 22:36:39,010 [11] INFO  Server - Request "/sfx/death_screen.mp3" from: 127.0.0.1:56278
+2026-06-01 22:36:39,010 [11] INFO  Server - Request "/sfx/use_key.mp3" from: 127.0.0.1:56277
+2026-06-01 22:36:39,010 [10] INFO  Server - Request "/sfx/loot_appears.mp3" from: 127.0.0.1:56278
+2026-06-01 22:36:39,010 [11] INFO  Server - Request "/sfx/inventory_move_item.mp3" from: 127.0.0.1:56277
+2026-06-01 22:36:39,010 [10] INFO  Server - Request "/sfx/error.mp3" from: 127.0.0.1:56278
+2026-06-01 22:36:39,010 [11] INFO  Server - Request "/music/sorc.mp3" from: 127.0.0.1:56277
+2026-06-01 22:36:39,011 [10] INFO  Server - Request "/crossdomain.xml" from: 127.0.0.1:56278
+2026-06-01 22:36:39,012 [10] INFO  Server - Request "/app/getLanguageStrings" from: 127.0.0.1:56278
+2026-06-01 22:36:39,092 [10] INFO  Server - Request "/app/init" from: 127.0.0.1:56278
+2026-06-01 22:36:39,125 [10] INFO  Server - Request "/char/list" from: 127.0.0.1:56278
+2026-06-01 22:36:41,294 [10] INFO  Server - Request "/package/getPackages" from: 127.0.0.1:56278
+2026-06-01 22:36:41,309 [10] INFO  Server - Request "/app/globalNews" from: 127.0.0.1:56278
+2026-06-01 22:36:41,440 [10] INFO  Server - Request "/mysterybox/getBoxes" from: 127.0.0.1:56278
+2026-06-01 22:36:49,961 [10] INFO  Server - Request "/sfx/player/wizard_hit.mp3" from: 127.0.0.1:56277
+2026-06-01 22:36:49,961 [10] INFO  Server - Request "/sfx/player/wizard_death.mp3" from: 127.0.0.1:56278
+2026-06-01 22:42:21,114 [Entry] INFO  db.SimpleSettings - Loading settings for 'server'...
+2026-06-01 22:42:21,119 [Entry] INFO  db.SimpleSettings - Settings loaded.
+2026-06-01 22:42:21,215 [Entry] INFO  db.SimpleSettings - Loading settings for 'autoId'...
+2026-06-01 22:42:21,215 [Entry] INFO  db.SimpleSettings - Settings not found.
+2026-06-01 22:42:21,215 [Entry] INFO  db.data.XmlData - Loading game data from 'E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\bin\Debug\data'...
+2026-06-01 22:42:21,216 [Entry] INFO  db.data.XmlData - Loading 'E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\bin\Debug\data\dat0.xml'(1/4)...
+2026-06-01 22:42:21,221 [Entry] INFO  db.data.XmlData - Loading 'E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\bin\Debug\data\dat1.xml'(2/4)...
+2026-06-01 22:42:21,274 [Entry] INFO  db.data.XmlData - Loading 'E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\bin\Debug\data\Addition.xml'(3/4)...
+2026-06-01 22:42:21,275 [Entry] INFO  db.data.XmlData - Auto assigned 'Niggo' to 0xc350
+2026-06-01 22:42:21,275 [Entry] INFO  db.data.XmlData - Auto assigned 'Over Niggo' to 0xc351
+2026-06-01 22:42:21,275 [Entry] INFO  db.data.XmlData - Auto assigned 'Forgotten Archmage of Flame' to 0xc352
+2026-06-01 22:42:21,276 [Entry] INFO  db.data.XmlData - Loading 'E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\bin\Debug\data\EquipmentSets.xml'(4/4)...
+2026-06-01 22:42:21,280 [Entry] INFO  db.data.XmlData - Finish loading game data.
+2026-06-01 22:42:21,281 [Entry] INFO  db.data.XmlData - 1281 Items
+2026-06-01 22:42:21,281 [Entry] INFO  db.data.XmlData - 333 Tiles
+2026-06-01 22:42:21,281 [Entry] INFO  db.data.XmlData - 2232 Objects
+2026-06-01 22:42:21,281 [Entry] INFO  db.data.XmlData - 3 Additions
+2026-06-01 22:42:21,285 [Entry] INFO  Server - Listening at port 80...
+2026-06-01 22:42:29,388 [6] INFO  Server - Request "/music/sorc.mp3" from: 127.0.0.1:56559
+2026-06-01 22:42:29,402 [6] INFO  Server - Request "/sfx/death_screen.mp3" from: 127.0.0.1:56560
+2026-06-01 22:42:29,403 [6] INFO  Server - Request "/sfx/loot_appears.mp3" from: 127.0.0.1:56559
+2026-06-01 22:42:29,404 [6] INFO  Server - Request "/sfx/button_click.mp3" from: 127.0.0.1:56560
+2026-06-01 22:42:29,404 [3] INFO  Server - Request "/sfx/use_key.mp3" from: 127.0.0.1:56559
+2026-06-01 22:42:29,404 [6] INFO  Server - Request "/sfx/inventory_move_item.mp3" from: 127.0.0.1:56560
+2026-06-01 22:42:29,404 [3] INFO  Server - Request "/crossdomain.xml" from: 127.0.0.1:56559
+2026-06-01 22:42:29,404 [6] INFO  Server - Request "/sfx/level_up.mp3" from: 127.0.0.1:56560
+2026-06-01 22:42:29,405 [6] INFO  Server - Request "/sfx/error.mp3" from: 127.0.0.1:56560
+2026-06-01 22:42:29,405 [6] INFO  Server - Request "/sfx/use_potion.mp3" from: 127.0.0.1:56560
+2026-06-01 22:42:29,405 [3] INFO  Server - Request "/sfx/no_mana.mp3" from: 127.0.0.1:56559
+2026-06-01 22:42:29,405 [6] INFO  Server - Request "/sfx/enter_realm.mp3" from: 127.0.0.1:56560
+2026-06-01 22:42:29,405 [3] INFO  Server - Request "/app/getLanguageStrings" from: 127.0.0.1:56559
+2026-06-01 22:42:29,451 [3] INFO  Server - Request "/app/init" from: 127.0.0.1:56559
+2026-06-01 22:42:29,474 [3] INFO  Server - Request "/char/list" from: 127.0.0.1:56559
+2026-06-01 22:42:29,764 [3] INFO  Server - Request "/package/getPackages" from: 127.0.0.1:56559
+2026-06-01 22:42:29,800 [3] INFO  Server - Request "/app/globalNews" from: 127.0.0.1:56559
+2026-06-01 22:42:30,543 [3] INFO  Server - Request "/mysterybox/getBoxes" from: 127.0.0.1:56559
+2026-06-01 22:47:07,174 [3] INFO  Server - Request "/sfx/player/wizard_hit.mp3" from: 127.0.0.1:56674
+2026-06-01 22:47:07,174 [3] INFO  Server - Request "/sfx/player/wizard_death.mp3" from: 127.0.0.1:56675
+2026-06-01 22:47:09,939 [3] INFO  Server - Request "/picture/get" from: 127.0.0.1:56675
+2026-06-01 22:47:09,939 [7] INFO  Server - Request "/picture/get" from: 127.0.0.1:56674
+2026-06-01 22:47:10,177 [3] INFO  Server - Request "/sfx/monster/default_death.mp3" from: 127.0.0.1:56675
+2026-06-01 22:47:10,177 [7] INFO  Server - Request "/sfx/monster/default_hit.mp3" from: 127.0.0.1:56674
+2026-06-01 22:47:11,088 [7] INFO  Server - Request "/sfx/magicShoot.mp3" from: 127.0.0.1:56674
+2026-06-01 22:51:44,761 [Entry] INFO  db.SimpleSettings - Loading settings for 'server'...
+2026-06-01 22:51:44,767 [Entry] INFO  db.SimpleSettings - Settings loaded.
+2026-06-01 22:51:44,860 [Entry] INFO  db.SimpleSettings - Loading settings for 'autoId'...
+2026-06-01 22:51:44,860 [Entry] INFO  db.SimpleSettings - Settings not found.
+2026-06-01 22:51:44,860 [Entry] INFO  db.data.XmlData - Loading game data from 'E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\bin\Debug\data'...
+2026-06-01 22:51:44,861 [Entry] INFO  db.data.XmlData - Loading 'E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\bin\Debug\data\dat0.xml'(1/4)...
+2026-06-01 22:51:44,866 [Entry] INFO  db.data.XmlData - Loading 'E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\bin\Debug\data\dat1.xml'(2/4)...
+2026-06-01 22:51:44,917 [Entry] INFO  db.data.XmlData - Loading 'E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\bin\Debug\data\Addition.xml'(3/4)...
+2026-06-01 22:51:44,918 [Entry] INFO  db.data.XmlData - Auto assigned 'Niggo' to 0xc350
+2026-06-01 22:51:44,918 [Entry] INFO  db.data.XmlData - Auto assigned 'Over Niggo' to 0xc351
+2026-06-01 22:51:44,918 [Entry] INFO  db.data.XmlData - Auto assigned 'Forgotten Archmage of Flame' to 0xc352
+2026-06-01 22:51:44,918 [Entry] INFO  db.data.XmlData - Loading 'E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\bin\Debug\data\EquipmentSets.xml'(4/4)...
+2026-06-01 22:51:44,923 [Entry] INFO  db.data.XmlData - Finish loading game data.
+2026-06-01 22:51:44,923 [Entry] INFO  db.data.XmlData - 1281 Items
+2026-06-01 22:51:44,923 [Entry] INFO  db.data.XmlData - 333 Tiles
+2026-06-01 22:51:44,923 [Entry] INFO  db.data.XmlData - 2232 Objects
+2026-06-01 22:51:44,923 [Entry] INFO  db.data.XmlData - 3 Additions
+2026-06-01 22:51:44,928 [Entry] INFO  Server - Listening at port 80...
+2026-06-01 22:52:01,416 [6] INFO  Server - Request "/sfx/loot_appears.mp3" from: 127.0.0.1:56840
+2026-06-01 22:52:01,419 [6] INFO  Server - Request "/sfx/death_screen.mp3" from: 127.0.0.1:56839
+2026-06-01 22:52:01,420 [6] INFO  Server - Request "/sfx/button_click.mp3" from: 127.0.0.1:56840
+2026-06-01 22:52:01,420 [3] INFO  Server - Request "/sfx/use_key.mp3" from: 127.0.0.1:56839
+2026-06-01 22:52:01,420 [6] INFO  Server - Request "/sfx/use_potion.mp3" from: 127.0.0.1:56840
+2026-06-01 22:52:01,421 [3] INFO  Server - Request "/sfx/enter_realm.mp3" from: 127.0.0.1:56839
+2026-06-01 22:52:01,421 [6] INFO  Server - Request "/sfx/level_up.mp3" from: 127.0.0.1:56840
+2026-06-01 22:52:01,421 [6] INFO  Server - Request "/sfx/inventory_move_item.mp3" from: 127.0.0.1:56839
+2026-06-01 22:52:01,421 [3] INFO  Server - Request "/sfx/error.mp3" from: 127.0.0.1:56840
+2026-06-01 22:52:01,421 [6] INFO  Server - Request "/sfx/no_mana.mp3" from: 127.0.0.1:56839
+2026-06-01 22:52:01,421 [3] INFO  Server - Request "/crossdomain.xml" from: 127.0.0.1:56840
+2026-06-01 22:52:01,421 [6] INFO  Server - Request "/music/sorc.mp3" from: 127.0.0.1:56839
+2026-06-01 22:52:01,423 [3] INFO  Server - Request "/app/getLanguageStrings" from: 127.0.0.1:56840
+2026-06-01 22:52:01,480 [3] INFO  Server - Request "/app/init" from: 127.0.0.1:56840
+2026-06-01 22:52:01,510 [3] INFO  Server - Request "/char/list" from: 127.0.0.1:56840
+2026-06-01 22:52:01,633 [3] INFO  Server - Request "/package/getPackages" from: 127.0.0.1:56840
+2026-06-01 22:52:01,665 [3] INFO  Server - Request "/app/globalNews" from: 127.0.0.1:56840
+2026-06-01 22:52:01,807 [3] INFO  Server - Request "/mysterybox/getBoxes" from: 127.0.0.1:56840
+2026-06-01 23:00:36,281 [Entry] INFO  db.SimpleSettings - Loading settings for 'server'...
+2026-06-01 23:00:36,293 [Entry] INFO  db.SimpleSettings - Settings loaded.
+2026-06-01 23:00:36,389 [Entry] INFO  db.SimpleSettings - Loading settings for 'autoId'...
+2026-06-01 23:00:36,389 [Entry] INFO  db.SimpleSettings - Settings not found.
+2026-06-01 23:00:36,389 [Entry] INFO  db.data.XmlData - Loading game data from 'E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\bin\Debug\data'...
+2026-06-01 23:00:36,390 [Entry] INFO  db.data.XmlData - Loading 'E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\bin\Debug\data\dat0.xml'(1/4)...
+2026-06-01 23:00:36,395 [Entry] INFO  db.data.XmlData - Loading 'E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\bin\Debug\data\dat1.xml'(2/4)...
+2026-06-01 23:00:36,448 [Entry] INFO  db.data.XmlData - Loading 'E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\bin\Debug\data\Addition.xml'(3/4)...
+2026-06-01 23:00:36,448 [Entry] INFO  db.data.XmlData - Auto assigned 'Niggo' to 0xc350
+2026-06-01 23:00:36,448 [Entry] INFO  db.data.XmlData - Auto assigned 'Over Niggo' to 0xc351
+2026-06-01 23:00:36,448 [Entry] INFO  db.data.XmlData - Auto assigned 'Forgotten Archmage of Flame' to 0xc352
+2026-06-01 23:00:36,449 [Entry] INFO  db.data.XmlData - Loading 'E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\bin\Debug\data\EquipmentSets.xml'(4/4)...
+2026-06-01 23:00:36,453 [Entry] INFO  db.data.XmlData - Finish loading game data.
+2026-06-01 23:00:36,454 [Entry] INFO  db.data.XmlData - 1281 Items
+2026-06-01 23:00:36,455 [Entry] INFO  db.data.XmlData - 333 Tiles
+2026-06-01 23:00:36,455 [Entry] INFO  db.data.XmlData - 2232 Objects
+2026-06-01 23:00:36,455 [Entry] INFO  db.data.XmlData - 3 Additions
+2026-06-01 23:00:36,459 [Entry] INFO  Server - Listening at port 80...
+2026-06-01 23:01:04,830 [Entry] INFO  db.SimpleSettings - Loading settings for 'server'...
+2026-06-01 23:01:04,842 [Entry] INFO  db.SimpleSettings - Settings loaded.
+2026-06-01 23:01:04,937 [Entry] INFO  db.SimpleSettings - Loading settings for 'autoId'...
+2026-06-01 23:01:04,938 [Entry] INFO  db.SimpleSettings - Settings not found.
+2026-06-01 23:01:04,938 [Entry] INFO  db.data.XmlData - Loading game data from 'E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\bin\Debug\data'...
+2026-06-01 23:01:04,938 [Entry] INFO  db.data.XmlData - Loading 'E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\bin\Debug\data\dat0.xml'(1/4)...
+2026-06-01 23:01:04,943 [Entry] INFO  db.data.XmlData - Loading 'E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\bin\Debug\data\dat1.xml'(2/4)...
+2026-06-01 23:01:04,994 [Entry] INFO  db.data.XmlData - Loading 'E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\bin\Debug\data\Addition.xml'(3/4)...
+2026-06-01 23:01:04,995 [Entry] INFO  db.data.XmlData - Auto assigned 'Niggo' to 0xc350
+2026-06-01 23:01:04,995 [Entry] INFO  db.data.XmlData - Auto assigned 'Over Niggo' to 0xc351
+2026-06-01 23:01:04,995 [Entry] INFO  db.data.XmlData - Auto assigned 'Forgotten Archmage of Flame' to 0xc352
+2026-06-01 23:01:04,995 [Entry] INFO  db.data.XmlData - Loading 'E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\bin\Debug\data\EquipmentSets.xml'(4/4)...
+2026-06-01 23:01:04,999 [Entry] INFO  db.data.XmlData - Finish loading game data.
+2026-06-01 23:01:04,999 [Entry] INFO  db.data.XmlData - 1281 Items
+2026-06-01 23:01:04,999 [Entry] INFO  db.data.XmlData - 333 Tiles
+2026-06-01 23:01:04,999 [Entry] INFO  db.data.XmlData - 2232 Objects
+2026-06-01 23:01:04,999 [Entry] INFO  db.data.XmlData - 3 Additions
+2026-06-01 23:01:09,660 [Entry] INFO  Server - Terminating...
+2026-06-01 23:01:09,661 [Entry] INFO  db.SimpleSettings - Saving settings for 'autoId'...
+2026-06-01 23:01:23,495 [Entry] INFO  db.SimpleSettings - Loading settings for 'server'...
+2026-06-01 23:01:23,507 [Entry] INFO  db.SimpleSettings - Settings loaded.
+2026-06-01 23:01:23,600 [Entry] INFO  db.SimpleSettings - Loading settings for 'autoId'...
+2026-06-01 23:01:23,600 [Entry] INFO  db.SimpleSettings - Settings loaded.
+2026-06-01 23:01:23,600 [Entry] INFO  db.data.XmlData - Loading game data from 'E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\bin\Debug\data'...
+2026-06-01 23:01:23,601 [Entry] INFO  db.data.XmlData - Loading 'E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\bin\Debug\data\dat0.xml'(1/4)...
+2026-06-01 23:01:23,606 [Entry] INFO  db.data.XmlData - Loading 'E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\bin\Debug\data\dat1.xml'(2/4)...
+2026-06-01 23:01:23,657 [Entry] INFO  db.data.XmlData - Loading 'E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\bin\Debug\data\Addition.xml'(3/4)...
+2026-06-01 23:01:23,658 [Entry] INFO  db.data.XmlData - Loading 'E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\bin\Debug\data\EquipmentSets.xml'(4/4)...
+2026-06-01 23:01:23,663 [Entry] INFO  db.data.XmlData - Finish loading game data.
+2026-06-01 23:01:23,663 [Entry] INFO  db.data.XmlData - 1281 Items
+2026-06-01 23:01:23,663 [Entry] INFO  db.data.XmlData - 333 Tiles
+2026-06-01 23:01:23,663 [Entry] INFO  db.data.XmlData - 2232 Objects
+2026-06-01 23:01:23,663 [Entry] INFO  db.data.XmlData - 3 Additions
+2026-06-01 23:01:23,666 [Entry] INFO  Server - Listening at port 2050...
+2026-06-01 23:06:28,682 [Entry] INFO  db.SimpleSettings - Loading settings for 'server'...
+2026-06-01 23:06:28,687 [Entry] INFO  db.SimpleSettings - Settings loaded.
+2026-06-01 23:06:28,781 [Entry] INFO  db.SimpleSettings - Loading settings for 'autoId'...
+2026-06-01 23:06:28,782 [Entry] INFO  db.SimpleSettings - Settings loaded.
+2026-06-01 23:06:28,782 [Entry] INFO  db.data.XmlData - Loading game data from 'E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\bin\Debug\data'...
+2026-06-01 23:06:28,782 [Entry] INFO  db.data.XmlData - Loading 'E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\bin\Debug\data\dat0.xml'(1/4)...
+2026-06-01 23:06:28,787 [Entry] INFO  db.data.XmlData - Loading 'E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\bin\Debug\data\dat1.xml'(2/4)...
+2026-06-01 23:06:28,840 [Entry] INFO  db.data.XmlData - Loading 'E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\bin\Debug\data\Addition.xml'(3/4)...
+2026-06-01 23:06:28,841 [Entry] INFO  db.data.XmlData - Loading 'E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\bin\Debug\data\EquipmentSets.xml'(4/4)...
+2026-06-01 23:06:28,845 [Entry] INFO  db.data.XmlData - Finish loading game data.
+2026-06-01 23:06:28,846 [Entry] INFO  db.data.XmlData - 1281 Items
+2026-06-01 23:06:28,846 [Entry] INFO  db.data.XmlData - 333 Tiles
+2026-06-01 23:06:28,846 [Entry] INFO  db.data.XmlData - 2232 Objects
+2026-06-01 23:06:28,846 [Entry] INFO  db.data.XmlData - 3 Additions
+2026-06-01 23:08:43,924 [Entry] INFO  db.SimpleSettings - Loading settings for 'server'...
+2026-06-01 23:08:43,936 [Entry] INFO  db.SimpleSettings - Settings loaded.
+2026-06-01 23:08:44,036 [Entry] INFO  db.SimpleSettings - Loading settings for 'autoId'...
+2026-06-01 23:08:44,037 [Entry] INFO  db.SimpleSettings - Settings loaded.
+2026-06-01 23:08:44,037 [Entry] INFO  db.data.XmlData - Loading game data from 'E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\bin\Debug\data'...
+2026-06-01 23:08:44,038 [Entry] INFO  db.data.XmlData - Loading 'E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\bin\Debug\data\dat0.xml'(1/4)...
+2026-06-01 23:08:44,043 [Entry] INFO  db.data.XmlData - Loading 'E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\bin\Debug\data\dat1.xml'(2/4)...
+2026-06-01 23:08:44,094 [Entry] INFO  db.data.XmlData - Loading 'E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\bin\Debug\data\Addition.xml'(3/4)...
+2026-06-01 23:08:44,095 [Entry] INFO  db.data.XmlData - Loading 'E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\bin\Debug\data\EquipmentSets.xml'(4/4)...
+2026-06-01 23:08:44,100 [Entry] INFO  db.data.XmlData - Finish loading game data.
+2026-06-01 23:08:44,100 [Entry] INFO  db.data.XmlData - 1281 Items
+2026-06-01 23:08:44,100 [Entry] INFO  db.data.XmlData - 333 Tiles
+2026-06-01 23:08:44,100 [Entry] INFO  db.data.XmlData - 2232 Objects
+2026-06-01 23:08:44,100 [Entry] INFO  db.data.XmlData - 3 Additions
+2026-06-01 23:08:44,104 [Entry] INFO  Server - Listening at port 27019...
+2026-06-01 23:17:06,158 [Entry] INFO  db.SimpleSettings - Loading settings for 'server'...
+2026-06-01 23:17:06,164 [Entry] INFO  db.SimpleSettings - Settings loaded.
+2026-06-01 23:17:06,259 [Entry] INFO  db.SimpleSettings - Loading settings for 'autoId'...
+2026-06-01 23:17:06,260 [Entry] INFO  db.SimpleSettings - Settings loaded.
+2026-06-01 23:17:06,260 [Entry] INFO  db.data.XmlData - Loading game data from 'E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\bin\Debug\data'...
+2026-06-01 23:17:06,260 [Entry] INFO  db.data.XmlData - Loading 'E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\bin\Debug\data\dat0.xml'(1/4)...
+2026-06-01 23:17:06,267 [Entry] INFO  db.data.XmlData - Loading 'E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\bin\Debug\data\dat1.xml'(2/4)...
+2026-06-01 23:17:06,320 [Entry] INFO  db.data.XmlData - Loading 'E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\bin\Debug\data\Addition.xml'(3/4)...
+2026-06-01 23:17:06,321 [Entry] INFO  db.data.XmlData - Loading 'E:\fabiano-swagger-of-doom-master\fabiano-swagger-of-doom-master\bin\Debug\data\EquipmentSets.xml'(4/4)...
+2026-06-01 23:17:06,325 [Entry] INFO  db.data.XmlData - Finish loading game data.
+2026-06-01 23:17:06,325 [Entry] INFO  db.data.XmlData - 1281 Items
+2026-06-01 23:17:06,325 [Entry] INFO  db.data.XmlData - 333 Tiles
+2026-06-01 23:17:06,325 [Entry] INFO  db.data.XmlData - 2232 Objects
+2026-06-01 23:17:06,325 [Entry] INFO  db.data.XmlData - 3 Additions
+2026-06-01 23:17:06,329 [Entry] INFO  Server - Listening at port 27019...
+2026-06-01 23:20:02,541 [3] INFO  Server - Request "/sfx/death_screen.mp3" from: 68.43.56.248:57643
+2026-06-01 23:20:02,541 [6] INFO  Server - Request "/sfx/loot_appears.mp3" from: 68.43.56.248:57644
+2026-06-01 23:20:02,545 [3] INFO  Server - Request "/sfx/button_click.mp3" from: 68.43.56.248:57643
+2026-06-01 23:20:02,546 [3] INFO  Server - Request "/sfx/no_mana.mp3" from: 68.43.56.248:57643
+2026-06-01 23:20:02,547 [6] INFO  Server - Request "/sfx/inventory_move_item.mp3" from: 68.43.56.248:57643
+2026-06-01 23:20:02,547 [6] INFO  Server - Request "/music/sorc.mp3" from: 68.43.56.248:57644
+2026-06-01 23:20:02,547 [3] INFO  Server - Request "/sfx/use_key.mp3" from: 68.43.56.248:57643
+2026-06-01 23:20:02,548 [3] INFO  Server - Request "/crossdomain.xml" from: 68.43.56.248:57643
+2026-06-01 23:20:02,549 [3] INFO  Server - Request "/sfx/enter_realm.mp3" from: 68.43.56.248:57643
+2026-06-01 23:20:02,553 [3] INFO  Server - Request "/sfx/level_up.mp3" from: 68.43.56.248:57643
+2026-06-01 23:20:02,560 [3] INFO  Server - Request "/sfx/use_potion.mp3" from: 68.43.56.248:57643
+2026-06-01 23:20:02,567 [3] INFO  Server - Request "/sfx/error.mp3" from: 68.43.56.248:57643
+2026-06-01 23:20:02,570 [3] INFO  Server - Request "/app/getLanguageStrings" from: 68.43.56.248:57643
+2026-06-01 23:20:02,647 [3] INFO  Server - Request "/app/init" from: 68.43.56.248:57643
+2026-06-01 23:20:02,923 [6] INFO  Server - Request "/char/list" from: 68.43.56.248:57644
+2026-06-01 23:20:03,094 [6] INFO  Server - Request "/package/getPackages" from: 68.43.56.248:57644
+2026-06-01 23:20:03,196 [6] INFO  Server - Request "/app/globalNews" from: 68.43.56.248:57644
+2026-06-01 23:20:03,676 [6] INFO  Server - Request "/mysterybox/getBoxes" from: 68.43.56.248:57644
+2026-06-01 23:20:49,442 [6] INFO  Server - Request "/sfx/inventory_move_item.mp3" from: 68.43.56.248:57683
+2026-06-01 23:20:49,442 [6] INFO  Server - Request "/sfx/error.mp3" from: 68.43.56.248:57682
+2026-06-01 23:20:49,444 [6] INFO  Server - Request "/sfx/no_mana.mp3" from: 68.43.56.248:57682
+2026-06-01 23:20:49,444 [7] INFO  Server - Request "/sfx/level_up.mp3" from: 68.43.56.248:57683
+2026-06-01 23:20:49,445 [7] INFO  Server - Request "/crossdomain.xml" from: 68.43.56.248:57682
+2026-06-01 23:20:49,445 [9] INFO  Server - Request "/sfx/use_key.mp3" from: 68.43.56.248:57683
+2026-06-01 23:20:49,446 [9] INFO  Server - Request "/sfx/death_screen.mp3" from: 68.43.56.248:57683
+2026-06-01 23:20:49,446 [7] INFO  Server - Request "/sfx/enter_realm.mp3" from: 68.43.56.248:57682
+2026-06-01 23:20:49,446 [7] INFO  Server - Request "/sfx/use_potion.mp3" from: 68.43.56.248:57683
+2026-06-01 23:20:49,447 [7] INFO  Server - Request "/sfx/button_click.mp3" from: 68.43.56.248:57682
+2026-06-01 23:20:49,447 [7] INFO  Server - Request "/music/sorc.mp3" from: 68.43.56.248:57683
+2026-06-01 23:20:49,448 [9] INFO  Server - Request "/sfx/loot_appears.mp3" from: 68.43.56.248:57682
+2026-06-01 23:20:49,449 [9] INFO  Server - Request "/app/getLanguageStrings" from: 68.43.56.248:57682
+2026-06-01 23:20:49,538 [9] INFO  Server - Request "/app/init" from: 68.43.56.248:57682
+2026-06-01 23:20:49,729 [7] INFO  Server - Request "/char/list" from: 68.43.56.248:57683
+2026-06-01 23:20:49,804 [7] INFO  Server - Request "/package/getPackages" from: 68.43.56.248:57683
+2026-06-01 23:20:50,185 [7] INFO  Server - Request "/app/globalNews" from: 68.43.56.248:57683
+2026-06-01 23:20:50,617 [7] INFO  Server - Request "/mysterybox/getBoxes" from: 68.43.56.248:57683
+2026-06-01 23:20:53,343 [7] INFO  Server - Request "/sfx/player/wizard_hit.mp3" from: 68.43.56.248:57683
+2026-06-01 23:20:53,343 [9] INFO  Server - Request "/sfx/player/wizard_death.mp3" from: 68.43.56.248:57682
+2026-06-01 23:20:56,408 [9] INFO  Server - Request "/picture/get" from: 68.43.56.248:57682
+2026-06-01 23:20:56,408 [7] INFO  Server - Request "/picture/get" from: 68.43.56.248:57683
+2026-06-01 23:20:56,668 [7] INFO  Server - Request "/sfx/monster/default_hit.mp3" from: 68.43.56.248:57683
+2026-06-01 23:20:56,668 [9] INFO  Server - Request "/sfx/monster/default_death.mp3" from: 68.43.56.248:57682
+2026-06-01 23:20:57,691 [9] INFO  Server - Request "/sfx/magicShoot.mp3" from: 68.43.56.248:57682
+2026-06-01 23:21:01,593 [9] INFO  Server - Request "/sfx/loot_appears.mp3" from: 107.4.9.97:51600
+2026-06-01 23:21:01,593 [7] INFO  Server - Request "/sfx/error.mp3" from: 107.4.9.97:51601
+2026-06-01 23:21:01,623 [7] INFO  Server - Request "/sfx/death_screen.mp3" from: 107.4.9.97:51600
+2026-06-01 23:21:01,623 [7] INFO  Server - Request "/crossdomain.xml" from: 107.4.9.97:51601
+2026-06-01 23:21:01,654 [7] INFO  Server - Request "/sfx/use_key.mp3" from: 107.4.9.97:51600
+2026-06-01 23:21:01,672 [7] INFO  Server - Request "/sfx/level_up.mp3" from: 107.4.9.97:51601
+2026-06-01 23:21:01,688 [7] INFO  Server - Request "/sfx/inventory_move_item.mp3" from: 107.4.9.97:51600
+2026-06-01 23:21:01,711 [7] INFO  Server - Request "/sfx/use_potion.mp3" from: 107.4.9.97:51601
+2026-06-01 23:21:01,716 [7] INFO  Server - Request "/sfx/button_click.mp3" from: 107.4.9.97:51600
+2026-06-01 23:21:01,744 [7] INFO  Server - Request "/sfx/no_mana.mp3" from: 107.4.9.97:51601
+2026-06-01 23:21:01,748 [7] INFO  Server - Request "/sfx/enter_realm.mp3" from: 107.4.9.97:51600
+2026-06-01 23:21:01,778 [7] INFO  Server - Request "/music/sorc.mp3" from: 107.4.9.97:51601
+2026-06-01 23:21:01,784 [9] INFO  Server - Request "/app/getLanguageStrings" from: 107.4.9.97:51600
+2026-06-01 23:21:02,169 [9] INFO  Server - Request "/app/init" from: 107.4.9.97:51600
+2026-06-01 23:21:02,358 [7] INFO  Server - Request "/char/list" from: 107.4.9.97:51601
+2026-06-01 23:21:02,458 [7] INFO  Server - Request "/package/getPackages" from: 107.4.9.97:51601
+2026-06-01 23:21:02,508 [7] INFO  Server - Request "/app/globalNews" from: 107.4.9.97:51601
+2026-06-01 23:21:02,763 [7] INFO  Server - Request "/mysterybox/getBoxes" from: 107.4.9.97:51601
+2026-06-01 23:21:11,895 [7] INFO  Server - Request "/picture/get" from: 107.4.9.97:51601
+2026-06-01 23:21:11,900 [7] INFO  Server - Request "/picture/get" from: 107.4.9.97:51600
+2026-06-01 23:21:12,054 [7] INFO  Server - Request "/char/list" from: 107.4.9.97:51600
+2026-06-01 23:21:53,710 [7] INFO  Server - Request "/account/register" from: 107.4.9.97:51600
+2026-06-01 23:22:03,330 [7] INFO  Server - Request "/picture/get" from: 107.4.9.97:51601
+2026-06-01 23:22:03,332 [3] INFO  Server - Request "/picture/get" from: 107.4.9.97:51600
+2026-06-01 23:22:03,436 [3] INFO  Server - Request "/log/logFteStep" from: 107.4.9.97:51600
+2026-06-01 23:22:03,679 [3] INFO  Server - Request "/sfx/monster/chicken_death.mp3" from: 107.4.9.97:51601
+2026-06-01 23:22:03,680 [3] INFO  Server - Request "/sfx/player/wizard_hit.mp3" from: 107.4.9.97:51600
+2026-06-01 23:22:03,708 [3] INFO  Server - Request "/sfx/player/wizard_death.mp3" from: 107.4.9.97:51601
+2026-06-01 23:22:03,714 [3] INFO  Server - Request "/sfx/monster/chicken_hit.mp3" from: 107.4.9.97:51600
+2026-06-01 23:22:05,620 [3] INFO  Server - Request "/sfx/magicShoot.mp3" from: 107.4.9.97:51600
+2026-06-01 23:22:30,807 [3] INFO  Server - Request "/music/sorc.mp3" from: 107.4.9.97:51665
+2026-06-01 23:22:31,233 [3] INFO  Server - Request "/sfx/loot_appears.mp3" from: 107.4.9.97:51664
+2026-06-01 23:22:31,259 [3] INFO  Server - Request "/sfx/no_mana.mp3" from: 107.4.9.97:51665
+2026-06-01 23:22:31,273 [3] INFO  Server - Request "/crossdomain.xml" from: 107.4.9.97:51664
+2026-06-01 23:22:31,295 [3] INFO  Server - Request "/sfx/inventory_move_item.mp3" from: 107.4.9.97:51665
+2026-06-01 23:22:31,320 [3] INFO  Server - Request "/sfx/use_key.mp3" from: 107.4.9.97:51664
+2026-06-01 23:22:31,325 [3] INFO  Server - Request "/sfx/use_potion.mp3" from: 107.4.9.97:51665
+2026-06-01 23:22:31,355 [3] INFO  Server - Request "/sfx/level_up.mp3" from: 107.4.9.97:51664
+2026-06-01 23:22:31,360 [3] INFO  Server - Request "/sfx/enter_realm.mp3" from: 107.4.9.97:51665
+2026-06-01 23:22:31,391 [3] INFO  Server - Request "/sfx/button_click.mp3" from: 107.4.9.97:51664
+2026-06-01 23:22:31,396 [3] INFO  Server - Request "/sfx/error.mp3" from: 107.4.9.97:51665
+2026-06-01 23:22:31,429 [3] INFO  Server - Request "/sfx/death_screen.mp3" from: 107.4.9.97:51664
+2026-06-01 23:22:31,435 [3] INFO  Server - Request "/app/getLanguageStrings" from: 107.4.9.97:51665
+2026-06-01 23:22:31,749 [3] INFO  Server - Request "/app/init" from: 107.4.9.97:51665
+2026-06-01 23:22:31,858 [3] INFO  Server - Request "/char/list" from: 107.4.9.97:51665
+2026-06-01 23:22:31,988 [3] INFO  Server - Request "/package/getPackages" from: 107.4.9.97:51665
+2026-06-01 23:22:32,050 [3] INFO  Server - Request "/app/globalNews" from: 107.4.9.97:51665
+2026-06-01 23:22:32,221 [3] INFO  Server - Request "/mysterybox/getBoxes" from: 107.4.9.97:51665
+2026-06-01 23:22:34,650 [3] INFO  Server - Request "/char/list" from: 68.43.56.248:57743
+2026-06-01 23:22:35,665 [3] INFO  Server - Request "/char/list" from: 68.43.56.248:57743
+2026-06-01 23:22:35,900 [3] INFO  Server - Request "/sfx/player/wizard_hit.mp3" from: 107.4.9.97:51665
+2026-06-01 23:22:35,906 [3] INFO  Server - Request "/sfx/player/wizard_death.mp3" from: 107.4.9.97:51664
+2026-06-01 23:22:38,601 [3] INFO  Server - Request "/picture/get" from: 68.43.56.248:57743
+2026-06-01 23:22:38,601 [10] INFO  Server - Request "/picture/get" from: 68.43.56.248:57748
+2026-06-01 23:22:39,822 [10] INFO  Server - Request "/picture/get" from: 107.4.9.97:51664
+2026-06-01 23:22:39,824 [10] INFO  Server - Request "/picture/get" from: 107.4.9.97:51665
+2026-06-01 23:22:40,058 [10] INFO  Server - Request "/sfx/monster/default_death.mp3" from: 107.4.9.97:51664
+2026-06-01 23:22:40,059 [10] INFO  Server - Request "/sfx/monster/default_hit.mp3" from: 107.4.9.97:51665
+2026-06-01 23:22:40,087 [10] INFO  Server - Request "/log/logFteStep" from: 107.4.9.97:51665
+2026-06-01 23:22:41,124 [10] INFO  Server - Request "/sfx/magicShoot.mp3" from: 107.4.9.97:51665
+2026-06-01 23:23:30,985 [10] INFO  Server - Request "/sfx/monster/oryx_hit.mp3" from: 68.43.56.248:57748
+2026-06-01 23:23:30,986 [11] INFO  Server - Request "/sfx/monster/oryx_death.mp3" from: 68.43.56.248:57743
+2026-06-01 23:23:31,011 [11] INFO  Server - Request "/sfx/monster/oryx_death.mp3" from: 107.4.9.97:51664
+2026-06-01 23:23:31,011 [11] INFO  Server - Request "/sfx/monster/oryx_hit.mp3" from: 107.4.9.97:51665
+2026-06-01 23:23:31,207 [11] INFO  Server - Request "/sfx/monster/minion_of_oryx_hit.mp3" from: 68.43.56.248:57743
+2026-06-01 23:23:31,207 [12] INFO  Server - Request "/sfx/monster/minion_of_oryx_death.mp3" from: 68.43.56.248:57748
+2026-06-01 23:23:31,241 [12] INFO  Server - Request "/sfx/monster/minion_of_oryx_death.mp3" from: 107.4.9.97:51664
+2026-06-01 23:23:31,241 [12] INFO  Server - Request "/sfx/monster/minion_of_oryx_hit.mp3" from: 107.4.9.97:51665
+2026-06-01 23:33:14,142 [12] INFO  Server - Request "/sfx/enter_realm.mp3" from: 68.43.56.248:58090
+2026-06-01 23:33:14,142 [13] INFO  Server - Request "/sfx/error.mp3" from: 68.43.56.248:58091
+2026-06-01 23:33:14,144 [13] INFO  Server - Request "/sfx/button_click.mp3" from: 68.43.56.248:58090
+2026-06-01 23:33:14,144 [12] INFO  Server - Request "/music/sorc.mp3" from: 68.43.56.248:58091
+2026-06-01 23:33:14,145 [13] INFO  Server - Request "/sfx/use_potion.mp3" from: 68.43.56.248:58090
+2026-06-01 23:33:14,148 [13] INFO  Server - Request "/sfx/loot_appears.mp3" from: 68.43.56.248:58090
+2026-06-01 23:33:14,157 [13] INFO  Server - Request "/crossdomain.xml" from: 68.43.56.248:58090
+2026-06-01 23:33:14,162 [13] INFO  Server - Request "/sfx/no_mana.mp3" from: 68.43.56.248:58090
+2026-06-01 23:33:14,168 [13] INFO  Server - Request "/sfx/use_key.mp3" from: 68.43.56.248:58090
+2026-06-01 23:33:14,171 [13] INFO  Server - Request "/sfx/level_up.mp3" from: 68.43.56.248:58090
+2026-06-01 23:33:14,173 [13] INFO  Server - Request "/sfx/inventory_move_item.mp3" from: 68.43.56.248:58090
+2026-06-01 23:33:14,176 [13] INFO  Server - Request "/sfx/death_screen.mp3" from: 68.43.56.248:58090
+2026-06-01 23:33:14,177 [13] INFO  Server - Request "/app/getLanguageStrings" from: 68.43.56.248:58090
+2026-06-01 23:33:14,230 [13] INFO  Server - Request "/app/init" from: 68.43.56.248:58090
+2026-06-01 23:33:14,890 [12] INFO  Server - Request "/char/list" from: 68.43.56.248:58091
+2026-06-01 23:33:15,149 [12] INFO  Server - Request "/package/getPackages" from: 68.43.56.248:58091
+2026-06-01 23:33:15,236 [12] INFO  Server - Request "/app/globalNews" from: 68.43.56.248:58091
+2026-06-01 23:33:15,391 [12] INFO  Server - Request "/mysterybox/getBoxes" from: 68.43.56.248:58091
+2026-06-01 23:33:17,533 [12] INFO  Server - Request "/sfx/player/wizard_hit.mp3" from: 68.43.56.248:58091
+2026-06-01 23:33:17,533 [13] INFO  Server - Request "/sfx/player/wizard_death.mp3" from: 68.43.56.248:58090
+2026-06-01 23:33:20,218 [13] INFO  Server - Request "/picture/get" from: 68.43.56.248:58090
+2026-06-01 23:33:20,218 [12] INFO  Server - Request "/picture/get" from: 68.43.56.248:58091
+2026-06-01 23:33:20,462 [12] INFO  Server - Request "/sfx/monster/default_death.mp3" from: 68.43.56.248:58090
+2026-06-01 23:33:20,462 [12] INFO  Server - Request "/sfx/monster/default_hit.mp3" from: 68.43.56.248:58091
+2026-06-01 23:33:21,329 [12] INFO  Server - Request "/sfx/magicShoot.mp3" from: 68.43.56.248:58091
+2026-06-01 23:34:10,891 [12] INFO  Server - Request "/char/list" from: 68.43.56.248:58091
+2026-06-01 23:34:23,120 [12] INFO  Server - Request "/picture/get" from: 68.43.56.248:58091
+2026-06-01 23:34:23,121 [11] INFO  Server - Request "/picture/get" from: 68.43.56.248:58149
+2026-06-01 23:36:45,723 [12] INFO  Server - Request "/picture/get" from: 68.43.56.248:58217
+2026-06-01 23:36:45,724 [12] INFO  Server - Request "/picture/get" from: 68.43.56.248:58216
+2026-06-01 23:36:45,798 [12] INFO  Server - Request "/sfx/monster/mummies_hit.mp3" from: 68.43.56.248:58217
+2026-06-01 23:36:45,798 [12] INFO  Server - Request "/sfx/monster/mummies_death.mp3" from: 68.43.56.248:58216
+2026-06-01 23:36:45,800 [12] INFO  Server - Request "/sfx/monster/elves_hit.mp3" from: 68.43.56.248:58217
+2026-06-01 23:36:45,800 [12] INFO  Server - Request "/sfx/monster/elves_death.mp3" from: 68.43.56.248:58216
+2026-06-01 23:37:30,537 [12] INFO  Server - Request "/sfx/monster/medusa_death.mp3" from: 68.43.56.248:58217
+2026-06-01 23:37:30,538 [12] INFO  Server - Request "/sfx/monster/medusa_hit.mp3" from: 68.43.56.248:58216
+2026-06-01 23:39:23,517 [12] INFO  Server - Request "/picture/get" from: 68.43.56.248:58282
+2026-06-01 23:39:23,518 [12] INFO  Server - Request "/picture/get" from: 68.43.56.248:58281
+2026-06-01 23:39:28,601 [12] INFO  Server - Request "/sfx/monster/beholder_death.mp3" from: 68.43.56.248:58282
+2026-06-01 23:39:28,603 [12] INFO  Server - Request "/sfx/monster/golems_hit.mp3" from: 68.43.56.248:58281
+2026-06-01 23:39:45,289 [12] INFO  Server - Request "/sfx/monster/flying_brain_death.mp3" from: 68.43.56.248:58282
+2026-06-01 23:39:45,290 [12] INFO  Server - Request "/sfx/monster/dwarves_hit.mp3" from: 68.43.56.248:58281
+2026-06-01 23:39:45,503 [12] INFO  Server - Request "/sfx/monster/skeletons_hit.mp3" from: 68.43.56.248:58281
+2026-06-01 23:39:45,504 [12] INFO  Server - Request "/sfx/monster/dwarves_death.mp3" from: 68.43.56.248:58282
+2026-06-01 23:39:46,539 [12] INFO  Server - Request "/sfx/monster/dragons_hit.mp3" from: 68.43.56.248:58282
+2026-06-01 23:40:55,120 [12] INFO  Server - Request "/sfx/monster/sprite_god_hit.mp3" from: 68.43.56.248:58321
+2026-06-01 23:40:55,120 [12] INFO  Server - Request "/sfx/monster/sprite_god_death.mp3" from: 68.43.56.248:58320
+2026-06-01 23:41:44,091 [10] INFO  Server - Request "/sfx/monster/demons_death.mp3" from: 68.43.56.248:58321
+2026-06-01 23:41:44,092 [10] INFO  Server - Request "/sfx/monster/demons_hit.mp3" from: 68.43.56.248:58320
+2026-06-01 23:44:06,421 [3] INFO  Server - Request "/sfx/monster/ghost_god_hit.mp3" from: 68.43.56.248:58398
+2026-06-01 23:44:06,422 [9] INFO  Server - Request "/sfx/monster/ghost_god_death.mp3" from: 68.43.56.248:58399
+2026-06-01 23:46:37,334 [3] INFO  Server - Request "/mysterybox/getBoxes" from: 68.43.56.248:58458
+2026-06-02 18:03:13,662 [Entry] INFO  db.SimpleSettings - Loading settings for 'server'...
+2026-06-02 18:03:13,669 [Entry] INFO  db.SimpleSettings - Settings loaded.
+2026-06-02 18:03:13,933 [Entry] INFO  db.SimpleSettings - Loading settings for 'autoId'...
+2026-06-02 18:03:13,939 [Entry] INFO  db.SimpleSettings - Settings loaded.
+2026-06-02 18:03:13,939 [Entry] INFO  db.data.XmlData - Loading game data from 'E:\fabiano-swagger-of-doom-master\rotmg2-master\bin\Debug\data'...
+2026-06-02 18:03:13,939 [Entry] INFO  db.data.XmlData - Loading 'E:\fabiano-swagger-of-doom-master\rotmg2-master\bin\Debug\data\dat0.xml'(1/4)...
+2026-06-02 18:03:13,949 [Entry] INFO  db.data.XmlData - Loading 'E:\fabiano-swagger-of-doom-master\rotmg2-master\bin\Debug\data\dat1.xml'(2/4)...
+2026-06-02 18:03:14,010 [Entry] INFO  db.data.XmlData - Loading 'E:\fabiano-swagger-of-doom-master\rotmg2-master\bin\Debug\data\Addition.xml'(3/4)...
+2026-06-02 18:03:14,015 [Entry] INFO  db.data.XmlData - Loading 'E:\fabiano-swagger-of-doom-master\rotmg2-master\bin\Debug\data\EquipmentSets.xml'(4/4)...
+2026-06-02 18:03:14,025 [Entry] INFO  db.data.XmlData - Finish loading game data.
+2026-06-02 18:03:14,025 [Entry] INFO  db.data.XmlData - 1281 Items
+2026-06-02 18:03:14,025 [Entry] INFO  db.data.XmlData - 333 Tiles
+2026-06-02 18:03:14,025 [Entry] INFO  db.data.XmlData - 2232 Objects
+2026-06-02 18:03:14,025 [Entry] INFO  db.data.XmlData - 3 Additions
+2026-06-02 18:03:14,035 [Entry] INFO  Server - Listening at port 27019...
+2026-06-02 18:03:24,090 [3] INFO  Server - Request "/sfx/loot_appears.mp3" from: 68.43.56.248:63531
+2026-06-02 18:03:24,100 [3] INFO  Server - Request "/sfx/inventory_move_item.mp3" from: 68.43.56.248:63532
+2026-06-02 18:03:24,110 [3] INFO  Server - Request "/sfx/enter_realm.mp3" from: 68.43.56.248:63531
+2026-06-02 18:03:24,110 [6] INFO  Server - Request "/sfx/no_mana.mp3" from: 68.43.56.248:63532
+2026-06-02 18:03:24,110 [7] INFO  Server - Request "/sfx/button_click.mp3" from: 68.43.56.248:63531
+2026-06-02 18:03:24,110 [7] INFO  Server - Request "/sfx/use_key.mp3" from: 68.43.56.248:63532
+2026-06-02 18:03:24,110 [7] INFO  Server - Request "/sfx/death_screen.mp3" from: 68.43.56.248:63531
+2026-06-02 18:03:24,110 [7] INFO  Server - Request "/sfx/use_potion.mp3" from: 68.43.56.248:63532
+2026-06-02 18:03:24,110 [6] INFO  Server - Request "/crossdomain.xml" from: 68.43.56.248:63531
+2026-06-02 18:03:24,110 [6] INFO  Server - Request "/sfx/error.mp3" from: 68.43.56.248:63532
+2026-06-02 18:03:24,110 [6] INFO  Server - Request "/music/sorc.mp3" from: 68.43.56.248:63531
+2026-06-02 18:03:24,110 [7] INFO  Server - Request "/sfx/level_up.mp3" from: 68.43.56.248:63532
+2026-06-02 18:03:24,110 [7] INFO  Server - Request "/app/getLanguageStrings" from: 68.43.56.248:63532
+2026-06-02 18:03:25,144 [6] INFO  Server - Request "/app/init" from: 68.43.56.248:63531
+2026-06-02 18:03:25,198 [6] INFO  Server - Request "/char/list" from: 68.43.56.248:63531
+2026-06-02 18:03:25,430 [6] INFO  Server - Request "/package/getPackages" from: 68.43.56.248:63531
+2026-06-02 18:03:25,449 [6] INFO  Server - Request "/app/globalNews" from: 68.43.56.248:63531
+2026-06-02 18:03:25,600 [6] INFO  Server - Request "/mysterybox/getBoxes" from: 68.43.56.248:63531
+2026-06-02 18:09:41,083 [6] INFO  Server - Request "/sfx/use_key.mp3" from: 68.43.56.248:63718
+2026-06-02 18:09:41,083 [6] INFO  Server - Request "/sfx/use_potion.mp3" from: 68.43.56.248:63719
+2026-06-02 18:09:41,085 [6] INFO  Server - Request "/sfx/button_click.mp3" from: 68.43.56.248:63719
+2026-06-02 18:09:41,085 [6] INFO  Server - Request "/sfx/inventory_move_item.mp3" from: 68.43.56.248:63718
+2026-06-02 18:09:41,086 [6] INFO  Server - Request "/music/sorc.mp3" from: 68.43.56.248:63719
+2026-06-02 18:09:41,086 [9] INFO  Server - Request "/sfx/enter_realm.mp3" from: 68.43.56.248:63718
+2026-06-02 18:09:41,087 [9] INFO  Server - Request "/sfx/level_up.mp3" from: 68.43.56.248:63718
+2026-06-02 18:09:41,088 [9] INFO  Server - Request "/sfx/no_mana.mp3" from: 68.43.56.248:63718
+2026-06-02 18:09:41,088 [9] INFO  Server - Request "/sfx/error.mp3" from: 68.43.56.248:63718
+2026-06-02 18:09:41,091 [9] INFO  Server - Request "/sfx/death_screen.mp3" from: 68.43.56.248:63718
+2026-06-02 18:09:41,093 [9] INFO  Server - Request "/crossdomain.xml" from: 68.43.56.248:63718
+2026-06-02 18:09:41,094 [9] INFO  Server - Request "/sfx/loot_appears.mp3" from: 68.43.56.248:63718
+2026-06-02 18:09:41,095 [9] INFO  Server - Request "/app/getLanguageStrings" from: 68.43.56.248:63718
+2026-06-02 18:09:41,170 [9] INFO  Server - Request "/app/init" from: 68.43.56.248:63718
+2026-06-02 18:09:41,198 [9] INFO  Server - Request "/char/list" from: 68.43.56.248:63718
+2026-06-02 18:09:41,784 [6] INFO  Server - Request "/package/getPackages" from: 68.43.56.248:63719
+2026-06-02 18:09:42,110 [6] INFO  Server - Request "/app/globalNews" from: 68.43.56.248:63719
+2026-06-02 18:09:42,359 [6] INFO  Server - Request "/mysterybox/getBoxes" from: 68.43.56.248:63719
+2026-06-02 18:11:11,520 [6] INFO  Server - Request "/sfx/loot_appears.mp3" from: 68.43.56.248:63765
+2026-06-02 18:11:11,520 [10] INFO  Server - Request "/sfx/use_potion.mp3" from: 68.43.56.248:63766
+2026-06-02 18:11:11,520 [10] INFO  Server - Request "/sfx/enter_realm.mp3" from: 68.43.56.248:63765
+2026-06-02 18:11:11,520 [10] INFO  Server - Request "/sfx/inventory_move_item.mp3" from: 68.43.56.248:63766
+2026-06-02 18:11:11,520 [10] INFO  Server - Request "/sfx/button_click.mp3" from: 68.43.56.248:63765
+2026-06-02 18:11:11,520 [10] INFO  Server - Request "/sfx/use_key.mp3" from: 68.43.56.248:63766
+2026-06-02 18:11:11,520 [10] INFO  Server - Request "/music/sorc.mp3" from: 68.43.56.248:63765
+2026-06-02 18:11:11,530 [6] INFO  Server - Request "/sfx/death_screen.mp3" from: 68.43.56.248:63766
+2026-06-02 18:11:11,530 [6] INFO  Server - Request "/crossdomain.xml" from: 68.43.56.248:63766
+2026-06-02 18:11:11,530 [6] INFO  Server - Request "/sfx/error.mp3" from: 68.43.56.248:63766
+2026-06-02 18:11:11,530 [6] INFO  Server - Request "/sfx/level_up.mp3" from: 68.43.56.248:63766
+2026-06-02 18:11:11,530 [6] INFO  Server - Request "/sfx/no_mana.mp3" from: 68.43.56.248:63766
+2026-06-02 18:11:11,530 [6] INFO  Server - Request "/app/getLanguageStrings" from: 68.43.56.248:63766
+2026-06-02 18:11:11,620 [6] INFO  Server - Request "/app/init" from: 68.43.56.248:63766
+2026-06-02 18:11:11,960 [10] INFO  Server - Request "/char/list" from: 68.43.56.248:63765
+2026-06-02 18:11:12,326 [10] INFO  Server - Request "/package/getPackages" from: 68.43.56.248:63765
+2026-06-02 18:11:12,360 [10] INFO  Server - Request "/app/globalNews" from: 68.43.56.248:63765
+2026-06-02 18:11:12,723 [10] INFO  Server - Request "/mysterybox/getBoxes" from: 68.43.56.248:63765
+2026-06-02 18:11:22,210 [10] INFO  Server - Request "/char/purchaseClassUnlock" from: 68.43.56.248:63765
+2026-06-02 18:11:22,227 [10] INFO  Server - Request "/char/list" from: 68.43.56.248:63765
+2026-06-02 18:11:22,740 [10] INFO  Server - Request "/char/purchaseClassUnlock" from: 68.43.56.248:63765
+2026-06-02 18:11:22,764 [10] INFO  Server - Request "/char/list" from: 68.43.56.248:63765
+2026-06-02 18:11:23,300 [10] INFO  Server - Request "/char/purchaseClassUnlock" from: 68.43.56.248:63765
+2026-06-02 18:11:23,350 [10] INFO  Server - Request "/char/list" from: 68.43.56.248:63765
+2026-06-02 18:11:23,811 [10] INFO  Server - Request "/char/purchaseClassUnlock" from: 68.43.56.248:63765
+2026-06-02 18:11:23,820 [10] INFO  Server - Request "/char/list" from: 68.43.56.248:63765
+2026-06-02 18:11:24,880 [10] INFO  Server - Request "/char/purchaseClassUnlock" from: 68.43.56.248:63765
+2026-06-02 18:11:24,900 [10] INFO  Server - Request "/char/list" from: 68.43.56.248:63765
+2026-06-02 18:11:25,910 [10] INFO  Server - Request "/char/purchaseClassUnlock" from: 68.43.56.248:63765
+2026-06-02 18:11:25,940 [10] INFO  Server - Request "/char/list" from: 68.43.56.248:63765
+2026-06-02 18:11:26,724 [10] INFO  Server - Request "/char/purchaseClassUnlock" from: 68.43.56.248:63765
+2026-06-02 18:11:26,760 [10] INFO  Server - Request "/char/list" from: 68.43.56.248:63765
+2026-06-02 18:11:27,390 [10] INFO  Server - Request "/char/purchaseClassUnlock" from: 68.43.56.248:63765
+2026-06-02 18:11:27,410 [10] INFO  Server - Request "/char/list" from: 68.43.56.248:63765
+2026-06-02 18:11:27,726 [10] INFO  Server - Request "/char/purchaseClassUnlock" from: 68.43.56.248:63765
+2026-06-02 18:11:27,760 [10] INFO  Server - Request "/char/list" from: 68.43.56.248:63765
+2026-06-02 18:11:28,020 [10] INFO  Server - Request "/char/purchaseClassUnlock" from: 68.43.56.248:63765
+2026-06-02 18:11:28,050 [10] INFO  Server - Request "/char/list" from: 68.43.56.248:63765
+2026-06-02 18:11:28,410 [10] INFO  Server - Request "/char/purchaseClassUnlock" from: 68.43.56.248:63765
+2026-06-02 18:11:28,440 [10] INFO  Server - Request "/char/list" from: 68.43.56.248:63765
+2026-06-02 18:11:32,600 [10] INFO  Server - Request "/picture/get" from: 68.43.56.248:63765
+2026-06-02 18:11:32,600 [9] INFO  Server - Request "/picture/get" from: 68.43.56.248:63766
+2026-06-02 18:11:32,910 [10] INFO  Server - Request "/sfx/player/knight_death.mp3" from: 68.43.56.248:63765
+2026-06-02 18:11:32,910 [9] INFO  Server - Request "/sfx/player/knight_hit.mp3" from: 68.43.56.248:63766
+2026-06-02 18:11:32,910 [9] INFO  Server - Request "/sfx/monster/default_hit.mp3" from: 68.43.56.248:63765
+2026-06-02 18:11:32,914 [10] INFO  Server - Request "/sfx/monster/default_death.mp3" from: 68.43.56.248:63766
+2026-06-02 18:11:33,460 [10] INFO  Server - Request "/sfx/bladeSwing.mp3" from: 68.43.56.248:63766
+2026-06-02 18:26:13,370 [Entry] INFO  db.SimpleSettings - Loading settings for 'server'...
+2026-06-02 18:26:13,380 [Entry] INFO  db.SimpleSettings - Settings loaded.
+2026-06-02 18:26:13,490 [Entry] INFO  db.SimpleSettings - Loading settings for 'autoId'...
+2026-06-02 18:26:13,490 [Entry] INFO  db.SimpleSettings - Settings loaded.
+2026-06-02 18:26:13,490 [Entry] INFO  db.data.XmlData - Loading game data from 'E:\fabiano-swagger-of-doom-master\rotmg2-master\bin\Debug\data'...
+2026-06-02 18:26:13,490 [Entry] INFO  db.data.XmlData - Loading 'E:\fabiano-swagger-of-doom-master\rotmg2-master\bin\Debug\data\dat0.xml'(1/4)...
+2026-06-02 18:26:13,490 [Entry] INFO  db.data.XmlData - Loading 'E:\fabiano-swagger-of-doom-master\rotmg2-master\bin\Debug\data\dat1.xml'(2/4)...
+2026-06-02 18:26:13,551 [Entry] INFO  db.data.XmlData - Loading 'E:\fabiano-swagger-of-doom-master\rotmg2-master\bin\Debug\data\Addition.xml'(3/4)...
+2026-06-02 18:26:13,551 [Entry] INFO  db.data.XmlData - Loading 'E:\fabiano-swagger-of-doom-master\rotmg2-master\bin\Debug\data\EquipmentSets.xml'(4/4)...
+2026-06-02 18:26:13,551 [Entry] INFO  db.data.XmlData - Finish loading game data.
+2026-06-02 18:26:13,551 [Entry] INFO  db.data.XmlData - 1281 Items
+2026-06-02 18:26:13,551 [Entry] INFO  db.data.XmlData - 333 Tiles
+2026-06-02 18:26:13,551 [Entry] INFO  db.data.XmlData - 2232 Objects
+2026-06-02 18:26:13,551 [Entry] INFO  db.data.XmlData - 3 Additions
+2026-06-02 18:26:13,562 [Entry] INFO  Server - Listening at port 27019...
+2026-06-02 18:26:18,920 [6] INFO  Server - Request "/sfx/button_click.mp3" from: 68.43.56.248:64222
+2026-06-02 18:26:18,920 [3] INFO  Server - Request "/music/sorc.mp3" from: 68.43.56.248:64223
+2026-06-02 18:26:18,920 [6] INFO  Server - Request "/sfx/use_key.mp3" from: 68.43.56.248:64222
+2026-06-02 18:26:18,930 [6] INFO  Server - Request "/sfx/use_potion.mp3" from: 68.43.56.248:64222
+2026-06-02 18:26:18,940 [6] INFO  Server - Request "/crossdomain.xml" from: 68.43.56.248:64222
+2026-06-02 18:26:18,940 [6] INFO  Server - Request "/sfx/error.mp3" from: 68.43.56.248:64222
+2026-06-02 18:26:18,940 [6] INFO  Server - Request "/sfx/level_up.mp3" from: 68.43.56.248:64222
+2026-06-02 18:26:18,950 [6] INFO  Server - Request "/sfx/inventory_move_item.mp3" from: 68.43.56.248:64222
+2026-06-02 18:26:18,950 [6] INFO  Server - Request "/sfx/enter_realm.mp3" from: 68.43.56.248:64222
+2026-06-02 18:26:18,950 [6] INFO  Server - Request "/sfx/no_mana.mp3" from: 68.43.56.248:64222
+2026-06-02 18:26:18,950 [6] INFO  Server - Request "/sfx/death_screen.mp3" from: 68.43.56.248:64222
+2026-06-02 18:26:18,961 [6] INFO  Server - Request "/sfx/loot_appears.mp3" from: 68.43.56.248:64222
+2026-06-02 18:26:18,964 [6] INFO  Server - Request "/app/getLanguageStrings" from: 68.43.56.248:64222
+2026-06-02 18:26:19,709 [3] INFO  Server - Request "/app/init" from: 68.43.56.248:64223
+2026-06-02 18:26:20,021 [3] INFO  Server - Request "/char/list" from: 68.43.56.248:64223
+2026-06-02 18:26:20,130 [3] INFO  Server - Request "/package/getPackages" from: 68.43.56.248:64223
+2026-06-02 18:26:20,150 [3] INFO  Server - Request "/app/globalNews" from: 68.43.56.248:64223
+2026-06-02 18:26:20,294 [3] INFO  Server - Request "/mysterybox/getBoxes" from: 68.43.56.248:64223
+2026-06-02 18:26:22,170 [3] INFO  Server - Request "/sfx/player/wizard_hit.mp3" from: 68.43.56.248:64222
+2026-06-02 18:26:22,170 [3] INFO  Server - Request "/sfx/player/wizard_death.mp3" from: 68.43.56.248:64223
+2026-06-02 18:26:23,870 [3] INFO  Server - Request "/sfx/player/knight_hit.mp3" from: 68.43.56.248:64222
+2026-06-02 18:26:23,880 [3] INFO  Server - Request "/sfx/player/knight_death.mp3" from: 68.43.56.248:64223
+2026-06-02 18:26:24,921 [3] INFO  Server - Request "/char/delete" from: 68.43.56.248:64223
+2026-06-02 18:26:29,852 [3] INFO  Server - Request "/picture/get" from: 68.43.56.248:64222
+2026-06-02 18:26:29,852 [3] INFO  Server - Request "/picture/get" from: 68.43.56.248:64223
+2026-06-02 18:26:30,191 [3] INFO  Server - Request "/sfx/player/paladin_hit.mp3" from: 68.43.56.248:64223
+2026-06-02 18:26:30,191 [6] INFO  Server - Request "/sfx/monster/default_hit.mp3" from: 68.43.56.248:64222
+2026-06-02 18:26:30,191 [3] INFO  Server - Request "/sfx/player/paladin_death.mp3" from: 68.43.56.248:64223
+2026-06-02 18:26:30,200 [3] INFO  Server - Request "/sfx/monster/default_death.mp3" from: 68.43.56.248:64222
+2026-06-02 18:26:34,705 [3] INFO  Server - Request "/sfx/bladeSwing.mp3" from: 68.43.56.248:64222
+2026-06-02 18:54:38,167 [Entry] INFO  db.SimpleSettings - Loading settings for 'server'...
+2026-06-02 18:54:38,176 [Entry] INFO  db.SimpleSettings - Settings loaded.
+2026-06-02 18:54:38,382 [Entry] INFO  db.SimpleSettings - Loading settings for 'autoId'...
+2026-06-02 18:54:38,383 [Entry] INFO  db.SimpleSettings - Settings loaded.
+2026-06-02 18:54:38,383 [Entry] INFO  db.data.XmlData - Loading game data from 'E:\rotmg-2\bin\Debug\data'...
+2026-06-02 18:54:38,384 [Entry] INFO  db.data.XmlData - Loading 'E:\rotmg-2\bin\Debug\data\dat0.xml'(1/4)...
+2026-06-02 18:54:38,389 [Entry] INFO  db.data.XmlData - Loading 'E:\rotmg-2\bin\Debug\data\dat1.xml'(2/4)...
+2026-06-02 18:54:38,440 [Entry] INFO  db.data.XmlData - Loading 'E:\rotmg-2\bin\Debug\data\Addition.xml'(3/4)...
+2026-06-02 18:54:38,440 [Entry] INFO  db.data.XmlData - Loading 'E:\rotmg-2\bin\Debug\data\EquipmentSets.xml'(4/4)...
+2026-06-02 18:54:38,445 [Entry] INFO  db.data.XmlData - Finish loading game data.
+2026-06-02 18:54:38,445 [Entry] INFO  db.data.XmlData - 1281 Items
+2026-06-02 18:54:38,445 [Entry] INFO  db.data.XmlData - 333 Tiles
+2026-06-02 18:54:38,445 [Entry] INFO  db.data.XmlData - 2232 Objects
+2026-06-02 18:54:38,445 [Entry] INFO  db.data.XmlData - 3 Additions
+2026-06-02 18:54:38,449 [Entry] INFO  Server - Listening at port 27019...
+2026-06-02 18:55:02,128 [3] INFO  Server - Request "/sfx/death_screen.mp3" from: 68.43.56.248:65260
+2026-06-02 18:55:02,131 [3] INFO  Server - Request "/sfx/loot_appears.mp3" from: 68.43.56.248:65259
+2026-06-02 18:55:02,133 [3] INFO  Server - Request "/sfx/button_click.mp3" from: 68.43.56.248:65260
+2026-06-02 18:55:02,133 [3] INFO  Server - Request "/sfx/use_key.mp3" from: 68.43.56.248:65259
+2026-06-02 18:55:02,134 [3] INFO  Server - Request "/crossdomain.xml" from: 68.43.56.248:65260
+2026-06-02 18:55:02,134 [6] INFO  Server - Request "/sfx/no_mana.mp3" from: 68.43.56.248:65259
+2026-06-02 18:55:02,135 [6] INFO  Server - Request "/sfx/inventory_move_item.mp3" from: 68.43.56.248:65259
+2026-06-02 18:55:02,135 [6] INFO  Server - Request "/sfx/use_potion.mp3" from: 68.43.56.248:65260
+2026-06-02 18:55:02,136 [6] INFO  Server - Request "/sfx/error.mp3" from: 68.43.56.248:65259
+2026-06-02 18:55:02,136 [6] INFO  Server - Request "/sfx/enter_realm.mp3" from: 68.43.56.248:65260
+2026-06-02 18:55:02,137 [6] INFO  Server - Request "/sfx/level_up.mp3" from: 68.43.56.248:65259
+2026-06-02 18:55:02,137 [6] INFO  Server - Request "/music/sorc.mp3" from: 68.43.56.248:65260
+2026-06-02 18:55:02,138 [3] INFO  Server - Request "/app/getLanguageStrings" from: 68.43.56.248:65259
+2026-06-02 18:55:02,617 [6] INFO  Server - Request "/app/init" from: 68.43.56.248:65260
+2026-06-02 18:55:02,969 [6] INFO  Server - Request "/char/list" from: 68.43.56.248:65260
+2026-06-02 18:55:03,297 [6] INFO  Server - Request "/package/getPackages" from: 68.43.56.248:65260
+2026-06-02 18:55:03,327 [6] INFO  Server - Request "/app/globalNews" from: 68.43.56.248:65260
+2026-06-02 18:55:03,469 [6] INFO  Server - Request "/mysterybox/getBoxes" from: 68.43.56.248:65260
+2026-06-02 18:55:04,730 [6] INFO  Server - Request "/sfx/player/wizard_death.mp3" from: 68.43.56.248:65259
+2026-06-02 18:55:04,730 [3] INFO  Server - Request "/sfx/player/wizard_hit.mp3" from: 68.43.56.248:65260
+2026-06-02 18:55:04,810 [3] INFO  Server - Request "/sfx/player/paladin_hit.mp3" from: 68.43.56.248:65260
+2026-06-02 18:55:04,811 [3] INFO  Server - Request "/sfx/player/paladin_death.mp3" from: 68.43.56.248:65259
+2026-06-02 18:55:07,552 [3] INFO  Server - Request "/account/purchaseCharSlot" from: 68.43.56.248:65259
+2026-06-02 18:55:13,170 [3] INFO  Server - Request "/picture/get" from: 68.43.56.248:65259
+2026-06-02 18:55:13,170 [6] INFO  Server - Request "/picture/get" from: 68.43.56.248:65260
+2026-06-02 18:55:13,456 [6] INFO  Server - Request "/sfx/player/knight_death.mp3" from: 68.43.56.248:65260
+2026-06-02 18:55:13,457 [3] INFO  Server - Request "/sfx/player/knight_hit.mp3" from: 68.43.56.248:65259
+2026-06-02 18:55:13,459 [3] INFO  Server - Request "/sfx/monster/default_hit.mp3" from: 68.43.56.248:65260
+2026-06-02 18:55:13,459 [6] INFO  Server - Request "/sfx/monster/default_death.mp3" from: 68.43.56.248:65259
+2026-06-02 19:00:38,815 [Entry] INFO  db.SimpleSettings - Loading settings for 'server'...
+2026-06-02 19:00:38,821 [Entry] INFO  db.SimpleSettings - Settings loaded.
+2026-06-02 19:00:38,919 [Entry] INFO  db.SimpleSettings - Loading settings for 'autoId'...
+2026-06-02 19:00:38,920 [Entry] INFO  db.SimpleSettings - Settings loaded.
+2026-06-02 19:00:38,920 [Entry] INFO  db.data.XmlData - Loading game data from 'E:\rotmg-2\bin\Debug\data'...
+2026-06-02 19:00:38,920 [Entry] INFO  db.data.XmlData - Loading 'E:\rotmg-2\bin\Debug\data\dat0.xml'(1/4)...
+2026-06-02 19:00:38,926 [Entry] INFO  db.data.XmlData - Loading 'E:\rotmg-2\bin\Debug\data\dat1.xml'(2/4)...
+2026-06-02 19:00:38,979 [Entry] INFO  db.data.XmlData - Loading 'E:\rotmg-2\bin\Debug\data\Addition.xml'(3/4)...
+2026-06-02 19:00:38,980 [Entry] INFO  db.data.XmlData - Loading 'E:\rotmg-2\bin\Debug\data\EquipmentSets.xml'(4/4)...
+2026-06-02 19:00:38,985 [Entry] INFO  db.data.XmlData - Finish loading game data.
+2026-06-02 19:00:38,985 [Entry] INFO  db.data.XmlData - 1281 Items
+2026-06-02 19:00:38,985 [Entry] INFO  db.data.XmlData - 333 Tiles
+2026-06-02 19:00:38,985 [Entry] INFO  db.data.XmlData - 2232 Objects
+2026-06-02 19:00:38,985 [Entry] INFO  db.data.XmlData - 3 Additions
+2026-06-02 19:00:38,989 [Entry] INFO  Server - Listening at port 27019...
+2026-06-02 19:00:47,994 [6] INFO  Server - Request "/sfx/no_mana.mp3" from: 68.43.56.248:65427
+2026-06-02 19:00:47,996 [6] INFO  Server - Request "/sfx/level_up.mp3" from: 68.43.56.248:65426
+2026-06-02 19:00:47,998 [6] INFO  Server - Request "/sfx/error.mp3" from: 68.43.56.248:65427
+2026-06-02 19:00:47,998 [3] INFO  Server - Request "/sfx/enter_realm.mp3" from: 68.43.56.248:65426
+2026-06-02 19:00:48,000 [3] INFO  Server - Request "/sfx/button_click.mp3" from: 68.43.56.248:65427
+2026-06-02 19:00:48,000 [3] INFO  Server - Request "/music/sorc.mp3" from: 68.43.56.248:65426
+2026-06-02 19:00:48,000 [6] INFO  Server - Request "/sfx/inventory_move_item.mp3" from: 68.43.56.248:65427
+2026-06-02 19:00:48,002 [6] INFO  Server - Request "/sfx/loot_appears.mp3" from: 68.43.56.248:65427
+2026-06-02 19:00:48,004 [6] INFO  Server - Request "/sfx/use_potion.mp3" from: 68.43.56.248:65427
+2026-06-02 19:00:48,006 [6] INFO  Server - Request "/crossdomain.xml" from: 68.43.56.248:65427
+2026-06-02 19:00:48,014 [6] INFO  Server - Request "/sfx/use_key.mp3" from: 68.43.56.248:65427
+2026-06-02 19:00:48,015 [6] INFO  Server - Request "/sfx/death_screen.mp3" from: 68.43.56.248:65427
+2026-06-02 19:00:48,016 [6] INFO  Server - Request "/app/getLanguageStrings" from: 68.43.56.248:65427
+2026-06-02 19:00:48,075 [6] INFO  Server - Request "/app/init" from: 68.43.56.248:65427
+2026-06-02 19:00:48,107 [6] INFO  Server - Request "/char/list" from: 68.43.56.248:65427
+2026-06-02 19:00:48,290 [6] INFO  Server - Request "/package/getPackages" from: 68.43.56.248:65427
+2026-06-02 19:00:48,377 [6] INFO  Server - Request "/app/globalNews" from: 68.43.56.248:65427
+2026-06-02 19:00:49,094 [6] INFO  Server - Request "/mysterybox/getBoxes" from: 68.43.56.248:65427
+2026-06-02 19:00:51,453 [6] INFO  Server - Request "/sfx/player/wizard_hit.mp3" from: 68.43.56.248:65427
+2026-06-02 19:00:51,453 [3] INFO  Server - Request "/sfx/player/wizard_death.mp3" from: 68.43.56.248:65426
+2026-06-02 19:00:52,873 [3] INFO  Server - Request "/sfx/player/paladin_hit.mp3" from: 68.43.56.248:65426
+2026-06-02 19:00:52,873 [6] INFO  Server - Request "/sfx/player/paladin_death.mp3" from: 68.43.56.248:65427
+2026-06-02 19:00:53,667 [6] INFO  Server - Request "/sfx/player/knight_death.mp3" from: 68.43.56.248:65426
+2026-06-02 19:00:53,667 [6] INFO  Server - Request "/sfx/player/knight_hit.mp3" from: 68.43.56.248:65427
+2026-06-02 19:00:55,105 [6] INFO  Server - Request "/char/delete" from: 68.43.56.248:65427
+2026-06-02 19:01:00,617 [6] INFO  Server - Request "/picture/get" from: 68.43.56.248:65426
+2026-06-02 19:01:00,617 [3] INFO  Server - Request "/picture/get" from: 68.43.56.248:65427
+2026-06-02 19:01:00,879 [3] INFO  Server - Request "/sfx/player/rogue_hit.mp3" from: 68.43.56.248:65426
+2026-06-02 19:01:00,879 [3] INFO  Server - Request "/sfx/monster/default_death.mp3" from: 68.43.56.248:65427
+2026-06-02 19:01:00,880 [6] INFO  Server - Request "/sfx/monster/default_hit.mp3" from: 68.43.56.248:65426
+2026-06-02 19:01:00,881 [6] INFO  Server - Request "/sfx/player/rogue_death.mp3" from: 68.43.56.248:65427
+2026-06-02 19:01:01,823 [6] INFO  Server - Request "/sfx/daggerSwing.mp3" from: 68.43.56.248:65427
+2026-06-02 19:01:09,844 [6] INFO  Server - Request "/mysterybox/getBoxes" from: 68.43.56.248:65427
+2026-06-02 19:10:51,663 [6] INFO  Server - Request "/sfx/level_up.mp3" from: 68.43.56.248:49286
+2026-06-02 19:10:51,663 [7] INFO  Server - Request "/sfx/loot_appears.mp3" from: 68.43.56.248:49287
+2026-06-02 19:10:51,666 [7] INFO  Server - Request "/sfx/error.mp3" from: 68.43.56.248:49286
+2026-06-02 19:10:51,666 [8] INFO  Server - Request "/sfx/enter_realm.mp3" from: 68.43.56.248:49287
+2026-06-02 19:10:51,666 [8] INFO  Server - Request "/sfx/no_mana.mp3" from: 68.43.56.248:49286
+2026-06-02 19:10:51,666 [8] INFO  Server - Request "/sfx/inventory_move_item.mp3" from: 68.43.56.248:49287
+2026-06-02 19:10:51,667 [8] INFO  Server - Request "/sfx/use_potion.mp3" from: 68.43.56.248:49286
+2026-06-02 19:10:51,668 [8] INFO  Server - Request "/music/sorc.mp3" from: 68.43.56.248:49287
+2026-06-02 19:10:51,668 [7] INFO  Server - Request "/sfx/button_click.mp3" from: 68.43.56.248:49286
+2026-06-02 19:10:51,669 [7] INFO  Server - Request "/crossdomain.xml" from: 68.43.56.248:49286
+2026-06-02 19:10:51,670 [7] INFO  Server - Request "/sfx/death_screen.mp3" from: 68.43.56.248:49286
+2026-06-02 19:10:51,673 [7] INFO  Server - Request "/sfx/use_key.mp3" from: 68.43.56.248:49286
+2026-06-02 19:10:51,676 [7] INFO  Server - Request "/app/getLanguageStrings" from: 68.43.56.248:49286
+2026-06-02 19:10:51,735 [7] INFO  Server - Request "/app/init" from: 68.43.56.248:49286
+2026-06-02 19:10:51,761 [7] INFO  Server - Request "/char/list" from: 68.43.56.248:49286
+2026-06-02 19:10:52,139 [7] INFO  Server - Request "/package/getPackages" from: 68.43.56.248:49286
+2026-06-02 19:10:52,317 [7] INFO  Server - Request "/app/globalNews" from: 68.43.56.248:49286
+2026-06-02 19:10:52,828 [7] INFO  Server - Request "/mysterybox/getBoxes" from: 68.43.56.248:49286
+2026-06-02 19:10:53,947 [7] INFO  Server - Request "/sfx/player/wizard_death.mp3" from: 68.43.56.248:49286
+2026-06-02 19:10:53,947 [8] INFO  Server - Request "/sfx/player/wizard_hit.mp3" from: 68.43.56.248:49287
+2026-06-02 19:10:53,985 [8] INFO  Server - Request "/sfx/player/paladin_hit.mp3" from: 68.43.56.248:49287
+2026-06-02 19:10:53,986 [7] INFO  Server - Request "/sfx/player/paladin_death.mp3" from: 68.43.56.248:49286
+2026-06-02 19:10:54,164 [7] INFO  Server - Request "/sfx/player/rogue_hit.mp3" from: 68.43.56.248:49286
+2026-06-02 19:10:54,165 [8] INFO  Server - Request "/sfx/player/rogue_death.mp3" from: 68.43.56.248:49287
+2026-06-02 19:10:56,835 [8] INFO  Server - Request "/picture/get" from: 68.43.56.248:49286
+2026-06-02 19:10:56,837 [8] INFO  Server - Request "/picture/get" from: 68.43.56.248:49287
+2026-06-02 19:10:57,831 [8] INFO  Server - Request "/sfx/monster/default_hit.mp3" from: 68.43.56.248:49286
+2026-06-02 19:10:57,832 [8] INFO  Server - Request "/sfx/monster/default_death.mp3" from: 68.43.56.248:49287
+2026-06-02 19:11:05,319 [8] INFO  Server - Request "/sfx/daggerSwing.mp3" from: 68.43.56.248:49287
+2026-06-02 19:16:31,095 [8] INFO  Server - Request "/sfx/button_click.mp3" from: 68.43.56.248:49433
+2026-06-02 19:16:31,096 [8] INFO  Server - Request "/crossdomain.xml" from: 68.43.56.248:49434
+2026-06-02 19:16:31,097 [8] INFO  Server - Request "/sfx/loot_appears.mp3" from: 68.43.56.248:49434
+2026-06-02 19:16:31,097 [10] INFO  Server - Request "/sfx/enter_realm.mp3" from: 68.43.56.248:49433
+2026-06-02 19:16:31,097 [10] INFO  Server - Request "/sfx/use_key.mp3" from: 68.43.56.248:49434
+2026-06-02 19:16:31,098 [10] INFO  Server - Request "/sfx/level_up.mp3" from: 68.43.56.248:49433
+2026-06-02 19:16:31,098 [10] INFO  Server - Request "/sfx/error.mp3" from: 68.43.56.248:49434
+2026-06-02 19:16:31,098 [10] INFO  Server - Request "/music/sorc.mp3" from: 68.43.56.248:49433
+2026-06-02 19:16:31,099 [11] INFO  Server - Request "/sfx/use_potion.mp3" from: 68.43.56.248:49434
+2026-06-02 19:16:31,100 [11] INFO  Server - Request "/sfx/death_screen.mp3" from: 68.43.56.248:49434
+2026-06-02 19:16:31,100 [11] INFO  Server - Request "/sfx/no_mana.mp3" from: 68.43.56.248:49434
+2026-06-02 19:16:31,103 [11] INFO  Server - Request "/sfx/inventory_move_item.mp3" from: 68.43.56.248:49434
+2026-06-02 19:16:31,106 [11] INFO  Server - Request "/app/getLanguageStrings" from: 68.43.56.248:49434
+2026-06-02 19:16:31,546 [10] INFO  Server - Request "/app/init" from: 68.43.56.248:49433
+2026-06-02 19:16:31,699 [10] INFO  Server - Request "/char/list" from: 68.43.56.248:49433
+2026-06-02 19:16:31,815 [10] INFO  Server - Request "/package/getPackages" from: 68.43.56.248:49433
+2026-06-02 19:16:31,845 [10] INFO  Server - Request "/app/globalNews" from: 68.43.56.248:49433
+2026-06-02 19:16:32,262 [10] INFO  Server - Request "/mysterybox/getBoxes" from: 68.43.56.248:49433
+2026-06-02 19:16:32,968 [10] INFO  Server - Request "/sfx/player/paladin_death.mp3" from: 68.43.56.248:49433
+2026-06-02 19:16:32,968 [10] INFO  Server - Request "/sfx/player/wizard_hit.mp3" from: 68.43.56.248:49434
+2026-06-02 19:16:32,970 [10] INFO  Server - Request "/sfx/player/paladin_hit.mp3" from: 68.43.56.248:49433
+2026-06-02 19:16:32,970 [10] INFO  Server - Request "/sfx/player/wizard_death.mp3" from: 68.43.56.248:49434
+2026-06-02 19:16:33,312 [10] INFO  Server - Request "/sfx/player/rogue_death.mp3" from: 68.43.56.248:49434
+2026-06-02 19:16:33,313 [11] INFO  Server - Request "/sfx/player/rogue_hit.mp3" from: 68.43.56.248:49433
+2026-06-02 19:16:34,751 [11] INFO  Server - Request "/char/delete" from: 68.43.56.248:49434
+2026-06-02 19:16:41,253 [11] INFO  Server - Request "/picture/get" from: 68.43.56.248:49434
+2026-06-02 19:16:41,253 [10] INFO  Server - Request "/picture/get" from: 68.43.56.248:49433
+2026-06-02 19:16:41,506 [10] INFO  Server - Request "/sfx/monster/default_death.mp3" from: 68.43.56.248:49434
+2026-06-02 19:16:41,507 [10] INFO  Server - Request "/sfx/monster/default_hit.mp3" from: 68.43.56.248:49433
+2026-06-02 19:16:42,124 [10] INFO  Server - Request "/sfx/daggerSwing.mp3" from: 68.43.56.248:49433
+2026-06-02 19:22:13,704 [Entry] INFO  db.SimpleSettings - Loading settings for 'server'...
+2026-06-02 19:22:13,710 [Entry] INFO  db.SimpleSettings - Settings loaded.
+2026-06-02 19:22:13,809 [Entry] INFO  db.SimpleSettings - Loading settings for 'autoId'...
+2026-06-02 19:22:13,809 [Entry] INFO  db.SimpleSettings - Settings loaded.
+2026-06-02 19:22:13,810 [Entry] INFO  db.data.XmlData - Loading game data from 'E:\rotmg-2\bin\Debug\data'...
+2026-06-02 19:22:13,810 [Entry] INFO  db.data.XmlData - Loading 'E:\rotmg-2\bin\Debug\data\dat0.xml'(1/4)...
+2026-06-02 19:22:13,816 [Entry] INFO  db.data.XmlData - Loading 'E:\rotmg-2\bin\Debug\data\dat1.xml'(2/4)...
+2026-06-02 19:22:13,872 [Entry] INFO  db.data.XmlData - Loading 'E:\rotmg-2\bin\Debug\data\Addition.xml'(3/4)...
+2026-06-02 19:22:13,873 [Entry] INFO  db.data.XmlData - Loading 'E:\rotmg-2\bin\Debug\data\EquipmentSets.xml'(4/4)...
+2026-06-02 19:22:13,878 [Entry] INFO  db.data.XmlData - Finish loading game data.
+2026-06-02 19:22:13,878 [Entry] INFO  db.data.XmlData - 1281 Items
+2026-06-02 19:22:13,878 [Entry] INFO  db.data.XmlData - 333 Tiles
+2026-06-02 19:22:13,878 [Entry] INFO  db.data.XmlData - 2232 Objects
+2026-06-02 19:22:13,878 [Entry] INFO  db.data.XmlData - 3 Additions
+2026-06-02 19:22:13,883 [Entry] INFO  Server - Listening at port 27019...
+2026-06-02 19:22:24,805 [6] INFO  Server - Request "/sfx/no_mana.mp3" from: 68.43.56.248:49589
+2026-06-02 19:22:24,807 [6] INFO  Server - Request "/sfx/use_key.mp3" from: 68.43.56.248:49588
+2026-06-02 19:22:24,809 [6] INFO  Server - Request "/sfx/level_up.mp3" from: 68.43.56.248:49589
+2026-06-02 19:22:24,809 [6] INFO  Server - Request "/sfx/button_click.mp3" from: 68.43.56.248:49588
+2026-06-02 19:22:24,810 [6] INFO  Server - Request "/sfx/inventory_move_item.mp3" from: 68.43.56.248:49588
+2026-06-02 19:22:24,810 [6] INFO  Server - Request "/sfx/enter_realm.mp3" from: 68.43.56.248:49589
+2026-06-02 19:22:24,810 [6] INFO  Server - Request "/sfx/error.mp3" from: 68.43.56.248:49588
+2026-06-02 19:22:24,810 [6] INFO  Server - Request "/crossdomain.xml" from: 68.43.56.248:49589
+2026-06-02 19:22:24,810 [6] INFO  Server - Request "/sfx/use_potion.mp3" from: 68.43.56.248:49588
+2026-06-02 19:22:24,811 [6] INFO  Server - Request "/sfx/loot_appears.mp3" from: 68.43.56.248:49589
+2026-06-02 19:22:24,811 [6] INFO  Server - Request "/sfx/death_screen.mp3" from: 68.43.56.248:49588
+2026-06-02 19:22:24,813 [6] INFO  Server - Request "/music/sorc.mp3" from: 68.43.56.248:49589
+2026-06-02 19:22:24,814 [3] INFO  Server - Request "/app/getLanguageStrings" from: 68.43.56.248:49588
+2026-06-02 19:22:24,889 [3] INFO  Server - Request "/app/init" from: 68.43.56.248:49588
+2026-06-02 19:22:24,925 [3] INFO  Server - Request "/char/list" from: 68.43.56.248:49588
+2026-06-02 19:22:25,137 [3] INFO  Server - Request "/package/getPackages" from: 68.43.56.248:49588
+2026-06-02 19:22:25,228 [3] INFO  Server - Request "/app/globalNews" from: 68.43.56.248:49588
+2026-06-02 19:22:25,903 [3] INFO  Server - Request "/mysterybox/getBoxes" from: 68.43.56.248:49588
+2026-06-02 19:22:27,658 [3] INFO  Server - Request "/sfx/player/wizard_hit.mp3" from: 68.43.56.248:49589
+2026-06-02 19:22:27,658 [3] INFO  Server - Request "/sfx/player/wizard_death.mp3" from: 68.43.56.248:49588
+2026-06-02 19:22:27,719 [3] INFO  Server - Request "/sfx/player/paladin_hit.mp3" from: 68.43.56.248:49588
+2026-06-02 19:22:27,719 [6] INFO  Server - Request "/sfx/player/paladin_death.mp3" from: 68.43.56.248:49589
+2026-06-02 19:22:27,808 [6] INFO  Server - Request "/sfx/player/rogue_death.mp3" from: 68.43.56.248:49589
+2026-06-02 19:22:27,808 [3] INFO  Server - Request "/sfx/player/rogue_hit.mp3" from: 68.43.56.248:49588
+2026-06-02 19:22:29,595 [3] INFO  Server - Request "/char/delete" from: 68.43.56.248:49588
+2026-06-02 19:22:35,222 [3] INFO  Server - Request "/picture/get" from: 68.43.56.248:49588
+2026-06-02 19:22:35,222 [6] INFO  Server - Request "/picture/get" from: 68.43.56.248:49589
+2026-06-02 19:22:35,548 [6] INFO  Server - Request "/sfx/monster/default_hit.mp3" from: 68.43.56.248:49588
+2026-06-02 19:22:35,548 [3] INFO  Server - Request "/sfx/monster/default_death.mp3" from: 68.43.56.248:49589
+2026-06-02 19:22:36,497 [3] INFO  Server - Request "/sfx/daggerSwing.mp3" from: 68.43.56.248:49589
+2026-06-02 19:22:56,781 [3] INFO  Server - Request "/mysterybox/getBoxes" from: 68.43.56.248:49589
+2026-06-02 19:24:49,017 [Entry] INFO  db.SimpleSettings - Loading settings for 'server'...
+2026-06-02 19:24:49,023 [Entry] INFO  db.SimpleSettings - Settings loaded.
+2026-06-02 19:24:49,121 [Entry] INFO  db.SimpleSettings - Loading settings for 'autoId'...
+2026-06-02 19:24:49,122 [Entry] INFO  db.SimpleSettings - Settings loaded.
+2026-06-02 19:24:49,122 [Entry] INFO  db.data.XmlData - Loading game data from 'E:\rotmg-2\bin\Debug\data'...
+2026-06-02 19:24:49,122 [Entry] INFO  db.data.XmlData - Loading 'E:\rotmg-2\bin\Debug\data\dat0.xml'(1/4)...
+2026-06-02 19:24:49,127 [Entry] INFO  db.data.XmlData - Loading 'E:\rotmg-2\bin\Debug\data\dat1.xml'(2/4)...
+2026-06-02 19:24:49,180 [Entry] INFO  db.data.XmlData - Loading 'E:\rotmg-2\bin\Debug\data\Addition.xml'(3/4)...
+2026-06-02 19:24:49,181 [Entry] INFO  db.data.XmlData - Loading 'E:\rotmg-2\bin\Debug\data\EquipmentSets.xml'(4/4)...
+2026-06-02 19:24:49,186 [Entry] INFO  db.data.XmlData - Finish loading game data.
+2026-06-02 19:24:49,186 [Entry] INFO  db.data.XmlData - 1281 Items
+2026-06-02 19:24:49,186 [Entry] INFO  db.data.XmlData - 333 Tiles
+2026-06-02 19:24:49,186 [Entry] INFO  db.data.XmlData - 2232 Objects
+2026-06-02 19:24:49,186 [Entry] INFO  db.data.XmlData - 3 Additions
+2026-06-02 19:24:49,189 [Entry] INFO  Server - Listening at port 27019...
+2026-06-02 19:24:58,644 [6] INFO  Server - Request "/music/sorc.mp3" from: 68.43.56.248:49668
+2026-06-02 19:24:58,644 [3] INFO  Server - Request "/sfx/inventory_move_item.mp3" from: 68.43.56.248:49670
+2026-06-02 19:24:58,656 [3] INFO  Server - Request "/sfx/death_screen.mp3" from: 68.43.56.248:49670
+2026-06-02 19:24:58,660 [3] INFO  Server - Request "/sfx/error.mp3" from: 68.43.56.248:49670
+2026-06-02 19:24:58,662 [3] INFO  Server - Request "/sfx/no_mana.mp3" from: 68.43.56.248:49670
+2026-06-02 19:24:58,663 [3] INFO  Server - Request "/sfx/enter_realm.mp3" from: 68.43.56.248:49670
+2026-06-02 19:24:58,664 [3] INFO  Server - Request "/crossdomain.xml" from: 68.43.56.248:49670
+2026-06-02 19:24:58,666 [3] INFO  Server - Request "/sfx/use_potion.mp3" from: 68.43.56.248:49670
+2026-06-02 19:24:58,668 [3] INFO  Server - Request "/sfx/use_key.mp3" from: 68.43.56.248:49670
+2026-06-02 19:24:58,669 [3] INFO  Server - Request "/sfx/level_up.mp3" from: 68.43.56.248:49670
+2026-06-02 19:24:58,671 [3] INFO  Server - Request "/sfx/loot_appears.mp3" from: 68.43.56.248:49670
+2026-06-02 19:24:58,672 [3] INFO  Server - Request "/sfx/button_click.mp3" from: 68.43.56.248:49670
+2026-06-02 19:24:58,673 [3] INFO  Server - Request "/app/getLanguageStrings" from: 68.43.56.248:49670
+2026-06-02 19:24:58,783 [3] INFO  Server - Request "/app/init" from: 68.43.56.248:49670
+2026-06-02 19:24:59,022 [6] INFO  Server - Request "/char/list" from: 68.43.56.248:49668
+2026-06-02 19:24:59,246 [6] INFO  Server - Request "/package/getPackages" from: 68.43.56.248:49668
+2026-06-02 19:24:59,293 [6] INFO  Server - Request "/app/globalNews" from: 68.43.56.248:49668
+2026-06-02 19:24:59,796 [6] INFO  Server - Request "/mysterybox/getBoxes" from: 68.43.56.248:49668
+2026-06-02 19:25:00,755 [6] INFO  Server - Request "/sfx/player/wizard_hit.mp3" from: 68.43.56.248:49670
+2026-06-02 19:25:00,756 [6] INFO  Server - Request "/sfx/player/wizard_death.mp3" from: 68.43.56.248:49668
+2026-06-02 19:25:00,877 [6] INFO  Server - Request "/sfx/player/paladin_hit.mp3" from: 68.43.56.248:49670
+2026-06-02 19:25:00,878 [6] INFO  Server - Request "/sfx/player/paladin_death.mp3" from: 68.43.56.248:49668
+2026-06-02 19:25:01,054 [6] INFO  Server - Request "/sfx/player/rogue_hit.mp3" from: 68.43.56.248:49668
+2026-06-02 19:25:01,054 [3] INFO  Server - Request "/sfx/player/rogue_death.mp3" from: 68.43.56.248:49670
+2026-06-02 19:25:02,768 [3] INFO  Server - Request "/char/delete" from: 68.43.56.248:49670
+2026-06-02 19:25:07,797 [3] INFO  Server - Request "/picture/get" from: 68.43.56.248:49670
+2026-06-02 19:25:07,797 [6] INFO  Server - Request "/picture/get" from: 68.43.56.248:49668
+2026-06-02 19:25:08,062 [6] INFO  Server - Request "/sfx/monster/default_death.mp3" from: 68.43.56.248:49668
+2026-06-02 19:25:08,062 [3] INFO  Server - Request "/sfx/monster/default_hit.mp3" from: 68.43.56.248:49670
+2026-06-02 19:25:08,856 [3] INFO  Server - Request "/sfx/daggerSwing.mp3" from: 68.43.56.248:49670
+2026-06-02 19:25:28,407 [3] INFO  Server - Request "/picture/get" from: 68.43.56.248:49668
+2026-06-02 19:25:28,408 [3] INFO  Server - Request "/picture/get" from: 68.43.56.248:49670
+2026-06-02 19:25:28,593 [3] INFO  Server - Request "/sfx/monster/snakes_hit.mp3" from: 68.43.56.248:49670
+2026-06-02 19:25:28,594 [8] INFO  Server - Request "/sfx/monster/flaming_skulls_hit.mp3" from: 68.43.56.248:49668
+2026-06-02 19:25:28,597 [3] INFO  Server - Request "/sfx/monster/snakes_death.mp3" from: 68.43.56.248:49670
+2026-06-02 19:25:28,598 [8] INFO  Server - Request "/sfx/monster/pirates_hit.mp3" from: 68.43.56.248:49668
+2026-06-02 19:25:28,600 [3] INFO  Server - Request "/sfx/monster/flaming_skulls_death.mp3" from: 68.43.56.248:49670
+2026-06-02 19:25:28,601 [3] INFO  Server - Request "/sfx/monster/dark_elves_hit.mp3" from: 68.43.56.248:49668
+2026-06-02 19:25:28,601 [8] INFO  Server - Request "/sfx/monster/scorpions_hit.mp3" from: 68.43.56.248:49670
+2026-06-02 19:25:28,602 [8] INFO  Server - Request "/sfx/monster/dark_elves_death.mp3" from: 68.43.56.248:49668
+2026-06-02 19:25:28,603 [8] INFO  Server - Request "/sfx/monster/scorpions_death.mp3" from: 68.43.56.248:49670
+2026-06-02 19:25:28,603 [8] INFO  Server - Request "/sfx/monster/pirates_death.mp3" from: 68.43.56.248:49668
+2026-06-02 19:25:38,867 [8] INFO  Server - Request "/sfx/monster/elves_death.mp3" from: 68.43.56.248:49668
+2026-06-02 19:25:38,867 [3] INFO  Server - Request "/sfx/monster/elves_hit.mp3" from: 68.43.56.248:49670
+2026-06-02 19:25:39,109 [3] INFO  Server - Request "/sfx/monster/cubes_hit.mp3" from: 68.43.56.248:49668
+2026-06-02 19:25:39,109 [3] INFO  Server - Request "/sfx/monster/cubes_death.mp3" from: 68.43.56.248:49670
+2026-06-02 19:25:40,161 [3] INFO  Server - Request "/sfx/monster/undead_hobbits_hit.mp3" from: 68.43.56.248:49668
+2026-06-02 19:25:40,161 [3] INFO  Server - Request "/sfx/monster/undead_hobbits_death.mp3" from: 68.43.56.248:49670
+2026-06-02 19:25:40,817 [3] INFO  Server - Request "/sfx/monster/hobbits_death.mp3" from: 68.43.56.248:49668
+2026-06-02 19:25:40,818 [3] INFO  Server - Request "/sfx/monster/hobbits_hit.mp3" from: 68.43.56.248:49670
+2026-06-02 19:25:45,545 [3] INFO  Server - Request "/sfx/monster/ogres_death.mp3" from: 68.43.56.248:49668
+2026-06-02 19:25:45,546 [3] INFO  Server - Request "/sfx/monster/ogres_hit.mp3" from: 68.43.56.248:49670
+2026-06-02 19:25:46,642 [3] INFO  Server - Request "/sfx/monster/spiders_hit.mp3" from: 68.43.56.248:49670
+2026-06-02 19:25:46,642 [8] INFO  Server - Request "/sfx/monster/spiders_death.mp3" from: 68.43.56.248:49668
+2026-06-02 19:25:46,834 [8] INFO  Server - Request "/sfx/monster/orcs_hit.mp3" from: 68.43.56.248:49668
+2026-06-02 19:25:46,834 [3] INFO  Server - Request "/sfx/monster/orcs_death.mp3" from: 68.43.56.248:49670
+2026-06-02 19:25:47,091 [3] INFO  Server - Request "/sfx/monster/slimes_death.mp3" from: 68.43.56.248:49670
+2026-06-02 19:25:47,091 [8] INFO  Server - Request "/sfx/monster/slimes_hit.mp3" from: 68.43.56.248:49668
+2026-06-02 19:25:47,915 [8] INFO  Server - Request "/sfx/monster/sprites_hit.mp3" from: 68.43.56.248:49668
+2026-06-02 19:25:47,916 [3] INFO  Server - Request "/sfx/monster/sprites_death.mp3" from: 68.43.56.248:49670
+2026-06-02 19:25:49,838 [3] INFO  Server - Request "/sfx/monster/cyclops_death.mp3" from: 68.43.56.248:49670
+2026-06-02 19:25:49,838 [8] INFO  Server - Request "/sfx/monster/cyclops_hit.mp3" from: 68.43.56.248:49668
+2026-06-02 19:25:50,483 [8] INFO  Server - Request "/sfx/monster/golems_hit.mp3" from: 68.43.56.248:49670
+2026-06-02 19:25:50,484 [8] INFO  Server - Request "/sfx/monster/golems_death.mp3" from: 68.43.56.248:49668
+2026-06-02 19:25:50,701 [8] INFO  Server - Request "/sfx/monster/mummies_death.mp3" from: 68.43.56.248:49670
+2026-06-02 19:25:50,702 [8] INFO  Server - Request "/sfx/monster/mummies_hit.mp3" from: 68.43.56.248:49668
+2026-06-02 19:25:51,554 [8] INFO  Server - Request "/sfx/monster/night_elves_hit.mp3" from: 68.43.56.248:49670
+2026-06-02 19:25:51,555 [8] INFO  Server - Request "/sfx/monster/night_elves_death.mp3" from: 68.43.56.248:49668
+2026-06-02 19:25:51,772 [8] INFO  Server - Request "/sfx/monster/lizard_god_death.mp3" from: 68.43.56.248:49668
+2026-06-02 19:25:51,772 [3] INFO  Server - Request "/sfx/monster/lizard_god_hit.mp3" from: 68.43.56.248:49670
+2026-06-02 19:25:52,201 [3] INFO  Server - Request "/sfx/monster/ghost_god_hit.mp3" from: 68.43.56.248:49668
+2026-06-02 19:25:52,203 [3] INFO  Server - Request "/sfx/monster/ghost_god_death.mp3" from: 68.43.56.248:49670
+2026-06-02 19:25:52,420 [3] INFO  Server - Request "/sfx/monster/ents_hit.mp3" from: 68.43.56.248:49670
+2026-06-02 19:25:52,420 [8] INFO  Server - Request "/sfx/monster/ents_death.mp3" from: 68.43.56.248:49668
+2026-06-02 19:25:52,636 [8] INFO  Server - Request "/sfx/monster/flying_brain_hit.mp3" from: 68.43.56.248:49670
+2026-06-02 19:25:52,636 [8] INFO  Server - Request "/sfx/monster/flying_brain_death.mp3" from: 68.43.56.248:49668
+2026-06-02 19:25:53,070 [8] INFO  Server - Request "/sfx/monster/greater_pit_snakes_hit.mp3" from: 68.43.56.248:49668
+2026-06-02 19:25:53,070 [3] INFO  Server - Request "/sfx/monster/djinn_death.mp3" from: 68.43.56.248:49670
+2026-06-02 19:25:53,071 [3] INFO  Server - Request "/sfx/monster/sprite_god_hit.mp3" from: 68.43.56.248:49668
+2026-06-02 19:25:53,072 [3] INFO  Server - Request "/sfx/monster/sprite_god_death.mp3" from: 68.43.56.248:49670
+2026-06-02 19:25:53,072 [3] INFO  Server - Request "/sfx/monster/djinn_hit.mp3" from: 68.43.56.248:49668
+2026-06-02 19:25:53,073 [3] INFO  Server - Request "/sfx/monster/medusa_death.mp3" from: 68.43.56.248:49670
+2026-06-02 19:25:53,473 [3] INFO  Server - Request "/char/fame" from: 68.43.56.248:49670
+2026-06-02 19:26:23,517 [3] INFO  Server - Request "/fame/list" from: 68.43.56.248:49670
+2026-06-02 19:26:27,222 [3] INFO  Server - Request "/char/list" from: 68.43.56.248:49670

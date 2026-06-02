@@ -1,0 +1,37 @@
+﻿<MysteryBoxData version = "1405605653.903848">
+  <MysteryBox id = "30" title = "The Triple Ambrosia Mystery Box" weight = "0">
+    <Description></Description>
+    <Contents>3276,3271,3274,3268,3269;3271,3274,3268,3269;3276,3271,3274,3268,3269</Contents>
+    <Price amount="500" currency="0"/>
+    <Image>http://i.imgur.com/mtGHzqL.png</Image>
+    <Icon></Icon>
+    <Sale price="20" currency="1">
+      <End>2014-08-03 00:00:00</End>
+    </Sale>
+    <StartTime>2014-05-05 11:26:21</StartTime>
+  </MysteryBox>
+  <MysteryBox id = "13" title = "The Shoveguy Mystery Box" weight = "1">
+    <Description></Description>
+    <Contents>8781,4670,4671,4663,4672,4926,4927,4919,4929,4137,4146,4157,4176,4393,4402,4413,4176,4133,4389,4904,4648</Contents>
+    <Price amount="51" currency="0"/>
+    <Image>http://i.imgur.com/btpSBBp.png</Image>
+    <Icon></Icon>
+    <StartTime>2014-01-14 13:07:23</StartTime>
+  </MysteryBox>
+  <MysteryBox id = "38" title = "The Holy Avenger" weight = "0">
+    <Description></Description>
+    <Contents>8783,4686,4942,4687,4943,4926,4927,4919,4929,4137,4146,4157,4176,4393,4402,4413,4176,4133,4389,4904,4648</Contents>
+    <Price amount="51" currency="0"/>
+    <Image>http://i.imgur.com/GmW5kP9.png</Image>
+    <Icon></Icon>
+    <StartTime>2014-06-16 17:55:58</StartTime>
+  </MysteryBox>
+  <MysteryBox id = "39" title = "The Lair of Draconis Box" weight = "-1">
+    <Description></Description>
+    <Contents>3284,1808,1793,1802,3170,3293,8852</Contents>
+    <Price amount="150" currency="0"/>
+    <Image>http://i.imgur.com/hgRW660.png</Image>
+    <Icon></Icon>
+    <StartTime>2014-06-20 13:56:00</StartTime>
+  </MysteryBox>
+</MysteryBoxData>

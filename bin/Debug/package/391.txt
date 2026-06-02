@@ -1,0 +1,2 @@
+﻿#Super Ambrosia Pack
+items:0xccc:10

@@ -1,0 +1,51 @@
+#set privNs "CHANGE01"; "com.company.assembleegameclient.game:_-aJ"
+#set unk "CHANGE02";"_-1HI" ; last initproperty of clearinput
+#set spiral "CHANGE03";"_-0Zc" ; method in Player containing LevelUpEffect
+#set textObjPackage "CHANGE04";"_-0Aj" ; in PLayer after  pushint             65280
+#set textObjClass "CHANGE05";"_-Tp"; in PLayer after  pushint             65280
+#set stringCrPkg "CHANGE06";"_-1ao" ;ArenaPortal, method makeNameBitmapData, first     findpropstrict 
+#set stringCrClass "CHANGE07";"_-bn" ;ArenaPortal, method makeNameBitmapData, first     findpropstrict 
+
+;call spiral-effect
+	getlocal0
+	getproperty     QName(PackageNamespace(""), "gs_")
+	getproperty     QName(PackageNamespace(""), "map")
+	getproperty     QName(PackageNamespace(""), "player_")
+	callpropvoid    QName(PackageNamespace(""), $"spiral"), 0
+
+;get mapOverlay to call addStatusText on at the end
+	getlocal0
+	getproperty     QName(PackageNamespace(""), "gs_")
+	getproperty     QName(PackageNamespace(""), "map")
+	getproperty     QName(PackageNamespace(""), "mapOverlay_")
+
+	;create text object
+		findpropstrict      QName(PackageNamespace($"textObjPackage"), $"textObjClass") ;arg0
+		getlocal0
+		getproperty         QName(PackageNamespace(""), "gs_")
+		getproperty         QName(PackageNamespace(""), "map")
+		getproperty         QName(PackageNamespace(""), "player_") ;arg1
+		pushint             65280 ;arg2
+		pushshort           2000 ;arg3
+		constructprop       QName(PackageNamespace($"textObjPackage"), $"textObjClass"), 3 ;call
+		coerce              QName(PackageNamespace($"textObjPackage"), $"textObjClass") ;convert
+		dup ;store it as addStatusText arg1
+		
+	;create string
+		findpropstrict      QName(PackageNamespace($"stringCrPkg"), $"stringCrClass")
+		;choose the string
+			getlocal0
+			getproperty     QName(PrivateNamespace("*", $"privNs"), $"unk")
+			iffalse         AA_OFF
+			pushstring      "Auto-Aim: On"
+			jump            AA_CONT
+			AA_OFF:
+			pushstring      "Auto-Aim: Off"
+			AA_CONT:
+		constructprop       QName(PackageNamespace($"stringCrPkg"), $"stringCrClass"), 1
+		
+	;change the string in the text object
+		callpropvoid        QName(PackageNamespace(""), "setStringBuilder"), 1
+		
+;draw the text to the screen (arg0=mapOverlay objectRef, arg1=text objectRef)
+	callpropvoid        QName(PackageNamespace(""), "addStatusText"), 1

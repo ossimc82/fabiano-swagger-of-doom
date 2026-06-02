@@ -1,0 +1,4 @@
+      getlex              QName(PackageNamespace(""), "stage")
+      getlex              QName(PackageNamespace("flash.display"), "StageQuality")
+      getproperty         QName(PackageNamespace(""), "LOW")
+      setproperty         QName(PackageNamespace(""), "quality")

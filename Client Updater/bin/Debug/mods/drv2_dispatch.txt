@@ -1,0 +1,79 @@
+;_-names
+#set keyCodes "CHANGE3" ;Search for "testTwo". Its in util ; _-0XO in 20.0.1
+
+;code
+REALM:
+      getlocal1
+      getproperty         QName(PackageNamespace(""), "keyCode")
+      getlex              QName(PackageNamespace("com.company.util"), $"keyCodes")
+      getproperty         QName(PackageNamespace(""), "P")
+      ifne                DUNGEON
+
+      getlex              QName(PackageNamespace(""), "recon")
+      pushnull
+      ifeq                DONE
+
+      getlex              QName(PackageNamespace(""), "recon")
+      getlocal0
+      getproperty         QName(PackageNamespace(""), "gs_")
+      getproperty         QName(PackageNamespace(""), "gsc_")
+      getproperty         QName(PackageNamespace(""), "charId_")
+      setproperty         QName(PackageNamespace(""), "charId_")
+
+      getlocal0
+      getproperty         QName(PackageNamespace(""), "gs_")
+      getlex              QName(PackageNamespace(""), "recon")
+      callpropvoid        QName(PackageNamespace(""), "dispatchEvent"), 1
+	  jump				  DONE
+
+;###########################################################
+DUNGEON:
+      getlocal1
+      getproperty         QName(PackageNamespace(""), "keyCode")
+      getlex              QName(PackageNamespace("com.company.util"), $"keyCodes")
+      getproperty         QName(PackageNamespace(""), "B")
+      ifne                VAULT
+
+      getlex              QName(PackageNamespace(""), "drecon")
+      pushnull
+      ifeq                DONE
+
+      getlex              QName(PackageNamespace(""), "drecon")
+      getlocal0
+      getproperty         QName(PackageNamespace(""), "gs_")
+      getproperty         QName(PackageNamespace(""), "gsc_")
+      getproperty         QName(PackageNamespace(""), "charId_")
+      setproperty         QName(PackageNamespace(""), "charId_")
+
+      getlocal0
+      getproperty         QName(PackageNamespace(""), "gs_")
+      getlex              QName(PackageNamespace(""), "drecon")
+      callpropvoid        QName(PackageNamespace(""), "dispatchEvent"), 1
+	  jump				  DONE
+	
+;###########################################################  
+VAULT:
+      getlocal1
+      getproperty         QName(PackageNamespace(""), "keyCode")
+      getlex              QName(PackageNamespace("com.company.util"), $"keyCodes")
+      getproperty         QName(PackageNamespace(""), "V")
+      ifne                DONE
+
+      getlex              QName(PackageNamespace(""), "vaultrecon")
+      pushnull
+      ifeq                DONE
+
+      getlex              QName(PackageNamespace(""), "vaultrecon")
+      getlocal0
+      getproperty         QName(PackageNamespace(""), "gs_")
+      getproperty         QName(PackageNamespace(""), "gsc_")
+      getproperty         QName(PackageNamespace(""), "charId_")
+      setproperty         QName(PackageNamespace(""), "charId_")
+
+      getlocal0
+      getproperty         QName(PackageNamespace(""), "gs_")
+      getlex              QName(PackageNamespace(""), "vaultrecon")
+      callpropvoid        QName(PackageNamespace(""), "dispatchEvent"), 1
+	  jump				  DONE
+	  
+DONE:

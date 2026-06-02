@@ -1,0 +1,11 @@
+      getlocal0
+      getlocal1
+      getlocal2
+      getlocal            4
+      callproperty        QName(PackageNamespace(""), "swapEquip"), 3
+      iffalse             L59_equipSwap
+
+      pushtrue
+      returnvalue
+
+L59_equipSwap:

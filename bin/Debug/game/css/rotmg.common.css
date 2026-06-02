@@ -1,0 +1,45 @@
+#iframe_salesforce {
+    position: absolute;
+    top: 0;
+    right: 0;
+    float: left;
+    width: 650px;
+    height: 800px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+
+    background: #5a5a5a; /* Old browsers */
+    background: -moz-linear-gradient(top,  #5a5a5a 0%, #252525 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#5a5a5a), color-stop(100%,#252525)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #5a5a5a 0%,#252525 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #5a5a5a 0%,#252525 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #5a5a5a 0%,#252525 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #5a5a5a 0%,#252525 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5a5a5a', endColorstr='#252525',GradientType=0 ); /* IE6-9 */
+}
+#close_iframe_salesforce {
+    /* no tab
+    display: none;
+    height: 20px;
+    width: 21px;
+    background: url(../img/modal/button_close_normal.png) 0 0 no-repeat;
+    position: absolute;
+    top: 5px;
+    right: 25px;
+    cursor: pointer;
+    z-index: 412000;
+    */
+
+    height: 20px;
+    width: 21px;
+    background: url(//kabam1-a.akamaihd.net/silooneofcamelot/fb/e2/src/img/modal/button_close_normal.png) 9px 11px no-repeat #000;
+    position: absolute;
+    top: 5px;
+    right: 654px;
+    cursor: pointer;
+    z-index: 412000;
+    padding: 10px 5px;
+    border-radius: 20px 0 0 20px;
+    border: gray 2px solid;
+    border-right: none;
+}

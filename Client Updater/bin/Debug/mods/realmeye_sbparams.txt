@@ -1,0 +1,3 @@
+   param QName(PackageNamespace("", "#2"), "Boolean")
+   flag HAS_OPTIONAL
+   optional False()

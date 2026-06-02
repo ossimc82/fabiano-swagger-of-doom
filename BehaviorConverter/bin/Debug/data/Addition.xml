@@ -1,0 +1,89 @@
+﻿<ExtData>
+  <Object id="Niggo" ext="true">
+    <Class>Equipment</Class>
+    <Item/>
+    <Texture>
+      <File>lofiObj5</File>
+      <Index>0x7e</Index>
+    </Texture>
+    <SlotType>17</SlotType>
+    <Description>The Niggo of the niggos</Description>
+    <RateOfFire>1</RateOfFire>
+    <Sound>weapon/wand_of_death</Sound>
+    <Projectile>
+      <ObjectId>Blue Missile</ObjectId>
+      <Speed>180</Speed>
+      <MinDamage>65</MinDamage>
+      <MaxDamage>105</MaxDamage>
+      <LifetimeMS>475</LifetimeMS>
+      <Amplitude>0.5</Amplitude>
+      <Frequency>2</Frequency>
+    </Projectile>
+    <BagType>4</BagType>
+    <FameBonus>5</FameBonus>
+    <NumProjectiles>2</NumProjectiles>
+    <ArcGap>0</ArcGap>
+    <OldSound>magicShoot</OldSound>
+    <feedPower>0</feedPower>
+    <Soulbound/>
+    <DisplayId>Niggo</DisplayId>
+  </Object>
+
+  <Object ext="true" id="Over Niggo">
+      <Enemy/>
+      <Class>Character</Class>
+      <Texture>
+         <File>lofiObjBig</File>
+         <Index>0x40</Index>
+      </Texture>
+      <AltTexture id="1">
+         <Texture>
+            <File>lofiObjBig</File>
+            <Index>0x41</Index>
+         </Texture>
+      </AltTexture>
+      <AltTexture id="2">
+         <Texture>
+            <File>lofiObjBig</File>
+            <Index>0x42</Index>
+         </Texture>
+      </AltTexture>
+      <AltTexture id="3">
+         <Texture>
+            <File>lofiObjBig</File>
+            <Index>0x3f</Index>
+         </Texture>
+      </AltTexture>
+      <HitSound>monster/default_hit</HitSound>
+      <DeathSound>monster/dark_elves_death</DeathSound>
+      <Size>140</Size>
+      <ShadowSize>70</ShadowSize>
+      <MaxHitPoints>30000</MaxHitPoints>
+      <Defense>10</Defense>
+      <DisplayId>Over Niggo</DisplayId>
+   </Object>
+
+  <Character>
+    <Object id="Forgotten Archmage of Flame" ext="true">
+      <Enemy/>
+      <Class>Character</Class>
+      <RemoteTexture>
+        <Instance>production</Instance>
+        <Id>forgotten_archmage_of_flame</Id>
+      </RemoteTexture>
+      <HitSound>monster/abyss_demons_hit</HitSound>
+      <DeathSound>monster/abyss_demons_death</DeathSound>
+      <Size>150</Size>
+      <MaxHitPoints>5000</MaxHitPoints>
+      <Defense>30</Defense>
+      <Projectile id="0">
+        <ObjectId>Fire Mystic Shot</ObjectId>
+        <Damage>200</Damage>
+        <Speed>50</Speed>
+        <LifetimeMS>10000</LifetimeMS>
+        <PassesCover/>
+      </Projectile>
+    </Object>
+  </Character>
+
+</ExtData>

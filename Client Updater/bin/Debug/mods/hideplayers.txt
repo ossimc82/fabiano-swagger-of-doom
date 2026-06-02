@@ -1,0 +1,32 @@
+; DONT DRAW PLAYERS IN NEXUS BASED ON CHAT FILTER -jnoob's mod
+; PLAYER PART
+
+     #set playernamespace "CHANGE1"
+     
+
+     ; We must ALWAYS draw everyone if we are not in Nexus            
+     getlex              QName(PackageNamespace(""), "map_")
+     getproperty         QName(PackageNamespace(""), "name_")
+     pushstring          "Nexus"
+     ifne                DRAWIT  
+
+     ; We must ALWAYS draw the player :)
+     getlocal0
+     getlex              QName(PackageNamespace(""), "map_")
+     getproperty         QName(PackageNamespace(""), "player_")
+     ifeq                DRAWIT    
+     
+     ; get player rank
+     getlocal0
+     getproperty         QName(PackageNamespace("", "#0"), "numStars_")
+
+     ;Get the rank set in chat filter options
+     getlex              QName(PackageNamespace("com.company.assembleegameclient.parameters"), "Parameters")
+     getproperty         QName(PackageNamespace("", "#0"), "data_")
+     getproperty         Multiname("chatStarRequirement", [PrivateNamespace("*", "com.company.assembleegameclient:Player#0"), PackageNamespace("", "#0"), PrivateNamespace("*", "com.company.assembleegameclient:Player#1"), PackageNamespace("com.company.assembleegameclient"), PackageInternalNs("com.company.assembleegameclient"), Namespace("http://adobe.com/AS3/2006/builtin"), ProtectedNamespace($"playernamespace"), StaticProtectedNs($"playernamespace")])
+     
+     lessthan
+     iffalse       DRAWIT
+     returnvoid
+
+DRAWIT:

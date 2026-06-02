@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Redeem GiftCode</title>
+</head>
+<body>
+    <center>
+        <section class="container">
+            <div class="redeem">
+                <h1>Redeem your gift code if you enter your email, password and the code.</h1>
+                <form action="/account/redeemGiftCode" method="get">
+                    <p><input type="text" name="guid" value="" placeholder="Email"></p>
+                    <p><input type="password" name="password" value="" placeholder="Password"></p>
+                    <p><input type="text" name="code" value="" placeholder="Gift Code"></p>
+                    <p><input type="submit" /></p>
+                </form>
+            </div>
+        </section>
+
+        <section class="container">
+            <div class="check">
+                <h1>or check your code if you enter your code.</h1>
+                <form action="/account/checkGiftCode" method="get">
+                    <p><input type="text" name="code" value="" placeholder="Gift Code"></p>
+                    <p><input type="submit" /></p>
+                </form>
+            </div>
+        </section>
+    </center>
+</body>
+</html>

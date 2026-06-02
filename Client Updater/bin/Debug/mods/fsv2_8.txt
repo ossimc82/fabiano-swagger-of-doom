@@ -1,0 +1,12 @@
+;8
+getlocal0
+getproperty         QName(PackageNamespace(""), "hudView")
+pushshort			200
+getlex              QName(PackageNamespace(""), "stage")
+getproperty         QName(PackageNamespace(""), "stageWidth")
+convert_d
+pushbyte			2
+convert_d
+divide
+add
+setproperty         QName(PackageNamespace(""), "x")

@@ -1,0 +1,7 @@
+      pushbyte            100
+      multiply
+      getlex              QName(PackageNamespace(""), "Math")
+      swap
+      callproperty        QName(PackageNamespace(""), "round"), 1
+      pushbyte            100
+      divide
